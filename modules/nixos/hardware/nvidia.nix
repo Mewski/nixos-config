@@ -20,9 +20,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # Enable OpenGL support
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
-  };
+  # Enable general graphics support
+  hardware.graphics.enable = true;
+  hardware.graphics.driSupport32Bit = true;
 }
