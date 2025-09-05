@@ -1,4 +1,9 @@
-{ inputs, settings, ... }:
+{
+  inputs,
+  settings,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -44,6 +49,11 @@
   # Configure networking
   networking.hostName = settings.system.hostname;
   networking.networkmanager.enable = true; # Enable NetworkManager for WiFi/network management
+
+  # System packages
+  environment.systemPackages = with pkgs; [
+    git
+  ];
 
   # Configure primary user account
   users.users.${settings.user.username} = {
