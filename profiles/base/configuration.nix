@@ -27,7 +27,7 @@
   };
 
   # Enable flakes
-  nix.settings.experimentalFeatures = [
+  nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
