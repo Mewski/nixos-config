@@ -22,5 +22,5 @@
 
   # Enable general graphics support
   hardware.graphics.enable = true;
-  hardware.graphics.driSupport32Bit = true;
+  hardware.graphics.enable32Bit = true;
 }
