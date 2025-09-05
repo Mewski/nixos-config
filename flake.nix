@@ -5,31 +5,32 @@
     # Core inputs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager
+    # Home Manager - declarative dotfile management
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprland
+    # Hyprland - modern Wayland compositor
     hyprland = {
       url = "github:hyprwm/Hyprland/main?submodules=true";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Stylix
+    # Stylix - system-wide theming
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hardware configurations
+    # Hardware configurations for common devices
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs =
     inputs@{ self, ... }:
     let
+      # Centralized configuration settings
       settings = {
         # System settings
         system = rec {
@@ -38,6 +39,7 @@
           profile = "base";
           timezone = "America/Chicago";
           locale = "en_US.UTF-8";
+          # Import target architecture from host config
           target = (import ./hosts/${host}/config.nix).target;
         };
 
@@ -50,7 +52,7 @@
         };
       };
 
-      # Nixpkgs
+      # Nixpkgs with unfree packages enabled
       pkgs = import inputs.nixpkgs {
         system = settings.system.target;
         config = {
@@ -61,10 +63,11 @@
       # Nixpkgs helper functions
       lib = inputs.nixpkgs.lib;
 
-      # Home Manager
+      # Home Manager reference
       home-manager = inputs.home-manager;
     in
     {
+      # NixOS system configurations
       nixosConfigurations = {
         ${settings.system.hostname} = lib.nixosSystem {
           system = settings.system.target;
@@ -77,6 +80,8 @@
           };
         };
       };
+
+      # Home Manager configurations
       homeConfigurations = {
         ${settings.user.username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

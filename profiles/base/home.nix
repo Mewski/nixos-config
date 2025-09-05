@@ -2,15 +2,23 @@
 
 {
   imports = [
+    # Terminal applications
     ../../modules/home-manager/apps/terminal/kitty.nix
     ../../modules/home-manager/apps/neovim/neovim.nix
+
+    # Window manager configuration
     ../../modules/home-manager/window-manager/hyprland.nix
   ];
 
+  # Configure home directory and username
   home.username = settings.user.username;
   home.homeDirectory = "/home/${settings.user.username}";
 
+  # Enable Home Manager to manage itself
   programs.home-manager.enable = true;
+
+  # Enable Bash shell configuration
+  programs.bash.enable = true;
 
   # Home Manager state version for defaults
   home.stateVersion = "25.05";
