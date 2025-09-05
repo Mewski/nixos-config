@@ -1,7 +1,10 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   imports = [
+    # Hardware configurations from nixos-hardware
+    inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
+
     # Generated hardware configuration
     ./hardware-configuration.nix
 
