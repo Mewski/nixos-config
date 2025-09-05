@@ -13,7 +13,7 @@
 
     # Hyprland
     hyprland = {
-      url = "github:hyprwm/Hyprland/master?submodules=true";
+      url = "github:hyprwm/Hyprland/main?submodules=true";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
