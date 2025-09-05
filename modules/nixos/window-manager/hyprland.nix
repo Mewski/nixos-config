@@ -25,6 +25,9 @@
   # Configure X server for compatibility and keyboard layout
   services.xserver = {
     enable = true;
+    displayManager = {
+      startx.enable = true;
+    };
     xkb = {
       layout = "us";
       variant = "";
