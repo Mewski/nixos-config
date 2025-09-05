@@ -38,6 +38,9 @@
     "flakes" # Flake-based package management
   ];
 
+  # Enable unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Configure networking
   networking.hostName = settings.system.hostname;
   networking.networkmanager.enable = true; # Enable NetworkManager for WiFi/network management
