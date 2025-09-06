@@ -22,6 +22,9 @@
   # Enable Bash shell configuration
   programs.bash.enable = true;
 
+  # Enable Fish shell configuration
+  programs.fish.enable = true;
+
   # Home Manager state version for defaults
   home.stateVersion = "25.05";
 }

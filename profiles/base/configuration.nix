@@ -25,6 +25,16 @@
   # System packages
   environment.systemPackages = with pkgs; [ ];
 
+  # Shells
+  environment.shells = with pkgs; [
+    bash
+    fish
+  ];
+
+  # Set default shell
+  users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
+
   # System state version for defaults
   system.stateVersion = "25.05";
 }
