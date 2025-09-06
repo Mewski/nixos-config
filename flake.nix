@@ -23,6 +23,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Lanzaboote - secure boot for UEFI systems
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hardware configurations for common devices
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };

@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
 
     # Bootloader configuration
-    ../../modules/nixos/bootloader/systemd-boot.nix
+    ../../modules/nixos/bootloader/lanzaboote.nix
 
     # Hardware-specific modules
     ../../modules/nixos/hardware/bluetooth.nix
