@@ -19,7 +19,7 @@
     ../../modules/nixos/system/users.nix
 
     # Window manager
-    ../../modules/nixos/window-manager/hyprland.nix
+    ../../modules/nixos/desktop/hyprland.nix
   ];
 
   # Shells

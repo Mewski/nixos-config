@@ -42,7 +42,7 @@
         system = rec {
           hostname = "nixos";
           host = "zephyrus";
-          profile = "base";
+          profile = "desktop";
           timezone = "America/Chicago";
           locale = "en_US.UTF-8";
           # Import target architecture from host config

@@ -3,17 +3,17 @@
 {
   imports = [
     # Terminal applications
-    ../../modules/home-manager/apps/btop/btop.nix
-    ../../modules/home-manager/apps/git/git.nix
-    ../../modules/home-manager/apps/neovim/neovim.nix
-    ../../modules/home-manager/apps/terminal/kitty.nix
+    ../../modules/home-manager/applications/btop/btop.nix
+    ../../modules/home-manager/applications/git/git.nix
+    ../../modules/home-manager/applications/neovim/neovim.nix
+    ../../modules/home-manager/applications/terminal/kitty.nix
 
     # Shells
     ../../modules/home-manager/shells/bash.nix
     ../../modules/home-manager/shells/fish.nix
 
     # Window manager configuration
-    ../../modules/home-manager/window-manager/hyprland.nix
+    ../../modules/home-manager/desktop/hyprland.nix
   ];
 
   # Configure home directory and username
