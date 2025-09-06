@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -14,5 +14,10 @@
     # Hardware-specific modules
     ../../modules/nixos/hardware/bluetooth.nix
     ../../modules/nixos/hardware/nvidia.nix
+  ];
+
+  # Install sbctl for secure boot key management
+  environment.systemPackages = with pkgs; [
+    sbctl
   ];
 }

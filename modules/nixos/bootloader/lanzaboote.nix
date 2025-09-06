@@ -21,9 +21,4 @@
 
   # Enable bootloader to modify EFI variables
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Install sbctl for secure boot key management
-  environment.systemPackages = with pkgs; [
-    sbctl
-  ];
 }
