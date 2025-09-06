@@ -3,6 +3,7 @@
 {
   imports = [
     # Terminal applications
+    ../../modules/home-manager/apps/btop/btop.nix
     ../../modules/home-manager/apps/git/git.nix
     ../../modules/home-manager/apps/neovim/neovim.nix
     ../../modules/home-manager/apps/terminal/kitty.nix
