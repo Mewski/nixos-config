@@ -1,4 +1,4 @@
-{ inputs, settings, ... }:
+{ settings, ... }:
 
 {
   imports = [
