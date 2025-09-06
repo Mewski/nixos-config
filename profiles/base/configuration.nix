@@ -51,9 +51,7 @@
   networking.networkmanager.enable = true; # Enable NetworkManager for WiFi/network management
 
   # System packages
-  environment.systemPackages = with pkgs; [
-    git
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   # Configure primary user account
   users.users.${settings.user.username} = {
