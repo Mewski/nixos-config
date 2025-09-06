@@ -22,9 +22,6 @@
     ../../modules/nixos/window-manager/hyprland.nix
   ];
 
-  # System packages
-  environment.systemPackages = with pkgs; [ ];
-
   # Shells
   environment.shells = with pkgs; [
     bash
