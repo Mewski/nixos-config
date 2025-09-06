@@ -8,6 +8,10 @@
     ../../modules/home-manager/apps/neovim/neovim.nix
     ../../modules/home-manager/apps/terminal/kitty.nix
 
+    # Shells
+    ../../modules/home-manager/shells/bash.nix
+    ../../modules/home-manager/shells/fish.nix
+
     # Window manager configuration
     ../../modules/home-manager/window-manager/hyprland.nix
   ];
@@ -18,12 +22,6 @@
 
   # Enable Home Manager to manage itself
   programs.home-manager.enable = true;
-
-  # Enable Bash shell configuration
-  programs.bash.enable = true;
-
-  # Enable Fish shell configuration
-  programs.fish.enable = true;
 
   # Home Manager state version for defaults
   home.stateVersion = "25.05";
