@@ -5,15 +5,19 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      # Monitor configuration
       monitor = ",preferred,auto,auto";
 
+      # Default applications
       "$terminal" = "kitty";
 
+      # Environment variables
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
       ];
 
+      # Window layout and appearance
       general = {
         gaps_in = 5;
         gaps_out = 20;
@@ -30,6 +34,7 @@
         layout = "dwindle";
       };
 
+      # Window decorations and effects
       decoration = {
         rounding = 10;
         rounding_power = 2;
@@ -37,6 +42,7 @@
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
+        # Drop shadows
         shadow = {
           enabled = true;
           range = 4;
@@ -44,6 +50,7 @@
           color = "rgba(1a1a1aee)";
         };
 
+        # Background blur
         blur = {
           enabled = true;
           size = 3;
@@ -53,9 +60,11 @@
         };
       };
 
+      # Animation configuration
       animations = {
         enabled = "yes, please :)";
 
+        # Animation curves
         bezier = [
           "easeOutQuint,0.23,1,0.32,1"
           "easeInOutCubic,0.65,0.05,0.36,1"
@@ -64,6 +73,7 @@
           "quick,0.15,0,0.1,1"
         ];
 
+        # Animation definitions
         animation = [
           "global, 1, 10, default"
           "border, 1, 5.39, easeOutQuint"
@@ -85,20 +95,24 @@
         ];
       };
 
+      # Dwindle layout settings
       dwindle = {
         pseudotile = true;
         preserve_split = true;
       };
 
+      # Master layout settings
       master = {
         new_status = "master";
       };
 
+      # Miscellaneous settings
       misc = {
         force_default_wallpaper = -1;
         disable_hyprland_logo = false;
       };
 
+      # Input device configuration
       input = {
         kb_layout = "us";
         kb_variant = "";
@@ -111,24 +125,30 @@
         accel_profile = "flat";
         sensitivity = 0;
 
+        # Touchpad settings
         touchpad = {
           disable_while_typing = false;
           natural_scroll = true;
         };
       };
 
+      # Gesture configuration
       gestures = {
         workspace_swipe = false;
       };
 
+      # Device-specific settings
       device = {
         name = "epic-mouse-v1";
         sensitivity = -0.5;
       };
 
+      # Primary modifier key
       "$mainMod" = "SUPER";
 
+      # Key bindings
       bind = [
+        # Application shortcuts
         "$mainMod, Q, exec, $terminal"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
@@ -138,11 +158,13 @@
         "$mainMod, P, pseudo,"
         "$mainMod, J, togglesplit,"
 
+        # Focus movement
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
+        # Workspace switching
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -154,6 +176,7 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
 
+        # Move windows to workspaces
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -165,13 +188,16 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
+        # Special workspace
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
+        # Mouse workspace switching
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
       ];
 
+      # Mouse bindings
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
