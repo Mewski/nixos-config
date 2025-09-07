@@ -26,6 +26,14 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # Kernel parameters for ASUS ROG Zephyrus G16 GU605MY brightness keys fix
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"
+    "i915.enable_dpcd_backlight=1"
+    "nvidia.NVreg_EnableBacklightHandler=0"
+    "nvidia.NVreg_RegistryDwords=EnableBrightnessControl=0"
+  ];
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/4ba80c17-6787-4651-99a0-27b9b7bf8187";
     fsType = "btrfs";
