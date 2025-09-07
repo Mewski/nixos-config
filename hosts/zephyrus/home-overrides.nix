@@ -13,8 +13,8 @@
       ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
       # Brightness controls optimized for Zephyrus hybrid NVIDIA/Intel graphics
-      ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
-      ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+      ",XF86MonBrightnessUp, exec, brightnessctl -d intel_backlight -e4 -n2 set 5%+"
+      ",XF86MonBrightnessDown, exec, brightnessctl -d intel_backlight -e4 -n2 set 5%-"
     ];
 
     bindl = [
