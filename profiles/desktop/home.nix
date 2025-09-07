@@ -2,6 +2,9 @@
 
 {
   imports = [
+    # Host-specific home overrides
+    ../../hosts/${settings.system.host}/home-overrides.nix
+
     # Terminal applications
     ../../modules/home-manager/applications/btop/btop.nix
     ../../modules/home-manager/applications/git/git.nix

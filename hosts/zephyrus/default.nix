@@ -1,9 +1,12 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
     # Hardware configurations from nixos-hardware
     inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
+
+    # Host-specific system overrides
+    ./system-overrides.nix
 
     # Generated hardware configuration
     ./hardware-configuration.nix
@@ -14,10 +17,5 @@
     # Hardware-specific modules
     ../../modules/nixos/hardware/bluetooth.nix
     ../../modules/nixos/hardware/nvidia.nix
-  ];
-
-  # Install sbctl for secure boot key management
-  environment.systemPackages = with pkgs; [
-    sbctl
   ];
 }
