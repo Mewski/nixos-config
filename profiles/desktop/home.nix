@@ -29,6 +29,9 @@
     brightnessctl
     playerctl
 
+    # Password manager
+    bitwarden-desktop
+
     # Development tools
     gitkraken
   ];
