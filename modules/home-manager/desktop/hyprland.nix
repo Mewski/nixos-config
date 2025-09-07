@@ -108,10 +108,12 @@
 
         follow_mouse = 1;
 
+        accel_profile = "flat";
         sensitivity = 0;
 
         touchpad = {
-          natural_scroll = false;
+          disable_while_typing = false;
+          natural_scroll = true;
         };
       };
 
