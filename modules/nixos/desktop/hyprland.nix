@@ -45,6 +45,8 @@
 
   # Enable GNOME Keyring for secure credential storage
   security.pam.services.login.enableGnomeKeyring = true;
-
   services.gnome.gnome-keyring.enable = true;
+
+  # Enable Ozone Wayland support for Hyprland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
