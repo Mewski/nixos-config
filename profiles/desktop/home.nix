@@ -1,4 +1,4 @@
-{ settings, ... }:
+{ settings, pkgs, ... }:
 
 {
   imports = [
@@ -20,6 +20,16 @@
   # Configure home directory and username
   home.username = settings.user.username;
   home.homeDirectory = "/home/${settings.user.username}";
+
+  # Install user-specific packages
+  environment.systemPackages = with pkgs; [
+    # Terminal utilities
+    brightnessctl
+    playerctl
+
+    # Development tools
+    gitkraken
+  ];
 
   # Enable Home Manager to manage itself
   programs.home-manager.enable = true;
