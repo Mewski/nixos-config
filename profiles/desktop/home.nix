@@ -5,7 +5,6 @@
     # Terminal applications
     ../../modules/home-manager/applications/btop/btop.nix
     ../../modules/home-manager/applications/git/git.nix
-    ../../modules/home-manager/applications/gitkraken/gitkraken.nix
     ../../modules/home-manager/applications/neovim/neovim.nix
     ../../modules/home-manager/applications/terminal/kitty.nix
 
