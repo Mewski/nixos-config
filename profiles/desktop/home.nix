@@ -21,7 +21,7 @@
   home.homeDirectory = "/home/${settings.user.username}";
 
   # Install user-specific packages
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     # Terminal utilities
     brightnessctl
     playerctl
