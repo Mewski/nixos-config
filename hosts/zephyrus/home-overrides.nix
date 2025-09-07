@@ -15,6 +15,10 @@
       # Brightness controls optimized for Zephyrus hybrid NVIDIA/Intel graphics
       ",XF86MonBrightnessUp, exec, brightnessctl -d intel_backlight -e4 -n2 set 5%+"
       ",XF86MonBrightnessDown, exec, brightnessctl -d intel_backlight -e4 -n2 set 5%-"
+
+      # Keyboard backlight brightness controls
+      ",XF86KbdBrightnessUp, exec, brightnessctl -d asus::kbd_backlight set 1+"
+      ",XF86KbdBrightnessDown, exec, brightnessctl -d asus::kbd_backlight set 1-"
     ];
 
     bindl = [
