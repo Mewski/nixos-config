@@ -33,7 +33,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Zen Browser
-    zenbrowser = {
+    zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };

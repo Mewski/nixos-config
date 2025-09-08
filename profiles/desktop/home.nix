@@ -17,6 +17,9 @@
 
     # Window manager configuration
     ../../modules/home-manager/desktop/hyprland.nix
+
+    # Web browser
+    ../../modules/home-manager/applications/web-browser/zen-browser.nix
   ];
 
   # Configure home directory and username
