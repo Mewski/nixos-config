@@ -6,7 +6,7 @@
     enable = true;
     settings = {
       # Monitor configuration
-      monitor = ",preferred,auto,auto";
+      monitor = ",preferred,auto,1.5";
 
       # Default applications
       "$terminal" = "kitty";
@@ -130,6 +130,7 @@
         touchpad = {
           disable_while_typing = false;
           natural_scroll = true;
+          clickfinger_behaviour = true;
         };
       };
 
