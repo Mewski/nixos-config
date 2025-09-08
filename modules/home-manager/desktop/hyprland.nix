@@ -130,7 +130,7 @@
         touchpad = {
           disable_while_typing = false;
           natural_scroll = true;
-          clickfinger_behaviour = true;
+          clickfinger_behavior = true;
         };
       };
 
