@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  import = [
+  imports = [
     inputs.zen-browser.homeModules.twilight
   ];
 
