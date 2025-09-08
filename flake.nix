@@ -5,32 +5,36 @@
     # Core inputs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager - declarative dotfile management
+    # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprland - modern Wayland compositor
+    # Hyprland
     hyprland = {
       url = "github:hyprwm/Hyprland/main?submodules=true";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Stylix - system-wide theming
+    # Stylix
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Lanzaboote - secure boot for UEFI systems
+    # Lanzaboote
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hardware configurations for common devices
+    # Hardware configurations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Zen Browser
+    url = "github:0xc000022070/zen-browser-flake";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
