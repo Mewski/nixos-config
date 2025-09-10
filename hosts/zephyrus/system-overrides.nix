@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  # Host-specific system configuration for ASUS ROG Zephyrus G16 GU605MY
+  # Host-specific system configuration
 
   # Install sbctl for secure boot key management
   environment.systemPackages = with pkgs; [

@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  # Host-specific Home Manager configuration for ASUS ROG Zephyrus G16 GU605MY
+  # Host-specific Home Manager configuration
 
   # Hyprland media key bindings optimized for this hardware
   wayland.windowManager.hyprland.settings = {
