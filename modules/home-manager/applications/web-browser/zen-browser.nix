@@ -27,5 +27,10 @@
         Fingerprinting = true;
       };
     };
+
+    # Preferences
+    preferences = {
+      "zen.theme.content-element-separation" = "0";
+    };
   };
 }
