@@ -4,10 +4,13 @@
   # Configure Hyprland window manager
   programs.hyprland = {
     enable = true;
+
     # Enable X11 compatibility layer for legacy applications
     xwayland.enable = true;
+
     # Use Hyprland package from flake input for latest features
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
     # Use matching portal package for proper desktop integration
     portalPackage =
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
