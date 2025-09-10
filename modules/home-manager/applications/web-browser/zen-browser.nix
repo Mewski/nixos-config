@@ -26,12 +26,12 @@
         Cryptomining = true;
         Fingerprinting = true;
       };
-    };
 
-    # Preferences
-    preferences = {
-      "zen.theme.content-element-separation" = "0";
-      "widget.wayland.fractional-scale.enabled" = true;
+      # Preferences
+      preferences = {
+        "zen.theme.content-element-separation" = "0";
+        "widget.wayland.fractional-scale.enabled" = true;
+      };
     };
   };
 }
