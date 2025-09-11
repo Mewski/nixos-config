@@ -51,7 +51,6 @@
           profile = "desktop";
           timezone = "America/Chicago";
           locale = "en_US.UTF-8";
-          # Import target architecture from host config
           target = (import ./hosts/${host}/config.nix).target;
         };
 
@@ -64,19 +63,8 @@
         };
       };
 
-      # Nixpkgs with unfree packages enabled
-      pkgs = import inputs.nixpkgs {
-        system = settings.system.target;
-        config = {
-          allowUnfree = true;
-        };
-      };
-
       # Nixpkgs helper functions
       lib = inputs.nixpkgs.lib;
-
-      # Home Manager reference
-      home-manager = inputs.home-manager;
     in
     {
       # NixOS system configurations
@@ -84,23 +72,14 @@
         ${settings.system.hostname} = lib.nixosSystem {
           system = settings.system.target;
           modules = [
+            # Import home-manager as a NixOS module
+            inputs.home-manager.nixosModules.home-manager
+
+            # Host and profile configurations
             ./hosts/${settings.system.host}
             ./profiles/${settings.system.profile}/configuration.nix
           ];
           specialArgs = {
-            inherit inputs settings;
-          };
-        };
-      };
-
-      # Home Manager configurations
-      homeConfigurations = {
-        ${settings.user.username} = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./profiles/${settings.system.profile}/home.nix
-          ];
-          extraSpecialArgs = {
             inherit inputs settings;
           };
         };

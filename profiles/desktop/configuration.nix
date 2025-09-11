@@ -1,6 +1,7 @@
 {
   settings,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -21,6 +22,21 @@
     # Window manager
     ../../modules/nixos/desktop/hyprland.nix
   ];
+
+  # Configure home-manager as a NixOS module
+  home-manager = {
+    # Pass inputs and settings to home-manager modules
+    extraSpecialArgs = { inherit inputs settings; };
+
+    # Use global nixpkgs configuration
+    useGlobalPkgs = true;
+
+    # Use user packages from nixpkgs
+    useUserPackages = true;
+
+    # Configure home-manager for the user
+    users.${settings.user.username} = import ./home.nix;
+  };
 
   # Shells
   environment.shells = with pkgs; [

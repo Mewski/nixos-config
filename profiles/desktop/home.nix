@@ -1,4 +1,8 @@
-{ settings, pkgs, ... }:
+{
+  settings,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -21,10 +25,6 @@
     # Web browser
     ../../modules/home-manager/applications/web-browser/zen-browser.nix
   ];
-
-  # Configure home directory and username
-  home.username = settings.user.username;
-  home.homeDirectory = "/home/${settings.user.username}";
 
   # Install user-specific packages
   home.packages = with pkgs; [
