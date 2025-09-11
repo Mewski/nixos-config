@@ -5,7 +5,7 @@
 
   # Hyprland media key bindings optimized for this hardware
   wayland.windowManager.hyprland.settings = {
-    monitor = "eDP-1,auto,0x0,1.25";
+    monitor = "eDP-1,preferred,0x0,1.25";
 
     bindel = [
       # Volume controls
