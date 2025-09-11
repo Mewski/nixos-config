@@ -5,9 +5,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      # Monitor configuration
-      monitor = ",preferred,auto,1.6";
-
       # Default applications
       "$terminal" = "kitty";
       "$browser" = "zen";

@@ -5,6 +5,8 @@
 
   # Hyprland media key bindings optimized for this hardware
   wayland.windowManager.hyprland.settings = {
+    monitor = "eDP-1,2560x1600,0x0,1.3333";
+
     bindel = [
       # Volume controls
       ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
