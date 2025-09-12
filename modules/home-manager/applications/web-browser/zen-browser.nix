@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ settings, inputs, ... }:
 
 {
   imports = [
@@ -53,7 +53,7 @@
 
     # Browser profile configuration
     profiles = {
-      default = {
+      ${settings.user.username} = {
         settings = {
           # Zen-specific theme settings
           "zen.theme.content-element-separation" = "0";
