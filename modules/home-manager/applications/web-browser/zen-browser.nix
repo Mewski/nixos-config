@@ -53,10 +53,10 @@
 
     # Browser profile configuration
     profiles = {
-      ${settings.user.username} = {
+      default = {
         settings = {
           # Zen-specific theme settings
-          "zen.theme.content-element-separation" = "0";
+          "zen.theme.content-element-separation" = 0;
         };
       };
     };
