@@ -34,7 +34,7 @@
 
     # Zen Browser
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake/beta";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -74,6 +74,9 @@
           modules = [
             # Import home-manager as a NixOS module
             inputs.home-manager.nixosModules.home-manager
+
+            # Import stylix as a NixOS module
+            inputs.stylix.nixosModules.stylix
 
             # Host and profile configurations
             ./hosts/${settings.system.host}
