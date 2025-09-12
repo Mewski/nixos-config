@@ -1,20 +1,16 @@
 { ... }:
 
 {
-  # Enable real-time kit for audio
+  # Allows audio applications to request real-time scheduling
   security.rtkit.enable = true;
 
-  # Configure PipeWire audio system
   services.pipewire = {
     enable = true;
-    # ALSA compatibility layer for legacy applications
     alsa = {
       enable = true;
-      support32Bit = true; # Enable 32-bit application support
+      support32Bit = true; # 32-bit compatibility
     };
-    # PulseAudio compatibility layer
     pulse.enable = true;
-    # JACK compatibility for professional audio applications
     jack.enable = true;
   };
 }

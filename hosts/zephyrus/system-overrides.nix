@@ -1,10 +1,8 @@
 { pkgs, ... }:
 
 {
-  # Host-specific system configuration
-
-  # Install sbctl for secure boot key management
   environment.systemPackages = with pkgs; [
+    # Secure boot key management for Lanzaboote
     sbctl
   ];
 }

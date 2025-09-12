@@ -8,7 +8,6 @@
   programs.zen-browser = {
     enable = true;
 
-    # Firefox policies
     policies =
       let
         mkLockedAttrs = builtins.mapAttrs (
@@ -36,7 +35,6 @@
           Fingerprinting = true;
         };
 
-        # Preferences
         preferences = mkLockedAttrs {
           "widget.wayland.fractional-scale.enabled" = true;
         };

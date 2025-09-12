@@ -6,7 +6,6 @@
 
 {
   imports = [
-    # Lanzaboote bootloader
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
@@ -18,6 +17,5 @@
     pkiBundle = "/var/lib/sbctl";
   };
 
-  # Enable bootloader to modify EFI variables
   boot.loader.efi.canTouchEfiVariables = true;
 }
