@@ -38,9 +38,16 @@
 
         # Preferences
         preferences = mkLockedAttrs {
-          "zen.theme.content-element-separation" = "0";
           "widget.wayland.fractional-scale.enabled" = true;
         };
       };
+
+    profiles = {
+      default = {
+        settings = {
+          "zen.theme.content-element-separation" = "0";
+        };
+      };
+    };
   };
 }
