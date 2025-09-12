@@ -15,8 +15,7 @@
     # Enable NVIDIA settings GUI for configuration
     nvidiaSettings = true;
 
-    # Use stable driver branch (recommended for most users)
-    # Alternative: set to "beta" for latest features
+    # Use stable driver branch
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
