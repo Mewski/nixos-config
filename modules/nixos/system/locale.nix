@@ -1,8 +1,10 @@
 { settings, ... }:
 
 {
+  # Set default system locale
   i18n.defaultLocale = settings.system.locale;
 
+  # Configure locale settings for different categories
   i18n.extraLocaleSettings = {
     LC_ADDRESS = settings.system.locale;
     LC_IDENTIFICATION = settings.system.locale;

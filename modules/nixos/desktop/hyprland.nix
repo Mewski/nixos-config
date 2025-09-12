@@ -4,18 +4,23 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    # Use latest Hyprland from flake input
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # Use Hyprland-specific portal for better compatibility
     portalPackage =
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  # Enable dconf for GNOME/GTK applications
   programs.dconf.enable = true;
 
+  # D-Bus service for desktop applications
   services.dbus = {
     enable = true;
     packages = with pkgs; [ dconf ];
   };
 
+  # X server configuration (needed for XWayland)
   services.xserver = {
     enable = true;
     displayManager = {
@@ -27,6 +32,7 @@
     };
   };
 
+  # XDG Desktop Portal for Wayland applications
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -35,9 +41,11 @@
     ];
   };
 
+  # GNOME Keyring for password management
   security.pam.services.login.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
 
+  # Environment variables for Wayland compatibility
   environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }

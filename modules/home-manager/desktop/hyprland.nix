@@ -1,7 +1,6 @@
 { ... }:
 
 {
-  # Enable Hyprland window manager for Home Manager
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -16,28 +15,30 @@
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
       ];
 
-      # Window layout and appearance
+      # General window manager settings
       general = {
+        # Gap sizes in pixels
         gaps_in = 5;
         gaps_out = 20;
 
+        # Border configuration
         border_size = 2;
-
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
 
+        # Window behavior
         resize_on_border = false;
-
         allow_tearing = false;
-
         layout = "dwindle";
       };
 
-      # Window decorations and effects
+      # Visual decoration settings
       decoration = {
+        # Corner rounding
         rounding = 10;
         rounding_power = 2;
 
+        # Window opacity
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
@@ -54,7 +55,6 @@
           enabled = true;
           size = 3;
           passes = 1;
-
           vibrancy = 0.1696;
         };
       };
@@ -113,18 +113,19 @@
 
       # Input device configuration
       input = {
+        # Keyboard layout
         kb_layout = "us";
         kb_variant = "";
         kb_model = "";
         kb_options = "";
         kb_rules = "";
 
+        # Mouse settings
         follow_mouse = 1;
-
         accel_profile = "flat";
         sensitivity = 0;
 
-        # Touchpad settings
+        # Touchpad configuration
         touchpad = {
           disable_while_typing = false;
           natural_scroll = true;
@@ -132,7 +133,7 @@
         };
       };
 
-      # Gesture configuration
+      # Gesture settings
       gestures = {
         workspace_swipe = false;
       };
@@ -143,7 +144,7 @@
         sensitivity = -0.5;
       };
 
-      # Primary modifier key
+      # Main modifier key
       "$mainMod" = "SUPER";
 
       # Key bindings
@@ -189,11 +190,11 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        # Special workspace
+        # Special workspace (scratchpad)
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-        # Mouse workspace switching
+        # Mouse wheel workspace switching
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
       ];
@@ -204,9 +205,12 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
+      # Window rules
       windowrule = [
+        # Suppress maximize events for all windows
         "suppressevent maximize, class:.*"
 
+        # Ignore empty XWayland windows
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
     };

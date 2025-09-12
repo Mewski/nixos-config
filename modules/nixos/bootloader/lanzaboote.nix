@@ -6,6 +6,7 @@
 
 {
   imports = [
+    # Lanzaboote secure boot module
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
@@ -14,8 +15,10 @@
 
   boot.lanzaboote = {
     enable = true;
+    # Path to secure boot keys managed by sbctl
     pkiBundle = "/var/lib/sbctl";
   };
 
+  # Allow modifying EFI variables for secure boot key management
   boot.loader.efi.canTouchEfiVariables = true;
 }
