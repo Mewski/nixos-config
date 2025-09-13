@@ -13,6 +13,10 @@
       env = [
         # "XCURSOR_SIZE,24"
         # "HYPRCURSOR_SIZE,24"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "NVD_BACKEND,direct"
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
       ];
 
       # General window manager settings
@@ -117,18 +121,13 @@
           disable_while_typing = false;
           natural_scroll = true;
           clickfinger_behavior = true;
+          scroll_factor = 0.5;
         };
       };
 
       # Gesture settings
       gestures = {
-        workspace_swipe = false;
-      };
-
-      # Device-specific settings
-      device = {
-        name = "epic-mouse-v1";
-        sensitivity = -0.5;
+        workspace_swipe = true;
       };
 
       # Main modifier key
