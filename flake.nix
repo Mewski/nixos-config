@@ -23,6 +23,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # San Francisco Fonts
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Lanzaboote
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
