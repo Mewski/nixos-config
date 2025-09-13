@@ -11,9 +11,8 @@
 
       # Environment variables
       env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
-        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        # "XCURSOR_SIZE,24"
+        # "HYPRCURSOR_SIZE,24"
       ];
 
       # General window manager settings
@@ -24,8 +23,6 @@
 
         # Border configuration
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
 
         # Window behavior
         resize_on_border = false;
@@ -39,16 +36,11 @@
         rounding = 10;
         rounding_power = 2;
 
-        # Window opacity
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-
         # Drop shadows
         shadow = {
-          enabled = true;
+          enabled = false;
           range = 4;
           render_power = 3;
-          color = "rgba(1a1a1aee)";
         };
 
         # Background blur
@@ -62,7 +54,7 @@
 
       # Animation configuration
       animations = {
-        enabled = "yes, please :)";
+        enabled = true;
 
         # Animation curves
         bezier = [
