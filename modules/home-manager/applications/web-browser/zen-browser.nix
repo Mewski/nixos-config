@@ -48,7 +48,6 @@
         # Wayland-specific preferences
         preferences = mkLockedAttrs {
           "widget.wayland.fractional-scale.enabled" = true;
-          "mousewheel.default.delta_multiplier_y" = 100;
         };
       };
 
@@ -56,6 +55,9 @@
     profiles.default.settings = {
       # Zen-specific theme settings
       "zen.theme.content-element-separation" = 0;
+
+      # Profile-specific settings
+      "mousewheel.default.delta_multiplier_y" = 100;
     };
   };
 }
