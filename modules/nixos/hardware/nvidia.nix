@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   # Use NVIDIA proprietary driver
@@ -21,4 +21,9 @@
   # Enable hardware acceleration
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true; # 32-bit compatibility
+
+  # Hardware video acceleration
+  hardware.graphics.extraPackages = [
+    pkgs.nvidia-vaapi-driver
+  ];
 }
