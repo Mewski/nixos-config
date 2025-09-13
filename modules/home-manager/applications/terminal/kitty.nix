@@ -6,7 +6,7 @@
     enable = true;
 
     settings = {
-      cursor_trail = 5;
+      cursor_trail = 3;
       enable_audio_bell = false;
       confirm_os_window_close = 0;
     };
