@@ -60,9 +60,6 @@
             # Import stylix as a NixOS module
             inputs.stylix.nixosModules.stylix
 
-            # Import zen-browser as a NixOS module
-            inputs.zen-browser.nixosModules.zen-browser
-
             # Host and profile configurations
             ./hosts/${settings.system.host}
             ./profiles/${settings.system.profile}/configuration.nix
