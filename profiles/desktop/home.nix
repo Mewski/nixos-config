@@ -25,7 +25,6 @@
 
     # Theme configuration
     ../../modules/home-manager/theme/stylix.nix
-    ../../themes/${settings.user.theme}
   ];
 
   # Additional packages not configured through modules
