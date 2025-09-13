@@ -11,8 +11,6 @@
 
       # Environment variables
       env = [
-        # "XCURSOR_SIZE,24"
-        # "HYPRCURSOR_SIZE,24"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "LIBVA_DRIVER_NAME,nvidia"
         "NVD_BACKEND,direct"
@@ -151,6 +149,18 @@
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
+
+        # Window swapping
+        "$mainMod SHIFT, left, swapwindow, l"
+        "$mainMod SHIFT, right, swapwindow, r"
+        "$mainMod SHIFT, up, swapwindow, u"
+        "$mainMod SHIFT, down, swapwindow, d"
+
+        # Window resizing
+        "$mainMod ALT, left, resizeactive, -40 0"
+        "$mainMod ALT, right, resizeactive, 40 0"
+        "$mainMod ALT, up, resizeactive, 0 -40"
+        "$mainMod ALT, down, resizeactive, 0 40"
 
         # Workspace switching
         "$mainMod, 1, workspace, 1"
