@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.zen-browser.homeModules.zen-browser
+    inputs.zen-browser.homeModules.twilight
   ];
 
   programs.zen-browser = {
