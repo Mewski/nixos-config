@@ -1,10 +1,6 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  # Cursor
-  stylix.cursor.package = pkgs.bibata-cursors;
-  stylix.cursor.name = "Bibata-Modern-Ice";
-
   # Stylix opacity
   stylix.opacity = {
     applications = 1.0;
