@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.zen-browser.nixosModules.zen-browser
+    inputs.zen-browser.homeModules.zen-browser
   ];
 
   programs.zen-browser = {
