@@ -9,7 +9,7 @@
   stylix.targets.grub.enable = false;
 
   # Fonts
-  fonts = {
+  stylix.fonts = {
     sansSerif = {
       name = "SFProDisplay Nerd Font";
       package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
@@ -21,6 +21,10 @@
     monospace = {
       name = "SF Mono Nerd Font";
       package = inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd;
+    };
+    emoji = {
+      name = "Noto Color Emoji";
+      package = pkgs.noto-fonts-emoji;
     };
   };
 }
