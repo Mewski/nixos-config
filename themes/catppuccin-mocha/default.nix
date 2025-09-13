@@ -28,8 +28,8 @@
   stylix.polarity = "dark";
 
   # Cursor
-  stylix.cursor.package = pkgs.bibata-cursors;
-  stylix.cursor.name = "Bibata-Modern-Ice";
+  # stylix.cursor.package = pkgs.bibata-cursors;
+  # stylix.cursor.name = "Bibata-Modern-Ice";
 
   # Fonts
   stylix.fonts = {

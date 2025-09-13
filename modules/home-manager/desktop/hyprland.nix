@@ -19,7 +19,7 @@
       general = {
         # Gap sizes in pixels
         gaps_in = 5;
-        gaps_out = 20;
+        gaps_out = 10;
 
         # Border configuration
         border_size = 2;
@@ -96,12 +96,6 @@
       # Master layout settings
       master = {
         new_status = "master";
-      };
-
-      # Miscellaneous settings
-      misc = {
-        force_default_wallpaper = -1;
-        disable_hyprland_logo = false;
       };
 
       # Input device configuration
