@@ -3,6 +3,7 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+
     settings = {
       # Default applications
       "$terminal" = "kitty";
@@ -53,8 +54,8 @@
         # Background blur
         blur = {
           enabled = true;
-          size = 3;
-          passes = 1;
+          size = 5;
+          passes = 5;
           vibrancy = 0.1696;
         };
       };

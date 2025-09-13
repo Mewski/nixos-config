@@ -22,6 +22,9 @@
 
     # Desktop environment
     ../../modules/home-manager/desktop/hyprland.nix
+
+    # Theme configuration
+    ../../modules/home-manager/theme/stylix.nix
   ];
 
   # Additional packages not configured through modules

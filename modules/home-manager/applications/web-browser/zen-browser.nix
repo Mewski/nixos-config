@@ -1,4 +1,4 @@
-{ settings, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -52,13 +52,9 @@
       };
 
     # Browser profile configuration
-    profiles = {
-      default = {
-        settings = {
-          # Zen-specific theme settings
-          "zen.theme.content-element-separation" = 0;
-        };
-      };
+    profiles.default.settings = {
+      # Zen-specific theme settings
+      "zen.theme.content-element-separation" = 0;
     };
   };
 }

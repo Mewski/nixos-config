@@ -21,6 +21,9 @@
 
     # Desktop environment
     ../../modules/nixos/desktop/hyprland.nix
+
+    # Theme configuration
+    ../../modules/nixos/theme/stylix.nix
   ];
 
   # Home Manager configuration
