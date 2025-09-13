@@ -42,26 +42,8 @@
   outputs =
     inputs@{ self, ... }:
     let
-      # Centralized configuration settings
-      settings = {
-        # System settings
-        system = rec {
-          hostname = "nixos";
-          host = "zephyrus";
-          profile = "desktop";
-          timezone = "America/Chicago";
-          locale = "en_US.UTF-8";
-          target = (import ./hosts/${host}/config.nix).target;
-        };
-
-        # User settings
-        user = {
-          username = "mewski";
-          name = "Mewski";
-          email = "admin@mewski.dev";
-          theme = "catppuccin-mocha";
-        };
-      };
+      # Import configuration settings
+      inherit (import ./settings.nix) settings;
 
       # Nixpkgs helper functions
       lib = inputs.nixpkgs.lib;
@@ -70,7 +52,7 @@
       # NixOS system configurations
       nixosConfigurations = {
         ${settings.system.hostname} = lib.nixosSystem {
-          system = settings.system.target;
+          system = (import ./hosts/${settings.system.host}/config.nix).target;
           modules = [
             # Import home-manager as a NixOS module
             inputs.home-manager.nixosModules.home-manager
