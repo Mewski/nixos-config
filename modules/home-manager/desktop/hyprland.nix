@@ -48,7 +48,7 @@
         # Background blur
         blur = {
           enabled = true;
-          size = 5;
+          size = 8;
           passes = 3;
           vibrancy = 0.1696;
         };
