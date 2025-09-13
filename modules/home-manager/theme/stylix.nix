@@ -20,6 +20,7 @@
 
   # Hyprland
   stylix.targets.hyprland.enable = true;
+  stylix.targets.hyprpaper.enable = true;
 
   # Zen Browser
   stylix.targets.zen-browser = {
