@@ -22,9 +22,5 @@
       name = "SF Mono Nerd Font";
       package = inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd;
     };
-    emoji = {
-      name = "Noto Color Emoji";
-      package = pkgs.noto-fonts-emoji;
-    };
   };
 }
