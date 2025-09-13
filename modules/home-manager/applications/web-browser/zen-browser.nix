@@ -48,6 +48,7 @@
         # Wayland-specific preferences
         preferences = mkLockedAttrs {
           "widget.wayland.fractional-scale.enabled" = true;
+          "mousewheel.default.delta_multiplier_y" = 100;
         };
       };
 
