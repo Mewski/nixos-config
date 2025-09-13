@@ -24,7 +24,6 @@
 
     # Theme configuration
     ../../themes/${settings.user.theme}
-    ../../modules/nixos/theme/stylix.nix
   ];
 
   # Home Manager configuration
