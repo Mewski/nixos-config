@@ -1,11 +1,6 @@
-{ inputs, ... }:
+{ ... }:
 
 {
-  imports = [
-    # Zen Browser module with Twilight profile support
-    inputs.zen-browser.homeModules.twilight
-  ];
-
   programs.zen-browser = {
     enable = true;
 
