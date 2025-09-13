@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-  # Enable Stylix for declarative theming
-  stylix.enable = true;
-
   # Colorscheme
   stylix.base16Scheme = {
     base00 = "1e1e2e"; # base
