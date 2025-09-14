@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Enable Stylix for declarative theming
@@ -10,21 +10,21 @@
 
   # Fonts
   stylix.fonts = {
-    sansSerif = {
-      name = "SFProDisplay Nerd Font";
-      package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-    };
     serif = {
-      name = "New York";
-      package = inputs.apple-fonts.packages.${pkgs.system}.ny;
+      package = pkgs.source-serif;
+      name = "Source Serif Pro";
+    };
+    sansSerif = {
+      package = pkgs.inter;
+      name = "Inter";
     };
     monospace = {
-      name = "SF Mono Nerd Font";
-      package = inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd;
+      package = pkgs.nerd-fonts.fira-code;
+      name = "FiraCode Nerd Font Mono";
     };
     emoji = {
-      name = "Noto Color Emoji";
       package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
     };
   };
 }
