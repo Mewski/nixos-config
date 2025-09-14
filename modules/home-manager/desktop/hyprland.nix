@@ -159,12 +159,6 @@
         "$mainMod SHIFT, up, swapwindow, u"
         "$mainMod SHIFT, down, swapwindow, d"
 
-        # Window resizing
-        "$mainMod ALT, left, resizeactive, -40 0"
-        "$mainMod ALT, right, resizeactive, 40 0"
-        "$mainMod ALT, up, resizeactive, 0 -40"
-        "$mainMod ALT, down, resizeactive, 0 40"
-
         # Workspace switching
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -219,6 +213,12 @@
         # ASUS keyboard backlight device
         ",XF86KbdBrightnessUp, exec, brightnessctl set 1+"
         ",XF86KbdBrightnessDown, exec, brightnessctl set 1-"
+
+        # Window resizing
+        "$mainMod ALT, left, resizeactive, -40 0"
+        "$mainMod ALT, right, resizeactive, 40 0"
+        "$mainMod ALT, up, resizeactive, 0 -40"
+        "$mainMod ALT, down, resizeactive, 0 40"
       ];
 
       # Key bindings for lock screen compatibility
