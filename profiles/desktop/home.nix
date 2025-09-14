@@ -33,6 +33,7 @@
     playerctl # Media player control
     bitwarden-desktop # Password manager
     gitkraken # Git GUI client
+    fastfetch # System information utility
   ];
 
   # Enable Home Manager self-management
