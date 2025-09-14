@@ -4,6 +4,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
     # Use latest Hyprland from flake input
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     # Use Hyprland-specific portal for better compatibility

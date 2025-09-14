@@ -7,7 +7,6 @@
   # Disable unwanted Stylix modules
   stylix.targets.console.enable = false;
   stylix.targets.grub.enable = false;
-  stylix.targets.tty.enable = false;
 
   # Fonts
   stylix.fonts = {
