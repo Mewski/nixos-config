@@ -4,9 +4,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
-    # Disable systemd integration
-    systemd.enable = false;
-
     settings = {
       # Default applications
       "$terminal" = "kitty";
