@@ -34,6 +34,7 @@
     bitwarden-desktop # Password manager
     gitkraken # Git GUI client
     fastfetch # System information utility
+    pavucontrol # PulseAudio volume control
   ];
 
   # Enable Home Manager self-management
