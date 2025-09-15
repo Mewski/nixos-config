@@ -4,6 +4,7 @@
   imports = [
     # ASUS Zephyrus G16 (2024) specific hardware optimizations
     inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-prime-sync
 
     # Host-specific system package overrides
     ./system-overrides.nix
@@ -17,5 +18,8 @@
     # Hardware support modules
     ../../modules/nixos/hardware/bluetooth.nix
     ../../modules/nixos/hardware/nvidia.nix
+
+    # System power management features
+    ../../modules/nixos/system/power.nix
   ];
 }
