@@ -4,7 +4,7 @@
   imports = [
     # ASUS Zephyrus G16 (2024) specific hardware optimizations
     inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
-    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-prime-sync
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-sync
 
     # Host-specific system package overrides
     ./system-overrides.nix
