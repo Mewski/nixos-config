@@ -7,13 +7,6 @@
   # Thermal management daemon for Intel CPUs
   services.thermald.enable = true;
 
-  # Disable GNOME power profiles daemon (conflicts with TLP)
-  services.power-profiles-daemon.enable = false;
-
-  # ASUS laptop hardware control services
-  services.asusd.enable = true;
-  programs.asusctl.enable = true;
-
   # TLP power management for laptops
   services.tlp = {
     enable = true;
