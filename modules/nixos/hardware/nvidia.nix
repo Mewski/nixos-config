@@ -15,7 +15,7 @@
     nvidiaSettings = true;
 
     # Use stable driver package
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   # Enable hardware acceleration
