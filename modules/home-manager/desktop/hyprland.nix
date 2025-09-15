@@ -43,7 +43,7 @@
 
         # Drop shadows
         shadow = {
-          enabled = false;
+          enabled = true;
           range = 4;
           render_power = 3;
         };
