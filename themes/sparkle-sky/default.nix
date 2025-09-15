@@ -22,7 +22,7 @@
   };
 
   # Wallpaper
-  stylix.image = ./wallpapers/wall2.png;
+  stylix.image = ./wallpapers/wall1.png;
 
   # Polarity
   stylix.polarity = "dark";
