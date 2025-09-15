@@ -16,6 +16,10 @@
 
     # Use stable driver package
     package = config.boot.kernelPackages.nvidiaPackages.latest;
+
+    # Enable power management services
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
   };
 
   # Enable hardware acceleration
