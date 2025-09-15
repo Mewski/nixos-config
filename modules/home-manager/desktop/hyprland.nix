@@ -206,13 +206,9 @@
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
-        # Intel integrated graphics for brightness control
+        # Screen brightness control
         ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
         ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
-
-        # ASUS keyboard backlight device
-        ",XF86KbdBrightnessUp, exec, brightnessctl set 1+"
-        ",XF86KbdBrightnessDown, exec, brightnessctl set 1-"
 
         # Window resizing
         "$mainMod ALT, left, resizeactive, -40 0"

@@ -18,8 +18,8 @@
       ",XF86MonBrightnessDown, exec, brightnessctl -d intel_backlight -e4 -n2 set 5%-"
 
       # ASUS keyboard backlight device
-      ",XF86KbdBrightnessUp, exec, brightnessctl set 1+"
-      ",XF86KbdBrightnessDown, exec, brightnessctl set 1-"
+      ",XF86KbdBrightnessUp, exec, brightnessctl -d asus::kbd_backlight set 1+"
+      ",XF86KbdBrightnessDown, exec, brightnessctl -d asus::kbd_backlight set 1-"
 
       # Window resizing
       "$mainMod ALT, left, resizeactive, -40 0"
