@@ -15,7 +15,7 @@
       username = "mewski";
       name = "Mewski";
       email = "admin@mewski.dev";
-      theme = "sparkle-sky";
+      theme = "forest-priestess";
     };
   };
 }
