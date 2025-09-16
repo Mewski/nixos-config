@@ -1,35 +1,53 @@
 { pkgs, ... }:
-{
-  # Simple udev rule that directly executes the power management
-  services.udev.extraRules = ''
-    SUBSYSTEM=="power_supply", ATTR{type}=="Mains", RUN+="${pkgs.writeShellScript "hyprland-power" ''
-      #!/bin/sh
+let
+  hyprland-power = pkgs.writeShellScriptBin "hyprland-power" ''
+    #!/usr/bin/env bash
+    set -euo pipefail
 
-      # Get AC status
-      AC_STATUS=$(cat /sys/class/power_supply/ACAD/online 2>/dev/null || echo "0")
+    # Host-specific AC path
+    AC_PATH="/sys/class/power_supply/ACAD/online"
 
-      # Find Hyprland PID and user
-      HYPR_PID=$(${pkgs.procps}/bin/pgrep -x Hyprland | head -n1)
-      [ -z "$HYPR_PID" ] && exit 0
+    # Exit quietly if the path isn't present (just in case)
+    [[ -r "$AC_PATH" ]] || exit 0
 
-      # Get user ID and name
-      HYPR_UID=$(stat -c %u /proc/$HYPR_PID 2>/dev/null)
-      [ -z "$HYPR_UID" ] && exit 0
-      HYPR_USER=$(id -un $HYPR_UID 2>/dev/null)
+    read -r AC < "$AC_PATH"
 
-      # Get Hyprland instance signature
-      HYPR_SIG=$(ls -t /run/user/$HYPR_UID/hypr/ 2>/dev/null | grep -v lock | head -n1)
-      [ -z "$HYPR_SIG" ] && exit 0
-
-      # Set refresh rate based on power state
-      if [ "$AC_STATUS" = "1" ]; then
-        MONITOR_CMD="eDP-1,2560x1600@240,0x0,1.25"
-      else
-        MONITOR_CMD="eDP-1,2560x1600@60,0x0,1.25"
-      fi
-
-      # Execute as the Hyprland user with proper environment
-      su - $HYPR_USER -c "HYPRLAND_INSTANCE_SIGNATURE=$HYPR_SIG ${pkgs.hyprland}/bin/hyprctl keyword monitor '$MONITOR_CMD'" 2>/dev/null
-    ''}"
+    if [[ "$AC" == "1" ]]; then
+      hyprctl keyword monitor "eDP-1,2560x1600@240,0x0,1.25"
+    else
+      hyprctl keyword monitor "eDP-1,2560x1600@60,0x0,1.25"
+    fi
   '';
+in
+{
+  environment.systemPackages = [ hyprland-power ];
+
+  # User service: runs in your session so hyprctl can talk to Hyprland
+  systemd.user.services.hyprland-power = {
+    description = "Change refresh rate on power state (host-specific)";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${hyprland-power}/bin/hyprland-power";
+    };
+    # Provide hyprctl and bash to the unit's PATH
+    path = [
+      pkgs.hyprland
+      pkgs.bash
+    ];
+    # Optional: run once at session start to sync the initial state
+    wantedBy = [
+      "graphical-session.target"
+      "default.target"
+    ];
+  };
+
+  # Fire the service whenever ACAD/online changes
+  systemd.user.paths.hyprland-power = {
+    description = "Watch ACAD online status";
+    pathConfig = {
+      PathChanged = "/sys/class/power_supply/ACAD/online";
+      Unit = "hyprland-power.service";
+    };
+    wantedBy = [ "default.target" ];
+  };
 }
