@@ -3,55 +3,75 @@ let
   # Define the hyprland-power script as a derivation
   hyprland-power-script = pkgs.writeShellScriptBin "hyprland-power" ''
     #!/bin/bash
-    # Check if running Hyprland
-    if ! pgrep -x "Hyprland" > /dev/null; then
-      exit 0
-    fi
 
     # Get AC adapter status (1 = plugged in, 0 = on battery)
-    AC_STATUS=$(cat /sys/class/power_supply/ACAD/online 2>/dev/null)
+    AC_STATUS=$(cat /sys/class/power_supply/ACAD/online 2>/dev/null || cat /sys/class/power_supply/ADP1/online 2>/dev/null || cat /sys/class/power_supply/AC/online 2>/dev/null)
+
+    # Debug logging
+    logger -t hyprland-power "AC Status: $AC_STATUS"
 
     if [ "$AC_STATUS" = "1" ]; then
-      # Plugged in - use high refresh rate with VRR
-      hyprctl keyword monitor "eDP-1,preferred,0x0,1.25,vrr,2"
+      # Plugged in - use 240Hz
+      logger -t hyprland-power "Setting 240Hz (plugged in)"
+      ${pkgs.hyprland}/bin/hyprctl keyword monitor "eDP-1,2560x1600@240,0x0,1.25"
     else
       # On battery - use 60Hz for power saving
-      hyprctl keyword monitor "eDP-1,2560x1600@60,0x0,1.25"
+      logger -t hyprland-power "Setting 60Hz (on battery)"
+      ${pkgs.hyprland}/bin/hyprctl keyword monitor "eDP-1,2560x1600@60,0x0,1.25"
     fi
+
+    # Log the result
+    RESULT=$?
+    logger -t hyprland-power "hyprctl exit code: $RESULT"
   '';
 in
 {
   # Add the script to system packages
   environment.systemPackages = [ hyprland-power-script ];
 
-  # Systemd service to run on AC adapter state changes
-  systemd.services.hyprland-power = {
+  # User systemd service (runs in user context with proper environment)
+  systemd.user.services.hyprland-power = {
     description = "Adjust Hyprland refresh rate based on power state";
+    wantedBy = [
+      "hyprland-session.target"
+      "graphical-session.target"
+    ];
+    after = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.writeShellScript "hyprland-power-service" ''
-        export PATH=${pkgs.procps}/bin:${pkgs.gawk}/bin:${pkgs.coreutils}/bin:${pkgs.sudo}/bin:$PATH
-        sleep 1
+      ExecStart = "${hyprland-power-script}/bin/hyprland-power";
+      RemainAfterExit = false;
+    };
+    environment = {
+      PATH = "${pkgs.hyprland}/bin:${pkgs.coreutils}/bin";
+    };
+  };
 
-        # Find the user running Hyprland
-        HYPRLAND_USER=$(ps -eo user,comm | grep "Hyprland" | grep -v grep | head -n1 | awk '{print $1}')
+  # System service to trigger the user service
+  systemd.services.hyprland-power-trigger = {
+    description = "Trigger Hyprland refresh rate adjustment";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.writeShellScript "trigger-hyprland-power" ''
+        # Find users running Hyprland
+        for pid in $(${pkgs.procps}/bin/pgrep -x Hyprland); do
+          uid=$(stat -c %u /proc/$pid 2>/dev/null || continue)
+          user=$(id -un $uid 2>/dev/null || continue)
 
-        if [ -n "$HYPRLAND_USER" ]; then
-          # Get the user's runtime directory
-          USER_ID=$(id -u "$HYPRLAND_USER")
-          export HYPRLAND_INSTANCE_SIGNATURE=$(ls -t /run/user/$USER_ID/hypr/ 2>/dev/null | grep -v lock | head -n1)
-
-          # Run the script as the Hyprland user
-          sudo -u "$HYPRLAND_USER" \
-            HYPRLAND_INSTANCE_SIGNATURE="$HYPRLAND_INSTANCE_SIGNATURE" \
-            ${hyprland-power-script}/bin/hyprland-power
-        fi
+          # Trigger the user service
+          ${pkgs.systemd}/bin/systemctl --machine=$user@.host --user start hyprland-power.service
+        done
       ''}";
     };
   };
 
   # udev rule to trigger the service on AC adapter changes
   services.udev.extraRules = ''
-    SUBSYSTEM=="power_supply", ATTR{type}=="Mains", RUN+="${pkgs.systemd}/bin/systemctl start hyprland-power.service"
+    # Trigger on AC adapter changes
+    SUBSYSTEM=="power_supply", ATTR{type}=="Mains", RUN+="${pkgs.systemd}/bin/systemctl start hyprland-power-trigger.service"
+
+    # Also trigger on initial plug
+    ACTION=="add", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", RUN+="${pkgs.systemd}/bin/systemctl start hyprland-power-trigger.service"
+    ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", RUN+="${pkgs.systemd}/bin/systemctl start hyprland-power-trigger.service"
   '';
 }
