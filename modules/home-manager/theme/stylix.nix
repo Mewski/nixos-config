@@ -10,10 +10,10 @@
 
   # Opacity
   stylix.opacity = {
-    applications = 0.8;
+    applications = 1.0;
     terminal = 0.8;
     desktop = 1.0;
-    popups = 0.8;
+    popups = 1.0;
   };
 
   # Kitty
