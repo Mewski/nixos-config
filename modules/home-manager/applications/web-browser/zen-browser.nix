@@ -54,6 +54,7 @@
     profiles.default.settings = {
       # Zen-specific theme settings
       "zen.theme.content-element-separation" = 0;
+      "zen.widget.linux.transparency" = true;
 
       # Profile-specific settings
       "mousewheel.default.delta_multiplier_y" = 100;
