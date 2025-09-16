@@ -10,6 +10,8 @@
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       "LIBVA_DRIVER_NAME,nvidia"
       "NVD_BACKEND,direct"
+      "__NV_PRIME_RENDER_OFFLOAD,1"
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       "ELECTRON_OZONE_PLATFORM_HINT,auto"
     ];
 
