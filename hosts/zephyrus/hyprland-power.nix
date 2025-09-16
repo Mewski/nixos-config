@@ -3,7 +3,7 @@
 {
   # Script to change Hyprland refresh rate based on power state
   environment.systemPackages = with pkgs; [
-    (writeShellScriptBin "hyprland-refresh-rate" ''
+    (writeShellScriptBin "hyprland-power" ''
       #!/bin/bash
 
       # Check if running Hyprland
@@ -45,7 +45,7 @@
           if [ -n "$HYPRLAND_SIGNATURE" ]; then
             sudo -u "$HYPRLAND_USER" \
               env HYPRLAND_INSTANCE_SIGNATURE="$HYPRLAND_SIGNATURE" \
-              ${pkgs.writeShellScriptBin "hyprland-refresh-rate"}/bin/hyprland-refresh-rate
+              hyprland-power
           fi
         fi
       ''}";
