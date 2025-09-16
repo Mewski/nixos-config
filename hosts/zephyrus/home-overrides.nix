@@ -3,7 +3,7 @@
 {
   wayland.windowManager.hyprland.settings = {
     # Display configuration
-    monitor = lib.mkForce "eDP-1,preferred,0x0,1.25";
+    monitor = lib.mkForce "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 2";
 
     # Key bindings that allow repeat when held down
     bindel = lib.mkForce [

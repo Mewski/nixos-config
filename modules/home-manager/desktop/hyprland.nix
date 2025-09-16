@@ -6,7 +6,7 @@
 
     settings = {
       # Display configuration
-      monitor = ",preferred,auto,1";
+      monitor = ", preferred, auto, 1";
 
       # Default applications
       "$terminal" = "kitty";
