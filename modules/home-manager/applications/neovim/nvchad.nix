@@ -1,8 +1,8 @@
-{ pkgs, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
-    inputs.nix4nvchad.homeManagerModule.nvchad
+    inputs.nix4nvchad.homeManagerModules.nvchad
   ];
 
   # Neovim with NVChad configuration
@@ -10,7 +10,5 @@
     enable = true;
 
     backup = false;
-
-    extraPlugins = with pkgs.vimPlugins; [ ];
   };
 }
