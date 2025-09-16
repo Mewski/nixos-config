@@ -35,7 +35,7 @@
 
         HYPRLAND_USER=$(ps -eo user,comm | grep "Hyprland" | grep -v grep | head -n1 | awk '{print $1}')
         if [ -n "$HYPRLAND_USER" ]; then
-          sudo -u "$HYPRLAND_USER" hyprland-power
+          sudo -u "$HYPRLAND_USER" ${pkgs.writeShellScriptBin "hyprland-power"}/bin/hyprland-power
         fi
       ''}";
     };
