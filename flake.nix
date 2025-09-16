@@ -23,6 +23,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nixcord
+    inputs.nixcord = {
+      url = "github:kaylorben/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Lanzaboote
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
