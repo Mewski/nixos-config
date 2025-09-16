@@ -11,6 +11,8 @@
       # Default applications
       "$terminal" = "kitty";
       "$browser" = "zen";
+      "$discord" = "discord";
+      "$menu" = "rofi";
 
       # Environment variables
       env = [
@@ -139,6 +141,8 @@
         # Application shortcuts
         "$mainMod, Q, exec, $terminal"
         "$mainMod, B, exec, $browser"
+        "$mainMod, D, exec, $discord"
+        "$mainMod, R, exec, $menu -show run"
 
         # Window management
         "$mainMod, C, killactive,"
