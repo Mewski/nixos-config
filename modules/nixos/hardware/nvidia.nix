@@ -27,7 +27,10 @@
   hardware.graphics.enable32Bit = true; # 32-bit compatibility
 
   # Hardware video acceleration
-  hardware.graphics.extraPackages = [
-    pkgs.nvidia-vaapi-driver
+  hardware.graphics.extraPackages = with pkgs; [
+    nvidia-vaapi-driver
+    libva
+    vaapiVdpau
+    libvdpau
   ];
 }

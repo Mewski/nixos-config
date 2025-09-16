@@ -5,6 +5,14 @@
     # Display configuration
     monitor = lib.mkForce "eDP-1, 2560x1600@240, 0x0, 1.25";
 
+    # Environment variables
+    env = [
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      "LIBVA_DRIVER_NAME,nvidia"
+      "NVD_BACKEND,direct"
+      "ELECTRON_OZONE_PLATFORM_HINT,auto"
+    ];
+
     # Key bindings that allow repeat when held down
     bindel = lib.mkForce [
       # Audio controls
