@@ -20,8 +20,5 @@
 
     # System power management features
     ../../modules/nixos/system/power.nix
-
-    # Hyprland power-aware refresh rate management
-    ./hyprland-power.nix
   ];
 }
