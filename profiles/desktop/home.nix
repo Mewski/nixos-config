@@ -28,7 +28,7 @@
     ../../modules/home-manager/theme/stylix.nix
 
     # Rofi configuration
-    ../modules/home-manager/applications/rofi/rofi.nix
+    ../../modules/home-manager/applications/rofi/rofi.nix
   ];
 
   # Additional packages not configured through modules
