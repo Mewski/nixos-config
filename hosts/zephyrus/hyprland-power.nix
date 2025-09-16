@@ -35,6 +35,7 @@
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.writeShellScript "hyprland-power-service" ''
+        export PATH=${pkgs.procps}/bin:${pkgs.gawk}/bin:${pkgs.coreutils}/bin:${pkgs.sudo}/bin:$PATH
         sleep 1
 
         HYPRLAND_USER=$(ps -eo user,comm | grep -E "Hyprland$" | head -n1 | awk '{print $1}')
