@@ -22,10 +22,10 @@
       ",XF86KbdBrightnessDown, exec, brightnessctl -d asus::kbd_backlight set 1-"
 
       # Window resizing
-      "$mainMod ALT, left, resizeactive, -40 0"
-      "$mainMod ALT, right, resizeactive, 40 0"
-      "$mainMod ALT, up, resizeactive, 0 -40"
-      "$mainMod ALT, down, resizeactive, 0 40"
+      "$mainMod CONTROL_L, left, resizeactive, -40 0"
+      "$mainMod CONTROL_L, right, resizeactive, 40 0"
+      "$mainMod CONTROL_L, up, resizeactive, 0 -40"
+      "$mainMod CONTROL_L, down, resizeactive, 0 40"
     ];
   };
 }
