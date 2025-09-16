@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  # Disable unwanted Stylix modules
+  stylix.targets.nixcord.enable = false;
+
   # Cursor
   stylix.cursor = {
     package = pkgs.bibata-cursors;
