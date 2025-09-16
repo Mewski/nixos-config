@@ -42,9 +42,6 @@ in
       ExecStart = "${hyprland-power-script}/bin/hyprland-power";
       RemainAfterExit = false;
     };
-    environment = {
-      PATH = "${pkgs.hyprland}/bin:${pkgs.coreutils}/bin";
-    };
   };
 
   # System service to trigger the user service
