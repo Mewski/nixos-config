@@ -44,9 +44,24 @@
           Fingerprinting = true;
         };
 
-        # Wayland-specific preferences
+        # Firefox preferences
         preferences = mkLockedAttrs {
+          # Wayland-specific preferences
           "widget.wayland.fractional-scale.enabled" = true;
+
+          # Hardware acceleration settings
+          "gfx.webrender.all" = true;
+          "layers.acceleration.force-enabled" = true;
+          "layers.omtp.enabled" = true;
+          "media.ffmpeg.vaapi.enabled" = true;
+          "media.hardware-video-decoding.enabled" = true;
+          "media.hardware-video-decoding.force-enabled" = true;
+          "media.navigator.mediadatadecoder_vpx_enabled" = true;
+          "media.rdd-vpx.enabled" = false;
+          "gfx.canvas.accelerated" = true;
+          "gfx.canvas.accelerated.cache-items" = 32768;
+          "gfx.canvas.accelerated.cache-size" = 512;
+          "gfx.content.skia-font-cache-size" = 80;
         };
       };
 
