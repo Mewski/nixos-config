@@ -10,12 +10,13 @@
     ../../hosts/${settings.system.host}/home-overrides.nix
 
     # Application modules
-    ../../modules/home-manager/applications/btop/btop.nix
-    ../../modules/home-manager/applications/discord/nixcord.nix
-    ../../modules/home-manager/applications/git/git.nix
-    ../../modules/home-manager/applications/neovim/neovim.nix
-    ../../modules/home-manager/applications/terminal/kitty.nix
-    ../../modules/home-manager/applications/web-browser/zen-browser.nix
+    ../../modules/home-manager/applications/btop.nix
+    ../../modules/home-manager/applications/fuzzel.nix
+    ../../modules/home-manager/applications/git.nix
+    ../../modules/home-manager/applications/kitty.nix
+    ../../modules/home-manager/applications/neovim.nix
+    ../../modules/home-manager/applications/nixcord.nix
+    ../../modules/home-manager/applications/zen-browser.nix
 
     # Shell configurations
     ../../modules/home-manager/shell/bash.nix
@@ -26,9 +27,6 @@
 
     # Theme configuration
     ../../modules/home-manager/theme/stylix.nix
-
-    # Fuzzel configuration
-    ../../modules/home-manager/applications/fuzzel/fuzzel.nix
   ];
 
   # Additional packages not configured through modules
