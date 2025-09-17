@@ -10,8 +10,14 @@
     inputs.lanzaboote.nixosModules.lanzaboote
   ];
 
-  # Replace systemd-boot with Lanzaboote for secure boot support
-  boot.loader.systemd-boot.enable = lib.mkForce false;
+  # Boot loader configuration
+  boot.loader = {
+    # Replace systemd-boot with Lanzaboote for secure boot support
+    systemd-boot.enable = lib.mkForce false;
+
+    # Allow modification of EFI variables for secure boot management
+    efi.canTouchEfiVariables = true;
+  };
 
   # Lanzaboote secure boot configuration
   boot.lanzaboote = {
@@ -19,7 +25,4 @@
     # Path to secure boot keys managed by sbctl
     pkiBundle = "/var/lib/sbctl";
   };
-
-  # Allow modification of EFI variables for secure boot management
-  boot.loader.efi.canTouchEfiVariables = true;
 }

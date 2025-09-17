@@ -1,9 +1,12 @@
 { ... }:
 
 {
-  # Standard systemd-boot bootloader configuration
-  boot.loader.systemd-boot.enable = true;
+  # Boot loader configuration
+  boot.loader = {
+    # Standard systemd-boot bootloader configuration
+    systemd-boot.enable = true;
 
-  # Allow modification of EFI variables
-  boot.loader.efi.canTouchEfiVariables = true;
+    # Allow modification of EFI variables
+    efi.canTouchEfiVariables = true;
+  };
 }
