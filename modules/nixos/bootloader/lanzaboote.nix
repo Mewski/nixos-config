@@ -1,6 +1,7 @@
 {
   lib,
   inputs,
+  pkgs,
   ...
 }:
 
@@ -25,4 +26,9 @@
     # Path to secure boot keys managed by sbctl
     pkiBundle = "/var/lib/sbctl";
   };
+
+  # Secure boot key management utility
+  environment.systemPackages = with pkgs; [
+    sbctl
+  ];
 }
