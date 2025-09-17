@@ -9,13 +9,7 @@
   programs.nixvim = {
     enable = true;
 
-    # Disable problematic language servers
-    plugins.lsp = {
-      enable = true;
-      servers = {
-        # Disable dockerfile language server
-        dockerls.enable = false;
-      };
-    };
+    # Use system-wide package collection for consistency
+    nixpkgs.useGlobalPackages = true;
   };
 }
