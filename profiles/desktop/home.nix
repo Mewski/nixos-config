@@ -27,8 +27,8 @@
     # Theme configuration
     ../../modules/home-manager/theme/stylix.nix
 
-    # Rofi configuration
-    ../../modules/home-manager/applications/rofi/rofi.nix
+    # Fuzzel configuration
+    ../../modules/home-manager/applications/fuzzel/fuzzel.nix
   ];
 
   # Additional packages not configured through modules

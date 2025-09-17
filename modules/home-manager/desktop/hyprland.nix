@@ -12,7 +12,7 @@
       "$terminal" = "kitty";
       "$browser" = "zen";
       "$discord" = "discord";
-      "$menu" = "rofi";
+      "$menu" = "fuzzel";
 
       # Environment variables
       env = [
@@ -139,7 +139,7 @@
         "$mainMod, Q, exec, $terminal"
         "$mainMod, B, exec, $browser"
         "$mainMod, D, exec, $discord"
-        "$mainMod, R, exec, $menu -show run"
+        "$mainMod, R, exec, $menu"
 
         # Window management
         "$mainMod, C, killactive,"
