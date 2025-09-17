@@ -31,12 +31,12 @@
 
   # Additional packages not configured through modules
   home.packages = with pkgs; [
-    brightnessctl # Brightness control utility
-    playerctl # Media player control
-    bitwarden-desktop # Password manager
-    gitkraken # Git GUI client
-    fastfetch # System information utility
-    pavucontrol # PulseAudio volume control
+    brightnessctl
+    playerctl
+    bitwarden-desktop
+    gitkraken
+    fastfetch
+    pavucontrol
   ];
 
   # Enable Home Manager self-management
