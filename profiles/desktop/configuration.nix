@@ -30,7 +30,6 @@
   # Home Manager configuration
   home-manager = {
     extraSpecialArgs = { inherit inputs settings; };
-    useGlobalPkgs = true;
     useUserPackages = true;
     users.${settings.user.username} = import ./home.nix;
   };
