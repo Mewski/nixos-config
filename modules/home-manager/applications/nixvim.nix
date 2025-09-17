@@ -10,6 +10,6 @@
     enable = true;
 
     # Use system-wide package collection for consistency
-    nixpkgs.useGlobalPackages = true;
+    nixpkgs.useGlobalPackages = false;
   };
 }
