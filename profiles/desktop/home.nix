@@ -14,8 +14,8 @@
     ../../modules/home-manager/applications/fuzzel.nix
     ../../modules/home-manager/applications/git.nix
     ../../modules/home-manager/applications/kitty.nix
-    ../../modules/home-manager/applications/neovim.nix
     ../../modules/home-manager/applications/nixcord.nix
+    ../../modules/home-manager/applications/nixvim.nix
     ../../modules/home-manager/applications/zen-browser.nix
 
     # Shell configurations

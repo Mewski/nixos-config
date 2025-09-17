@@ -2,5 +2,5 @@
 
 {
   # Vim-based text editor
-  programs.neovim.enable = true;
+  programs.nixvim.enable = true;
 }
