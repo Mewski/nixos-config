@@ -1,31 +1,34 @@
 { pkgs, ... }:
 
 {
-  # Disable unwanted Stylix modules
-  stylix.targets.nixcord.enable = false;
-
-  # Cursor
+  # Cursor theme configuration
   stylix.cursor = {
-    package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
     size = 24;
   };
 
-  # Opacity
+  # Application opacity settings
   stylix.opacity = {
     applications = 1.0;
-    terminal = 0.8;
     desktop = 0.8;
     popups = 0.8;
+    terminal = 0.8;
   };
 
-  # Kitty
-  stylix.targets.kitty = {
-    variant256Colors = true;
-  };
+  # Application-specific Stylix targets
+  stylix.targets = {
+    # Disable Stylix for Kitty to use custom settings
+    kitty = {
+      variant256Colors = true;
+    };
 
-  # Zen Browser
-  stylix.targets.zen-browser = {
-    profileNames = [ "default" ];
+    # Disable Stylix for Nixcord to prevent conflicts
+    nixcord.enable = false;
+
+    # Enable Stylix for Zen Browser profiles
+    zen-browser = {
+      profileNames = [ "default" ];
+    };
   };
 }

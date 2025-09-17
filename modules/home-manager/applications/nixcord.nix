@@ -5,6 +5,6 @@
     inputs.nixcord.homeModules.nixcord
   ];
 
-  # Discord client with Vencord plugins and themes
+  # Discord client with Vencord extensions and theming
   programs.nixcord.enable = true;
 }

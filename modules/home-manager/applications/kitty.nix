@@ -6,9 +6,14 @@
     enable = true;
 
     settings = {
-      cursor_trail = 3;
-      enable_audio_bell = false;
+      # Disable window close confirmation
       confirm_os_window_close = 0;
+
+      # Visual cursor trail effect
+      cursor_trail = 3;
+
+      # Disable audio notifications
+      enable_audio_bell = false;
     };
   };
 }

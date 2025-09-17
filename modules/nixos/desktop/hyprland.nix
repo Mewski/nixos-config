@@ -1,15 +1,16 @@
 { pkgs, inputs, ... }:
 
 {
+  # Hyprland window manager system configuration
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage =
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    xwayland.enable = true;
   };
 
-  # Enable dconf for GNOME/GTK applications
+  # Enable dconf for GNOME/GTK application settings
   programs.dconf.enable = true;
 
   # D-Bus service for desktop applications
@@ -18,7 +19,11 @@
     packages = with pkgs; [ dconf ];
   };
 
-  # X server configuration (needed for XWayland)
+  # GNOME Keyring for password and secret management
+  security.pam.services.login.enableGnomeKeyring = true;
+  services.gnome.gnome-keyring.enable = true;
+
+  # X server configuration for XWayland compatibility
   services.xserver = {
     enable = true;
     displayManager = {
@@ -30,7 +35,7 @@
     };
   };
 
-  # XDG Desktop Portal for Wayland applications
+  # XDG Desktop Portal for Wayland application integration
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -39,10 +44,6 @@
     ];
   };
 
-  # GNOME Keyring for password management
-  security.pam.services.login.enableGnomeKeyring = true;
-  services.gnome.gnome-keyring.enable = true;
-
-  # Environment variables for Wayland compatibility
+  # Environment variables for Wayland application compatibility
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }

@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  # Modern shell with autosuggestions and syntax highlighting
+  # Fish shell with autosuggestions and syntax highlighting
   programs.fish = {
     enable = true;
 

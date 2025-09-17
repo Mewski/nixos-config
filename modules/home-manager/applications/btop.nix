@@ -1,6 +1,6 @@
 { ... }:
 
 {
-  # Modern system monitor and process viewer
+  # System monitor and process viewer with modern interface
   programs.btop.enable = true;
 }

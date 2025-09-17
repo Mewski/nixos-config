@@ -6,10 +6,10 @@
 
 {
   imports = [
-    # Host-specific home configuration overrides
+    # Host-specific home environment overrides
     ../../hosts/${settings.system.host}/home-overrides.nix
 
-    # Application modules
+    # Application configurations
     ../../modules/home-manager/applications/btop.nix
     ../../modules/home-manager/applications/fuzzel.nix
     ../../modules/home-manager/applications/git.nix
@@ -18,30 +18,30 @@
     ../../modules/home-manager/applications/nixvim.nix
     ../../modules/home-manager/applications/zen-browser.nix
 
+    # Desktop environment configuration
+    ../../modules/home-manager/desktop/hyprland.nix
+
     # Shell configurations
     ../../modules/home-manager/shell/bash.nix
     ../../modules/home-manager/shell/fish.nix
 
-    # Desktop environment
-    ../../modules/home-manager/desktop/hyprland.nix
-
-    # Theme configuration
+    # User-specific theming
     ../../modules/home-manager/theme/stylix.nix
   ];
 
-  # Additional packages not configured through modules
+  # Additional packages not configured through dedicated modules
   home.packages = with pkgs; [
-    brightnessctl
-    playerctl
     bitwarden-desktop
-    gitkraken
+    brightnessctl
     fastfetch
+    gitkraken
     pavucontrol
+    playerctl
   ];
 
   # Enable Home Manager self-management
   programs.home-manager.enable = true;
 
-  # Home Manager release version for compatibility
+  # Home Manager release version for state compatibility
   home.stateVersion = "25.05";
 }

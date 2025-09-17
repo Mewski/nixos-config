@@ -1,7 +1,7 @@
 { settings, ... }:
 
 {
-  # Set default system locale
+  # Set system default locale
   i18n.defaultLocale = settings.system.locale;
 
   # Configure locale settings for different categories

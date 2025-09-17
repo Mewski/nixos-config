@@ -1,21 +1,21 @@
 {
-  # Centralized configuration settings
+  # Centralized configuration settings for the entire system
   settings = {
-    # System settings
+    # System configuration parameters
     system = {
       hostname = "nixos";
       host = "zephyrus";
+      locale = "en_US.UTF-8";
       profile = "desktop";
       timezone = "America/Chicago";
-      locale = "en_US.UTF-8";
     };
 
-    # User settings
+    # User account configuration
     user = {
-      username = "mewski";
-      name = "Mewski";
       email = "admin@mewski.dev";
+      name = "Mewski";
       theme = "forest-priestess";
+      username = "mewski";
     };
   };
 }

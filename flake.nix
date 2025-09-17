@@ -2,49 +2,49 @@
   description = "github:Mewski/nixos-config";
 
   inputs = {
-    # Core inputs
+    # Core nixpkgs repository
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager
+    # Home Manager for user environment management
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hyprland
+    # Hyprland window manager
     hyprland = {
       url = "github:hyprwm/Hyprland/main?submodules=true";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Stylix
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Nixcord
-    nixcord = {
-      url = "github:kaylorben/nixcord";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Nixvim
-    inputs.nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Lanzaboote
+    # Secure boot implementation
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Hardware configurations
+    # Discord client with Vencord support
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Hardware configuration repository
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    # Zen Browser
+    # Neovim configuration framework
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # System-wide theming framework
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Zen browser
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

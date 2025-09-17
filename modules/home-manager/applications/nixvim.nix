@@ -5,6 +5,6 @@
     inputs.nixvim.homeModules.nixvim
   ];
 
-  # Vim-based text editor
+  # Neovim configuration framework with Nix integration
   programs.nixvim.enable = true;
 }

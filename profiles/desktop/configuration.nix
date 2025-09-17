@@ -7,7 +7,7 @@
 
 {
   imports = [
-    # Host-specific configuration
+    # Host-specific hardware and system configuration
     ../../hosts/${settings.system.host}
 
     # Core system modules
@@ -19,10 +19,10 @@
     ../../modules/nixos/system/time.nix
     ../../modules/nixos/system/users.nix
 
-    # Desktop environment
+    # Desktop environment configuration
     ../../modules/nixos/desktop/hyprland.nix
 
-    # Theme configuration
+    # System-wide theming
     ../../modules/nixos/theme/stylix.nix
     ../../themes/${settings.user.theme}
   ];
@@ -35,16 +35,16 @@
     users.${settings.user.username} = import ./home.nix;
   };
 
-  # Available shells
+  # Available system shells
   environment.shells = with pkgs; [
     bash
     fish
   ];
 
-  # Default shell configuration
+  # Default user shell configuration
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 
-  # NixOS release version for compatibility
+  # NixOS release version for state compatibility
   system.stateVersion = "25.05";
 }
