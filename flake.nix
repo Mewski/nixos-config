@@ -5,6 +5,9 @@
     # Core nixpkgs repository
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # Stable nixpkgs repository
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+
     # Home Manager for user environment management
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -35,7 +38,7 @@
     # Neovim configuration framework
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # System-wide theming framework
