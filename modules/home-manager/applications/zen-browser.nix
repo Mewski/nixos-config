@@ -40,7 +40,6 @@
     profiles.default.settings = {
       # Browser appearance and behavior
       "browser.tabs.allow_transparent_browser" = true;
-      "mousewheel.default.delta_multiplier_y" = 100;
 
       # Hardware acceleration settings
       "gfx.canvas.accelerated" = true;
