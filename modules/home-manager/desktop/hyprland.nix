@@ -36,30 +36,30 @@
         bezier = [
           "almostLinear,0.5,0.5,0.75,1.0"
           "easeInOutCubic,0.65,0.05,0.36,1"
-          "smoothOut,0.25,0.46,0.45,0.94"
+          "easeOutQuint,0.23,1,0.32,1"
           "linear,0,0,1,1"
           "quick,0.15,0,0.1,1"
         ];
 
         # Animation definitions
         animation = [
-          "border, 1, 4, smoothOut"
-          "fade, 1, 2.5, linear"
-          "fadeIn, 1, 1.5, linear"
-          "fadeLayersIn, 1, 1.5, linear"
-          "fadeLayersOut, 1, 1.2, linear"
-          "fadeOut, 1, 1.2, linear"
-          "global, 1, 8, default"
-          "layers, 1, 3, smoothOut"
-          "layersIn, 1, 3, smoothOut, fade"
-          "layersOut, 1, 1.5, linear, fade"
-          "windows, 1, 3.5, smoothOut"
-          "windowsIn, 1, 3, smoothOut, slide"
-          "windowsOut, 1, 1.2, linear, slide"
-          "workspaces, 1, 1.5, linear, fade"
-          "workspacesIn, 1, 1, linear, fade"
-          "workspacesOut, 1, 1.5, linear, fade"
-          "zoomFactor, 1, 5, linear"
+          "border, 1, 3.5, easeOutQuint"
+          "fade, 1, 2, quick"
+          "fadeIn, 1, 1.2, almostLinear"
+          "fadeLayersIn, 1, 1.3, almostLinear"
+          "fadeLayersOut, 1, 1, almostLinear"
+          "fadeOut, 1, 1, almostLinear"
+          "global, 1, 6, default"
+          "layers, 1, 2.5, easeOutQuint"
+          "layersIn, 1, 2.8, easeOutQuint, fade"
+          "layersOut, 1, 1.2, linear, fade"
+          "windows, 1, 3.2, easeOutQuint"
+          "windowsIn, 1, 2.8, easeOutQuint, popin 87%"
+          "windowsOut, 1, 1.2, linear, popin 87%"
+          "workspaces, 1, 1.3, almostLinear, fade"
+          "workspacesIn, 1, 0.9, almostLinear, fade"
+          "workspacesOut, 1, 1.3, almostLinear, fade"
+          "zoomFactor, 1, 4.5, quick"
         ];
       };
 
