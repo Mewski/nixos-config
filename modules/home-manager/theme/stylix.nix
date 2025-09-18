@@ -23,9 +23,6 @@
       variant256Colors = true;
     };
 
-    # Disable Stylix for Nixcord to prevent conflicts
-    nixcord.enable = false;
-
     # Enable Stylix for Zen Browser profiles
     zen-browser = {
       profileNames = [ "default" ];
