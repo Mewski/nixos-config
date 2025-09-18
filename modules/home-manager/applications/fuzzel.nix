@@ -6,9 +6,14 @@
     enable = true;
 
     settings = {
+      main = {
+        # Monospace font with size 15
+        font = "monospace:size=15";
+      };
+
       border = {
         # Border width configuration
-        width = 0;
+        width = 3;
       };
     };
   };
