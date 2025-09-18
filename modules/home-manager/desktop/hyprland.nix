@@ -247,6 +247,9 @@
       layerrule = [
         # Blur fuzzel application launcher
         "blur, launcher"
+
+        # Blur waybar
+        "blur, waybar"
       ];
     };
   };
