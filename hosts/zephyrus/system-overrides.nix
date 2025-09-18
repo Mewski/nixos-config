@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../../modules/nixos/system/power.nix
+    ../../modules/nixos/system/power.nix
   ];
 
   services.asusd.asusdConfig.text = ''
