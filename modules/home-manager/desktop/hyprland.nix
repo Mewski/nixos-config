@@ -67,8 +67,10 @@
         # Background blur effects
         blur = {
           enabled = true;
+          new_optimizations = true;
           passes = 3;
-          size = 7;
+          popups = true;
+          size = 8;
           vibrancy = 0.1696;
         };
 
@@ -234,6 +236,11 @@
 
         # Suppress maximize events for all windows
         "suppressevent maximize, class:.*"
+      ];
+
+      # Layer rules
+      layerrule = [
+        "blur, launcher"
       ];
     };
   };

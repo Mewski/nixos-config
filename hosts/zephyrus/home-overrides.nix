@@ -3,7 +3,7 @@
 {
   wayland.windowManager.hyprland.settings = {
     # Display configuration for ASUS Zephyrus G16 2560x1600@240Hz
-    monitor = lib.mkForce "eDP-1, 2560x1600@240, 0x0, 1.25";
+    monitor = lib.mkForce "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
 
     # NVIDIA and Wayland environment variables
     env = [
