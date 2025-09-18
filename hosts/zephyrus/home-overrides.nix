@@ -39,14 +39,4 @@
       "$mainMod CONTROL_L, up, resizeactive, 0 -40"
     ];
   };
-
-  programs.fuzzel.settings = {
-    border = {
-      # Adjust selection border to be round
-      "selection-radius" = lib.mkForce 3;
-
-      # Adjust border width to match Hyprland with fractional scaling
-      width = lib.mkForce 3;
-    };
-  };
 }
