@@ -249,6 +249,7 @@
         "blur, launcher"
         "ignorezero, launcher"
         "dimaround, launcher"
+        "xray 1, launcher"
 
         # Blur waybar
         "blur, waybar"
