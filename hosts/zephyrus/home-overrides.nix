@@ -42,13 +42,13 @@
 
   programs.fuzzel.settings = {
     main = {
-      # Larger font size for high-DPI display
-      font = lib.mkForce "${config.stylix.fonts.sansSerif.name}:size=15";
+      # Manual font size adjustment
+      font = lib.mkForce "${config.stylix.fonts.sansSerif.name}:size=12";
     };
 
     border = {
-      # Enhanced border visibility for launcher
-      width = lib.mkForce 3;
+      # Remove border visibility for launcher
+      width = lib.mkForce 0;
     };
   };
 }
