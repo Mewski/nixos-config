@@ -11,11 +11,11 @@
 
     # Application configurations
     ../../modules/home-manager/applications/btop.nix
-    ../../modules/home-manager/applications/fuzzel.nix
     ../../modules/home-manager/applications/git.nix
     ../../modules/home-manager/applications/kitty.nix
     ../../modules/home-manager/applications/nixcord.nix
     ../../modules/home-manager/applications/nixvim.nix
+    ../../modules/home-manager/applications/rofi.nix
     ../../modules/home-manager/applications/waybar.nix
     ../../modules/home-manager/applications/zen-browser.nix
 

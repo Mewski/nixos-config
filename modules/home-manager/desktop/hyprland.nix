@@ -15,7 +15,7 @@
       # Default applications
       "$browser" = "zen";
       "$discord" = "discord";
-      "$menu" = "fuzzel";
+      "$menu" = "rofi";
       "$terminal" = "kitty";
 
       # Autostart applications
@@ -147,7 +147,7 @@
         "$mainMod, B, exec, $browser"
         "$mainMod, D, exec, $discord"
         "$mainMod, Q, exec, $terminal"
-        "$mainMod, R, exec, $menu"
+        "$mainMod, R, exec, $menu -show drun"
 
         # Focus movement
         "$mainMod, down, movefocus, d"
@@ -245,10 +245,6 @@
 
       # Layer rules
       layerrule = [
-        # Blur fuzzel application launcher
-        "blur, launcher"
-        "ignorezero, launcher"
-
         # Blur waybar
         "blur, waybar"
       ];

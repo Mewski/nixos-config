@@ -10,7 +10,7 @@
       confirm_os_window_close = 0;
 
       # Visual cursor trail effect
-      cursor_trail = 3;
+      cursor_trail = 2;
 
       # Disable audio notifications
       enable_audio_bell = false;
