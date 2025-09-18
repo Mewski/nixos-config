@@ -40,7 +40,7 @@
     ];
   };
 
-  programs.fuzzel = {
+  programs.fuzzel.settings = {
     border = {
       # Adjust selection border to be round
       "selection-radius" = lib.mkForce 3;
