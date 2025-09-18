@@ -47,8 +47,8 @@
     };
 
     border = {
-      # Adjust border width to match Hyprland with fractional scaling
-      width = lib.mkForce 3;
+      # Adjust border width
+      width = lib.mkForce 2;
     };
   };
 }
