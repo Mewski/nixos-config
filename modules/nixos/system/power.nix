@@ -17,11 +17,11 @@
 
       # CPU scaling governor selection
       CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
-      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
       # CPU performance scaling limits
       CPU_MAX_PERF_ON_AC = 100;
-      CPU_MAX_PERF_ON_BAT = 60;
+      CPU_MAX_PERF_ON_BAT = 25;
       CPU_MIN_PERF_ON_AC = 0;
       CPU_MIN_PERF_ON_BAT = 0;
 
