@@ -10,6 +10,12 @@
     xwayland.enable = true;
   };
 
+  # Hyprland screen locking utility
+  programs.hyprlock.enable = true;
+
+  # Hyprland idle daemon for automatic actions
+  services.hypridle.enable = true;
+
   # Enable dconf for GNOME/GTK application settings
   programs.dconf.enable = true;
 
