@@ -21,6 +21,8 @@
 
     # Desktop environment configuration
     ../../modules/home-manager/desktop/hyprland.nix
+    ../../modules/home-manager/desktop/hypridle.nix
+    ../../modules/home-manager/desktop/hyprlock.nix
 
     # Shell configurations
     ../../modules/home-manager/shell/bash.nix
