@@ -18,7 +18,7 @@
     profileOnBat = "quiet";
 
     # Increase the long-term health of the battery.
-    batteryMaxCharge = 80;
+    batteryChargeLimit = 80;
   };
 
   # TLP power management for laptop battery optimization
