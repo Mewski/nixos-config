@@ -47,8 +47,8 @@
     };
 
     border = {
-      # Adjust border width
-      width = lib.mkForce 2;
+      # Remove border
+      width = lib.mkForce 0;
     };
   };
 }
