@@ -30,16 +30,4 @@
       package = pkgs.source-serif;
     };
   };
-
-  # Disable unwanted Stylix targets
-  stylix.targets = {
-    # Disable console theming to preserve system defaults
-    console.enable = false;
-
-    # Disable Fish shell theming for custom configuration
-    fish.enable = false;
-
-    # Disable GRUB theming for bootloader consistency
-    grub.enable = false;
-  };
 }
