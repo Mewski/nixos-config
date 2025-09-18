@@ -7,13 +7,13 @@
 
     settings = {
       main = {
-        # Enable DPI awareness for high-resolution displays
-        "dpi-aware" = "no";
+        # DPI awareness for high-resolution displays
+        "dpi-aware" = "yes";
       };
 
       border = {
-        # Remove border so Hyprland can manage it
-        width = 2;
+        # Border width configuration
+        width = 0;
       };
     };
   };
