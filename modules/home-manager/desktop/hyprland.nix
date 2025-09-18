@@ -18,6 +18,11 @@
       "$menu" = "fuzzel";
       "$terminal" = "kitty";
 
+      # Autostart applications
+      exec-once = [
+        "waybar"
+      ];
+
       # Environment variables for compatibility
       env = [
         "ELECTRON_OZONE_PLATFORM_HINT,auto"

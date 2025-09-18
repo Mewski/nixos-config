@@ -16,6 +16,7 @@
     ../../modules/home-manager/applications/kitty.nix
     ../../modules/home-manager/applications/nixcord.nix
     ../../modules/home-manager/applications/nixvim.nix
+    ../../modules/home-manager/applications/waybar.nix
     ../../modules/home-manager/applications/zen-browser.nix
 
     # Desktop environment configuration
