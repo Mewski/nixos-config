@@ -73,9 +73,9 @@
         blur = {
           enabled = true;
           new_optimizations = true;
-          passes = 4;
+          passes = 5;
           popups = true;
-          size = 8;
+          size = 5;
           vibrancy = 0.1696;
         };
 
@@ -241,6 +241,9 @@
 
         # Suppress maximize events for all windows
         "suppressevent maximize, class:.*"
+
+        # Border for fuzzel application launcher
+        "border,class:^(fuzzel)$"
       ];
 
       # Layer rules
