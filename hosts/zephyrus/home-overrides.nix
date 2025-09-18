@@ -43,7 +43,7 @@
   programs.fuzzel.settings = {
     main = {
       # Larger font size for high-DPI display
-      font = lib.mkForce "${config.stylix.fonts.sansSerif}:size=15";
+      font = lib.mkForce "${config.stylix.fonts.sansSerif.name}:size=15";
     };
 
     border = {
