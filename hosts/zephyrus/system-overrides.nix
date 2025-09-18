@@ -1,6 +1,10 @@
 { ... }:
 
 {
+  imports = [
+    ../../../modules/nixos/system/power.nix
+  ];
+
   services.asusd.asusdConfig.text = ''
     (
       charge_control_end_threshold: 80,
