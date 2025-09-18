@@ -8,7 +8,6 @@
     # NVIDIA and Wayland environment variables
     env = [
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      "__NV_PRIME_RENDER_OFFLOAD,1"
       "ELECTRON_OZONE_PLATFORM_HINT,auto"
       "LIBVA_DRIVER_NAME,nvidia"
       "NVD_BACKEND,direct"
