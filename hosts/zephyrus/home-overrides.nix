@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
   wayland.windowManager.hyprland.settings = {
@@ -9,7 +9,7 @@
     ];
 
     # NVIDIA and Wayland environment variables
-    env = [
+    env = lib.mkForce [
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       "ELECTRON_OZONE_PLATFORM_HINT,auto"
       "LIBVA_DRIVER_NAME,nvidia"
@@ -43,12 +43,12 @@
   programs.fuzzel.settings = {
     main = {
       # Larger font size for high-DPI display
-      font = "monospace:size=15";
+      font = lib.mkForce "${config.stylix.fonts.sansSerif}:size=15";
     };
 
     border = {
       # Enhanced border visibility for launcher
-      width = 3;
+      width = lib.mkForce 3;
     };
   };
 }
