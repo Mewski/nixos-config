@@ -241,15 +241,13 @@
 
         # Suppress maximize events for all windows
         "suppressevent maximize, class:.*"
-
-        # Border for fuzzel application launcher
-        "bordersize 2, class:^(fuzzel)$"
       ];
 
       # Layer rules
       layerrule = [
         # Blur fuzzel application launcher
         "blur, launcher"
+        "ignorezero, launcher"
 
         # Blur waybar
         "blur, waybar"

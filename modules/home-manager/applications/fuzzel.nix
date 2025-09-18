@@ -13,7 +13,7 @@
 
       border = {
         # Remove border so Hyprland can manage it
-        width = 0;
+        width = 2;
       };
     };
   };
