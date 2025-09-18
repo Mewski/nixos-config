@@ -14,6 +14,9 @@
 
       # Disable audio notifications
       enable_audio_bell = false;
+
+      # Window padding width
+      window_padding_width = 3;
     };
   };
 }
