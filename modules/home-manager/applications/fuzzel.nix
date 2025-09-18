@@ -8,7 +8,7 @@
     settings = {
       main = {
         # Enable DPI awareness for high-resolution displays
-        "dpi-aware" = "yes";
+        "dpi-aware" = "no";
       };
 
       border = {
