@@ -40,13 +40,11 @@
     ];
   };
 
-  programs.fuzzel.settings = {
-    main = {
-      # Manual font size adjustment
-      font = lib.mkForce "${config.stylix.fonts.sansSerif.name}:size=12";
-    };
-
+  programs.fuzzel = {
     border = {
+      # Adjust selection border to be round
+      "selection-radius" = lib.mkForce 3;
+
       # Adjust border width to match Hyprland with fractional scaling
       width = lib.mkForce 3;
     };
