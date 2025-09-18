@@ -243,7 +243,7 @@
         "suppressevent maximize, class:.*"
 
         # Border for fuzzel application launcher
-        "border,class:^(fuzzel)$"
+        "bordersize 2, class:^(fuzzel)$"
       ];
 
       # Layer rules
