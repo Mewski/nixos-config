@@ -68,7 +68,7 @@
         blur = {
           enabled = true;
           new_optimizations = true;
-          passes = 3;
+          passes = 4;
           popups = true;
           size = 8;
           vibrancy = 0.1696;
@@ -240,6 +240,7 @@
 
       # Layer rules
       layerrule = [
+        # Blur fuzzel application launcher
         "blur, launcher"
       ];
     };
