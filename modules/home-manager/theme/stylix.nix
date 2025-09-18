@@ -18,7 +18,7 @@
 
   # Application-specific Stylix targets
   stylix.targets = {
-    # Disable Stylix for Kitty to use custom settings
+    # Enable Kitty to use true terminal colors
     kitty = {
       variant256Colors = true;
     };

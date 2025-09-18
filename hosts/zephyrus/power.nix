@@ -7,24 +7,14 @@
   # Intel thermal management daemon for CPU temperature control
   services.thermald.enable = true;
 
-  # ASUS daemon for hardware-specific control
-  services.asusd = {
-    enable = true;
-
-    # Use balanced on AC to allow high performance while still letting the system sleep properly.
-    profileOnAc = "balanced";
-
-    # Use quiet on battery to lower power limits and fan speeds to maximize battery life.
-    profileOnBat = "quiet";
-
-    # Increase the long-term health of the battery.
-    batteryChargeLimit = 80;
-  };
-
   # TLP power management for laptop battery optimization
   services.tlp = {
     enable = true;
     settings = {
+      # Stop charging at 80% and start again at 75% to maximize lifespan.
+      START_CHARGE_THRESH_BAT0 = 75;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+
       # CPU energy performance policy configuration
       CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
