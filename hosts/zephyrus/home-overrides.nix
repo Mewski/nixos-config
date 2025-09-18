@@ -47,8 +47,8 @@
     };
 
     border = {
-      # Remove border visibility for launcher
-      width = lib.mkForce 0;
+      # Adjust border width to match Hyprland with fractional scaling
+      width = lib.mkForce 3;
     };
   };
 }
