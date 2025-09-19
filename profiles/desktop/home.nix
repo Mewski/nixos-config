@@ -17,6 +17,7 @@
     ../../modules/home-manager/applications/nixvim.nix
     ../../modules/home-manager/applications/rofi.nix
     ../../modules/home-manager/applications/waybar.nix
+    ../../modules/home-manager/applications/zed.nix
     ../../modules/home-manager/applications/zen-browser.nix
 
     # Desktop environment configuration
