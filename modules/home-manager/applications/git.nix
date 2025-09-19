@@ -5,12 +5,6 @@
   programs.git = {
     enable = true;
 
-    # Git Large File Storage for handling large binary files
-    git-lfs = {
-      enable = true;
-      package = pkgs.git-lfs;
-    };
-
     # User identity configuration
     userEmail = "mewski@mewski.dev";
     userName = "Mewski";
