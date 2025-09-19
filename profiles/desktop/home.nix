@@ -38,6 +38,8 @@
     bitwarden-desktop
     brightnessctl
     fastfetch
+    nil
+    nixfmt-rfc-style
     pavucontrol
     playerctl
   ];
