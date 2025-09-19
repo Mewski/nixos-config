@@ -12,6 +12,7 @@
     # Application configurations
     ../../modules/home-manager/applications/btop.nix
     ../../modules/home-manager/applications/git.nix
+    ../../modules/home-manager/applications/gitkraken.nix
     ../../modules/home-manager/applications/kitty.nix
     ../../modules/home-manager/applications/nixcord.nix
     ../../modules/home-manager/applications/nixvim.nix
@@ -37,7 +38,6 @@
     bitwarden-desktop
     brightnessctl
     fastfetch
-    gitkraken
     pavucontrol
     playerctl
   ];
