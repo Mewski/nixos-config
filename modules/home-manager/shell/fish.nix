@@ -5,9 +5,11 @@
   programs.fish = {
     enable = true;
 
-    # Automatically start Hyprland
+    # Automatically start Hyprland on tty1 only
     loginShellInit = ''
-      Hyprland
+      if test (tty) = "/dev/tty1"
+        Hyprland
+      end
     '';
   };
 }
