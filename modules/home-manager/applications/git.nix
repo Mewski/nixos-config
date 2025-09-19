@@ -6,7 +6,7 @@
     enable = true;
 
     # Git Large File Storage for handling large binary files
-    lfs = {
+    git-lfs = {
       enable = true;
       package = pkgs.git-lfs;
     };
