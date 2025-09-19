@@ -13,8 +13,10 @@
       "$mainMod" = "SUPER";
 
       # Default applications
+      "$bitwarden" = "bitwarden";
       "$browser" = "zen";
       "$discord" = "discord";
+      "$gitkraken" = "gitkraken";
       "$menu" = "rofi";
       "$terminal" = "kitty";
 
@@ -144,8 +146,10 @@
       # Key bindings
       bind = [
         # Application shortcuts
+        "$mainMod, U, exec, $bitwarden"
         "$mainMod, B, exec, $browser"
         "$mainMod, D, exec, $discord"
+        "$mainMod, G, exec, $gitkraken"
         "$mainMod, Q, exec, $terminal"
         "$mainMod, R, exec, $menu -show drun"
 
