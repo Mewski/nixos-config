@@ -51,4 +51,7 @@
       armoury_settings: {},
     )
   '';
+
+  # Enable all firmware for hardware compatibility
+  hardware.enableAllFirmware = true;
 }
