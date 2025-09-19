@@ -31,7 +31,7 @@
 
       # User signing key configuration
       user = {
-        signingkey = "${config.home.homeDirectory}/.ssh/id_25519";
+        signingkey = "${config.home.homeDirectory}/.ssh/id_ed25519";
       };
 
       # Core editor configuration
