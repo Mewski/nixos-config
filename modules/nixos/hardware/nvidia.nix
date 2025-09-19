@@ -39,6 +39,9 @@
     };
   };
 
+  # Enable memory preservation for NVIDIA GPU
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+
   # CUDA support configuration
   nixpkgs.config.cudaSupport = true;
 }
