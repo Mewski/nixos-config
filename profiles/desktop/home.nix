@@ -24,6 +24,9 @@
     ../../modules/home-manager/desktop/hypridle.nix
     ../../modules/home-manager/desktop/hyprlock.nix
 
+    # Security configurations
+    ../../modules/home-manager/security/gpg.nix
+
     # Shell configurations
     ../../modules/home-manager/shell
 
