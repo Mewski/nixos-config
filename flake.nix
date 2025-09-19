@@ -8,6 +8,12 @@
     # Stable nixpkgs repository
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
+    # Binary Ninja binary analysis platform
+    binaryninja = {
+      url = "github:jchv/nix-binary-ninja";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home Manager for user environment management
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -44,6 +50,12 @@
     # System-wide theming framework
     stylix = {
       url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Atomic, declarative, and reproducible secret provisioning for NixOS
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
