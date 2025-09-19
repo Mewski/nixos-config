@@ -45,6 +45,9 @@
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 
+  # Enable ROCm support
+  nixpkgs.config.rocmSupport = true;
+
   # NixOS release version for state compatibility
   system.stateVersion = "25.05";
 }
