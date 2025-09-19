@@ -25,8 +25,7 @@
     ../../modules/home-manager/desktop/hyprlock.nix
 
     # Shell configurations
-    ../../modules/home-manager/shell/bash.nix
-    ../../modules/home-manager/shell/fish.nix
+    ../../modules/home-manager/shell
 
     # User-specific theming
     ../../modules/home-manager/theme/stylix.nix
