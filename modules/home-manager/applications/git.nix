@@ -5,6 +5,9 @@
   programs.git = {
     enable = true;
 
+    # Git LFS support
+    lfs.enable = true;
+
     # User identity configuration
     userEmail = "mewski@mewski.dev";
     userName = "Mewski";
