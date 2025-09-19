@@ -25,6 +25,9 @@
       CPU_MIN_PERF_ON_AC = 0;
       CPU_MIN_PERF_ON_BAT = 0;
 
+      # CPU boost configuration
+      CPU_BOOST_ON_BAT = 0;
+
       # PCIe Active State Power Management
       PCIE_ASPM_ON_AC = "default";
       PCIE_ASPM_ON_BAT = "powersave";
