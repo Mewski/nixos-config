@@ -38,4 +38,7 @@
       finegrained = true;
     };
   };
+
+  # CUDA support configuration
+  nixpkgs.config.cudaSupport = true;
 }
