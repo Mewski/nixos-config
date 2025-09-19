@@ -39,6 +39,7 @@
     brightnessctl
     fastfetch
     nil
+    nixd
     nixfmt-rfc-style
     pavucontrol
     playerctl

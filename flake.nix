@@ -47,15 +47,15 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    # System-wide theming framework
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Atomic, declarative, and reproducible secret provisioning for NixOS
     sops-nix = {
       url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # System-wide theming framework
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
