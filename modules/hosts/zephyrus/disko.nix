@@ -1,14 +1,14 @@
 {
   flake.diskoConfigurations.zephyrus = {
+    disko.enable = true;
     disko.devices = {
-      disk.main = {
+      diskMain = {
         device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL22T0HDLB-00BT7_S7CFNE0X701590";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             esp = {
-              name = "ESP";
               size = "1G";
               type = "EF00";
               content = {
@@ -19,7 +19,6 @@
               };
             };
             swap = {
-              name = "cryptswap";
               size = "38G";
               type = "8309";
               content = {
@@ -34,8 +33,7 @@
               };
             };
             root = {
-              name = "cryptroot";
-              size = "95%";
+              size = "100%";
               type = "8309";
               content = {
                 type = "luks";
