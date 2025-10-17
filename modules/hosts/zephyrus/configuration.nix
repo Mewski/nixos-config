@@ -7,6 +7,8 @@
 {
   flake.nixosConfigurations.zephyrus = inputs.nixpkgs.lib.nixosSystem {
     modules = [
+      inputs.disko.nixosModules.disko
+
       self.nixosModules.zephyrus
     ];
   };
@@ -16,7 +18,6 @@
     {
       imports = [
         inputs.lanzaboote.nixosModules.lanzaboote
-        inputs.disko.nixosModules.disko
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
 
         self.nixosModules.impermanence
