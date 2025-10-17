@@ -107,6 +107,7 @@
 
       self.homeModules.hyprland
 
+      self.homeModules.git
       self.homeModules.kitty
       self.homeModules.nixvim
     ];
