@@ -35,7 +35,7 @@
             };
             root = {
               name = "cryptroot";
-              size = "100%";
+              size = "95%";
               type = "8309";
               content = {
                 type = "luks";
