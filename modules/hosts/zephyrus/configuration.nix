@@ -7,8 +7,8 @@
 {
   flake.nixosConfigurations.zephyrus = inputs.nixpkgs.lib.nixosSystem {
     modules = [
+      inputs.home-manager.flakeModules.home-manager
       inputs.disko.nixosModules.disko
-      inputs.home-manager.nixosModules.home-manager
 
       self.nixosModules.zephyrus
     ];
