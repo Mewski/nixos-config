@@ -20,7 +20,6 @@
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
 
-        self.nixosModules.impermanence
         self.nixosModules.nix
 
         self.nixosModules.fish
@@ -37,29 +36,24 @@
       boot = {
         loader.efi.canTouchEfiVariables = true;
 
-        lanzaboote = {
-          enable = true;
-          pkiBundle = "/var/lib/sbctl";
-        };
-
         initrd.luks.devices = {
           cryptroot = {
-            device = "/dev/disk/by-partlabel/cryptroot";
+            device = "/dev/disk/by-partlabel/disk-main-root";
             allowDiscards = true;
           };
-
           cryptswap = {
-            device = "/dev/disk/by-partlabel/cryptswap";
+            device = "/dev/disk/by-partlabel/disk-main-swap";
             allowDiscards = true;
           };
         };
 
         resumeDevice = "/dev/mapper/cryptswap";
-      };
 
-      swapDevices = [
-        { device = "/dev/mapper/cryptswap"; }
-      ];
+        lanzaboote = {
+          enable = true;
+          pkiBundle = "/var/lib/sbctl";
+        };
+      };
 
       hardware = {
         graphics.extraPackages = with pkgs; [

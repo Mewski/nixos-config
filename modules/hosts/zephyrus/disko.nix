@@ -1,16 +1,15 @@
 {
   flake.diskoConfigurations.zephyrus = {
-    disko.enable = true;
     disko.devices = {
-      diskMain = {
-        device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL22T0HDLB-00BT7_S7CFNE0X701590";
+      disk.main = {
         type = "disk";
+        device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL22T0HDLB-00BT7_S7CFNE0X701590";
         content = {
           type = "gpt";
           partitions = {
-            esp = {
-              size = "1G";
+            ESP = {
               type = "EF00";
+              size = "1G";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -20,7 +19,6 @@
             };
             swap = {
               size = "38G";
-              type = "8309";
               content = {
                 type = "luks";
                 name = "cryptswap";
@@ -29,12 +27,12 @@
                 };
                 content = {
                   type = "swap";
+                  resumeDevice = true;
                 };
               };
             };
             root = {
               size = "100%";
-              type = "8309";
               content = {
                 type = "luks";
                 name = "cryptroot";
@@ -42,59 +40,9 @@
                   allowDiscards = true;
                 };
                 content = {
-                  type = "btrfs";
-                  extraArgs = [
-                    "-L"
-                    "nixos"
-                    "-f"
-                  ];
-                  mountOptions = [
-                    "ssd"
-                    "noatime"
-                    "compress=zstd"
-                  ];
-                  subvolumes = {
-                    "@root" = {
-                      mountpoint = "/";
-                      mountOptions = [
-                        "ssd"
-                        "noatime"
-                        "compress=zstd"
-                      ];
-                    };
-                    "@nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = [
-                        "ssd"
-                        "noatime"
-                        "compress=zstd"
-                      ];
-                    };
-                    "@persist" = {
-                      mountpoint = "/persist";
-                      mountOptions = [
-                        "ssd"
-                        "noatime"
-                        "compress=zstd"
-                      ];
-                    };
-                    "@log" = {
-                      mountpoint = "/var/log";
-                      mountOptions = [
-                        "ssd"
-                        "noatime"
-                        "compress=zstd"
-                      ];
-                    };
-                    "@home" = {
-                      mountpoint = "/home";
-                      mountOptions = [
-                        "ssd"
-                        "noatime"
-                        "compress=zstd"
-                      ];
-                    };
-                  };
+                  type = "filesystem";
+                  format = "ext4";
+                  mountpoint = "/";
                 };
               };
             };
