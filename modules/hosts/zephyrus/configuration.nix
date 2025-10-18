@@ -1,6 +1,7 @@
 {
   inputs,
   self,
+  config,
   ...
 }:
 {
@@ -89,6 +90,7 @@
 
       environment.systemPackages = with pkgs; [
         sbctl
+        btrfs-progs
       ];
 
       system.stateVersion = "25.11";
