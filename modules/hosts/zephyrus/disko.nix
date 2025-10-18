@@ -17,33 +17,12 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            swap = {
-              size = "38G";
-              content = {
-                type = "luks";
-                name = "cryptswap";
-                settings = {
-                  allowDiscards = true;
-                };
-                content = {
-                  type = "swap";
-                  resumeDevice = true;
-                };
-              };
-            };
             root = {
               size = "100%";
               content = {
-                type = "luks";
-                name = "cryptroot";
-                settings = {
-                  allowDiscards = true;
-                };
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                  mountpoint = "/";
-                };
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
               };
             };
           };

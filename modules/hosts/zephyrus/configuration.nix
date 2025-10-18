@@ -36,19 +36,6 @@
       boot = {
         loader.efi.canTouchEfiVariables = true;
 
-        initrd.luks.devices = {
-          cryptroot = {
-            device = "/dev/disk/by-partlabel/disk-main-root";
-            allowDiscards = true;
-          };
-          cryptswap = {
-            device = "/dev/disk/by-partlabel/disk-main-swap";
-            allowDiscards = true;
-          };
-        };
-
-        resumeDevice = "/dev/mapper/cryptswap";
-
         lanzaboote = {
           enable = true;
           pkiBundle = "/var/lib/sbctl";
