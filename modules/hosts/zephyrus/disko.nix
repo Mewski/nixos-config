@@ -17,12 +17,62 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
+            swap = {
+              size = "38G";
+              content = {
+                type = "luks";
+                name = "cryptswap";
+                settings = {
+                  allowDiscards = true;
+                };
+                content = {
+                  type = "swap";
+                  resumeDevice = true;
+                };
+              };
+            };
             root = {
               size = "100%";
               content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
+                type = "luks";
+                name = "cryptroot";
+                settings = {
+                  allowDiscards = true;
+                };
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+                  subvolumes = {
+                    "@" = {
+                      mountpoint = "/";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "@home" = {
+                      mountpoint = "/home";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "@nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "@log" = {
+                      mountpoint = "/var/log";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                  };
+                };
               };
             };
           };
