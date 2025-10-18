@@ -1,7 +1,6 @@
 {
   inputs,
   self,
-  config,
   ...
 }:
 {
@@ -14,7 +13,7 @@
   };
 
   flake.nixosModules.zephyrus =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     {
       imports = [
         inputs.lanzaboote.nixosModules.lanzaboote
