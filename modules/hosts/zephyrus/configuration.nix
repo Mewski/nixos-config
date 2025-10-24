@@ -1,12 +1,12 @@
 {
   inputs,
   self,
-  config,
   ...
 }:
 {
   flake.nixosConfigurations.zephyrus = inputs.nixpkgs.lib.nixosSystem {
     modules = [
+      inputs.home-manager.flakeModules.home-manager
       inputs.disko.nixosModules.disko
 
       self.nixosModules.zephyrus
@@ -14,7 +14,13 @@
   };
 
   flake.nixosModules.zephyrus =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      inputs,
+      self,
+      ...
+    }:
     {
       imports = [
         inputs.lanzaboote.nixosModules.lanzaboote
@@ -93,16 +99,35 @@
         btrfs-progs
       ];
 
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = { inherit inputs self; };
+
+        users.mewski = {
+          imports = [
+            self.homeModules.fish
+            self.homeModules.hyprland
+            self.homeModules.git
+            self.homeModules.kitty
+            self.homeModules.nixvim
+          ];
+
+          home.stateVersion = "25.11";
+        };
+      };
+
       system.stateVersion = "25.11";
     };
 
   flake.homeConfigurations."mewski@zephyrus" = inputs.home-manager.lib.homeManagerConfiguration {
-    pkgs = config.system.build.pkgs;
-    modules = [
+    modules = [ self.homeModules.zephyrus ];
+  };
+
+  flake.homeModules.zephyrus = {
+    imports = [
       self.homeModules.fish
-
       self.homeModules.hyprland
-
       self.homeModules.git
       self.homeModules.kitty
       self.homeModules.nixvim
