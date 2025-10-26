@@ -5,38 +5,17 @@
 }:
 {
   flake.nixosConfigurations.zephyrus = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
-      inputs.home-manager.flakeModules.home-manager
-      inputs.disko.nixosModules.disko
-
-      self.nixosModules.zephyrus
-    ];
+    modules = [ self.nixosModules.zephyrus ];
   };
 
   flake.nixosModules.zephyrus =
-    {
-      config,
-      pkgs,
-      inputs,
-      self,
-      ...
-    }:
+    { config, pkgs, ... }:
     {
       imports = [
-        inputs.lanzaboote.nixosModules.lanzaboote
-        inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
-
-        self.nixosModules.nix
-
-        self.nixosModules.fish
+        inputs.disko.nixosModules.disko
 
         self.nixosModules.desktop
-
-        self.nixosModules.hyprland
-
         self.diskoConfigurations.zephyrus
-
-        self.nixosModules.mewski
       ];
 
       boot = {
@@ -61,6 +40,11 @@
         };
       };
 
+      services.xserver.videoDrivers = [
+        "modesetting"
+        "nvidia"
+      ];
+
       hardware = {
         graphics.extraPackages = with pkgs; [
           libva
@@ -72,7 +56,6 @@
         nvidia = {
           open = false;
           package = config.boot.kernelPackages.nvidiaPackages.latest;
-
           powerManagement = {
             enable = true;
             finegrained = true;
@@ -80,59 +63,24 @@
         };
       };
 
+      nixpkgs.config.cudaSupport = true;
+
       networking = {
         hostName = "zephyrus";
-
-        firewall.enable = false;
         networkmanager.enable = true;
+        firewall.enable = true;
       };
-
-      services.xserver.videoDrivers = [
-        "modesetting"
-        "nvidia"
-      ];
-
-      nixpkgs.config.cudaSupport = true;
 
       environment.systemPackages = with pkgs; [
         sbctl
-        btrfs-progs
       ];
-
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        extraSpecialArgs = { inherit inputs self; };
-
-        users.mewski = {
-          imports = [
-            self.homeModules.fish
-            self.homeModules.hyprland
-            self.homeModules.git
-            self.homeModules.kitty
-            self.homeModules.nixvim
-          ];
-
-          home.stateVersion = "25.11";
-        };
-      };
-
-      system.stateVersion = "25.11";
     };
 
-  flake.homeConfigurations."mewski@zephyrus" = inputs.home-manager.lib.homeManagerConfiguration {
+  flake.homeConfigurations.zephyrus = inputs.home-manager.lib.homeManagerConfiguration {
     modules = [ self.homeModules.zephyrus ];
   };
 
   flake.homeModules.zephyrus = {
-    imports = [
-      self.homeModules.fish
-      self.homeModules.hyprland
-      self.homeModules.git
-      self.homeModules.kitty
-      self.homeModules.nixvim
-    ];
 
-    home.stateVersion = "25.11";
   };
 }

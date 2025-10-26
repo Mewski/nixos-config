@@ -1,9 +1,13 @@
+{ inputs, ... }:
 {
-  flake.nixosModules.hyprland = {
-    programs.hyprland.enable = true;
-  };
-
-  flake.homeModules.hyprland = {
-    wayland.windowManager.hyprland.enable = true;
-  };
+  flake.nixosModules.hyprland =
+    { pkgs, ... }:
+    {
+      programs.hyprland = {
+        enable = true;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        portalPackage =
+          inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      };
+    };
 }

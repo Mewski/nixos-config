@@ -1,12 +1,7 @@
-{ inputs, ... }:
 {
   flake.nixosModules.nix =
     { pkgs, ... }:
     {
-      imports = [
-        inputs.nix-index-database.nixosModules.nix-index
-      ];
-
       nix = {
         package = pkgs.lix;
 
@@ -22,9 +17,7 @@
 
       environment.systemPackages = with pkgs; [
         alejandra
-        manix
         nil
-        nix-inspect
         nixd
         statix
       ];
