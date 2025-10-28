@@ -89,7 +89,7 @@
     };
 
   flake.homeConfigurations.zephyrus = inputs.home-manager.lib.homeManagerConfiguration {
-    pkgs = inputs.nixpkgs.legacyPackages."x86-64linux";
+    pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
     modules = [ self.homeModules.zephyrus ];
   };
 
