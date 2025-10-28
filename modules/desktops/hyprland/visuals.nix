@@ -1,6 +1,6 @@
 {
   flake.homeModules.hyprland = {
-    programs.hyprland.settings = {
+    wayland.windowManager.hyprland.settings = {
       animations = {
         enabled = true;
 

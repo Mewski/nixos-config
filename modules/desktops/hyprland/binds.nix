@@ -2,7 +2,7 @@
   flake.homeModules.hyprland =
     { pkgs, lib, ... }:
     {
-      programs.hyprland.settings = {
+      wayland.windowManager.hyprland.settings = {
         bind = [
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
 
