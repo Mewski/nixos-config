@@ -19,7 +19,10 @@
         self.diskoConfigurations.zephyrus
 
         self.nixosModules.desktop
+
         self.nixosModules.hyprland
+
+        self.nixosModules.nix
 
         self.nixosModules.mewski
       ];
