@@ -3,7 +3,7 @@
     disko.devices = {
       disk.main = {
         type = "disk";
-        device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL22T0HDLB-00BT7_S7CFNE0X701590";
+        device = "/dev/disk/by-id/nvme-Samsung_SSD_9100_PRO_4TB_S7YANJ0Y310218L";
         content = {
           type = "gpt";
           partitions = {
