@@ -115,8 +115,8 @@
           ",XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1-"
           ",XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1+"
 
-          ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%-"
-          ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%+"
+          ",XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%-"
+          ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%+"
         ];
 
         programs.home-manager.enable = true;
