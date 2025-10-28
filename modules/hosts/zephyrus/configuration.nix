@@ -13,9 +13,14 @@
     {
       imports = [
         inputs.disko.nixosModules.disko
+        inputs.lanzaboote.nixosModules.lanzaboote
+
+        self.diskoConfigurations.zephyrus
 
         self.nixosModules.desktop
-        self.diskoConfigurations.zephyrus
+        self.nixosModules.hyprland
+
+        self.nixosModules.mewski
       ];
 
       boot = {
@@ -74,13 +79,49 @@
       environment.systemPackages = with pkgs; [
         sbctl
       ];
+
+      system.stateVersion = "25.11";
     };
 
   flake.homeConfigurations.zephyrus = inputs.home-manager.lib.homeManagerConfiguration {
     modules = [ self.homeModules.zephyrus ];
   };
 
-  flake.homeModules.zephyrus = {
+  flake.homeModules.zephyrus =
+    { pkgs, lib, ... }:
+    {
+      imports = [
+        self.homeModules.hyprland
+        self.homeModules.git
+        self.homeModules.kitty
+        self.homeModules.nixvim
 
-  };
+        self.homeModules.mewski
+      ];
+
+      programs.hyprland.settings = {
+        monitor = [
+          "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10"
+        ];
+
+        env = [
+          "ELECTRON_OZONE_PLATFORM_HINT,auto"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+          "LIBVA_DRIVER_NAME,nvidia"
+          "NVD_BACKEND,direct"
+        ];
+
+        bindel = [
+          ",XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1-"
+          ",XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1+"
+
+          ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%-"
+          ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%+"
+        ];
+
+        programs.home-manager.enable = true;
+
+        home.stateVersion = "25.11";
+      };
+    };
 }

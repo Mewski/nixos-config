@@ -9,5 +9,19 @@
         portalPackage =
           inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       };
+
+      environment.sessionVariables.NIXOS_OZONE_WL = "1";
     };
+
+  flake.homeModules.hyprland = {
+    programs.hyprland = {
+      enable = true;
+
+      settings = {
+        env = [
+          "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        ];
+      };
+    };
+  };
 }
