@@ -88,7 +88,7 @@
       system.stateVersion = "25.11";
     };
 
-  flake.homeConfigurations.zephyrus = inputs.home-manager.lib.homeManagerConfiguration {
+  flake.homeConfigurations.mewski = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
     modules = [ self.homeModules.zephyrus ];
   };
