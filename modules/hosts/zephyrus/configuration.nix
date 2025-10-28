@@ -12,10 +12,9 @@
     { config, pkgs, ... }:
     {
       imports = [
-        <nixos-hardware/asus/zephyrus/gu605my>
-
         inputs.disko.nixosModules.disko
         inputs.lanzaboote.nixosModules.lanzaboote
+        inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
 
         self.diskoConfigurations.zephyrus
 
