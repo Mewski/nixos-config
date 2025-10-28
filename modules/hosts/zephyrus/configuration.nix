@@ -13,6 +13,7 @@
     {
       imports = [
         inputs.disko.nixosModules.disko
+        inputs.home-manager.nixosModules.home-manager
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
 
@@ -81,6 +82,19 @@
         firewall.enable = true;
       };
 
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+
+        users.mewski = {
+          imports = [ self.homeModules.zephyrus ];
+
+          programs.home-manager.enable = true;
+
+          home.stateVersion = "25.11";
+        };
+      };
+
       environment.systemPackages = with pkgs; [
         sbctl
       ];
@@ -124,10 +138,6 @@
           ",XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%-"
           ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%+"
         ];
-
-        programs.home-manager.enable = true;
-
-        home.stateVersion = "25.11";
       };
     };
 }
