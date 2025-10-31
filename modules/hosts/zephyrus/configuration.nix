@@ -33,8 +33,9 @@
       boot = {
         loader.efi.canTouchEfiVariables = true;
 
+        loader.systemd-boot.enable = true;
         lanzaboote = {
-          enable = true;
+          enable = false;
           pkiBundle = "/var/lib/sbctl";
         };
       };
