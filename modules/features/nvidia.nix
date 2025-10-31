@@ -12,7 +12,7 @@
           libva
           libvdpau
           nvidia-vaapi-driver
-          vaapiVdpau
+          libva-vdpau-driver
         ];
 
         nvidia = {
