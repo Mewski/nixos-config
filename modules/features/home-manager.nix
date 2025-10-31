@@ -7,7 +7,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
 
-        users.${config.preferences.user.username} = {
+        users."${config.preferences.user.username}" = {
           imports = [ self.homeModules.zephyrus ];
 
           home.username = "${config.preferences.user.username}";
