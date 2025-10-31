@@ -8,6 +8,7 @@
           type = "gpt";
           partitions = {
             ESP = {
+              priority = 1;
               type = "EF00";
               size = "1G";
               content = {
@@ -18,7 +19,7 @@
               };
             };
             swap = {
-              size = "38G";
+              size = "32G";
               content = {
                 type = "luks";
                 name = "cryptswap";
@@ -43,29 +44,22 @@
                   type = "btrfs";
                   extraArgs = [ "-f" ];
                   subvolumes = {
-                    "@" = {
+                    "root" = {
                       mountpoint = "/";
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
                       ];
                     };
-                    "@home" = {
-                      mountpoint = "/home";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                    "@nix" = {
+                    "nix" = {
                       mountpoint = "/nix";
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
                       ];
                     };
-                    "@log" = {
-                      mountpoint = "/var/log";
+                    "persist" = {
+                      mountpoint = "/persist";
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
