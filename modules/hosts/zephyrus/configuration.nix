@@ -16,6 +16,7 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.impermanence.nixosModules.impermanence
+        inputs.sops-nix.nixosModules.sops
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
 
         self.diskoConfigurations.zephyrus
@@ -31,9 +32,9 @@
       ];
 
       boot = {
+        loader.systemd-boot.enable = true;
         loader.efi.canTouchEfiVariables = true;
 
-        loader.systemd-boot.enable = true;
         lanzaboote = {
           enable = false;
           pkiBundle = "/var/lib/sbctl";
