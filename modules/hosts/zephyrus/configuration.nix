@@ -21,6 +21,7 @@
 
         self.diskoConfigurations.zephyrus
 
+        self.nixosModules.cachix
         self.nixosModules.preferences
         self.nixosModules.users
         self.nixosModules.home-manager
