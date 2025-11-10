@@ -5,31 +5,31 @@
         enabled = true;
 
         bezier = [
-          "almostLinear,0.5,0.5,0.75,1.0"
-          "easeInOutCubic,0.65,0.05,0.36,1"
           "easeOutQuint,0.23,1,0.32,1"
+          "easeInOutCubic,0.65,0.05,0.36,1"
           "linear,0,0,1,1"
+          "almostLinear,0.5,0.5,0.75,1.0"
           "quick,0.15,0,0.1,1"
         ];
 
         animation = [
-          "border, 1, 3.5, easeOutQuint"
-          "fade, 1, 2, quick"
-          "fadeIn, 1, 1.2, almostLinear"
-          "fadeLayersIn, 1, 1.3, almostLinear"
-          "fadeLayersOut, 1, 1, almostLinear"
-          "fadeOut, 1, 1, almostLinear"
-          "global, 1, 6, default"
-          "layers, 1, 2.5, easeOutQuint"
-          "layersIn, 1, 2.8, easeOutQuint, fade"
-          "layersOut, 1, 1.2, linear, fade"
-          "windows, 1, 3.2, easeOutQuint"
-          "windowsIn, 1, 2.8, easeOutQuint, popin 87%"
-          "windowsOut, 1, 1.2, linear, popin 87%"
-          "workspaces, 1, 1.3, almostLinear, fade"
-          "workspacesIn, 1, 0.9, almostLinear, fade"
-          "workspacesOut, 1, 1.3, almostLinear, fade"
-          "zoomFactor, 1, 4.5, quick"
+          "global, 1, 10, default"
+          "border, 1, 5.39, easeOutQuint"
+          "windows, 1, 4.79, easeOutQuint"
+          "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
+          "windowsOut, 1, 1.49, linear, popin 87%"
+          "fadeIn, 1, 1.73, almostLinear"
+          "fadeOut, 1, 1.46, almostLinear"
+          "fade, 1, 3.03, quick"
+          "layers, 1, 3.81, easeOutQuint"
+          "layersIn, 1, 4, easeOutQuint, fade"
+          "layersOut, 1, 1.5, linear, fade"
+          "fadeLayersIn, 1, 1.79, almostLinear"
+          "fadeLayersOut, 1, 1.39, almostLinear"
+          "workspaces, 1, 1.94, almostLinear, fade"
+          "workspacesIn, 1, 1.21, almostLinear, fade"
+          "workspacesOut, 1, 1.94, almostLinear, fade"
+          "zoomFactor, 1, 7, quick"
         ];
       };
 
