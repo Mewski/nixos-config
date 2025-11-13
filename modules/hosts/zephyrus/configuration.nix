@@ -13,16 +13,15 @@
     {
       imports = [
         inputs.disko.nixosModules.disko
-        inputs.home-manager.nixosModules.home-manager
         inputs.lanzaboote.nixosModules.lanzaboote
-        inputs.impermanence.nixosModules.impermanence
-        inputs.sops-nix.nixosModules.sops
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
 
         self.diskoConfigurations.zephyrus
 
         self.nixosModules.preferences
-        self.nixosModules.users
+        self.nixosModules.impermanence
+        self.nixosModules.sops
+        self.nixosModules.user
         self.nixosModules.home-manager
         self.nixosModules.nvidia
         self.nixosModules.desktop
@@ -36,7 +35,7 @@
         loader.efi.canTouchEfiVariables = true;
 
         lanzaboote = {
-          enable = false;
+          enable = true;
           pkiBundle = "/var/lib/sbctl";
         };
       };
@@ -60,10 +59,14 @@
     { pkgs, lib, ... }:
     {
       imports = [
+        self.homeModules.impermanence
         self.homeModules.hyprland
+        self.homeModules.fish
         self.homeModules.git
         self.homeModules.kitty
         self.homeModules.nixvim
+        self.homeModules.zed-editor
+        self.homeModules.zen-browser
       ];
 
       wayland.windowManager.hyprland.settings = {

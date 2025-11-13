@@ -1,7 +1,12 @@
+{ inputs, ... }:
 {
   flake.nixosModules.impermanence =
     { config, lib, ... }:
     {
+      imports = [
+        inputs.impermanence.nixosModules.impermanence
+      ];
+
       fileSystems."/persist".neededForBoot = true;
 
       environment.persistence = {
@@ -45,5 +50,27 @@
         btrfs subvolume create /btrfs_tmp/root
         umount /btrfs_tmp
       '';
+    };
+
+  flake.homeModules.impermanence =
+    { config, ... }:
+    {
+      imports = [
+        inputs.impermanence.homeManagerModules.impermanence
+      ];
+
+      home.persistence."/persist/home/${config.preferences.user.username}" = {
+        directories = [
+          "Downloads"
+          "Music"
+          "Pictures"
+          "Documents"
+          "Videos"
+          "Projects"
+          "nixos-config"
+          ".local/share/keyrings"
+        ];
+        allowOther = true;
+      };
     };
 }

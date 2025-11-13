@@ -1,6 +1,6 @@
 {
-  flake.nixosModules.users =
-    { config, ... }:
+  flake.nixosModules.user =
+    { config, pkgs, ... }:
     {
       users = {
         mutableUsers = false;
@@ -9,6 +9,7 @@
           isNormalUser = true;
           description = "${config.preferences.user.username}";
           initialPassword = "${config.preferences.user.username}";
+          shell = pkgs.fish;
           extraGroups = [
             "networkmanager"
             "wheel"

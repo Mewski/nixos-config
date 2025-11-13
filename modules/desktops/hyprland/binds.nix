@@ -5,6 +5,7 @@
       wayland.windowManager.hyprland.settings = {
         bind = [
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
+          "SUPER, B, exec, zen"
 
           "SUPER, down, movefocus, d"
           "SUPER, left, movefocus, l"
