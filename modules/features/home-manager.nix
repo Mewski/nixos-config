@@ -18,6 +18,10 @@
           opacity = config.opacity;
         };
 
+        sharedModules = [
+          self.nixosModules.persist
+        ];
+
         users.${config.preferences.user.username} = {
           imports = [ self.homeModules.zephyrus ];
 
@@ -29,5 +33,9 @@
           home.stateVersion = "25.11";
         };
       };
+
+      persist.directories =
+        config.home-manager.users.${config.preferences.user.username}.persist.directories;
+      persist.files = config.home-manager.users.${config.preferences.user.username}.persist.files;
     };
 }
