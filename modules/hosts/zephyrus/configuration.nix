@@ -19,6 +19,7 @@
         self.diskoConfigurations.zephyrus
 
         self.nixosModules.preferences
+        self.nixosModules.theme
         self.nixosModules.impermanence
         self.nixosModules.sops
         self.nixosModules.user

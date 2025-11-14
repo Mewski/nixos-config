@@ -13,6 +13,10 @@
             default = "Mewski";
           };
         };
+        theme = lib.mkOption {
+          type = lib.types.str;
+          default = "chalk";
+        };
       };
     };
 }
