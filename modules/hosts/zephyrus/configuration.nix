@@ -62,7 +62,6 @@
     { pkgs, lib, ... }:
     {
       imports = [
-        self.homeModules.persist
         self.homeModules.impermanence
         self.homeModules.hyprland
         self.homeModules.git
