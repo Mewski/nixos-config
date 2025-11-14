@@ -53,13 +53,13 @@
     };
 
   flake.homeModules.impermanence =
-    { config, ... }:
+    { preferences, ... }:
     {
       imports = [
         inputs.impermanence.homeManagerModules.impermanence
       ];
 
-      home.persistence."/persist/home/${config.preferences.user.username}" = {
+      home.persistence."/persist/home/${preferences.user.username}" = {
         directories = [
           "Downloads"
           "Music"

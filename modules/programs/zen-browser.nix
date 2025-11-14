@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.homeModules.zen-browser =
-    { config, ... }:
+    { preferences, ... }:
     {
       imports = [
         inputs.zen-browser.homeModules.beta
@@ -30,7 +30,7 @@
         };
       };
 
-      home.persistence."/persist/home/${config.preferences.user.username}" = {
+      home.persistence."/persist/home/${preferences.user.username}" = {
         directories = [
           ".local/share/zen-browser"
         ];
