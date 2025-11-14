@@ -7,7 +7,7 @@
 
         font = {
           name = config.fonts.monospace.name;
-          size = config.fonts.monospace.size;
+          size = config.fonts.sizes.terminal;
         };
 
         shellIntegration.enableFishIntegration = true;
@@ -17,6 +17,8 @@
         settings = {
           cursor_trail = 1;
           confirm_os_window_close = 0;
+
+          background_opacity = config.scheme.opacity.terminal;
 
           background = config.scheme.withHashtag.base00;
           foreground = config.scheme.withHashtag.base05;
