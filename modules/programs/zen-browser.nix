@@ -1,39 +1,35 @@
 { inputs, ... }:
 {
-  flake.homeModules.zen-browser =
-    { preferences, ... }:
-    {
-      imports = [
-        inputs.zen-browser.homeModules.beta
-      ];
+  flake.homeModules.zen-browser = {
+    imports = [
+      inputs.zen-browser.homeModules.beta
+    ];
 
-      programs.zen-browser = {
-        enable = true;
+    programs.zen-browser = {
+      enable = true;
 
-        policies = {
-          AutofillAddressEnabled = false;
-          AutofillCreditCardEnabled = false;
-          DisableAppUpdate = true;
-          DisableFeedbackCommands = true;
-          DisableFirefoxStudies = true;
-          DisablePocket = true;
-          DisableTelemetry = true;
-          DontCheckDefaultBrowser = true;
-          NoDefaultBookmarks = true;
-          OfferToSaveLogins = false;
-          EnableTrackingProtection = {
-            Value = true;
-            Locked = true;
-            Cryptomining = true;
-            Fingerprinting = true;
-          };
+      policies = {
+        AutofillAddressEnabled = false;
+        AutofillCreditCardEnabled = false;
+        DisableAppUpdate = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
+        OfferToSaveLogins = false;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
         };
       };
-
-      home.persistence."/persist/home/${preferences.user.username}" = {
-        directories = [
-          ".local/share/zen-browser"
-        ];
-      };
     };
+
+    persist.directories = [
+      ".local/share/zen-browser"
+    ];
+  };
 }

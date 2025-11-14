@@ -23,6 +23,10 @@
           files = [
             "/etc/machine-id"
           ];
+          users.${config.preferences.user.username} = {
+            directories = config.persist.directories;
+            files = config.persist.files;
+          };
         };
       };
 
@@ -53,24 +57,17 @@
     };
 
   flake.homeModules.impermanence =
-    { preferences, ... }:
+    { config, lib, ... }:
     {
-      imports = [
-        inputs.impermanence.homeManagerModules.impermanence
+      config.persist.directories = [
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Documents"
+        "Videos"
+        "Projects"
+        "nixos-config"
+        ".local/share/keyrings"
       ];
-
-      home.persistence."/persist/home/${preferences.user.username}" = {
-        directories = [
-          "Downloads"
-          "Music"
-          "Pictures"
-          "Documents"
-          "Videos"
-          "Projects"
-          "nixos-config"
-          ".local/share/keyrings"
-        ];
-        allowOther = true;
-      };
     };
 }
