@@ -1,56 +1,137 @@
 { inputs, ... }:
 {
   flake.nixosModules.theme =
-    { config, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       imports = [
         inputs.base16.nixosModule
       ];
 
-      config = {
-        scheme = "${inputs.tinted-theming-schemes}/base24/${config.preferences.theme}.yaml";
-
+      options = {
         cursor = {
-          name = "Bibata-Modern-Ice";
-          package = pkgs.bibata-cursors;
-          size = 24;
+          name = lib.mkOption {
+            type = lib.types.str;
+            default = "Bibata-Modern-Ice";
+            description = "Cursor theme name";
+          };
+          package = lib.mkOption {
+            type = lib.types.package;
+            default = pkgs.bibata-cursors;
+            description = "Cursor theme package";
+          };
+          size = lib.mkOption {
+            type = lib.types.int;
+            default = 24;
+            description = "Cursor size in pixels";
+          };
         };
 
         fonts = {
           emoji = {
-            name = "Noto Color Emoji";
-            package = pkgs.noto-fonts-emoji;
+            name = lib.mkOption {
+              type = lib.types.str;
+              default = "Noto Color Emoji";
+              description = "Emoji font name";
+            };
+            package = lib.mkOption {
+              type = lib.types.package;
+              default = pkgs.noto-fonts-emoji;
+              description = "Emoji font package";
+            };
           };
 
           monospace = {
-            name = "FiraCode Nerd Font Mono";
-            package = pkgs.nerd-fonts.fira-code;
+            name = lib.mkOption {
+              type = lib.types.str;
+              default = "FiraCode Nerd Font Mono";
+              description = "Monospace font name";
+            };
+            package = lib.mkOption {
+              type = lib.types.package;
+              default = pkgs.nerd-fonts.fira-code;
+              description = "Monospace font package";
+            };
           };
 
           sansSerif = {
-            name = "Inter";
-            package = pkgs.inter;
+            name = lib.mkOption {
+              type = lib.types.str;
+              default = "Inter";
+              description = "Sans-serif font name";
+            };
+            package = lib.mkOption {
+              type = lib.types.package;
+              default = pkgs.inter;
+              description = "Sans-serif font package";
+            };
           };
 
           serif = {
-            name = "Source Serif Pro";
-            package = pkgs.source-serif;
+            name = lib.mkOption {
+              type = lib.types.str;
+              default = "Source Serif Pro";
+              description = "Serif font name";
+            };
+            package = lib.mkOption {
+              type = lib.types.package;
+              default = pkgs.source-serif;
+              description = "Serif font package";
+            };
           };
 
           sizes = {
-            desktop = 10;
-            application = 12;
-            terminal = 12;
-            popups = 10;
+            desktop = lib.mkOption {
+              type = lib.types.int;
+              default = 10;
+              description = "Font size for desktop UI elements";
+            };
+            application = lib.mkOption {
+              type = lib.types.int;
+              default = 12;
+              description = "Font size for application content";
+            };
+            terminal = lib.mkOption {
+              type = lib.types.int;
+              default = 12;
+              description = "Font size for terminal emulators";
+            };
+            popups = lib.mkOption {
+              type = lib.types.int;
+              default = 10;
+              description = "Font size for popup windows";
+            };
           };
         };
 
         opacity = {
-          desktop = 1.0;
-          application = 1.0;
-          terminal = 0.8;
-          popups = 1.0;
+          desktop = lib.mkOption {
+            type = lib.types.float;
+            default = 1.0;
+            description = "Opacity for desktop background (0.0-1.0)";
+          };
+          application = lib.mkOption {
+            type = lib.types.float;
+            default = 1.0;
+            description = "Opacity for application windows (0.0-1.0)";
+          };
+          terminal = lib.mkOption {
+            type = lib.types.float;
+            default = 0.8;
+            description = "Opacity for terminal windows (0.0-1.0)";
+          };
+          popups = lib.mkOption {
+            type = lib.types.float;
+            default = 1.0;
+            description = "Opacity for popup windows (0.0-1.0)";
+          };
         };
       };
+
+      config.scheme = "${inputs.tinted-theming-schemes}/base24/${config.preferences.theme}.yaml";
     };
 }
