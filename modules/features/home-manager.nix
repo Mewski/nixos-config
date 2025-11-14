@@ -13,6 +13,9 @@
 
         extraSpecialArgs = {
           preferences = config.preferences;
+          scheme = config.scheme;
+          fonts = config.fonts;
+          opacity = config.opacity;
         };
 
         users.${config.preferences.user.username} = {

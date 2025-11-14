@@ -1,6 +1,6 @@
 {
   flake.homeModules.hyprland =
-    { config, ... }:
+    { scheme, ... }:
     {
       wayland.windowManager.hyprland.settings = {
         animations = {
@@ -52,7 +52,7 @@
             enabled = true;
             range = 4;
             render_power = 3;
-            color = "rgba(${config.scheme.base00}99)";
+            color = "rgba(${scheme.base00}99)";
           };
         };
 
@@ -62,8 +62,8 @@
 
           border_size = 2;
 
-          "col.active_border" = "rgb(${config.scheme.base0E})";
-          "col.inactive_border" = "rgb(${config.scheme.base03})";
+          "col.active_border" = "rgb(${scheme.base0E})";
+          "col.inactive_border" = "rgb(${scheme.base03})";
 
           gaps_in = 4;
           gaps_out = 8;
