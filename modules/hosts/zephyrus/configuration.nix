@@ -29,6 +29,7 @@
         self.nixosModules.hyprland
         self.nixosModules.nix
         self.nixosModules.pipewire
+        self.nixosModules.fish
       ];
 
       boot = {
@@ -62,7 +63,6 @@
       imports = [
         self.homeModules.impermanence
         self.homeModules.hyprland
-        self.homeModules.fish
         self.homeModules.git
         self.homeModules.kitty
         self.homeModules.nixvim
