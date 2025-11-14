@@ -11,6 +11,10 @@
         useGlobalPkgs = true;
         useUserPackages = true;
 
+        extraSpecialArgs = {
+          preferences = config.preferences;
+        };
+
         users.${config.preferences.user.username} = {
           imports = [ self.homeModules.zephyrus ];
 
