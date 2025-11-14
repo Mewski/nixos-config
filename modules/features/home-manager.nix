@@ -19,7 +19,7 @@
         };
 
         sharedModules = [
-          self.nixosModules.persist
+          self.homeManagerModules.persist
         ];
 
         users.${config.preferences.user.username} = {

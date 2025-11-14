@@ -56,18 +56,16 @@
       '';
     };
 
-  flake.homeModules.impermanence =
-    { config, lib, ... }:
-    {
-      config.persist.directories = [
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Documents"
-        "Videos"
-        "Projects"
-        "nixos-config"
-        ".local/share/keyrings"
-      ];
-    };
+  flake.homeModules.impermanence = {
+    persist.directories = [
+      "Downloads"
+      "Music"
+      "Pictures"
+      "Documents"
+      "Videos"
+      "Projects"
+      "nixos-config"
+      ".local/share/keyrings"
+    ];
+  };
 }
