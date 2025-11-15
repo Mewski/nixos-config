@@ -62,7 +62,7 @@
 
           border_size = 2;
 
-          "col.active_border" = "rgb(${scheme.base0E})";
+          "col.active_border" = "rgb(${scheme.base0D})";
           "col.inactive_border" = "rgb(${scheme.base03})";
 
           gaps_in = 4;

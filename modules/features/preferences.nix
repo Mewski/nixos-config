@@ -17,7 +17,7 @@
         };
         theme = lib.mkOption {
           type = lib.types.str;
-          default = "chalk";
+          default = "lovelace";
           description = "Name of the colorscheme theme to use";
         };
       };
