@@ -34,9 +34,9 @@
         mkdir -p /mnt
         mount -o subvol=/ /dev/mapper/cryptroot /mnt
         if [[ -e /mnt/root ]]; then
-          mkdir -p /mnt/old_roots
+          mkdir -p /mnt/snapshots
           timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
-          mv /mnt/root "/mnt/old_roots/$timestamp"
+          mv /mnt/root "/mnt/snapshots/$timestamp"
         fi
 
         delete_subvolume_recursively() {
@@ -47,7 +47,7 @@
           btrfs subvolume delete "$1"
         }
 
-        for i in $(find /mnt/old_roots/ -maxdepth 1 -mtime +30); do
+        for i in $(find /mnt/snapshots/ -maxdepth 1 -mtime +30); do
           delete_subvolume_recursively "$i"
         done
 
