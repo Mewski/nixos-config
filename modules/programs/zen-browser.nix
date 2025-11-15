@@ -29,7 +29,7 @@
     };
 
     persist.directories = [
-      ".local/share/zen-browser"
+      ".zen"
     ];
   };
 }
