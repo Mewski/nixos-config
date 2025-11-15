@@ -62,7 +62,6 @@
     { pkgs, lib, ... }:
     {
       imports = [
-        self.homeModules.impermanence
         self.homeModules.hyprland
         self.homeModules.git
         self.homeModules.kitty
@@ -91,5 +90,16 @@
           ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%+"
         ];
       };
+
+      persist.directories = [
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Documents"
+        "Videos"
+        "Projects"
+        "nixos-config"
+        ".local/share/keyrings"
+      ];
     };
 }
