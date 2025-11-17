@@ -19,7 +19,6 @@
         self.diskoConfigurations.zephyrus
 
         self.nixosModules.preferences
-        self.nixosModules.persist
         self.nixosModules.theme
         self.nixosModules.impermanence
         self.nixosModules.sops
