@@ -1,7 +1,12 @@
+{ inputs, ... }:
 {
   flake.nixosModules.nix =
     { pkgs, ... }:
     {
+      imports = [
+        inputs.nix-index-database.nixosModules.nix-index
+      ];
+
       nix = {
         package = pkgs.lix;
 
