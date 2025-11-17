@@ -100,6 +100,7 @@
         "Projects"
         "nixos-config"
         ".local/share/keyrings"
+        ".ssh"
       ];
     };
 }
