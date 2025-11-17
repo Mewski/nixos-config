@@ -21,6 +21,7 @@
         self.nixosModules.preferences
         self.nixosModules.theme
         self.nixosModules.impermanence
+        self.nixosModules.persist
         self.nixosModules.sops
         self.nixosModules.user
         self.nixosModules.home-manager

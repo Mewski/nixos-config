@@ -54,7 +54,11 @@
         btrfs subvolume create /mnt/root
         umount /mnt
       '';
+    };
 
+  flake.nixosModules.persist =
+    { lib, ... }:
+    {
       options.persist = {
         directories = lib.mkOption {
           type = lib.types.listOf lib.types.str;
@@ -69,7 +73,7 @@
       };
     };
 
-  flake.homeManagerModules.impermanence =
+  flake.homeModules.persist =
     { lib, ... }:
     {
       options.persist = {

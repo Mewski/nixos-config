@@ -19,7 +19,7 @@
         };
 
         sharedModules = [
-          self.homeManagerModules.impermanence
+          self.homeModules.persist
         ];
 
         users.${config.preferences.user.username} = {
