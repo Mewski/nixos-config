@@ -16,6 +16,7 @@
           scheme = config.scheme;
           fonts = config.fonts;
           opacity = config.opacity;
+          polarity = config.polarity;
         };
 
         sharedModules = [

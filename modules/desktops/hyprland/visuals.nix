@@ -1,6 +1,6 @@
 {
   flake.homeModules.hyprland =
-    { scheme, ... }:
+    { scheme, polarity, ... }:
     {
       wayland.windowManager.hyprland.settings = {
         animations = {
@@ -69,5 +69,8 @@
           gaps_out = 8;
         };
       };
+
+      dconf.settings."org/gnome/desktop/interface".color-scheme =
+        if polarity == "dark" then "prefer-dark" else "default";
     };
 }

@@ -13,6 +13,15 @@
       ];
 
       options = {
+        polarity = lib.mkOption {
+          type = lib.types.enum [
+            "dark"
+            "light"
+          ];
+          default = "dark";
+          description = "Theme polarity (dark or light)";
+        };
+
         cursor = {
           name = lib.mkOption {
             type = lib.types.str;
