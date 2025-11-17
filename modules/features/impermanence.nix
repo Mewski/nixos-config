@@ -23,10 +23,7 @@
           files = [
             "/etc/machine-id"
           ];
-          users.${config.preferences.user.username} = {
-            directories = config.persist.directories;
-            files = config.persist.files;
-          };
+          users.${config.preferences.user.username} = config.persist;
         };
       };
 
@@ -59,34 +56,18 @@
   flake.nixosModules.persist =
     { lib, ... }:
     {
-      options.persist = {
-        directories = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [ ];
-          description = "Directories to persist in /persist/home";
-        };
-        files = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [ ];
-          description = "Files to persist in /persist/home";
-        };
+      options.persist = lib.mkOption {
+        type = lib.types.attrsOf lib.types.anything;
+        default = { };
       };
     };
 
   flake.homeModules.persist =
     { lib, ... }:
     {
-      options.persist = {
-        directories = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [ ];
-          description = "Directories to persist in /persist/home";
-        };
-        files = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [ ];
-          description = "Files to persist in /persist/home";
-        };
+      options.persist = lib.mkOption {
+        type = lib.types.attrsOf lib.types.anything;
+        default = { };
       };
     };
 }

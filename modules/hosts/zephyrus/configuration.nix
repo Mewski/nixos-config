@@ -55,6 +55,11 @@
         sbctl
       ];
 
+      environment.persistence."/persist".files = [
+        "/etc/ssh/ssh_host_ed25519_key"
+        "/etc/ssh/ssh_host_ed25519_key.pub"
+      ];
+
       system.stateVersion = "25.11";
     };
 
@@ -99,8 +104,14 @@
         "Videos"
         "Projects"
         "nixos-config"
-        ".local/share/keyrings"
-        ".ssh"
+        {
+          directory = ".local/share/keyrings";
+          mode = "0700";
+        }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
       ];
     };
 }

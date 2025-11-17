@@ -35,8 +35,6 @@
         };
       };
 
-      persist.directories =
-        config.home-manager.users.${config.preferences.user.username}.persist.directories;
-      persist.files = config.home-manager.users.${config.preferences.user.username}.persist.files;
+      persist = config.home-manager.users.${config.preferences.user.username}.persist;
     };
 }
