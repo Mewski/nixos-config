@@ -20,10 +20,10 @@
         };
       };
 
-      programs.gh = {
-        enable = true;
+      programs.gh.enable = true;
 
-        gitCredentialHelper.enable = true;
-      };
+      persist.files = [
+        ".config/gh/hosts.yml"
+      ];
     };
 }
