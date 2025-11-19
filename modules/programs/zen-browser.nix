@@ -32,6 +32,10 @@
           };
         };
       };
+
+      profiles.default.settings = {
+        "zen.theme.content-element-separation" = 0;
+      };
     };
 
     persist.directories = [
