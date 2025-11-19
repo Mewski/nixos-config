@@ -18,7 +18,7 @@
 
           gpg.format = "ssh";
 
-          credential.helper."https://github.com" = "${lib.getExe pkgs.gh} auth git-credential";
+          credential.helper = "${lib.getExe pkgs.gh} auth git-credential";
         };
 
         signing = {
