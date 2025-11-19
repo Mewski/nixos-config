@@ -23,19 +23,7 @@
       programs.gh = {
         enable = true;
 
-        hosts = {
-          "github.com" = {
-            user = "Mewski";
-          };
-        };
-
-        gitCredentialHelper = {
-          enable = true;
-
-          hosts = [
-            "https://github.com"
-          ];
-        };
+        gitCredentialHelper.enable = true;
       };
     };
 }
