@@ -24,10 +24,12 @@
         enable = true;
 
         gitCredentialHelper.enable = true;
-      };
 
-      persist.directories = [
-        ".config/gh/hosts.yml"
-      ];
+        hosts = {
+          "github.com" = {
+            user = "Mewski";
+          };
+        };
+      };
     };
 }
