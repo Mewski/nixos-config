@@ -31,11 +31,11 @@
 
         gitCredentialHelper = {
           enable = true;
+
+          hosts = [
+            "https://github.com"
+          ];
         };
       };
-
-      persist.directories = [
-        ".config/gh"
-      ];
     };
 }
