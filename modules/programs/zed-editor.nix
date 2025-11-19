@@ -5,7 +5,7 @@
       programs.zed-editor = {
         enable = true;
 
-        settings = {
+        userSettings = {
           icon_theme = "Material Icon Theme";
         };
 
