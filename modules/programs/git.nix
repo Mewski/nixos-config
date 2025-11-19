@@ -19,5 +19,9 @@
           signByDefault = true;
         };
       };
+
+      persist.directories = [
+        ".config/gh"
+      ];
     };
 }
