@@ -14,7 +14,7 @@
 
         touchpad = {
           clickfinger_behavior = true;
-          disable_while_typing = false;
+          disable_while_typing = true;
           natural_scroll = true;
           scroll_factor = 0.4;
         };
