@@ -67,6 +67,7 @@
     { pkgs, lib, ... }:
     {
       imports = [
+        self.homeModules.theme
         self.homeModules.hyprland
         self.homeModules.git
         self.homeModules.kitty
