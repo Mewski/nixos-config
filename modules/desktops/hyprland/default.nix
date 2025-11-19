@@ -21,14 +21,14 @@
       wayland.windowManager.hyprland = {
         enable = true;
 
-        dconf.settings."org/gnome/desktop/interface".color-scheme =
-          if polarity == "dark" then "prefer-dark" else "default";
-
         settings = {
           env = [
             "ELECTRON_OZONE_PLATFORM_HINT,auto"
           ];
         };
       };
+
+      dconf.settings."org/gnome/desktop/interface".color-scheme =
+        if polarity == "dark" then "prefer-dark" else "default";
     };
 }
