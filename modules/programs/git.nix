@@ -19,11 +19,5 @@
           signByDefault = true;
         };
       };
-
-      programs.gh = {
-        enable = true;
-
-        gitCredentialHelper.enable = true;
-      };
     };
 }
