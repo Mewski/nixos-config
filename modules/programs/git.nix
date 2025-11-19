@@ -20,6 +20,12 @@
         };
       };
 
+      programs.gh = {
+        enable = true;
+
+        gitCredentialHelper.enable = true;
+      };
+
       persist.directories = [
         ".config/gh"
       ];
