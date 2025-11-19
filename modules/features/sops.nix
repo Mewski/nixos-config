@@ -6,7 +6,7 @@
     ];
 
     persist.files = [
-      "/etc/sops/age/keys.txt"
+      ".config/sops/age/keys.txt"
     ];
   };
 }
