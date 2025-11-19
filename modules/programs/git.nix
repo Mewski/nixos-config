@@ -1,35 +1,29 @@
 {
   flake.homeModules.git =
-    {
-      config,
-      pkgs,
-      lib,
-      ...
-    }:
+    { config, ... }:
     {
       programs.git = {
         enable = true;
 
-        userName = "Mewski";
-        userEmail = "mewski813@gmail.com";
+        settings = {
+          user = {
+            name = "Mewski";
+            email = "mewski813@gmail.com";
+          };
+
+          gpg.format = "ssh";
+        };
 
         signing = {
           key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
           signByDefault = true;
         };
-
-        settings = {
-          gpg.format = "ssh";
-
-          credential.helper = [
-            ""
-            "${lib.getExe pkgs.gh} auth git-credential"
-          ];
-        };
       };
 
-      persist.files = [
-        ".config/gh/hosts.yml"
-      ];
+      programs.gh = {
+        enable = true;
+        package = config.gitAndTools.gh;
+        gitCredentialHelper.enable = true;
+      };
     };
 }
