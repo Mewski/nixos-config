@@ -1,5 +1,5 @@
 {
-  flake.homeModules.kitty =
+  flake.homeModules.theme =
     {
       scheme,
       fonts,
