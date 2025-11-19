@@ -10,20 +10,21 @@
       programs.git = {
         enable = true;
 
-        settings = {
-          user = {
-            name = "Mewski";
-            email = "mewski813@gmail.com";
-          };
-
-          gpg.format = "ssh";
-
-          credential.helper = "${lib.getExe pkgs.gh} auth git-credential";
-        };
+        userName = "Mewski";
+        userEmail = "mewski813@gmail.com";
 
         signing = {
           key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
           signByDefault = true;
+        };
+
+        settings = {
+          gpg.format = "ssh";
+
+          credential.helper = [
+            ""
+            "${lib.getExe pkgs.gh} auth git-credential"
+          ];
         };
       };
 
