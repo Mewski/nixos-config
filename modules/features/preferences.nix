@@ -15,7 +15,7 @@
         };
         theme = lib.mkOption {
           type = lib.types.str;
-          default = "lovelace";
+          default = "chalk";
         };
       };
     };
