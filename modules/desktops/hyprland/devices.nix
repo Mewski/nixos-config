@@ -4,7 +4,7 @@
       input = {
         accel_profile = "flat";
         follow_mouse = 1;
-        sensitivity = 0;
+        sensitivity = 1.25;
 
         kb_layout = "us";
         kb_model = "";
@@ -16,7 +16,7 @@
           clickfinger_behavior = true;
           disable_while_typing = true;
           natural_scroll = true;
-          scroll_factor = 0.4;
+          scroll_factor = 0.5;
         };
       };
 
