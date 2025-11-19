@@ -9,7 +9,7 @@
   };
 
   flake.nixosModules.zephyrus =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     {
       imports = [
         inputs.disko.nixosModules.disko
