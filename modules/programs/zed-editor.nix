@@ -13,5 +13,10 @@
         "wakatime"
       ];
     };
+
+    persist.directories = [
+      ".config/zed"
+      ".local/share/zed"
+    ];
   };
 }
