@@ -1,6 +1,6 @@
 {
   flake.homeModules.git =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       programs.git = {
         enable = true;
@@ -22,7 +22,7 @@
 
       programs.gh = {
         enable = true;
-        package = config.gitAndTools.gh;
+        package = pkgs.gitAndTools.gh;
         gitCredentialHelper.enable = true;
       };
     };
