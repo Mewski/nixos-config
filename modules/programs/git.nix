@@ -27,7 +27,7 @@
       };
 
       persist.directories = [
-        ".config/gh"
+        ".config/gh/hosts.yml"
       ];
     };
 }
