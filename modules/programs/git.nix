@@ -22,7 +22,7 @@
 
       programs.gh = {
         enable = true;
-        package = pkgs.gitAndTools.gh;
+
         gitCredentialHelper.enable = true;
       };
     };
