@@ -1,14 +1,14 @@
 keys:
   - &mewski age1rxem9nf4ey78fgnxuz0w298gf34my2qtdygkt52d258v9w20m3ysk66xtn
-  # - &zephyrus age1rgffpespcyjn0d8jglk7km9kfrfhdyev6camd3rck6pn8y47ze4sug23v3
+  - &zephyrus age1ryp5e29rqly3x5p9dugcrgf99fzp7kmggrw7ln43nc04gfpzhajqchum3c
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
           - *mewski
-          # - *zephyrus
+          - *zephyrus
   - path_regex: secrets/zephyrus/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
           - *mewski
-          # - *zephyrus
+          - *zephyrus
