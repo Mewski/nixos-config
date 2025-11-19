@@ -1,6 +1,11 @@
 {
   flake.homeModules.git =
-    { config, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
     {
       programs.git = {
         enable = true;
@@ -12,6 +17,8 @@
           };
 
           gpg.format = "ssh";
+
+          credential.helper = "${lib.getExe pkgs.gh} auth git-credential";
         };
 
         signing = {
@@ -20,7 +27,11 @@
         };
       };
 
-      programs.gh.enable = true;
+      programs.gh = {
+        enable = true;
+
+        gitCredentialHelper.enable = true;
+      };
 
       persist.files = [
         ".config/gh/hosts.yml"
