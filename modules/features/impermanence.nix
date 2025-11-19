@@ -57,7 +57,18 @@
     { lib, ... }:
     {
       options.persist = lib.mkOption {
-        type = lib.types.attrsOf lib.types.anything;
+        type = lib.types.submodule {
+          options = {
+            directories = lib.mkOption {
+              type = lib.types.listOf lib.types.anything;
+              default = [ ];
+            };
+            files = lib.mkOption {
+              type = lib.types.listOf lib.types.anything;
+              default = [ ];
+            };
+          };
+        };
         default = { };
       };
     };
@@ -66,7 +77,18 @@
     { lib, ... }:
     {
       options.persist = lib.mkOption {
-        type = lib.types.attrsOf lib.types.anything;
+        type = lib.types.submodule {
+          options = {
+            directories = lib.mkOption {
+              type = lib.types.listOf lib.types.anything;
+              default = [ ];
+            };
+            files = lib.mkOption {
+              type = lib.types.listOf lib.types.anything;
+              default = [ ];
+            };
+          };
+        };
         default = { };
       };
     };
