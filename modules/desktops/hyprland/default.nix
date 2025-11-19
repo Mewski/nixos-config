@@ -15,20 +15,15 @@
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
     };
 
-  flake.homeModules.hyprland =
-    { polarity, ... }:
-    {
-      wayland.windowManager.hyprland = {
-        enable = true;
+  flake.homeModules.hyprland = {
+    wayland.windowManager.hyprland = {
+      enable = true;
 
-        settings = {
-          env = [
-            "ELECTRON_OZONE_PLATFORM_HINT,auto"
-          ];
-        };
+      settings = {
+        env = [
+          "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        ];
       };
-
-      dconf.settings."org/gnome/desktop/interface".color-scheme =
-        if polarity == "dark" then "prefer-dark" else "default";
     };
+  };
 }

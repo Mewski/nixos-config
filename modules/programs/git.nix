@@ -1,6 +1,6 @@
 {
   flake.homeModules.git =
-    { config, pkgs, ... }:
+    { config, ... }:
     {
       programs.git = {
         enable = true;
