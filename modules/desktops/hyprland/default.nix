@@ -10,18 +10,25 @@
           inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       };
 
+      programs.dconf.enable = true;
+
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
     };
 
-  flake.homeModules.hyprland = {
-    wayland.windowManager.hyprland = {
-      enable = true;
+  flake.homeModules.hyprland =
+    { polarity, ... }:
+    {
+      wayland.windowManager.hyprland = {
+        enable = true;
 
-      settings = {
-        env = [
-          "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        ];
+        dconf.settings."org/gnome/desktop/interface".color-scheme =
+          if polarity == "dark" then "prefer-dark" else "default";
+
+        settings = {
+          env = [
+            "ELECTRON_OZONE_PLATFORM_HINT,auto"
+          ];
+        };
       };
     };
-  };
 }
