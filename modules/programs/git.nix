@@ -5,15 +5,19 @@
       programs.git = {
         enable = true;
 
-        userName = "Mewski";
-        userEmail = "mewski813@gmail.com";
+        settings = {
+          user = {
+            name = "Mewski";
+            email = "mewski813@gmail.com";
+          };
+
+          gpg.format = "ssh";
+        };
 
         signing = {
           key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
           signByDefault = true;
         };
-
-        extraConfig.gpg.format = "ssh";
       };
 
       programs.gh = {
