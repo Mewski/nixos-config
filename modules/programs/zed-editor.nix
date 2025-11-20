@@ -7,6 +7,10 @@
         icon_theme = "Material Icon Theme";
       };
 
+      mutableUserSettings = false;
+      mutableUserKeymaps = false;
+      mutableUserTasks = false;
+
       extensions = [
         "material-icon-theme"
         "nix"
@@ -15,7 +19,6 @@
     };
 
     persist.directories = [
-      ".config/zed"
       ".local/share/zed"
     ];
   };

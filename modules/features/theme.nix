@@ -44,7 +44,7 @@
             };
             package = lib.mkOption {
               type = lib.types.package;
-              default = pkgs.noto-fonts-emoji;
+              default = pkgs.noto-fonts-color-emoji;
             };
           };
 
@@ -121,6 +121,15 @@
         };
       };
 
-      config.scheme = "${inputs.tinted-theming-schemes}/base24/${config.preferences.theme}.yaml";
+      config = {
+        scheme = "${inputs.tinted-theming-schemes}/base24/${config.preferences.theme}.yaml";
+
+        fonts.packages = [
+          config.fonts.emoji.package
+          config.fonts.monospace.package
+          config.fonts.sansSerif.package
+          config.fonts.serif.package
+        ];
+      };
     };
 }

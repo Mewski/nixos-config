@@ -4,7 +4,7 @@
       input = {
         accel_profile = "flat";
         follow_mouse = 1;
-        sensitivity = 1.25;
+        sensitivity = 0.25;
 
         kb_layout = "us";
         kb_model = "";
