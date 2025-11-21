@@ -22,7 +22,7 @@
         self.nixosModules.theme
         self.nixosModules.impermanence
         self.nixosModules.persist
-        self.nixosModules.sops
+        self.nixosModules.secrets
         self.nixosModules.user
         self.nixosModules.home-manager
         self.nixosModules.nvidia

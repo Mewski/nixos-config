@@ -7,8 +7,3 @@ creation_rules:
       - age:
           - *mewski
           - *zephyrus
-  - path_regex: secrets/zephyrus/[^/]+\.(yaml|json|env|ini)$
-    key_groups:
-      - age:
-          - *mewski
-          - *zephyrus
