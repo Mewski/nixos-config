@@ -1,7 +1,13 @@
 keys:
   - &zephyrus age1ryp5e29rqly3x5p9dugcrgf99fzp7kmggrw7ln43nc04gfpzhajqchum3c
+
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: secrets/common\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *zephyrus
+
+  - path_regex: secrets/zephyrus\.(yaml|json|env|ini)$
     key_groups:
       - age:
           - *zephyrus
