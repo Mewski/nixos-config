@@ -113,9 +113,5 @@
           mode = "0700";
         }
       ];
-
-      persist.files = [
-        ".local/share/fish/fish_history"
-      ];
     };
 }
