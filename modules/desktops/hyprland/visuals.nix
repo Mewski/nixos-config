@@ -68,6 +68,10 @@
           gaps_in = 4;
           gaps_out = 8;
         };
+
+        cursor = {
+          inactive_timeout = 3;
+        };
       };
     };
 }
