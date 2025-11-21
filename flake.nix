@@ -52,11 +52,6 @@
       url = "github:tinted-theming/schemes";
       flake = false;
     };
-
-    secrets = {
-      url = "path:./secrets";
-      flake = false;
-    };
   };
 
   outputs =

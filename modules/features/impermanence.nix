@@ -19,6 +19,7 @@
             "/var/lib/sbctl"
             "/var/lib/systemd/coredump"
             "/etc/NetworkManager/system-connections"
+            "/etc/ssh"
           ];
           files = [
             "/etc/machine-id"
