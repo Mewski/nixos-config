@@ -10,7 +10,6 @@
         users.${config.preferences.user.username} = {
           isNormalUser = true;
           description = "${config.preferences.user.username}";
-          # initialPassword = "mewski";
           hashedPasswordFile = config.sops.secrets."users/${config.preferences.user.username}/passwd".path;
           shell = pkgs.fish;
           extraGroups = [

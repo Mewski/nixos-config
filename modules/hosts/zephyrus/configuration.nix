@@ -65,6 +65,7 @@
     {
       imports = [
         self.homeModules.theme
+        self.homeModules.secrets
         self.homeModules.hyprland
         self.homeModules.fish
         self.homeModules.git
@@ -72,7 +73,6 @@
         self.homeModules.nixvim
         self.homeModules.zed-editor
         self.homeModules.zen-browser
-        self.homeModules.wakatime
       ];
 
       wayland.windowManager.hyprland.settings = {

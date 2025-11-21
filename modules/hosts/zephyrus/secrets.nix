@@ -1,30 +1,37 @@
 { inputs, ... }:
 {
-  flake.nixosModules.secrets =
-    { config, ... }:
-    {
-      imports = [
-        inputs.sops-nix.nixosModules.sops
-      ];
+  flake.nixosModules.secrets = {
+    imports = [
+      inputs.sops-nix.nixosModules.sops
+    ];
 
-      fileSystems."/etc/ssh".neededForBoot = true;
+    home-manager.sharedModules = [
+      inputs.sops-nix.homeManagerModules.sops
+    ];
 
-      sops = {
-        defaultSopsFile = ../../../secrets/zephyrus.yaml;
+    fileSystems."/etc/ssh".neededForBoot = true;
 
-        age.keyFile = "/home/${config.preferences.user.username}/.config/sops/age/keys.txt";
+    sops = {
+      defaultSopsFile = ../../../secrets/zephyrus.yaml;
 
-        age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    };
+  };
 
-        secrets.wakatime-api-key = {
+  flake.homeModules.secrets = {
+    sops = {
+      age.keyFile = ".config/sops/age/keys.txt";
+
+      secrets = {
+        wakatime-api-key = {
           sopsFile = ../../../secrets/common.yaml;
-          owner = config.preferences.user.username;
-          mode = "0400";
+          path = ".wakatime.cfg";
         };
       };
-
-      persist.files = [
-        ".config/sops/age/keys.txt"
-      ];
     };
+
+    persist.files = [
+      ".config/sops/age/keys.txt"
+    ];
+  };
 }
