@@ -5,6 +5,9 @@
 
       userSettings = {
         icon_theme = "Material Icon Theme";
+        features = {
+          edit_prediction_provider = "copilot";
+        };
       };
 
       mutableUserSettings = false;

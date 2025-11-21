@@ -5,6 +5,17 @@
       inputs.nixvim.homeModules.nixvim
     ];
 
-    programs.nixvim.enable = true;
+    programs.nixvim = {
+      enable = true;
+
+      defaultEditor = true;
+
+      opts = {
+        number = true;
+        relativenumber = true;
+
+        shiftwidth = 2;
+      };
+    };
   };
 }

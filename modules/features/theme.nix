@@ -124,12 +124,26 @@
       config = {
         scheme = "${inputs.tinted-theming-schemes}/base24/${config.preferences.theme}.yaml";
 
+        environment.variables.XCURSOR_SIZE = toString config.cursor.size;
+
         fonts.packages = [
           config.fonts.emoji.package
           config.fonts.monospace.package
           config.fonts.sansSerif.package
           config.fonts.serif.package
         ];
+      };
+    };
+
+  flake.homeModules.theme =
+    { cursor, ... }:
+    {
+      home.pointerCursor = {
+        name = cursor.name;
+        package = cursor.package;
+        size = cursor.size;
+        x11.enable = true;
+        gtk.enable = true;
       };
     };
 }

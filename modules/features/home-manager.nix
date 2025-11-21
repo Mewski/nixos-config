@@ -14,6 +14,7 @@
         extraSpecialArgs = {
           preferences = config.preferences;
           scheme = config.scheme;
+          cursor = config.cursor;
           fonts = config.fonts;
           opacity = config.opacity;
           polarity = config.polarity;

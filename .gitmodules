@@ -1,3 +1,3 @@
-[submodule "sops-secrets"]
-	path = sops-secrets
-	url = https://github.com/Mewski/sops-secrets.git
+[submodule "secrets"]
+	path = secrets
+	url = https://github.com/Mewski/secrets.git

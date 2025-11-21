@@ -4,6 +4,7 @@
     {
       wayland.windowManager.hyprland.settings = {
         bind = [
+          "SUPER, R, exec, ${lib.getExe pkgs.rofi} -show drun"
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
           "SUPER, B, exec, zen"
 

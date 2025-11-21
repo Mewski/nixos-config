@@ -69,6 +69,7 @@
       imports = [
         self.homeModules.theme
         self.homeModules.hyprland
+        self.homeModules.fish
         self.homeModules.git
         self.homeModules.kitty
         self.homeModules.nixvim
@@ -113,6 +114,10 @@
           directory = ".ssh";
           mode = "0700";
         }
+      ];
+
+      persist.files = [
+        ".wakatime.cfg"
       ];
     };
 }

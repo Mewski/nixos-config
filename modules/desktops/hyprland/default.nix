@@ -23,6 +23,11 @@
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
         ];
+
+        ecosystem = {
+          no_update_news = true;
+          no_donation_nag = true;
+        };
       };
     };
   };
