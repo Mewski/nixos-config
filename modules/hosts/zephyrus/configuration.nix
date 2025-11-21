@@ -72,6 +72,7 @@
         self.homeModules.nixvim
         self.homeModules.zed-editor
         self.homeModules.zen-browser
+        self.homeModules.wakatime
       ];
 
       wayland.windowManager.hyprland.settings = {
@@ -115,7 +116,6 @@
 
       persist.files = [
         ".local/share/fish/fish_history"
-        ".wakatime.cfg"
       ];
     };
 }

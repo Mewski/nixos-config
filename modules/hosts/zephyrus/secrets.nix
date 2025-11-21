@@ -15,6 +15,12 @@
         age.keyFile = "/home/${config.preferences.user.username}/.config/sops/age/keys.txt";
 
         age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
+        secrets.wakatime-api-key = {
+          sopsFile = ../../../secrets/common.yaml;
+          owner = config.preferences.user.username;
+          mode = "0400";
+        };
       };
 
       persist.files = [
