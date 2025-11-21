@@ -8,6 +8,8 @@
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
           "SUPER, B, exec, zen"
 
+          "SUPER SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region -z --clipboard-only"
+
           "SUPER, down, movefocus, d"
           "SUPER, left, movefocus, l"
           "SUPER, right, movefocus, r"
@@ -45,9 +47,6 @@
           "SUPER SHIFT, 7, movetoworkspace, 7"
           "SUPER SHIFT, 8, movetoworkspace, 8"
           "SUPER SHIFT, 9, movetoworkspace, 9"
-
-          "SUPER, S, togglespecialworkspace, magic"
-          "SUPER SHIFT, S, movetoworkspace, special:magic"
 
           "SUPER, mouse_down, workspace, e+1"
           "SUPER, mouse_up, workspace, e-1"
