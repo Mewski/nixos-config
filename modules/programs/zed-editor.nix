@@ -18,6 +18,10 @@
         "material-icon-theme"
         "nix"
         "wakatime"
+        "git-firefly"
+        "make"
+        "dockerfile"
+        "docker-compose"
       ];
     };
 

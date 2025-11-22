@@ -20,6 +20,7 @@
 
         self.nixosModules.preferences
         self.nixosModules.theme
+        self.nixosModules.cachix
         self.nixosModules.impermanence
         self.nixosModules.persist
         self.nixosModules.secrets
