@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ self, inputs, ... }:
 {
   flake.nixosModules.hyprland =
     { pkgs, ... }:
@@ -15,20 +15,61 @@
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
     };
 
-  flake.homeModules.hyprland = {
-    wayland.windowManager.hyprland = {
-      enable = true;
+  flake.homeModules.hyprland =
+    { lib, pkgs, ... }:
+    {
+      imports = [
+        self.homeModules.waybar
+      ];
 
-      settings = {
-        env = [
-          "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        ];
+      programs.hyprlock.enable = true;
 
-        ecosystem = {
-          no_update_news = true;
-          no_donation_nag = true;
+      services.hypridle = {
+        enable = true;
+
+        settings = {
+          general = {
+            after_sleep_cmd = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
+            ignore_dbus_inhibit = false;
+            lock_cmd = "${lib.getExe pkgs.hyprlock}";
+          };
+
+          listener = [
+            {
+              timeout = 240;
+              on-timeout = "${lib.getExe pkgs.hyprlock}";
+            }
+            {
+              timeout = 240;
+              on-timeout = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms off";
+              on-resume = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
+            }
+            {
+              timeout = 900;
+              on-timeout = "systemctl suspend";
+            }
+          ];
+        };
+      };
+
+      wayland.windowManager.hyprland = {
+        enable = true;
+
+        settings = {
+          exec-once = [
+            "waybar"
+            "hypridle"
+          ];
+
+          env = [
+            "ELECTRON_OZONE_PLATFORM_HINT,auto"
+          ];
+
+          ecosystem = {
+            no_update_news = true;
+            no_donation_nag = true;
+          };
         };
       };
     };
-  };
 }

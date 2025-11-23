@@ -6,6 +6,7 @@
         bind = [
           "SUPER, R, exec, ${lib.getExe pkgs.rofi} -show drun"
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
+          "SUPER, L, exec, ${lib.getExe pkgs.hyprlock}"
           "SUPER, B, exec, zen"
 
           "SUPER SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region -z --clipboard-only"

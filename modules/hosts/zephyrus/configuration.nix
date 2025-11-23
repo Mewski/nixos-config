@@ -97,6 +97,14 @@
         ];
       };
 
+      services.hypridle.settings.listener = [
+        {
+          timeout = 120;
+          on-timeout = "${lib.getExe pkgs.brightnessctl} -d intel_backlight -s set 25";
+          on-resume = "${lib.getExe pkgs.brightnessctl} -d intel_backlight -r";
+        }
+      ];
+
       persist.directories = [
         "Downloads"
         "Music"
