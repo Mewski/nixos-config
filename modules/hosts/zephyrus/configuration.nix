@@ -18,18 +18,9 @@
 
         self.diskoConfigurations.zephyrus
 
-        self.nixosModules.preferences
-        self.nixosModules.theme
-        self.nixosModules.impermanence
-        self.nixosModules.persist
-        self.nixosModules.user
-        self.nixosModules.home-manager
-        self.nixosModules.nvidia
         self.nixosModules.desktop
-        self.nixosModules.hyprland
-        self.nixosModules.nix
-        self.nixosModules.pipewire
-        self.nixosModules.fish
+        self.nixosModules.impermanence
+        self.nixosModules.nvidia
       ];
 
       boot = {
@@ -62,17 +53,7 @@
   flake.homeModules.zephyrus =
     { pkgs, lib, ... }:
     {
-      imports = [
-        self.homeModules.theme
-        self.homeModules.hyprland
-        self.homeModules.fish
-        self.homeModules.git
-        self.homeModules.kitty
-        self.homeModules.nixvim
-        self.homeModules.nixcord
-        self.homeModules.zed-editor
-        self.homeModules.zen-browser
-      ];
+      imports = [ self.homeModules.desktop ];
 
       wayland.windowManager.hyprland.settings = {
         monitor = [

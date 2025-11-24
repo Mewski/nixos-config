@@ -1,9 +1,7 @@
 { inputs, ... }:
 {
   flake.nixosModules.crosshair = {
-    imports = [
-      inputs.sops-nix.nixosModules.sops
-    ];
+    imports = [ inputs.sops-nix.nixosModules.sops ];
 
     home-manager.sharedModules = [
       inputs.sops-nix.homeManagerModules.sops

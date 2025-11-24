@@ -3,9 +3,7 @@
   flake.nixosModules.impermanence =
     { config, lib, ... }:
     {
-      imports = [
-        inputs.impermanence.nixosModules.impermanence
-      ];
+      imports = [ inputs.impermanence.nixosModules.impermanence ];
 
       fileSystems."/persist".neededForBoot = true;
 

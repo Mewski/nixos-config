@@ -8,9 +8,7 @@
       ...
     }:
     {
-      imports = [
-        inputs.base16.nixosModule
-      ];
+      imports = [ inputs.base16.nixosModule ];
 
       options = {
         polarity = lib.mkOption {

@@ -1,4 +1,4 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.hyprland =
     { pkgs, ... }:
@@ -18,10 +18,6 @@
   flake.homeModules.hyprland =
     { lib, pkgs, ... }:
     {
-      imports = [
-        self.homeModules.waybar
-      ];
-
       programs.hyprlock.enable = true;
 
       services.hypridle = {

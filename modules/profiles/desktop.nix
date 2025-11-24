@@ -1,5 +1,18 @@
+{ self, ... }:
 {
   flake.nixosModules.desktop = {
+    imports = [
+      self.nixosModules.preferences
+      self.nixosModules.theme
+      self.nixosModules.persist
+      self.nixosModules.user
+      self.nixosModules.home-manager
+      self.nixosModules.hyprland
+      self.nixosModules.nix
+      self.nixosModules.pipewire
+      self.nixosModules.fish
+    ];
+
     hardware = {
       enableAllFirmware = true;
 
@@ -36,5 +49,20 @@
     services.upower.enable = true;
 
     services.gnome.gnome-keyring.enable = true;
+  };
+
+  flake.homeModules.desktop = {
+    imports = [
+      self.homeModules.theme
+      self.homeModules.hyprland
+      self.homeModules.waybar
+      self.homeModules.fish
+      self.homeModules.git
+      self.homeModules.kitty
+      self.homeModules.nixvim
+      self.homeModules.nixcord
+      self.homeModules.zed-editor
+      self.homeModules.zen-browser
+    ];
   };
 }
