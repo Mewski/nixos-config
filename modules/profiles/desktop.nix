@@ -4,7 +4,6 @@
     imports = [
       self.nixosModules.preferences
       self.nixosModules.theme
-      self.nixosModules.persist
       self.nixosModules.user
       self.nixosModules.home-manager
       self.nixosModules.hyprland
