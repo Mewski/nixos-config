@@ -19,12 +19,10 @@
         };
 
         sharedModules = [
-          self.homeModules.persist
+          self.homeModules.${config.networking.hostName}
         ];
 
         users.${config.preferences.user.username} = {
-          imports = [ self.homeModules.zephyrus ];
-
           home.username = "${config.preferences.user.username}";
           home.homeDirectory = "/home/${config.preferences.user.username}";
 

@@ -63,6 +63,7 @@
       self.homeModules.nixcord
       self.homeModules.zed-editor
       self.homeModules.zen-browser
+      self.homeModules.yazi
     ];
   };
 }
