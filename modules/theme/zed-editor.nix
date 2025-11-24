@@ -12,11 +12,12 @@
         enable = true;
 
         userSettings = {
-          "buffer_font_family" = fonts.monospace.name;
-          "buffer_font_size" = fonts.sizes.terminal * 4.0 / 3.0;
-          "ui_font_family" = fonts.sansSerif.name;
-          "ui_font_size" = fonts.sizes.application * 4.0 / 3.0;
-          "theme" = "Base16 ${scheme.scheme-name}";
+          buffer_font_family = fonts.monospace.name;
+          buffer_font_size = fonts.sizes.terminal * 4.0 / 3.0;
+          ui_font_family = fonts.sansSerif.name;
+          ui_font_size = fonts.sizes.application * 4.0 / 3.0;
+
+          theme = "Base16 ${scheme.scheme-name}";
         };
 
         themes = {

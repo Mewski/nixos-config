@@ -72,6 +72,7 @@
         self.homeModules.git
         self.homeModules.kitty
         self.homeModules.nixvim
+        self.homeModules.nixcord
         self.homeModules.zed-editor
         self.homeModules.zen-browser
       ];
@@ -99,7 +100,7 @@
 
       services.hypridle.settings.listener = [
         {
-          timeout = 120;
+          timeout = 180;
           on-timeout = "${lib.getExe pkgs.brightnessctl} -d intel_backlight -s set 25";
           on-resume = "${lib.getExe pkgs.brightnessctl} -d intel_backlight -r";
         }
@@ -112,7 +113,7 @@
         "Documents"
         "Videos"
         "Projects"
-        "nixos-config"
+        ".nixos-config"
         {
           directory = ".local/share/keyrings";
           mode = "0700";

@@ -5,7 +5,14 @@
 
       userSettings = {
         icon_theme = "Material Icon Theme";
+        vim_mode = true;
+
+        telemetry = {
+          metrics = false;
+        };
+
         features = {
+          copilot = false;
           edit_prediction_provider = "copilot";
         };
       };
