@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.secrets = {
+  flake.nixosModules.zephyrus = {
     imports = [
       inputs.sops-nix.nixosModules.sops
     ];
@@ -18,7 +18,7 @@
     };
   };
 
-  flake.homeModules.secrets = {
+  flake.homeModules.zephyrus = {
     sops = {
       age.keyFile = ".config/sops/age/keys.txt";
 

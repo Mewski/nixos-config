@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.zephyrus =
+  flake.nixosModules.crosshair =
     {
       config,
       lib,

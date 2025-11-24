@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.cachix = {
+  flake.nixosModules.crosshair = {
     nix.settings = {
       substituters = [
         "https://nix-community.cachix.org"

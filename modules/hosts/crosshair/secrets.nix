@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.secrets = {
+  flake.nixosModules.crosshair = {
     imports = [
       inputs.sops-nix.nixosModules.sops
     ];
@@ -12,13 +12,13 @@
     fileSystems."/etc/ssh".neededForBoot = true;
 
     sops = {
-      defaultSopsFile = ../../../secrets/zephyrus.yaml;
+      defaultSopsFile = ../../../secrets/crosshair.yaml;
 
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     };
   };
 
-  flake.homeModules.secrets = {
+  flake.homeModules.crosshair = {
     sops = {
       age.keyFile = ".config/sops/age/keys.txt";
 

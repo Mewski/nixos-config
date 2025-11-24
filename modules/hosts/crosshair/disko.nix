@@ -1,5 +1,5 @@
 {
-  flake.diskoConfigurations.zephyrus = {
+  flake.diskoConfigurations.crosshair = {
     disko.devices = {
       disk.main = {
         type = "disk";

@@ -19,10 +19,8 @@
 
         self.nixosModules.preferences
         self.nixosModules.theme
-        self.nixosModules.cachix
         self.nixosModules.impermanence
         self.nixosModules.persist
-        self.nixosModules.secrets
         self.nixosModules.user
         self.nixosModules.home-manager
         self.nixosModules.nvidia
@@ -53,6 +51,8 @@
 
       services.blueman.enable = true;
 
+      services.fstrim.enable = true;
+
       environment.systemPackages = with pkgs; [
         sbctl
       ];
@@ -63,7 +63,6 @@
   flake.homeModules.crosshair = {
     imports = [
       self.homeModules.theme
-      self.homeModules.secrets
       self.homeModules.hyprland
       self.homeModules.fish
       self.homeModules.git
