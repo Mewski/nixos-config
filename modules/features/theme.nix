@@ -124,11 +124,13 @@
 
         environment.variables.XCURSOR_SIZE = toString config.cursor.size;
 
-        fonts.packages = [
+        fonts.packages = with pkgs; [
           config.fonts.emoji.package
           config.fonts.monospace.package
           config.fonts.sansSerif.package
           config.fonts.serif.package
+
+          noto-fonts
         ];
       };
     };
