@@ -12,7 +12,7 @@
     { pkgs, ... }:
     {
       imports = [
-        inputs.disko.nixosModules.disko
+        inputs.disko.nixosModules.default
         inputs.lanzaboote.nixosModules.lanzaboote
 
         self.diskoConfigurations.crosshair

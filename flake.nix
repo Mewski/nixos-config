@@ -63,6 +63,7 @@
     inputs@{ flake-parts, import-tree, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
+        inputs.disko.flakeModules.default
         inputs.home-manager.flakeModules.home-manager
 
         (import-tree ./modules)
