@@ -63,6 +63,7 @@
       self.homeModules.zed-editor
       self.homeModules.zen-browser
       self.homeModules.yazi
+      self.homeModules.btop
     ];
   };
 }

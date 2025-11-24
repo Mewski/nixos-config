@@ -7,10 +7,14 @@
           "SUPER, R, exec, ${lib.getExe pkgs.rofi} -show drun"
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
           "SUPER, L, exec, ${lib.getExe pkgs.hyprlock}"
+          "SUPER, E, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.fish} -c ${lib.getExe pkgs.yazi}"
+          "SUPER, I, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.btop}"
           "SUPER, D, exec, discord"
           "SUPER, B, exec, zen"
 
           "SUPER SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region -z --clipboard-only"
+
+          "SUPER SHIFT, M, exit,"
 
           "SUPER, down, movefocus, d"
           "SUPER, left, movefocus, l"
@@ -19,7 +23,6 @@
 
           "SUPER, C, killactive,"
           "SUPER, J, togglesplit,"
-          "SUPER, M, exit,"
           "SUPER, P, pseudo,"
           "SUPER, V, togglefloating,"
 
