@@ -35,6 +35,12 @@
             installation_mode = "force_installed";
           };
         };
+
+        profiles.default.settings = {
+          "zen.widget.linux.transparency" = true;
+          "zen.view.grey-out-inactive-windows" = false;
+          "zen.theme.content-element-separation" = 0;
+        };
       };
     };
 

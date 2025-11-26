@@ -15,54 +15,25 @@
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
     };
 
-  flake.homeModules.hyprland =
-    { lib, pkgs, ... }:
-    {
-      programs.hyprlock.enable = true;
+  flake.homeModules.hyprland = {
+    wayland.windowManager.hyprland = {
+      enable = true;
 
-      services.hypridle = {
-        enable = true;
+      settings = {
+        exec-once = [
+          "waybar"
+          "hypridle"
+        ];
 
-        settings = {
-          general = {
-            before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
-            after_sleep_cmd = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
-            ignore_dbus_inhibit = false;
-            lock_cmd = "${lib.getExe pkgs.hyprlock}";
-          };
+        env = [
+          "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        ];
 
-          listener = [
-            {
-              timeout = 190;
-              on-timeout = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms off";
-              on-resume = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
-            }
-            {
-              timeout = 195;
-              on-timeout = "systemctl suspend";
-            }
-          ];
-        };
-      };
-
-      wayland.windowManager.hyprland = {
-        enable = true;
-
-        settings = {
-          exec-once = [
-            "waybar"
-            "hypridle"
-          ];
-
-          env = [
-            "ELECTRON_OZONE_PLATFORM_HINT,auto"
-          ];
-
-          ecosystem = {
-            no_update_news = true;
-            no_donation_nag = true;
-          };
+        ecosystem = {
+          no_update_news = true;
+          no_donation_nag = true;
         };
       };
     };
+  };
 }

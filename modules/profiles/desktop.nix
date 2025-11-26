@@ -64,6 +64,8 @@
       self.homeModules.zen-browser
       self.homeModules.yazi
       self.homeModules.btop
+      self.homeModules.hypridle
+      self.homeModules.hyprlock
     ];
   };
 }

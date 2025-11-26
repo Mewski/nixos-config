@@ -110,7 +110,7 @@
           };
           terminal = lib.mkOption {
             type = lib.types.float;
-            default = 0.8;
+            default = 0.7;
           };
           popups = lib.mkOption {
             type = lib.types.float;

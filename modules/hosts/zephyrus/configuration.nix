@@ -57,7 +57,7 @@
 
       wayland.windowManager.hyprland.settings = {
         monitor = [
-          "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10"
+          "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 0, bitdepth, 10"
         ];
 
         env = [
