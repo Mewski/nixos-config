@@ -34,7 +34,7 @@
 
           inputbar = {
             background-color = mkLiteral "rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${
-              toString (opacity.desktop * 0.5)
+              toString (opacity.desktop * 0.8)
             })";
             border-radius = mkLiteral "4px";
             padding = mkLiteral "8px";
@@ -44,6 +44,7 @@
           entry = {
             placeholder = "Search...";
             placeholder-color = mkLiteral "#${scheme.base03}";
+            font = "${fonts.sansSerif.name} ${toString fonts.sizes.desktop}";
           };
 
           listview = {
