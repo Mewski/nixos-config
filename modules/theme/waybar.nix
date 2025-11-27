@@ -3,6 +3,7 @@
     {
       fonts,
       scheme,
+      opacity,
       ...
     }:
     {
@@ -13,6 +14,7 @@
           border: none;
           border-radius: 0;
           min-height: 0;
+          text-shadow: none;
         }
 
         window#waybar {
@@ -39,43 +41,36 @@
           margin: 0 4px;
         }
 
-        #workspaces,
-        #window,
         #clock,
         #battery,
         #cpu,
         #memory,
-        #disk,
-        #temperature,
-        #backlight,
         #network,
+        #bluetooth,
         #pulseaudio,
-        #wireplumber,
-        #tray,
-        #mode,
-        #idle_inhibitor,
-        #mpd,
-        #custom-media,
-        #custom-power {
-          background: #${scheme.base01};
+        #tray {
+          background: rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${toString opacity.desktop});
           padding: 4px 12px;
-          border-radius: 12px;
+          border-radius: 8px;
         }
 
         #workspaces {
-          padding: 4px 6px;
+          background: rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${toString opacity.desktop});
+          padding: 4px 4px;
+          border-radius: 8px;
         }
 
         #workspaces button {
           background: transparent;
           color: #${scheme.base05};
           padding: 0 6px;
-          border-radius: 8px;
+          border-radius: 4px;
           margin: 0;
         }
 
         #workspaces button:hover {
           background: #${scheme.base02};
+          box-shadow: none;
         }
 
         #workspaces button.active {
@@ -86,10 +81,6 @@
         #workspaces button.urgent {
           background: #${scheme.base08};
           color: #${scheme.base00};
-        }
-
-        #window {
-          color: #${scheme.base05};
         }
 
         #clock {
@@ -117,71 +108,35 @@
         }
 
         #memory {
-          color: #${scheme.base0A};
-        }
-
-        #disk {
-          color: #${scheme.base0C};
-        }
-
-        #temperature {
-          color: #${scheme.base0B};
-        }
-
-        #temperature.critical {
-          color: #${scheme.base08};
-        }
-
-        #backlight {
-          color: #${scheme.base0A};
+          color: #${scheme.base09};
         }
 
         #network {
-          color: #${scheme.base0D};
+          color: #${scheme.base0C};
         }
 
         #network.disconnected {
-          color: #${scheme.base08};
+          color: #${scheme.base03};
         }
 
-        #pulseaudio,
-        #wireplumber {
+        #bluetooth {
+          color: #${scheme.base0D};
+        }
+
+        #bluetooth.disabled {
+          color: #${scheme.base03};
+        }
+
+        #pulseaudio {
           color: #${scheme.base0E};
         }
 
-        #pulseaudio.muted,
-        #wireplumber.muted {
+        #pulseaudio.muted {
           color: #${scheme.base03};
         }
 
         #tray {
           padding: 4px 8px;
-        }
-
-        #tray > .passive {
-          -gtk-icon-effect: dim;
-        }
-
-        #tray > .needs-attention {
-          -gtk-icon-effect: highlight;
-        }
-
-        #idle_inhibitor {
-          color: #${scheme.base0C};
-        }
-
-        #idle_inhibitor.activated {
-          color: #${scheme.base08};
-        }
-
-        #mode {
-          background: #${scheme.base0A};
-          color: #${scheme.base00};
-        }
-
-        #mpd,
-        #custom-media {
-          color: #${scheme.base0B};
         }
       '';
     };

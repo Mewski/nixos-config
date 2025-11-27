@@ -67,6 +67,18 @@
           "NVD_BACKEND,direct"
         ];
 
+        input.touchpad = {
+          clickfinger_behavior = true;
+          disable_while_typing = true;
+          natural_scroll = true;
+          scroll_factor = 0.2;
+        };
+
+        device = {
+          name = "asup1207:00-093a:3012-touchpad";
+          sensitivity = 0.3;
+        };
+
         bindel = [
           ",XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1-"
           ",XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1+"

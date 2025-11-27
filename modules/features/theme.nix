@@ -24,10 +24,12 @@
             type = lib.types.str;
             default = "Bibata-Modern-Ice";
           };
+
           package = lib.mkOption {
             type = lib.types.package;
             default = pkgs.bibata-cursors;
           };
+
           size = lib.mkOption {
             type = lib.types.int;
             default = 24;
@@ -40,6 +42,7 @@
               type = lib.types.str;
               default = "Noto Color Emoji";
             };
+
             package = lib.mkOption {
               type = lib.types.package;
               default = pkgs.noto-fonts-color-emoji;
@@ -51,6 +54,7 @@
               type = lib.types.str;
               default = "FiraCode Nerd Font Mono";
             };
+
             package = lib.mkOption {
               type = lib.types.package;
               default = pkgs.nerd-fonts.fira-code;
@@ -62,6 +66,7 @@
               type = lib.types.str;
               default = "Inter";
             };
+
             package = lib.mkOption {
               type = lib.types.package;
               default = pkgs.inter;
@@ -73,6 +78,7 @@
               type = lib.types.str;
               default = "Source Serif Pro";
             };
+
             package = lib.mkOption {
               type = lib.types.package;
               default = pkgs.source-serif;
@@ -84,14 +90,17 @@
               type = lib.types.int;
               default = 10;
             };
+
             application = lib.mkOption {
               type = lib.types.int;
               default = 12;
             };
+
             terminal = lib.mkOption {
               type = lib.types.int;
               default = 12;
             };
+
             popups = lib.mkOption {
               type = lib.types.int;
               default = 10;
@@ -102,16 +111,19 @@
         opacity = {
           desktop = lib.mkOption {
             type = lib.types.float;
-            default = 1.0;
+            default = 0.7;
           };
+
           application = lib.mkOption {
             type = lib.types.float;
             default = 1.0;
           };
+
           terminal = lib.mkOption {
             type = lib.types.float;
             default = 0.7;
           };
+
           popups = lib.mkOption {
             type = lib.types.float;
             default = 1.0;

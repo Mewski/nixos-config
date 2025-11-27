@@ -1,20 +1,23 @@
 {
   flake.homeModules.waybar =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       programs.waybar = {
         enable = true;
+
         settings = {
           mainBar = {
             margin-top = 8;
             margin-left = 8;
             margin-right = 8;
-            spacing = 5;
+            spacing = 6;
             modules-left = [ "hyprland/workspaces" ];
             modules-center = [ "tray" ];
             modules-right = [
               "network"
+              "bluetooth"
               "cpu"
+              "memory"
               "pulseaudio"
               "battery"
               "clock"
@@ -34,8 +37,8 @@
             };
 
             battery = {
-              format = "{icon} {capacity}%";
-              format-charging = "󰂄 {capacity}%";
+              format = "{icon}  {capacity}%";
+              format-charging = "󰂄  {capacity}%";
               format-icons = [
                 "󰂃"
                 "󰁺"
@@ -55,13 +58,28 @@
               format = "󰍛  {usage}%";
             };
 
+            memory = {
+              format = "󰘚  {}%";
+            };
+
             network = {
               format-wifi = "󰖩  {signalStrength}%";
               format-ethernet = "󰈀";
               format-disconnected = "󰖪";
-              tooltip-format-wifi = "{essid}\n{ipaddr}/{cidr}\nGateway: {gwaddr}";
-              tooltip-format-ethernet = "{ifname}\n{ipaddr}/{cidr}";
+              tooltip-format-wifi = "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";
+              tooltip-format-ethernet = "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";
               tooltip-format-disconnected = "Disconnected";
+              on-click = "${lib.getExe pkgs.kitty} ${lib.getExe' pkgs.networkmanager "nmtui"}";
+            };
+
+            bluetooth = {
+              format = "󰂯";
+              format-disabled = "󰂲";
+              format-connected = "󰂱  {num_connections}";
+              tooltip-format = "Controller: {controller_alias}\nAddress: {controller_address}";
+              tooltip-format-connected = "Controller: {controller_alias}\nAddress: {controller_address}\n\n{device_enumerate}";
+              tooltip-format-enumerate-connected = "Device: {device_alias}\nAddress: {device_address}";
+              on-click = lib.getExe' pkgs.blueman "blueman-manager";
             };
 
             pulseaudio = {
@@ -74,7 +92,7 @@
                   "󰕾"
                 ];
               };
-              on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+              on-click = lib.getExe' pkgs.pavucontrol "pavucontrol";
             };
           };
         };

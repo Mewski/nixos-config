@@ -63,9 +63,10 @@
         gaps_out = 8;
       };
 
-      cursor = {
-        inactive_timeout = 3;
-      };
+      layerrule = [
+        "blur, waybar"
+        "ignorealpha 0.0, waybar"
+      ];
     };
   };
 }
