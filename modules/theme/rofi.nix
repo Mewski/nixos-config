@@ -1,0 +1,3 @@
+{
+  flake.homeModules.theme = { };
+}

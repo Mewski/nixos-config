@@ -66,6 +66,7 @@
       self.homeModules.btop
       self.homeModules.hypridle
       self.homeModules.hyprlock
+      self.homeModules.rofi
     ];
   };
 }

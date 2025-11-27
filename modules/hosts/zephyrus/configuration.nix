@@ -76,7 +76,7 @@
 
         device = {
           name = "asup1207:00-093a:3012-touchpad";
-          sensitivity = 0.3;
+          sensitivity = 0.5;
         };
 
         bindel = [
