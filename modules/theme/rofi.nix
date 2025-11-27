@@ -33,7 +33,9 @@
           };
 
           inputbar = {
-            background-color = mkLiteral "rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${toString opacity.desktop})";
+            background-color = mkLiteral "rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${
+              toString (opacity.desktop * 0.5)
+            })";
             border-radius = mkLiteral "4px";
             padding = mkLiteral "8px";
             children = mkLiteral "[entry]";
@@ -71,7 +73,7 @@
             background-color = mkLiteral "transparent";
             text-color = mkLiteral "inherit";
             vertical-align = mkLiteral "0.5";
-            font = "${fonts.sansSerif.name} Medium ${toString fonts.sizes.desktop}";
+            font = "${fonts.sansSerif.name} ${toString fonts.sizes.desktop}";
           };
 
           "element-icon" = {
