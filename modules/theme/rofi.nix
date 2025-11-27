@@ -44,7 +44,7 @@
           entry = {
             placeholder = "Search...";
             placeholder-color = mkLiteral "#${scheme.base03}";
-            font = "${fonts.sansSerif.name} ${toString fonts.sizes.desktop}";
+            font = "${fonts.sansSerif.name} ${toString (fonts.sizes.desktop * 3.0 / 2.5)}";
           };
 
           listview = {

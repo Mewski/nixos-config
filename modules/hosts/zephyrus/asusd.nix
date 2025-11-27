@@ -126,56 +126,6 @@
           armoury_settings: {},
         )
       '';
-
-      fanCurvesConfig.text = ''
-        (
-          profiles: (
-            balanced: [
-              (
-                fan: CPU,
-                pwm: (15, 15, 48, 61, 94, 114, 147, 163),
-                temp: (59, 64, 68, 72, 75, 78, 81, 84),
-                enabled: false,
-              ),
-              (
-                fan: GPU,
-                pwm: (25, 40, 40, 48, 76, 94, 117, 140),
-                temp: (51, 54, 57, 60, 63, 67, 72, 77),
-                enabled: false,
-              ),
-            ],
-            performance: [
-              (
-                fan: CPU,
-                pwm: (48, 61, 94, 114, 147, 163, 216, 216),
-                temp: (55, 59, 63, 67, 71, 76, 82, 82),
-                enabled: false,
-              ),
-              (
-                fan: GPU,
-                pwm: (40, 48, 76, 94, 117, 140, 181, 181),
-                temp: (46, 51, 56, 61, 66, 71, 76, 76),
-                enabled: false,
-              ),
-            ],
-            quiet: [
-              (
-                fan: CPU,
-                pwm: (2, 15, 15, 48, 81, 102, 102, 102),
-                temp: (58, 62, 66, 70, 74, 78, 78, 78),
-                enabled: false,
-              ),
-              (
-                fan: GPU,
-                pwm: (2, 25, 40, 40, 66, 76, 76, 76),
-                temp: (53, 57, 61, 65, 69, 73, 73, 73),
-                enabled: false,
-              ),
-            ],
-            custom: [],
-          ),
-        )
-      '';
     };
 
     environment.etc."asusd/slash.ron" = {

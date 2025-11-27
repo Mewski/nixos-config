@@ -15,25 +15,29 @@
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
     };
 
-  flake.homeModules.hyprland = {
-    wayland.windowManager.hyprland = {
-      enable = true;
+  flake.homeModules.hyprland =
+    { pkgs, ... }:
+    {
+      wayland.windowManager.hyprland = {
+        enable = true;
 
-      settings = {
-        exec-once = [
-          "waybar"
-          "hypridle"
-        ];
+        settings = {
+          exec-once = [
+            "waybar"
+            "hypridle"
+          ];
 
-        env = [
-          "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        ];
+          env = [
+            "ELECTRON_OZONE_PLATFORM_HINT,auto"
+          ];
 
-        ecosystem = {
-          no_update_news = true;
-          no_donation_nag = true;
+          ecosystem = {
+            no_update_news = true;
+            no_donation_nag = true;
+          };
         };
       };
+
+      home.packages = with pkgs; [ wl-clipboard ];
     };
-  };
 }

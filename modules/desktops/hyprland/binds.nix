@@ -12,7 +12,9 @@
           "SUPER, D, exec, discord"
           "SUPER, B, exec, zen"
 
-          "SUPER SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region -z --clipboard-only"
+          "SUPER SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region -z -o ~/Pictures/Screenshots"
+          "SUPER ALT, S, exec, ${lib.getExe pkgs.hyprshot} -m window -z -o ~/Pictures/Screenshots"
+          "SUPER CONTROL_L, S, exec, ${lib.getExe pkgs.hyprshot} -m output -z -o ~/Pictures/Screenshots"
 
           "SUPER SHIFT, M, exit,"
 
