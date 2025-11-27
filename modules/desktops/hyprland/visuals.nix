@@ -66,6 +66,8 @@
       layerrule = [
         "blur, waybar"
         "ignorealpha 0.0, waybar"
+        "blur, rofi"
+        "ignorealpha 0.0, rofi"
       ];
     };
   };
