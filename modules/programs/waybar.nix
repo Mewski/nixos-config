@@ -33,7 +33,7 @@
               format = "󰃰  {:%H:%M:%S}";
               format-alt = "󰃰  {:%Y-%m-%d}";
               interval = 1;
-              tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+              tooltip-format = "<tt><small>{calendar}</small></tt>";
             };
 
             battery = {
