@@ -108,7 +108,7 @@
 
       asusdConfig.text = ''
         (
-          charge_control_end_threshold: 80,
+          charge_control_end_threshold: 100,
           disable_nvidia_powerd_on_battery: true,
           ac_command: "",
           bat_command: "",

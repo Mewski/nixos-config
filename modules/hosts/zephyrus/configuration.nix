@@ -57,7 +57,7 @@
 
       wayland.windowManager.hyprland.settings = {
         monitor = [
-          "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 0, bitdepth, 10"
+          "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10"
         ];
 
         env = [
@@ -80,11 +80,11 @@
         };
 
         bindel = [
-          ",XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1-"
-          ",XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1+"
+          ",XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1- && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:kbd -h int:value:$(${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight -m | cut -d, -f4 | tr -d '%') 'Keyboard Brightness'"
+          ",XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1+ && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:kbd -h int:value:$(${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight -m | cut -d, -f4 | tr -d '%') 'Keyboard Brightness'"
 
-          ",XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%-"
-          ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight -e4 -n2 set 5%+"
+          ",XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight set 10%- && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:brightness -h int:value:$(${lib.getExe pkgs.brightnessctl} -d intel_backlight -m | cut -d, -f4 | tr -d '%') 'Display Brightness'"
+          ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight set 10%+ && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:brightness -h int:value:$(${lib.getExe pkgs.brightnessctl} -d intel_backlight -m | cut -d, -f4 | tr -d '%') 'Display Brightness'"
         ];
       };
 

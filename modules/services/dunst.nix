@@ -59,6 +59,12 @@
         urgency_critical = {
           timeout = 0;
         };
+
+        osd = {
+          appname = "osd";
+          format = "<b>%s</b>";
+          alignment = "center";
+        };
       };
     };
   };

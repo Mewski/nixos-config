@@ -50,24 +50,31 @@
     services.gnome.gnome-keyring.enable = true;
   };
 
-  flake.homeModules.desktop = {
-    imports = [
-      self.homeModules.theme
-      self.homeModules.hyprland
-      self.homeModules.waybar
-      self.homeModules.fish
-      self.homeModules.git
-      self.homeModules.kitty
-      self.homeModules.nixvim
-      self.homeModules.nixcord
-      self.homeModules.zed-editor
-      self.homeModules.zen-browser
-      self.homeModules.yazi
-      self.homeModules.btop
-      self.homeModules.hypridle
-      self.homeModules.hyprlock
-      self.homeModules.rofi
-      self.homeModules.dunst
-    ];
-  };
+  flake.homeModules.desktop =
+    { pkgs, ... }:
+    {
+      imports = [
+        self.homeModules.theme
+        self.homeModules.hyprland
+        self.homeModules.waybar
+        self.homeModules.fish
+        self.homeModules.git
+        self.homeModules.kitty
+        self.homeModules.nixvim
+        self.homeModules.nixcord
+        self.homeModules.zed-editor
+        self.homeModules.zen-browser
+        self.homeModules.yazi
+        self.homeModules.btop
+        self.homeModules.hypridle
+        self.homeModules.hyprlock
+        self.homeModules.rofi
+        self.homeModules.dunst
+      ];
+
+      home.packages = with pkgs; [
+        bitwarden-desktop
+        wl-clipboard
+      ];
+    };
 }

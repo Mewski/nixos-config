@@ -12,8 +12,8 @@
         };
 
         features = {
-          copilot = false;
-          edit_prediction_provider = "copilot";
+          copilot = true;
+          edit_prediction_provider = "zed";
         };
       };
 
@@ -29,11 +29,13 @@
         "make"
         "dockerfile"
         "docker-compose"
+        "toml"
       ];
     };
 
     persist.directories = [
       ".local/share/zed"
+      ".claude"
     ];
   };
 }

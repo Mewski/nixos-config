@@ -7,6 +7,7 @@
           "SUPER, R, exec, ${lib.getExe pkgs.rofi} -show drun"
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
           "SUPER, L, exec, ${lib.getExe pkgs.hyprlock}"
+          "SUPER, U, exec, ${lib.getExe pkgs.bitwarden-desktop}"
           "SUPER, E, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.fish} -c ${lib.getExe pkgs.yazi}"
           "SUPER, I, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.btop}"
           "SUPER, D, exec, discord"
@@ -16,7 +17,7 @@
           "SUPER ALT, S, exec, ${lib.getExe pkgs.hyprshot} -m window -z -o ~/Pictures/Screenshots"
           "SUPER CONTROL_L, S, exec, ${lib.getExe pkgs.hyprshot} -m output -z -o ~/Pictures/Screenshots"
 
-          "SUPER SHIFT, M, exit,"
+          "SUPER, M, exit,"
 
           "SUPER, down, movefocus, d"
           "SUPER, left, movefocus, l"
@@ -60,10 +61,10 @@
         ];
 
         bindel = [
-          ",XF86AudioLowerVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ",XF86AudioMicMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-          ",XF86AudioMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ",XF86AudioRaiseVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+          ",XF86AudioLowerVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:volume -h int:value:$(${lib.getExe' pkgs.wireplumber "wpctl"} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}') 'System Volume'"
+          ",XF86AudioMicMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:mic \"Mic $(${lib.getExe' pkgs.wireplumber "wpctl"} get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo Muted || echo Unmuted)\""
+          ",XF86AudioMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:volume -h int:value:$(${lib.getExe' pkgs.wireplumber "wpctl"} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}') 'System Volume'"
+          ",XF86AudioRaiseVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:volume -h int:value:$(${lib.getExe' pkgs.wireplumber "wpctl"} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}') 'System Volume'"
 
           "SUPER ALT, down, resizeactive, 0 40"
           "SUPER ALT, left, resizeactive, -40 0"
