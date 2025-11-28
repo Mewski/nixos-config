@@ -43,11 +43,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    binary-ninja = {
-      url = "github:jchv/nix-binary-ninja";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixcord = {
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
