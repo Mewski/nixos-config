@@ -10,6 +10,8 @@
       self.nixosModules.nix
       self.nixosModules.pipewire
       self.nixosModules.fish
+      self.nixosModules.virtualization
+      self.nixosModules.docker
     ];
 
     hardware = {
@@ -75,6 +77,8 @@
       home.packages = with pkgs; [
         bitwarden-desktop
         wl-clipboard
+        unzip
+        p7zip
       ];
     };
 }
