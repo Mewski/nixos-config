@@ -30,6 +30,7 @@
         "dockerfile"
         "docker-compose"
         "toml"
+        "go"
       ];
     };
 

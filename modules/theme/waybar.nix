@@ -56,7 +56,7 @@
 
         #workspaces {
           background: rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${toString opacity.desktop});
-          padding: 4px 4px;
+          padding: 4px 2px;
           border-radius: 8px;
         }
 
@@ -65,7 +65,7 @@
           color: #${scheme.base05};
           padding: 0 6px;
           border-radius: 4px;
-          margin: 0;
+          margin: 0 2px;
         }
 
         #workspaces button:hover {
