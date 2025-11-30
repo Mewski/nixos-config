@@ -44,7 +44,7 @@
       services.blueman.enable = true;
 
       environment.persistence."/persist".files = [
-        "/etc/supergfxctl.conf"
+        "/etc/supergfxd.conf"
       ];
 
       environment.systemPackages = with pkgs; [
@@ -63,7 +63,10 @@
       imports = [ self.homeModules.desktop ];
 
       wayland.windowManager.hyprland.settings = {
-        monitor = [ internalMonitor ];
+        monitor = [
+          internalMonitor
+          "HDMI-A-1, 3840x2160@180, auto, 1.5, vrr, 1, bitdepth, 10"
+        ];
 
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
