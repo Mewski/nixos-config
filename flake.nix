@@ -52,6 +52,11 @@
       url = "github:tinted-theming/schemes";
       flake = false;
     };
+
+    mewski-wallpapers = {
+      url = "github:Mewski/mewski-wallpapers";
+      flake = false;
+    };
   };
 
   outputs =

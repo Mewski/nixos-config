@@ -62,6 +62,7 @@
         self.homeModules.hyprland
         self.homeModules.hypridle
         self.homeModules.hyprlock
+        self.homeModules.hyprpaper
         self.homeModules.waybar
         self.homeModules.rofi
         self.homeModules.dunst

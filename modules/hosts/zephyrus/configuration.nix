@@ -55,24 +55,23 @@
     };
 
   flake.homeModules.zephyrus =
-    { pkgs, lib, ... }:
-    let
-      internalMonitor = "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10";
-    in
+    {
+      pkgs,
+      lib,
+      ...
+    }:
     {
       imports = [ self.homeModules.desktop ];
 
       wayland.windowManager.hyprland.settings = {
-        monitor = [
-          internalMonitor
-          "HDMI-A-1, 3840x2160@180, auto, 1.5, vrr, 1, bitdepth, 10"
-        ];
+        monitor = [ "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10" ];
 
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
           "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           "LIBVA_DRIVER_NAME,nvidia"
           "NVD_BACKEND,direct"
+          "INTERNAL_DISPLAY_REFRESH_RATE,60"
         ];
 
         input.touchpad = {
@@ -98,7 +97,7 @@
 
         bindl = [
           ",switch:on:Lid Switch, exec, if [[ $(${pkgs.supergfxctl}/bin/supergfxctl -g) == 'AsusMuxDgpu' ]] && [[ $(hyprctl monitors -j | ${lib.getExe pkgs.jq} 'length') -gt 1 ]]; then hyprctl keyword monitor 'eDP-1, disable'; fi"
-          ",switch:off:Lid Switch, exec, if [[ $(${pkgs.supergfxctl}/bin/supergfxctl -g) == 'AsusMuxDgpu' ]]; then hyprctl keyword monitor '${internalMonitor}'; fi"
+          ",switch:off:Lid Switch, exec, if [[ $(${pkgs.supergfxctl}/bin/supergfxctl -g) == 'AsusMuxDgpu' ]]; then hyprctl keyword monitor \"eDP-1, 2560x1600@$INTERNAL_DISPLAY_REFRESH_RATE, 0x0, 1.25, vrr, 1, bitdepth, 10\"; fi"
         ];
       };
 

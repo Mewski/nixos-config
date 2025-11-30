@@ -23,9 +23,9 @@
 
         settings = {
           exec-once = [
+            "${lib.getExe pkgs.hyprpaper}"
             "${lib.getExe pkgs.waybar}"
             "${lib.getExe pkgs.hypridle}"
-            "systemctl --user start hyprpolkitagent"
             "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store"
             "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store"
           ];
@@ -41,12 +41,6 @@
         };
       };
 
-      home.packages = with pkgs; [
-        hyprland-qt-support
-        hyprland-qtutils
-        hyprpolkitagent
-        qt5.qtwayland
-        qt6.qtwayland
-      ];
+      services.hyprpolkitagent.enable = true;
     };
 }

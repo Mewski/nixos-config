@@ -678,6 +678,22 @@
         "type": "github"
       }
     },
+    "mewski-wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764021604,
+        "narHash": "sha256-8Bsx5jFNSq449FUvGKQy2ovfRNqk+5IXTONXtjYivX4=",
+        "owner": "Mewski",
+        "repo": "mewski-wallpapers",
+        "rev": "e0ed25a37c5f6b1c9b4bc1b9c4dd6a555c1cce3b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mewski",
+        "repo": "mewski-wallpapers",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -899,6 +915,7 @@
         "impermanence": "impermanence",
         "import-tree": "import-tree",
         "lanzaboote": "lanzaboote",
+        "mewski-wallpapers": "mewski-wallpapers",
         "nix-index-database": "nix-index-database",
         "nixcord": "nixcord",
         "nixos-hardware": "nixos-hardware",
