@@ -77,6 +77,7 @@
       home.packages = with pkgs; [
         bitwarden-desktop
         wl-clipboard
+        cliphist
         unzip
         p7zip
       ];

@@ -16,16 +16,18 @@
     };
 
   flake.homeModules.hyprland =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       wayland.windowManager.hyprland = {
         enable = true;
 
         settings = {
           exec-once = [
-            "waybar"
-            "hypridle"
+            "${lib.getExe pkgs.waybar}"
+            "${lib.getExe pkgs.hypridle}"
             "systemctl --user start hyprpolkitagent"
+            "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store"
+            "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store"
           ];
 
           env = [

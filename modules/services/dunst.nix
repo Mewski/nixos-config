@@ -6,7 +6,7 @@
       settings = {
         global = {
           follow = "mouse";
-          width = 300;
+          width = "(0, 300)";
           height = 150;
           origin = "top-center";
           offset = "0x18";
@@ -62,6 +62,12 @@
 
         osd = {
           appname = "osd";
+          format = "<b>%s</b>";
+          alignment = "center";
+        };
+
+        osd-text = {
+          appname = "osd-text";
           format = "<b>%s</b>";
           alignment = "center";
         };
