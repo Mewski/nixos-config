@@ -41,6 +41,7 @@
           margin: 0 4px;
         }
 
+        #window,
         #clock,
         #battery,
         #cpu,
@@ -137,6 +138,14 @@
 
         #tray {
           padding: 4px 8px;
+        }
+
+        window#waybar.empty #window {
+          background: transparent;
+          padding: 0;
+          margin: 0;
+          border: 0;
+          min-width: 0;
         }
       '';
     };

@@ -12,8 +12,9 @@
             margin-right = 8;
             spacing = 6;
             modules-left = [ "hyprland/workspaces" ];
-            modules-center = [ "tray" ];
+            modules-center = [ "hyprland/window" ];
             modules-right = [
+              "tray"
               "network"
               "bluetooth"
               "cpu"
@@ -27,6 +28,14 @@
               format = "{name}";
               on-scroll-up = "hyprctl dispatch workspace e+1";
               on-scroll-down = "hyprctl dispatch workspace e-1";
+            };
+
+            "hyprland/window" = {
+              format = "{title}";
+              max-length = 50;
+              separate-outputs = true;
+              icon = true;
+              icon-size = 16;
             };
 
             clock = {

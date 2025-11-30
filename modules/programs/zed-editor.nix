@@ -12,7 +12,6 @@
         };
 
         features = {
-          copilot = true;
           edit_prediction_provider = "zed";
         };
       };

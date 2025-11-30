@@ -17,16 +17,16 @@
           ui_font_family = fonts.sansSerif.name;
           ui_font_size = fonts.sizes.application * 4.0 / 3.0;
 
-          theme = "Base16 ${scheme.scheme-name}";
+          theme = "Base16";
         };
 
         themes = {
-          "Base16 ${scheme.scheme-name}" = {
-            name = "Base16 ${scheme.scheme-name}";
+          "Base16" = {
+            name = "Base16";
             author = "${preferences.user.name}";
             themes = [
               {
-                name = "Base16 ${scheme.scheme-name}";
+                name = "Base16";
                 appearance = if polarity == "dark" then "dark" else "light";
                 style = {
                   border = "#${scheme.base03}ff";
