@@ -57,7 +57,7 @@
   flake.homeModules.zephyrus =
     { pkgs, lib, ... }:
     let
-      internalMonitor = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
+      internalMonitor = "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10";
     in
     {
       imports = [ self.homeModules.desktop ];

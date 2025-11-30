@@ -2,16 +2,19 @@
 {
   flake.nixosModules.desktop = {
     imports = [
-      self.nixosModules.preferences
-      self.nixosModules.theme
+      self.nixosModules.nix
       self.nixosModules.user
       self.nixosModules.home-manager
+      self.nixosModules.preferences
+
       self.nixosModules.hyprland
-      self.nixosModules.nix
+      self.nixosModules.theme
       self.nixosModules.pipewire
+
       self.nixosModules.fish
-      self.nixosModules.virtualization
+
       self.nixosModules.docker
+      self.nixosModules.virtualization
     ];
 
     hardware = {
@@ -56,22 +59,26 @@
     { pkgs, ... }:
     {
       imports = [
-        self.homeModules.theme
         self.homeModules.hyprland
+        self.homeModules.hypridle
+        self.homeModules.hyprlock
         self.homeModules.waybar
+        self.homeModules.rofi
+        self.homeModules.dunst
+        self.homeModules.theme
+
         self.homeModules.fish
         self.homeModules.git
         self.homeModules.kitty
-        self.homeModules.nixvim
-        self.homeModules.nixcord
-        self.homeModules.zed-editor
-        self.homeModules.zen-browser
         self.homeModules.yazi
         self.homeModules.btop
-        self.homeModules.hypridle
-        self.homeModules.hyprlock
-        self.homeModules.rofi
-        self.homeModules.dunst
+
+        self.homeModules.nixvim
+        self.homeModules.zed-editor
+        self.homeModules.claude-code
+
+        self.homeModules.zen-browser
+        self.homeModules.nixcord
       ];
 
       home.packages = with pkgs; [

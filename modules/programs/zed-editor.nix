@@ -6,6 +6,7 @@
       userSettings = {
         icon_theme = "Material Icon Theme";
         vim_mode = false;
+        relative_line_numbers = "enabled";
 
         telemetry = {
           metrics = false;
@@ -35,7 +36,6 @@
 
     persist.directories = [
       ".local/share/zed"
-      ".claude"
     ];
   };
 }
