@@ -78,7 +78,7 @@
               tooltip-format-wifi = "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";
               tooltip-format-ethernet = "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";
               tooltip-format-disconnected = "Disconnected";
-              on-click = "${lib.getExe pkgs.kitty} ${lib.getExe' pkgs.networkmanager "nmtui"}";
+              on-click = lib.getExe' pkgs.networkmanagerapplet "nm-connection-editor";
             };
 
             bluetooth = {

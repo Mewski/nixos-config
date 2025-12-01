@@ -66,6 +66,7 @@
         "ignorealpha 0.1, waybar"
         "blur, rofi"
         "ignorealpha 0.1, rofi"
+        "animation slide top, rofi"
         "blur, notifications"
         "ignorealpha 0.1, notifications"
       ];
