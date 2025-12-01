@@ -80,10 +80,10 @@
 
         self.homeModules.zen-browser
         self.homeModules.nixcord
+        self.homeModules.bitwarden
       ];
 
       home.packages = with pkgs; [
-        bitwarden-desktop
         wl-clipboard
         cliphist
         unzip
