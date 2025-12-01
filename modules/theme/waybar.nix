@@ -50,13 +50,13 @@
         #bluetooth,
         #pulseaudio,
         #tray {
-          background: rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${toString opacity.desktop});
+          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString opacity.desktop});
           padding: 4px 12px;
           border-radius: 8px;
         }
 
         #workspaces {
-          background: rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${toString opacity.desktop});
+          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString opacity.desktop});
           padding: 4px 2px;
           border-radius: 8px;
         }
