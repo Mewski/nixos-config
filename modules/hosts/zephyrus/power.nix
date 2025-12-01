@@ -11,17 +11,17 @@
         Service = {
           Type = "simple";
           ExecStart = pkgs.writeShellScript "battery-refresh-rate" ''
-            LAST_STATUS=""
             while true; do
               STATUS=$(cat /sys/class/power_supply/ACAD/online)
+              CURRENT_RATE=$(${lib.getExe' pkgs.hyprland "hyprctl"} monitors -j | ${lib.getExe pkgs.jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | floor')
+              CURRENT_BLUR=$(${lib.getExe' pkgs.hyprland "hyprctl"} getoption decoration:blur:enabled -j | ${lib.getExe pkgs.jq} -r '.int')
 
-              if [ "$STATUS" != "$LAST_STATUS" ]; then
-                if [ "$STATUS" = "1" ]; then
-                  ${lib.getExe' pkgs.hyprland "hyprctl"} keyword monitor 'eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10'
-                else
-                  ${lib.getExe' pkgs.hyprland "hyprctl"} keyword monitor 'eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10'
-                fi
-                LAST_STATUS="$STATUS"
+              if [ "$STATUS" = "1" ]; then
+                [ "$CURRENT_RATE" != "240" ] && ${lib.getExe' pkgs.hyprland "hyprctl"} keyword monitor 'eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10'
+                [ "$CURRENT_BLUR" != "1" ] && ${lib.getExe' pkgs.hyprland "hyprctl"} keyword decoration:blur:enabled true
+              else
+                [ "$CURRENT_RATE" != "60" ] && ${lib.getExe' pkgs.hyprland "hyprctl"} keyword monitor 'eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10'
+                [ "$CURRENT_BLUR" != "0" ] && ${lib.getExe' pkgs.hyprland "hyprctl"} keyword decoration:blur:enabled false
               fi
               sleep 5
             done

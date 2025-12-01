@@ -47,7 +47,7 @@
         };
 
         shadow = {
-          enabled = true;
+          enabled = false;
           range = 4;
           render_power = 3;
         };

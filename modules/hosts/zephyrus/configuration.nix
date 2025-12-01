@@ -64,7 +64,7 @@
       imports = [ self.homeModules.desktop ];
 
       wayland.windowManager.hyprland.settings = {
-        monitor = [ "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10" ];
+        monitor = [ "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10" ];
 
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"

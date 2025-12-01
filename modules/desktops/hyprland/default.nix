@@ -23,9 +23,7 @@
 
         settings = {
           exec-once = [
-            "${lib.getExe pkgs.hyprpaper}"
             "${lib.getExe pkgs.waybar}"
-            "${lib.getExe pkgs.hypridle}"
             "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store"
             "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store"
           ];

@@ -27,11 +27,6 @@
       boot.initrd.postResumeCommands = lib.mkAfter ''
         mkdir -p /mnt
         mount -o subvol=/ /dev/mapper/cryptroot /mnt
-        if [[ -e /mnt/root ]]; then
-          mkdir -p /mnt/snapshots
-          timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
-          mv /mnt/root "/mnt/snapshots/$timestamp"
-        fi
 
         delete_subvolume_recursively() {
           IFS=$'\n'
@@ -41,9 +36,9 @@
           btrfs subvolume delete "$1"
         }
 
-        for i in $(find /mnt/snapshots/ -maxdepth 1 -mtime +30); do
-          delete_subvolume_recursively "$i"
-        done
+        if [[ -e /mnt/root ]]; then
+          delete_subvolume_recursively /mnt/root
+        fi
 
         btrfs subvolume create /mnt/root
         umount /mnt
