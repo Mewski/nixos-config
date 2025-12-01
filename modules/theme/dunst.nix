@@ -16,15 +16,15 @@
           lo = i - hi * 16;
         in
         builtins.substring hi 1 hex + builtins.substring lo 1 hex;
-      opacityHex = toHex opacity.desktop;
+      popupsOpacityHex = toHex opacity.popups;
     in
     {
       services.dunst.settings = {
         global = {
           font = "${fonts.sansSerif.name} ${toString fonts.sizes.desktop}";
-          frame_color = "#${scheme.base0D}";
+          frame_color = scheme.withHashtag.base0D;
           separator_color = "frame";
-          highlight = "#${scheme.base0D}";
+          highlight = scheme.withHashtag.base0D;
           progress_bar = true;
           progress_bar_height = 8;
           progress_bar_frame_width = 0;
@@ -34,24 +34,24 @@
         };
 
         urgency_low = {
-          background = "#${scheme.base01}${opacityHex}";
-          foreground = "#${scheme.base04}";
-          frame_color = "#${scheme.base03}";
-          highlight = "#${scheme.base03}";
+          background = "${scheme.withHashtag.base01}${popupsOpacityHex}";
+          foreground = scheme.withHashtag.base04;
+          frame_color = scheme.withHashtag.base03;
+          highlight = scheme.withHashtag.base03;
         };
 
         urgency_normal = {
-          background = "#${scheme.base00}${opacityHex}";
-          foreground = "#${scheme.base05}";
-          frame_color = "#${scheme.base0D}";
-          highlight = "#${scheme.base0D}";
+          background = "${scheme.withHashtag.base00}${popupsOpacityHex}";
+          foreground = scheme.withHashtag.base05;
+          frame_color = scheme.withHashtag.base0D;
+          highlight = scheme.withHashtag.base0D;
         };
 
         urgency_critical = {
-          background = "#${scheme.base00}${opacityHex}";
-          foreground = "#${scheme.base08}";
-          frame_color = "#${scheme.base08}";
-          highlight = "#${scheme.base08}";
+          background = "${scheme.withHashtag.base00}${popupsOpacityHex}";
+          foreground = scheme.withHashtag.base08;
+          frame_color = scheme.withHashtag.base08;
+          highlight = scheme.withHashtag.base08;
         };
       };
     };

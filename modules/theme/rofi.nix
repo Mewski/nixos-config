@@ -15,14 +15,14 @@
         {
           "*" = {
             background-color = mkLiteral "transparent";
-            text-color = mkLiteral "#${scheme.base05}";
+            text-color = mkLiteral "${scheme.withHashtag.base05}";
             font = "${fonts.sansSerif.name} ${toString fonts.sizes.desktop}";
           };
 
           window = {
             background-color = mkLiteral "rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString opacity.desktop})";
             border = mkLiteral "2px";
-            border-color = mkLiteral "#${scheme.base0D}";
+            border-color = mkLiteral "${scheme.withHashtag.base0D}";
             border-radius = mkLiteral "10px";
             padding = mkLiteral "8px";
           };
@@ -43,7 +43,7 @@
 
           entry = {
             placeholder = "Search...";
-            placeholder-color = mkLiteral "#${scheme.base03}";
+            placeholder-color = mkLiteral "${scheme.withHashtag.base03}";
             font = "${fonts.sansSerif.name} ${toString (fonts.sizes.desktop * 3.0 / 2.5)}";
           };
 
@@ -55,15 +55,15 @@
 
           element = {
             background-color = mkLiteral "transparent";
-            text-color = mkLiteral "#${scheme.base05}";
+            text-color = mkLiteral "${scheme.withHashtag.base05}";
             border-radius = mkLiteral "4px";
             padding = mkLiteral "8px";
             spacing = mkLiteral "8px";
           };
 
           "element selected" = {
-            background-color = mkLiteral "#${scheme.base0D}";
-            text-color = mkLiteral "#${scheme.base00}";
+            background-color = mkLiteral "${scheme.withHashtag.base0D}";
+            text-color = mkLiteral "${scheme.withHashtag.base00}";
           };
 
           "element alternate" = {

@@ -19,14 +19,14 @@
 
         window#waybar {
           background: transparent;
-          color: #${scheme.base05};
+          color: ${scheme.withHashtag.base05};
         }
 
         tooltip {
-          background: #${scheme.base00};
-          border: 1px solid #${scheme.base03};
+          background: ${scheme.withHashtag.base00};
+          border: 1px solid ${scheme.withHashtag.base03};
           border-radius: 8px;
-          color: #${scheme.base05};
+          color: ${scheme.withHashtag.base05};
         }
 
         .modules-left,
@@ -63,77 +63,77 @@
 
         #workspaces button {
           background: transparent;
-          color: #${scheme.base05};
+          color: ${scheme.withHashtag.base05};
           padding: 0 6px;
           border-radius: 4px;
           margin: 0 2px;
         }
 
         #workspaces button:hover {
-          background: #${scheme.base02};
+          background: ${scheme.withHashtag.base02};
           box-shadow: none;
         }
 
         #workspaces button.active {
-          background: #${scheme.base0D};
-          color: #${scheme.base00};
+          background: ${scheme.withHashtag.base0D};
+          color: ${scheme.withHashtag.base00};
         }
 
         #workspaces button.urgent {
-          background: #${scheme.base08};
-          color: #${scheme.base00};
+          background: ${scheme.withHashtag.base08};
+          color: ${scheme.withHashtag.base00};
         }
 
         #clock {
-          color: #${scheme.base0D};
+          color: ${scheme.withHashtag.base0D};
         }
 
         #battery {
-          color: #${scheme.base0B};
+          color: ${scheme.withHashtag.base0B};
         }
 
         #battery.charging {
-          color: #${scheme.base0C};
+          color: ${scheme.withHashtag.base0C};
         }
 
         #battery.warning:not(.charging) {
-          color: #${scheme.base0A};
+          color: ${scheme.withHashtag.base0A};
         }
 
         #battery.critical:not(.charging) {
-          color: #${scheme.base08};
+          color: ${scheme.withHashtag.base08};
         }
 
         #cpu {
-          color: #${scheme.base0A};
+          color: ${scheme.withHashtag.base0A};
         }
 
         #memory {
-          color: #${scheme.base09};
+          color: ${scheme.withHashtag.base09};
         }
 
         #network {
-          color: #${scheme.base0C};
+          color: ${scheme.withHashtag.base0C};
         }
 
         #network.disconnected {
-          color: #${scheme.base03};
+          color: ${scheme.withHashtag.base03};
         }
 
         #bluetooth {
-          color: #${scheme.base0D};
+          color: ${scheme.withHashtag.base0D};
         }
 
         #bluetooth.disabled {
-          color: #${scheme.base03};
+          color: ${scheme.withHashtag.base03};
         }
 
         #pulseaudio {
-          color: #${scheme.base0E};
+          color: ${scheme.withHashtag.base0E};
         }
 
         #pulseaudio.muted {
-          color: #${scheme.base03};
+          color: ${scheme.withHashtag.base03};
         }
 
         #tray {
