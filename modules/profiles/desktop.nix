@@ -77,10 +77,11 @@
         self.homeModules.nixvim
         self.homeModules.zed-editor
         self.homeModules.claude-code
+        self.homeModules.gemini-cli
 
-        self.homeModules.zen-browser
-        self.homeModules.nixcord
         self.homeModules.bitwarden
+        self.homeModules.nixcord
+        self.homeModules.zen-browser
       ];
 
       home.packages = with pkgs; [
