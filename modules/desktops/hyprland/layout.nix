@@ -20,18 +20,21 @@
         "move 100%-410 50, class:^(org.pulseaudio.pavucontrol)$"
         "animation slide top, class:^(org.pulseaudio.pavucontrol)$"
         "stayfocused, class:^(org.pulseaudio.pavucontrol)$"
+        "pin, class:^(org.pulseaudio.pavucontrol)$"
 
         "float, class:^(.blueman-manager-wrapped)$"
         "size 530 500, class:^(.blueman-manager-wrapped)$"
         "move 100%-540 50, class:^(.blueman-manager-wrapped)$"
         "animation slide top, class:^(.blueman-manager-wrapped)$"
         "stayfocused, class:^(.blueman-manager-wrapped)$"
+        "pin, class:^(.blueman-manager-wrapped)$"
 
         "float, class:^(nm-connection-editor)$"
         "size 450 550, class:^(nm-connection-editor)$"
         "move 100%-460 50, class:^(nm-connection-editor)$"
         "animation slide top, class:^(nm-connection-editor)$"
         "stayfocused, class:^(nm-connection-editor)$"
+        "pin, class:^(nm-connection-editor)$"
       ];
     };
   };
