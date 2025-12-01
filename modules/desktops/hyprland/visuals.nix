@@ -2,7 +2,7 @@
   flake.homeModules.hyprland = {
     wayland.windowManager.hyprland.settings = {
       animations = {
-        enabled = true;
+        enabled = false;
 
         bezier = [
           "easeOutQuint,0.23,1,0.32,1"
@@ -26,9 +26,7 @@
           "layersOut, 1, 1.5, linear, fade"
           "fadeLayersIn, 1, 1.79, almostLinear"
           "fadeLayersOut, 1, 1.39, almostLinear"
-          "workspaces, 0"
-          "workspacesIn, 0"
-          "workspacesOut, 0"
+          "workspaces, 1, 4, easeOutQuint, slide"
           "zoomFactor, 1, 7, quick"
         ];
       };
@@ -65,11 +63,11 @@
 
       layerrule = [
         "blur, waybar"
-        "ignorealpha 0.0, waybar"
+        "ignorealpha 0.1, waybar"
         "blur, rofi"
-        "ignorealpha 0.0, rofi"
+        "ignorealpha 0.1, rofi"
         "blur, notifications"
-        "ignorealpha 0.0, notifications"
+        "ignorealpha 0.1, notifications"
       ];
     };
   };

@@ -5,7 +5,7 @@
 
       userSettings = {
         icon_theme = "Material Icon Theme";
-        vim_mode = true;
+        vim_mode = false;
         relative_line_numbers = "enabled";
 
         telemetry = {
