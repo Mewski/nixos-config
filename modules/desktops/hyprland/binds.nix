@@ -1,6 +1,44 @@
 {
   flake.homeModules.hyprland =
     { pkgs, lib, ... }:
+    let
+      wpctl = lib.getExe' pkgs.wireplumber "wpctl";
+      notify = lib.getExe pkgs.libnotify;
+
+      getVolume = "${wpctl} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'";
+      isMuted = sink: "${wpctl} get-volume ${sink} | grep -q MUTED";
+
+      notifyVolume = pkgs.writeShellScript "notify-volume" ''
+        ${notify} -a osd -t 1000 \
+          -h string:x-dunst-stack-tag:volume \
+          -h int:value:$(${getVolume}) \
+          'System Volume'
+      '';
+
+      notifyVolumeMute = pkgs.writeShellScript "notify-volume-mute" ''
+        if ${isMuted "@DEFAULT_AUDIO_SINK@"}; then
+          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:volume "System Volume Muted"
+        else
+          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:volume "System Volume Unmuted"
+        fi
+      '';
+
+      notifyMicMute = pkgs.writeShellScript "notify-mic-mute" ''
+        if ${isMuted "@DEFAULT_AUDIO_SOURCE@"}; then
+          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:mic "Microphone Muted"
+        else
+          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:mic "Microphone Unmuted"
+        fi
+      '';
+
+      cliphistSelect = pkgs.writeShellScript "cliphist-select" ''
+        selected=$(${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.rofi} -dmenu -display-columns 2 -no-show-icons)
+        if [ -n "$selected" ]; then
+          echo "$selected" | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
+          ${notify} -a osd-text -t 1000 'Copied to clipboard'
+        fi
+      '';
+    in
     {
       wayland.windowManager.hyprland.settings = {
         bind = [
@@ -10,7 +48,7 @@
           "SUPER, U, exec, ${lib.getExe pkgs.bitwarden-desktop}"
           "SUPER, E, exec, ${lib.getExe pkgs.nautilus}"
           "SUPER, I, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.btop}"
-          "SUPER, K, exec, selected=$(${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.rofi} -dmenu -display-columns 2 -no-show-icons) && echo \"$selected\" | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} && ${lib.getExe pkgs.libnotify} -a osd-text -t 1000 'Copied to clipboard'"
+          "SUPER, K, exec, ${cliphistSelect}"
           "SUPER, Z, exec, ${lib.getExe pkgs.zed-editor}"
           "SUPER, D, exec, discord"
           "SUPER, B, exec, zen"
@@ -63,10 +101,10 @@
         ];
 
         bindel = [
-          ",XF86AudioLowerVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:volume -h int:value:$(${lib.getExe' pkgs.wireplumber "wpctl"} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}') 'System Volume'"
-          ",XF86AudioMicMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ${lib.getExe pkgs.libnotify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:mic \"Microphone $(${lib.getExe' pkgs.wireplumber "wpctl"} get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo Muted || echo Unmuted)\""
-          ",XF86AudioMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${lib.getExe pkgs.libnotify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:volume \"System Volume $(${lib.getExe' pkgs.wireplumber "wpctl"} get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo Muted || echo Unmuted)\""
-          ",XF86AudioRaiseVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:volume -h int:value:$(${lib.getExe' pkgs.wireplumber "wpctl"} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}') 'System Volume'"
+          ",XF86AudioLowerVolume, exec, ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${notifyVolume}"
+          ",XF86AudioRaiseVolume, exec, ${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${notifyVolume}"
+          ",XF86AudioMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${notifyVolumeMute}"
+          ",XF86AudioMicMute, exec, ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ${notifyMicMute}"
 
           "SUPER ALT, down, resizeactive, 0 40"
           "SUPER ALT, left, resizeactive, -40 0"

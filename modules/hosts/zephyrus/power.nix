@@ -1,6 +1,28 @@
 {
   flake.homeModules.zephyrus =
     { pkgs, lib, ... }:
+    let
+      hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
+      jq = lib.getExe pkgs.jq;
+
+      monitorHighRefresh = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
+      monitorLowRefresh = "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10";
+
+      batteryRefreshRate = pkgs.writeShellScript "battery-refresh-rate" ''
+        while true; do
+          STATUS=$(cat /sys/class/power_supply/ACAD/online)
+          CURRENT_RATE=$(${hyprctl} monitors -j | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | floor')
+
+          if [ "$STATUS" = "1" ]; then
+            [ "$CURRENT_RATE" != "240" ] && ${hyprctl} keyword monitor '${monitorHighRefresh}'
+          else
+            [ "$CURRENT_RATE" != "60" ] && ${hyprctl} keyword monitor '${monitorLowRefresh}'
+          fi
+
+          sleep 5
+        done
+      '';
+    in
     {
       systemd.user.services.battery-refresh-rate = {
         Unit = {
@@ -11,18 +33,7 @@
 
         Service = {
           Type = "simple";
-          ExecStart = pkgs.writeShellScript "battery-refresh-rate" ''
-            while true; do
-              STATUS=$(cat /sys/class/power_supply/ACAD/online)
-              CURRENT_RATE=$(${lib.getExe' pkgs.hyprland "hyprctl"} monitors -j | ${lib.getExe pkgs.jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | floor')
-              if [ "$STATUS" = "1" ]; then
-                [ "$CURRENT_RATE" != "240" ] && ${lib.getExe' pkgs.hyprland "hyprctl"} keyword monitor 'eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10'
-              else
-                [ "$CURRENT_RATE" != "60" ] && ${lib.getExe' pkgs.hyprland "hyprctl"} keyword monitor 'eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10'
-              fi
-              sleep 5
-            done
-          '';
+          ExecStart = batteryRefreshRate;
           Restart = "on-failure";
           RestartSec = 5;
         };

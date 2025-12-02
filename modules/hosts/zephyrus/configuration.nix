@@ -56,11 +56,65 @@
       lib,
       ...
     }:
+    let
+      brightnessctl = lib.getExe pkgs.brightnessctl;
+      notify = lib.getExe pkgs.libnotify;
+      jq = lib.getExe pkgs.jq;
+      supergfxctl = "${pkgs.supergfxctl}/bin/supergfxctl";
+
+      kbdBacklight = "asus::kbd_backlight";
+      intelBacklight = "intel_backlight";
+      nvidiaBacklight = "nvidia_0";
+
+      monitorConfig = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
+
+      getKbdBrightness = "${brightnessctl} -d ${kbdBacklight} -m | cut -d, -f4 | tr -d '%'";
+      getDisplayBrightness = "${brightnessctl} -d ${intelBacklight} -m | cut -d, -f4 | tr -d '%'";
+
+      notifyKbdBrightness = pkgs.writeShellScript "notify-kbd-brightness" ''
+        ${notify} -a osd -t 1000 \
+          -h string:x-dunst-stack-tag:kbd \
+          -h int:value:$(${getKbdBrightness}) \
+          'Keyboard Brightness'
+      '';
+
+      notifyDisplayBrightness = pkgs.writeShellScript "notify-display-brightness" ''
+        ${notify} -a osd -t 1000 \
+          -h string:x-dunst-stack-tag:brightness \
+          -h int:value:$(${getDisplayBrightness}) \
+          'Display Brightness'
+      '';
+
+      lidSwitchOn = pkgs.writeShellScript "lid-switch-on" ''
+        if [[ $(${supergfxctl} -g) == 'AsusMuxDgpu' ]] && \
+           [[ $(hyprctl monitors -j | ${jq} 'length') -gt 1 ]]; then
+          hyprctl keyword monitor 'eDP-1, disable'
+        fi
+      '';
+
+      lidSwitchOff = pkgs.writeShellScript "lid-switch-off" ''
+        if [[ $(${supergfxctl} -g) == 'AsusMuxDgpu' ]]; then
+          hyprctl keyword monitor '${monitorConfig}'
+        fi
+      '';
+
+      dimDisplay = pkgs.writeShellScript "dim-display" ''
+        current=$(${getDisplayBrightness})
+        target=$((current < 10 ? current : 10))
+        ${brightnessctl} -d ${intelBacklight} -s set ''${target}%
+        ${brightnessctl} -d ${nvidiaBacklight} -s set 0%
+      '';
+
+      restoreDisplay = pkgs.writeShellScript "restore-display" ''
+        ${brightnessctl} -d ${intelBacklight} -r
+        ${brightnessctl} -d ${nvidiaBacklight} -r
+      '';
+    in
     {
       imports = [ self.homeModules.desktop ];
 
       wayland.windowManager.hyprland.settings = {
-        monitor = [ "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10" ];
+        monitor = [ "${monitorConfig}" ];
 
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
@@ -83,24 +137,24 @@
         };
 
         bindel = [
-          ",XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1- && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:kbd -h int:value:$(${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight -m | cut -d, -f4 | tr -d '%') 'Keyboard Brightness'"
-          ",XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight set 1+ && ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:kbd -h int:value:$(${lib.getExe pkgs.brightnessctl} -d asus::kbd_backlight -m | cut -d, -f4 | tr -d '%') 'Keyboard Brightness'"
+          ",XF86KbdBrightnessDown, exec, ${brightnessctl} -d ${kbdBacklight} set 1- && ${notifyKbdBrightness}"
+          ",XF86KbdBrightnessUp, exec, ${brightnessctl} -d ${kbdBacklight} set 1+ && ${notifyKbdBrightness}"
 
-          ",XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight set 10%-; ${lib.getExe pkgs.brightnessctl} -d nvidia_0 set 10%-; ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:brightness -h int:value:$(${lib.getExe pkgs.brightnessctl} -d intel_backlight -m | cut -d, -f4 | tr -d '%') 'Display Brightness'"
-          ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} -d intel_backlight set 10%+; ${lib.getExe pkgs.brightnessctl} -d nvidia_0 set 10%+; ${lib.getExe pkgs.libnotify} -a osd -t 1000 -h string:x-dunst-stack-tag:brightness -h int:value:$(${lib.getExe pkgs.brightnessctl} -d intel_backlight -m | cut -d, -f4 | tr -d '%') 'Display Brightness'"
+          ",XF86MonBrightnessDown, exec, ${brightnessctl} -d ${intelBacklight} set 10%-; ${brightnessctl} -d ${nvidiaBacklight} set 10%-; ${notifyDisplayBrightness}"
+          ",XF86MonBrightnessUp, exec, ${brightnessctl} -d ${intelBacklight} set 10%+; ${brightnessctl} -d ${nvidiaBacklight} set 10%+; ${notifyDisplayBrightness}"
         ];
 
         bindl = [
-          ",switch:on:Lid Switch, exec, if [[ $(${pkgs.supergfxctl}/bin/supergfxctl -g) == 'AsusMuxDgpu' ]] && [[ $(hyprctl monitors -j | ${lib.getExe pkgs.jq} 'length') -gt 1 ]]; then hyprctl keyword monitor 'eDP-1, disable'; fi"
-          ",switch:off:Lid Switch, exec, if [[ $(${pkgs.supergfxctl}/bin/supergfxctl -g) == 'AsusMuxDgpu' ]]; then hyprctl keyword monitor 'eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10'; fi"
+          ",switch:on:Lid Switch, exec, ${lidSwitchOn}"
+          ",switch:off:Lid Switch, exec, ${lidSwitchOff}"
         ];
       };
 
       services.hypridle.settings.listener = [
         {
           timeout = 180;
-          on-timeout = "${lib.getExe pkgs.brightnessctl} -d intel_backlight -s set $(( $(${lib.getExe pkgs.brightnessctl} -d intel_backlight -m | cut -d, -f4 | tr -d '%') < 10 ? $(${lib.getExe pkgs.brightnessctl} -d intel_backlight -m | cut -d, -f4 | tr -d '%') : 10 ))%; ${lib.getExe pkgs.brightnessctl} -d nvidia_0 -s set 0%";
-          on-resume = "${lib.getExe pkgs.brightnessctl} -d intel_backlight -r; ${lib.getExe pkgs.brightnessctl} -d nvidia_0 -r";
+          on-timeout = "${dimDisplay}";
+          on-resume = "${restoreDisplay}";
         }
       ];
 

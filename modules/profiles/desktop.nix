@@ -10,12 +10,9 @@
         self.nixosModules.options
         self.nixosModules.preferences
         self.nixosModules.theme
-
         self.nixosModules.hyprland
         self.nixosModules.pipewire
-
         self.nixosModules.fish
-
         self.nixosModules.docker
         self.nixosModules.virtualization
       ];
@@ -38,6 +35,7 @@
 
       i18n = {
         defaultLocale = "en_US.UTF-8";
+
         extraLocaleSettings = {
           LC_ADDRESS = "en_US.UTF-8";
           LC_IDENTIFICATION = "en_US.UTF-8";
@@ -65,23 +63,19 @@
     {
       imports = [
         self.homeModules.theme
-
         self.homeModules.hyprland
         self.homeModules.hyprlock
         self.homeModules.waybar
         self.homeModules.rofi
         self.homeModules.dunst
-
         self.homeModules.fish
         self.homeModules.git
         self.homeModules.kitty
         self.homeModules.btop
-
         self.homeModules.nixvim
         self.homeModules.zed-editor
         self.homeModules.claude-code
         self.homeModules.gemini-cli
-
         self.homeModules.nixcord
         self.homeModules.zen-browser
       ];
