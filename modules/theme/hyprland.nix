@@ -1,6 +1,6 @@
 {
   flake.homeModules.theme =
-    { theme, scheme, ... }:
+    { scheme, ... }:
     {
       wayland.windowManager.hyprland.settings = {
         decoration.shadow.color = "rgba(${scheme.base00}99)";
