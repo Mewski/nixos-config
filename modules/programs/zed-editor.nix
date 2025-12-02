@@ -5,8 +5,14 @@
 
       userSettings = {
         icon_theme = "Material Icon Theme";
-        vim_mode = false;
-        relative_line_numbers = "enabled";
+        vim_mode = true;
+        cursor_blink = false;
+
+        vim = {
+          use_smartcase_find = true;
+          use_system_clipboard = "always";
+          toggle_relative_line_numbers = true;
+        };
 
         telemetry = {
           metrics = false;
