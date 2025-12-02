@@ -1,6 +1,6 @@
 {
   flake.homeModules.theme =
-    { scheme, ... }:
+    { theme, scheme, ... }:
     {
       programs.nixvim.colorschemes.base16 = {
         enable = true;

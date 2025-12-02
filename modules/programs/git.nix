@@ -24,9 +24,5 @@
         enable = true;
         gitCredentialHelper.enable = true;
       };
-
-      persist.files = [
-        ".config/gh/hosts.yml"
-      ];
     };
 }

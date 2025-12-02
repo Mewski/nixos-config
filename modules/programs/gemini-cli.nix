@@ -1,14 +1,5 @@
-{ ... }:
 {
-  flake.homeModules.gemini-cli =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
-        gemini-cli
-      ];
-
-      persist.directories = [
-        ".gemini"
-      ];
-    };
+  flake.homeModules.gemini-cli = {
+    programs.gemini-cli.enable = true;
+  };
 }

@@ -11,16 +11,11 @@
 
         extraSpecialArgs = {
           preferences = config.preferences;
+          theme = config.theme;
           scheme = config.scheme;
-          cursor = config.cursor;
-          fonts = config.fonts;
-          opacity = config.opacity;
-          polarity = config.polarity;
         };
 
-        sharedModules = [
-          self.homeModules.${config.networking.hostName}
-        ];
+        sharedModules = [ self.homeModules.${config.networking.hostName} ];
 
         users.${config.preferences.user.username} = {
           home.username = "${config.preferences.user.username}";
@@ -31,7 +26,5 @@
           home.stateVersion = "25.11";
         };
       };
-
-      persist = config.home-manager.users.${config.preferences.user.username}.persist;
     };
 }

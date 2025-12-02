@@ -8,6 +8,7 @@
           After = [ "graphical-session.target" ];
           PartOf = [ "graphical-session.target" ];
         };
+
         Service = {
           Type = "simple";
           ExecStart = pkgs.writeShellScript "battery-refresh-rate" ''
@@ -25,6 +26,7 @@
           Restart = "on-failure";
           RestartSec = 5;
         };
+
         Install = {
           WantedBy = [ "graphical-session.target" ];
         };

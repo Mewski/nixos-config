@@ -1,9 +1,8 @@
 {
   flake.homeModules.theme =
     {
+      theme,
       scheme,
-      fonts,
-      opacity,
       ...
     }:
     let
@@ -16,12 +15,12 @@
           lo = i - hi * 16;
         in
         builtins.substring hi 1 hex + builtins.substring lo 1 hex;
-      popupsOpacityHex = toHex opacity.popups;
+      popupsOpacityHex = toHex theme.opacity.popups;
     in
     {
       services.dunst.settings = {
         global = {
-          font = "${fonts.sansSerif.name} ${toString fonts.sizes.desktop}";
+          font = "${theme.fonts.sansSerif.name} ${toString theme.fonts.sizes.desktop}";
           frame_color = scheme.withHashtag.base0D;
           separator_color = "frame";
           highlight = scheme.withHashtag.base0D;

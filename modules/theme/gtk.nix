@@ -6,9 +6,8 @@
   flake.homeModules.theme =
     {
       pkgs,
+      theme,
       scheme,
-      fonts,
-      polarity,
       ...
     }:
     {
@@ -17,7 +16,7 @@
 
         theme = {
           package = pkgs.adw-gtk3;
-          name = if polarity == "dark" then "adw-gtk3-dark" else "adw-gtk3";
+          name = if theme.polarity == "dark" then "adw-gtk3-dark" else "adw-gtk3";
         };
 
         iconTheme = {
@@ -26,8 +25,8 @@
         };
 
         font = {
-          name = fonts.sansSerif.name;
-          size = fonts.sizes.desktop;
+          name = theme.fonts.sansSerif.name;
+          size = theme.fonts.sizes.desktop;
         };
 
         gtk3.extraCss = ''
@@ -119,11 +118,11 @@
         '';
 
         gtk3.extraConfig = {
-          gtk-application-prefer-dark-theme = polarity == "dark";
+          gtk-application-prefer-dark-theme = theme.polarity == "dark";
         };
 
         gtk4.extraConfig = {
-          gtk-application-prefer-dark-theme = polarity == "dark";
+          gtk-application-prefer-dark-theme = theme.polarity == "dark";
         };
       };
     };

@@ -1,16 +1,15 @@
 {
   flake.homeModules.theme =
     {
-      fonts,
+      theme,
       scheme,
-      opacity,
       ...
     }:
     {
       programs.waybar.style = ''
         * {
-          font-family: "${fonts.sansSerif.name}";
-          font-size: ${toString fonts.sizes.desktop}pt;
+          font-family: "${theme.fonts.sansSerif.name}";
+          font-size: ${toString theme.fonts.sizes.desktop}pt;
           border: none;
           border-radius: 0;
           min-height: 0;
@@ -50,13 +49,13 @@
         #bluetooth,
         #pulseaudio,
         #tray {
-          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString opacity.desktop});
+          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
           padding: 4px 12px;
           border-radius: 8px;
         }
 
         #workspaces {
-          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString opacity.desktop});
+          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
           padding: 4px 2px;
           border-radius: 8px;
         }

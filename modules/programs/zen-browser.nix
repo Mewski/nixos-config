@@ -44,9 +44,5 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
     };
-
-    persist.directories = [
-      ".zen"
-    ];
   };
 }

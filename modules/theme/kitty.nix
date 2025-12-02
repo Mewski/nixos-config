@@ -1,20 +1,19 @@
 {
   flake.homeModules.theme =
     {
+      theme,
       scheme,
-      fonts,
-      opacity,
       ...
     }:
     {
       programs.kitty = {
         font = {
-          name = fonts.monospace.name;
-          size = fonts.sizes.terminal;
+          name = theme.fonts.monospace.name;
+          size = theme.fonts.sizes.terminal;
         };
 
         settings = {
-          background_opacity = opacity.terminal;
+          background_opacity = theme.opacity.terminal;
 
           background = scheme.withHashtag.base00;
           foreground = scheme.withHashtag.base05;

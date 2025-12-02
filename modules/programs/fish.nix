@@ -13,9 +13,5 @@
 
   flake.homeModules.fish = {
     programs.fish.enable = true;
-
-    persist.directories = [
-      ".local/share/fish"
-    ];
   };
 }

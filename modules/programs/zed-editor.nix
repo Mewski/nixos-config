@@ -39,9 +39,5 @@
         "go"
       ];
     };
-
-    persist.directories = [
-      ".local/share/zed"
-    ];
   };
 }

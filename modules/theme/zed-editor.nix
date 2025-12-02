@@ -2,9 +2,8 @@
   flake.homeModules.theme =
     {
       preferences,
+      theme,
       scheme,
-      fonts,
-      polarity,
       ...
     }:
     {
@@ -12,10 +11,10 @@
         enable = true;
 
         userSettings = {
-          buffer_font_family = fonts.monospace.name;
-          buffer_font_size = fonts.sizes.terminal * 4.0 / 3.0;
-          ui_font_family = fonts.sansSerif.name;
-          ui_font_size = fonts.sizes.application * 4.0 / 3.0;
+          buffer_font_family = theme.fonts.monospace.name;
+          buffer_font_size = theme.fonts.sizes.terminal * 4.0 / 3.0;
+          ui_font_family = theme.fonts.sansSerif.name;
+          ui_font_size = theme.fonts.sizes.application * 4.0 / 3.0;
 
           theme = "Base16";
         };
@@ -27,7 +26,7 @@
             themes = [
               {
                 name = "Base16";
-                appearance = if polarity == "dark" then "dark" else "light";
+                appearance = if theme.polarity == "dark" then "dark" else "light";
                 style = {
                   border = "#${scheme.base03}ff";
                   "border.variant" = "#${scheme.base01}ff";

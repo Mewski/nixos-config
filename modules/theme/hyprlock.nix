@@ -1,6 +1,6 @@
 {
   flake.homeModules.theme =
-    { scheme, ... }:
+    { theme, scheme, ... }:
     {
       programs.hyprlock.settings = {
         background = {

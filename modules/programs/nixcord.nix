@@ -4,9 +4,5 @@
     imports = [ inputs.nixcord.homeModules.nixcord ];
 
     programs.nixcord.enable = true;
-
-    persist.directories = [
-      ".config/discord"
-    ];
   };
 }

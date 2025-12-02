@@ -1,41 +1,38 @@
 {
   flake.nixosModules.zephyrus =
-    { lib, ... }:
+    { config, ... }:
     {
-      options.persist = lib.mkOption {
-        type = lib.types.submodule {
-          options = {
-            directories = lib.mkOption {
-              type = lib.types.listOf lib.types.anything;
-              default = [ ];
-            };
-            files = lib.mkOption {
-              type = lib.types.listOf lib.types.anything;
-              default = [ ];
-            };
-          };
-        };
-        default = { };
-      };
-    };
+      environment.persistence."/persist".users.${config.preferences.user.username} = {
+        directories = [
+          "Documents"
+          "Downloads"
+          "Music"
+          "Pictures"
+          "Projects"
+          "Videos"
+          ".nixos-config"
+          ".claude"
+          ".config/Bitwarden"
+          ".config/discord"
+          ".gemini"
+          ".local/share/fish"
+          ".local/share/libvirt"
+          ".local/share/zed"
+          ".zen"
+          {
+            directory = ".local/share/keyrings";
+            mode = "0700";
+          }
+          {
+            directory = ".ssh";
+            mode = "0700";
+          }
+        ];
 
-  flake.homeModules.zephyrus =
-    { lib, ... }:
-    {
-      options.persist = lib.mkOption {
-        type = lib.types.submodule {
-          options = {
-            directories = lib.mkOption {
-              type = lib.types.listOf lib.types.anything;
-              default = [ ];
-            };
-            files = lib.mkOption {
-              type = lib.types.listOf lib.types.anything;
-              default = [ ];
-            };
-          };
-        };
-        default = { };
+        files = [
+          ".config/gh/hosts.yml"
+          ".config/sops/age/keys.txt"
+        ];
       };
     };
 }

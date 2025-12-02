@@ -104,22 +104,8 @@
         }
       ];
 
-      persist.directories = [
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Documents"
-        "Videos"
-        "Projects"
-        ".nixos-config"
-        {
-          directory = ".local/share/keyrings";
-          mode = "0700";
-        }
-        {
-          directory = ".ssh";
-          mode = "0700";
-        }
+      home.packages = with pkgs; [
+        bitwarden-desktop
       ];
     };
 }

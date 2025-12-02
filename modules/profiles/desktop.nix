@@ -7,6 +7,7 @@
         self.nixosModules.nix
         self.nixosModules.user
         self.nixosModules.home-manager
+        self.nixosModules.options
         self.nixosModules.preferences
         self.nixosModules.theme
 
@@ -60,15 +61,16 @@
     };
 
   flake.homeModules.desktop =
-    { pkgs, ... }:
+    { pkgs, theme, ... }:
     {
       imports = [
+        self.homeModules.theme
+
         self.homeModules.hyprland
         self.homeModules.hyprlock
         self.homeModules.waybar
         self.homeModules.rofi
         self.homeModules.dunst
-        self.homeModules.theme
 
         self.homeModules.fish
         self.homeModules.git
@@ -80,10 +82,17 @@
         self.homeModules.claude-code
         self.homeModules.gemini-cli
 
-        self.homeModules.bitwarden
         self.homeModules.nixcord
         self.homeModules.zen-browser
       ];
+
+      home.pointerCursor = {
+        name = theme.cursor.name;
+        package = theme.cursor.package;
+        size = theme.cursor.size;
+        x11.enable = true;
+        gtk.enable = true;
+      };
 
       home.packages = with pkgs; [
         wl-clipboard

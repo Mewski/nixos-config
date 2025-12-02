@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.nixosModules.impermanence =
-    { config, lib, ... }:
+    { lib, ... }:
     {
       imports = [ inputs.impermanence.nixosModules.impermanence ];
 
@@ -21,7 +21,6 @@
         files = [
           "/etc/machine-id"
         ];
-        users.${config.preferences.user.username} = config.persist;
       };
 
       boot.initrd.postResumeCommands = lib.mkAfter ''
@@ -44,5 +43,4 @@
         umount /mnt
       '';
     };
-
 }

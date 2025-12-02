@@ -27,9 +27,5 @@
         };
       };
     };
-
-    persist.files = [
-      ".config/sops/age/keys.txt"
-    ];
   };
 }

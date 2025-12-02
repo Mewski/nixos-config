@@ -2,9 +2,8 @@
   flake.homeModules.theme =
     {
       config,
+      theme,
       scheme,
-      opacity,
-      fonts,
       ...
     }:
     {
@@ -16,11 +15,11 @@
           "*" = {
             background-color = mkLiteral "transparent";
             text-color = mkLiteral "${scheme.withHashtag.base05}";
-            font = "${fonts.sansSerif.name} ${toString fonts.sizes.desktop}";
+            font = "${theme.fonts.sansSerif.name} ${toString theme.fonts.sizes.desktop}";
           };
 
           window = {
-            background-color = mkLiteral "rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString opacity.desktop})";
+            background-color = mkLiteral "rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop})";
             border = mkLiteral "2px";
             border-color = mkLiteral "${scheme.withHashtag.base0D}";
             border-radius = mkLiteral "10px";
@@ -34,7 +33,7 @@
 
           inputbar = {
             background-color = mkLiteral "rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${
-              toString (opacity.desktop * 0.8)
+              toString (theme.opacity.desktop * 0.8)
             })";
             border-radius = mkLiteral "4px";
             padding = mkLiteral "8px";
@@ -44,7 +43,7 @@
           entry = {
             placeholder = "Search...";
             placeholder-color = mkLiteral "${scheme.withHashtag.base03}";
-            font = "${fonts.sansSerif.name} ${toString (fonts.sizes.desktop * 3.0 / 2.5)}";
+            font = "${theme.fonts.sansSerif.name} ${toString (theme.fonts.sizes.desktop * 3.0 / 2.5)}";
           };
 
           listview = {
@@ -74,7 +73,7 @@
             background-color = mkLiteral "transparent";
             text-color = mkLiteral "inherit";
             vertical-align = mkLiteral "0.5";
-            font = "${fonts.sansSerif.name} ${toString fonts.sizes.desktop}";
+            font = "${theme.fonts.sansSerif.name} ${toString theme.fonts.sizes.desktop}";
           };
 
           "element-icon" = {

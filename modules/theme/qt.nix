@@ -21,9 +21,8 @@
   flake.homeModules.theme =
     {
       pkgs,
+      theme,
       scheme,
-      fonts,
-      polarity,
       ...
     }:
     let
@@ -83,7 +82,7 @@
       '';
 
       iconTheme =
-        if polarity == "dark" then
+        if theme.polarity == "dark" then
           {
             name = "Papirus-Dark";
             package = pkgs.papirus-icon-theme;
@@ -101,8 +100,8 @@
         icon_theme=${iconTheme.name}
 
         [Fonts]
-        fixed="${fonts.monospace.name},${toString fonts.sizes.application}"
-        general="${fonts.sansSerif.name},${toString fonts.sizes.application}"
+        fixed="${theme.fonts.monospace.name},${toString theme.fonts.sizes.application}"
+        general="${theme.fonts.sansSerif.name},${toString theme.fonts.sizes.application}"
       '';
     in
     {
