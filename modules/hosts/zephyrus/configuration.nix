@@ -43,10 +43,6 @@
 
       services.blueman.enable = true;
 
-      environment.persistence."/persist".files = [
-        "/etc/supergfxd.conf"
-      ];
-
       environment.systemPackages = with pkgs; [
         sbctl
       ];

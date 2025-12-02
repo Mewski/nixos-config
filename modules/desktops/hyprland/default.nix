@@ -10,8 +10,6 @@
           inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       };
 
-      programs.dconf.enable = true;
-
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
     };
 
@@ -45,5 +43,39 @@
       };
 
       services.hyprpolkitagent.enable = true;
+
+      services.hyprpaper = {
+        enable = true;
+
+        settings = {
+          preload = [ "${inputs.mewski-wallpapers}/Kath.png" ];
+          wallpaper = [ ", ${inputs.mewski-wallpapers}/Kath.png" ];
+        };
+      };
+
+      services.hypridle = {
+        enable = true;
+
+        settings = {
+          general = {
+            before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
+            after_sleep_cmd = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
+            ignore_dbus_inhibit = false;
+            lock_cmd = "${lib.getExe pkgs.hyprlock}";
+          };
+
+          listener = [
+            {
+              timeout = 190;
+              on-timeout = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms off";
+              on-resume = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
+            }
+            {
+              timeout = 195;
+              on-timeout = "systemctl suspend";
+            }
+          ];
+        };
+      };
     };
 }

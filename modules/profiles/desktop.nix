@@ -6,9 +6,9 @@
       self.nixosModules.user
       self.nixosModules.home-manager
       self.nixosModules.preferences
+      self.nixosModules.theme
 
       self.nixosModules.hyprland
-      self.nixosModules.theme
       self.nixosModules.pipewire
 
       self.nixosModules.fish
@@ -60,9 +60,7 @@
     {
       imports = [
         self.homeModules.hyprland
-        self.homeModules.hypridle
         self.homeModules.hyprlock
-        self.homeModules.hyprpaper
         self.homeModules.waybar
         self.homeModules.rofi
         self.homeModules.dunst
@@ -71,7 +69,6 @@
         self.homeModules.fish
         self.homeModules.git
         self.homeModules.kitty
-        self.homeModules.yazi
         self.homeModules.btop
 
         self.homeModules.nixvim

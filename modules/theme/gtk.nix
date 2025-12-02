@@ -1,4 +1,8 @@
 {
+  flake.nixosModules.theme = {
+    programs.dconf.enable = true;
+  };
+
   flake.homeModules.theme =
     {
       pkgs,
@@ -14,6 +18,11 @@
         theme = {
           package = pkgs.adw-gtk3;
           name = if polarity == "dark" then "adw-gtk3-dark" else "adw-gtk3";
+        };
+
+        iconTheme = {
+          package = pkgs.adwaita-icon-theme;
+          name = "Adwaita";
         };
 
         font = {

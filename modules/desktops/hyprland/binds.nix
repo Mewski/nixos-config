@@ -8,7 +8,7 @@
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
           "SUPER, L, exec, ${lib.getExe pkgs.hyprlock}"
           "SUPER, U, exec, ${lib.getExe pkgs.bitwarden-desktop}"
-          "SUPER, E, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.fish} -c ${lib.getExe pkgs.yazi}"
+          "SUPER, E, exec, ${lib.getExe pkgs.nautilus}"
           "SUPER, I, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.btop}"
           "SUPER, K, exec, selected=$(${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.rofi} -dmenu -display-columns 2 -no-show-icons) && echo \"$selected\" | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} && ${lib.getExe pkgs.libnotify} -a osd-text -t 1000 'Copied to clipboard'"
           "SUPER, Z, exec, ${lib.getExe pkgs.zed-editor}"
