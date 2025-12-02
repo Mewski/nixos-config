@@ -37,6 +37,7 @@
         "docker-compose"
         "toml"
         "go"
+        "vue"
       ];
     };
   };
