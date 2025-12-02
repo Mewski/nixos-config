@@ -111,7 +111,7 @@
         opacity = {
           desktop = lib.mkOption {
             type = lib.types.float;
-            default = 0.8;
+            default = 1.0;
           };
 
           application = lib.mkOption {
@@ -121,12 +121,12 @@
 
           terminal = lib.mkOption {
             type = lib.types.float;
-            default = 0.8;
+            default = 1.0;
           };
 
           popups = lib.mkOption {
             type = lib.types.float;
-            default = 0.8;
+            default = 1.0;
           };
         };
       };
