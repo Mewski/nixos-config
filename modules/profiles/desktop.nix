@@ -1,59 +1,63 @@
 { self, ... }:
 {
-  flake.nixosModules.desktop = {
-    imports = [
-      self.nixosModules.nix
-      self.nixosModules.user
-      self.nixosModules.home-manager
-      self.nixosModules.preferences
-      self.nixosModules.theme
+  flake.nixosModules.desktop =
+    { pkgs, ... }:
+    {
+      imports = [
+        self.nixosModules.nix
+        self.nixosModules.user
+        self.nixosModules.home-manager
+        self.nixosModules.preferences
+        self.nixosModules.theme
 
-      self.nixosModules.hyprland
-      self.nixosModules.pipewire
+        self.nixosModules.hyprland
+        self.nixosModules.pipewire
 
-      self.nixosModules.fish
+        self.nixosModules.fish
 
-      self.nixosModules.docker
-      self.nixosModules.virtualization
-    ];
+        self.nixosModules.docker
+        self.nixosModules.virtualization
+      ];
 
-    hardware = {
-      enableAllFirmware = true;
+      hardware = {
+        enableAllFirmware = true;
 
-      bluetooth = {
-        enable = true;
-        powerOnBoot = true;
+        bluetooth = {
+          enable = true;
+          powerOnBoot = true;
+        };
+
+        graphics = {
+          enable = true;
+          enable32Bit = true;
+        };
       };
 
-      graphics = {
-        enable = true;
-        enable32Bit = true;
+      time.timeZone = "America/Chicago";
+
+      i18n = {
+        defaultLocale = "en_US.UTF-8";
+        extraLocaleSettings = {
+          LC_ADDRESS = "en_US.UTF-8";
+          LC_IDENTIFICATION = "en_US.UTF-8";
+          LC_MEASUREMENT = "en_US.UTF-8";
+          LC_MONETARY = "en_US.UTF-8";
+          LC_NAME = "en_US.UTF-8";
+          LC_NUMERIC = "en_US.UTF-8";
+          LC_PAPER = "en_US.UTF-8";
+          LC_TELEPHONE = "en_US.UTF-8";
+          LC_TIME = "en_US.UTF-8";
+        };
       };
+
+      security.polkit.enable = true;
+
+      services.upower.enable = true;
+
+      services.gnome.gnome-keyring.enable = true;
+
+      environment.systemPackages = with pkgs; [ nautilus ];
     };
-
-    time.timeZone = "America/Chicago";
-
-    i18n = {
-      defaultLocale = "en_US.UTF-8";
-      extraLocaleSettings = {
-        LC_ADDRESS = "en_US.UTF-8";
-        LC_IDENTIFICATION = "en_US.UTF-8";
-        LC_MEASUREMENT = "en_US.UTF-8";
-        LC_MONETARY = "en_US.UTF-8";
-        LC_NAME = "en_US.UTF-8";
-        LC_NUMERIC = "en_US.UTF-8";
-        LC_PAPER = "en_US.UTF-8";
-        LC_TELEPHONE = "en_US.UTF-8";
-        LC_TIME = "en_US.UTF-8";
-      };
-    };
-
-    security.polkit.enable = true;
-
-    services.upower.enable = true;
-
-    services.gnome.gnome-keyring.enable = true;
-  };
 
   flake.homeModules.desktop =
     { pkgs, ... }:
