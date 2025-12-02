@@ -11,6 +11,7 @@
           "SUPER, E, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.fish} -c ${lib.getExe pkgs.yazi}"
           "SUPER, I, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.btop}"
           "SUPER, K, exec, selected=$(${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.rofi} -dmenu -display-columns 2 -no-show-icons) && echo \"$selected\" | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} && ${lib.getExe pkgs.libnotify} -a osd-text -t 1000 'Copied to clipboard'"
+          "SUPER, Z, exec, ${lib.getExe pkgs.zed-editor}"
           "SUPER, D, exec, discord"
           "SUPER, B, exec, zen"
 
