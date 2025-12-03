@@ -26,7 +26,7 @@
           "layersOut, 1, 1.5, linear, fade"
           "fadeLayersIn, 1, 1.79, almostLinear"
           "fadeLayersOut, 1, 1.39, almostLinear"
-          "workspaces, 1, 3.81, easeOutQuint, slide"
+          "workspaces, 1, 3.8, easeOutQuint, slide"
           "zoomFactor, 1, 7, quick"
         ];
       };

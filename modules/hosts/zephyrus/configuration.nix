@@ -15,12 +15,16 @@
         inputs.disko.nixosModules.default
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
-
         self.diskoConfigurations.zephyrus
 
         self.nixosModules.desktop
         self.nixosModules.impermanence
         self.nixosModules.nvidia
+
+        self.nixosModules.virtualization
+
+        self.nixosModules.docker
+        self.nixosModules.mullvad-vpn
       ];
 
       boot = {

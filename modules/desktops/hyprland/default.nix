@@ -14,6 +14,11 @@
         NIXOS_OZONE_WL = "1";
         XCURSOR_SIZE = toString config.theme.cursor.size;
       };
+
+      environment.systemPackages = with pkgs; [
+        libsForQt5.qtwayland
+        kdePackages.qtwayland
+      ];
     };
 
   flake.homeModules.hyprland =

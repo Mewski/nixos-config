@@ -78,7 +78,6 @@
               tooltip-format-wifi = "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";
               tooltip-format-ethernet = "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";
               tooltip-format-disconnected = "Disconnected";
-              on-click = lib.getExe' pkgs.networkmanagerapplet "nm-connection-editor";
             };
 
             bluetooth = {
@@ -88,7 +87,6 @@
               tooltip-format = "Controller: {controller_alias}\nAddress: {controller_address}";
               tooltip-format-connected = "Controller: {controller_alias}\nAddress: {controller_address}\n\n{device_enumerate}";
               tooltip-format-enumerate-connected = "Device: {device_alias}\nAddress: {device_address}";
-              on-click = lib.getExe' pkgs.blueman "blueman-manager";
             };
 
             pulseaudio = {
@@ -101,7 +99,6 @@
                   "󰕾"
                 ];
               };
-              on-click = lib.getExe' pkgs.pavucontrol "pavucontrol";
             };
           };
         };

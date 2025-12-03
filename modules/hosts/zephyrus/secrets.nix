@@ -3,9 +3,7 @@
   flake.nixosModules.zephyrus = {
     imports = [ inputs.sops-nix.nixosModules.sops ];
 
-    home-manager.sharedModules = [
-      inputs.sops-nix.homeManagerModules.sops
-    ];
+    home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
 
     fileSystems."/etc/ssh".neededForBoot = true;
 

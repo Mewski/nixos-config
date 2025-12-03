@@ -13,8 +13,6 @@
         kdePackages.qtstyleplugin-kvantum
         libsForQt5.qt5ct
         kdePackages.qt6ct
-        libsForQt5.qtwayland
-        kdePackages.qtwayland
       ];
     };
 
@@ -67,9 +65,9 @@
           ]
           content;
 
-      kvconfigContent = mustacheReplace (builtins.readFile ../../assets/kvconfig.mustache);
+      kvconfigContent = mustacheReplace (builtins.readFile ../../assets/kvantum/kvconfig.mustache);
 
-      svgContent = mustacheReplace (builtins.readFile ../../assets/kvantum.svg.mustache);
+      svgContent = mustacheReplace (builtins.readFile ../../assets/kvantum/kvantum.svg.mustache);
 
       kvantumPackage = pkgs.runCommandLocal "base16-kvantum" { } ''
         mkdir -p $out/share/Kvantum/Base16Kvantum

@@ -4,17 +4,17 @@
     { pkgs, ... }:
     {
       imports = [
+        self.nixosModules.options
+        self.nixosModules.preferences
         self.nixosModules.nix
         self.nixosModules.user
         self.nixosModules.home-manager
-        self.nixosModules.options
-        self.nixosModules.preferences
-        self.nixosModules.theme
         self.nixosModules.hyprland
-        self.nixosModules.pipewire
+        self.nixosModules.theme
+
         self.nixosModules.fish
-        self.nixosModules.docker
-        self.nixosModules.virtualization
+
+        self.nixosModules.pipewire
       ];
 
       hardware = {
@@ -68,14 +68,17 @@
         self.homeModules.waybar
         self.homeModules.rofi
         self.homeModules.dunst
+
         self.homeModules.fish
         self.homeModules.git
         self.homeModules.kitty
         self.homeModules.btop
+
         self.homeModules.nixvim
         self.homeModules.zed-editor
         self.homeModules.claude-code
         self.homeModules.gemini-cli
+
         self.homeModules.nixcord
         self.homeModules.zen-browser
       ];
@@ -89,10 +92,14 @@
       };
 
       home.packages = with pkgs; [
-        wl-clipboard
-        cliphist
         unzip
         p7zip
+
+        wl-clipboard
+        cliphist
+
+        networkmanagerapplet
+        pavucontrol
       ];
     };
 }
