@@ -17,9 +17,9 @@
               "tray"
               "network"
               "bluetooth"
+              "pulseaudio"
               "cpu"
               "memory"
-              "pulseaudio"
               "battery"
               "clock"
             ];
@@ -78,6 +78,7 @@
               tooltip-format-wifi = "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";
               tooltip-format-ethernet = "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";
               tooltip-format-disconnected = "Disconnected";
+              on-click = "NEWT_COLORS='root=,black' ${lib.getExe pkgs.kitty} -e ${lib.getExe' pkgs.networkmanager "nmtui"}";
             };
 
             bluetooth = {
@@ -87,6 +88,7 @@
               tooltip-format = "Controller: {controller_alias}\nAddress: {controller_address}";
               tooltip-format-connected = "Controller: {controller_alias}\nAddress: {controller_address}\n\n{device_enumerate}";
               tooltip-format-enumerate-connected = "Device: {device_alias}\nAddress: {device_address}";
+              on-click = "${lib.getExe' pkgs.blueman "blueman-manager"}";
             };
 
             pulseaudio = {
@@ -99,6 +101,7 @@
                   "󰕾"
                 ];
               };
+              on-click = "${lib.getExe pkgs.pavucontrol}";
             };
           };
         };
