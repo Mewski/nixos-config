@@ -32,8 +32,9 @@ modules/
   programs/           # User applications (fish, git, kitty, nixvim, zed-editor, zen-browser, etc.)
   services/           # System services (pipewire, docker, dunst)
   theme/              # Per-application theming via base16
-mewski-secrets/       # Encrypted secrets (flake input, managed by sops-nix)
 ```
+
+Secrets are stored in a separate private repository ([mewski-secrets](https://github.com/Mewski/mewski-secrets)) and fetched via SSH.
 
 ## Install (Zephyrus)
 
@@ -48,6 +49,7 @@ sudo nixos-install --flake github:Mewski/nixos-config#zephyrus --no-write-lock-f
 ## Rebuild
 
 ```bash
+nix flake update mewski-secrets --flake ~/.nixos-config
 sudo nixos-rebuild switch --flake ~/.nixos-config
 ```
 
