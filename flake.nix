@@ -64,7 +64,7 @@
     };
 
     mewski-secrets = {
-      url = "github:Mewski/mewski-secrets";
+      url = "git+ssh://git@github.com/Mewski/mewski-secrets";
       flake = false;
     };
   };
