@@ -7,10 +7,10 @@
 
         settings = {
           mainBar = {
-            margin-top = 8;
-            margin-left = 8;
-            margin-right = 8;
-            spacing = 6;
+            margin-top = 5;
+            margin-left = 5;
+            margin-right = 5;
+            spacing = 5;
             modules-left = [ "hyprland/workspaces" ];
             modules-center = [ "hyprland/window" ];
             modules-right = [
@@ -65,10 +65,12 @@
 
             cpu = {
               format = "󰍛  {usage}%";
+              on-click = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.btop}";
             };
 
             memory = {
               format = "󰘚  {}%";
+              on-click = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.btop}";
             };
 
             network = {
