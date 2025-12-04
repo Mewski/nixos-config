@@ -1,3 +1,3 @@
-[submodule "secrets"]
-	path = secrets
+[submodule "mewski-secrets"]
+	path = mewski-secrets
 	url = https://github.com/Mewski/secrets.git
