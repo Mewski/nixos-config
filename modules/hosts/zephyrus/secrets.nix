@@ -8,7 +8,7 @@
     fileSystems."/etc/ssh".neededForBoot = true;
 
     sops = {
-      defaultSopsFile = ../../../mewski-secrets/zephyrus.yaml;
+      defaultSopsFile = "${inputs.mewski-secrets}/zephyrus.yaml";
 
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     };
@@ -20,7 +20,7 @@
 
       secrets = {
         wakatime-api-key = {
-          sopsFile = ../../../mewski-secrets/common.yaml;
+          sopsFile = "${inputs.mewski-secrets}/common.yaml";
           path = ".wakatime.cfg";
         };
       };

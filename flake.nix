@@ -62,6 +62,11 @@
       url = "github:Mewski/mewski-wallpapers";
       flake = false;
     };
+
+    mewski-secrets = {
+      url = "github:Mewski/mewski-secrets";
+      flake = false;
+    };
   };
 
   outputs =

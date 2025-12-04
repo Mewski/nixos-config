@@ -32,7 +32,7 @@ modules/
   programs/           # User applications (fish, git, kitty, nixvim, zed-editor, zen-browser, etc.)
   services/           # System services (pipewire, docker, dunst)
   theme/              # Per-application theming via base16
-secrets/              # Encrypted secrets managed by sops-nix
+mewski-secrets/       # Encrypted secrets (flake input, managed by sops-nix)
 ```
 
 ## Install (Zephyrus)
@@ -42,13 +42,13 @@ nix-shell -p git gh
 gh auth login
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --flake github:Mewski/nixos-config#zephyrus --mode disko
 cd /mnt
-sudo nixos-install --flake github:Mewski/nixos-config#zephyrus?submodules=1 --no-write-lock-file
+sudo nixos-install --flake github:Mewski/nixos-config#zephyrus --no-write-lock-file
 ```
 
 ## Rebuild
 
 ```bash
-sudo nixos-rebuild switch --flake ~/.nixos-config?submodules=1
+sudo nixos-rebuild switch --flake ~/.nixos-config
 ```
 
 ## License
