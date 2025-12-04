@@ -95,6 +95,10 @@
         unzip
         p7zip
 
+        wget
+        xxd
+        jq
+
         wl-clipboard
         cliphist
 

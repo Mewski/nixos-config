@@ -64,13 +64,13 @@
       brightnessctl = lib.getExe pkgs.brightnessctl;
       notify = lib.getExe pkgs.libnotify;
       jq = lib.getExe pkgs.jq;
-      supergfxctl = "${pkgs.supergfxctl}/bin/supergfxctl";
+      supergfxctl = lib.getExe' pkgs.supergfxctl "supergfxctl";
 
       kbdBacklight = "asus::kbd_backlight";
       intelBacklight = "intel_backlight";
       nvidiaBacklight = "nvidia_0";
 
-      monitorConfig = "eDP-1, 2560x1600@240, 0x0, 1, vrr, 1, bitdepth, 10";
+      internalDisplayConfig = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
 
       getKbdBrightness = "${brightnessctl} -d ${kbdBacklight} -m | cut -d, -f4 | tr -d '%'";
       getDisplayBrightness = "${brightnessctl} -d ${intelBacklight} -m | cut -d, -f4 | tr -d '%'";
@@ -98,7 +98,7 @@
 
       lidSwitchOff = pkgs.writeShellScript "lid-switch-off" ''
         if [[ $(${supergfxctl} -g) == 'AsusMuxDgpu' ]]; then
-          hyprctl keyword monitor '${monitorConfig}'
+          hyprctl keyword monitor '${internalDisplayConfig}'
         fi
       '';
 
@@ -118,7 +118,7 @@
       imports = [ self.homeModules.desktop ];
 
       wayland.windowManager.hyprland.settings = {
-        monitor = [ "${monitorConfig}" ];
+        monitor = [ "${internalDisplayConfig}" ];
 
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"

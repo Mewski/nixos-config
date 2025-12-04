@@ -8,6 +8,11 @@
     hyprland.url = "github:hyprwm/Hyprland";
     base16.url = "github:SenchoPens/base16.nix";
 
+    binary-ninja = {
+      url = "github:jchv/nix-binary-ninja";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";

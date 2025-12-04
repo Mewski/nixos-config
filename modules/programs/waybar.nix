@@ -7,10 +7,10 @@
 
         settings = {
           mainBar = {
-            margin-top = 5;
-            margin-left = 5;
-            margin-right = 5;
-            spacing = 5;
+            margin-top = 8;
+            margin-left = 8;
+            margin-right = 8;
+            spacing = 4;
             modules-left = [ "hyprland/workspaces" ];
             modules-center = [ "hyprland/window" ];
             modules-right = [
