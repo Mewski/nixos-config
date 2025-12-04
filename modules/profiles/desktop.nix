@@ -79,6 +79,8 @@
         self.homeModules.claude-code
         self.homeModules.gemini-cli
 
+        self.homeModules.binary-ninja
+
         self.homeModules.nixcord
         self.homeModules.zen-browser
       ];
