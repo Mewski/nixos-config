@@ -42,8 +42,8 @@
         networkmanager.enable = true;
         firewall = {
           enable = true;
-          allowedTCPPorts = [ 3000 ];
-          allowedUDPPorts = [ 46692 ];
+          allowedTCPPorts = [ ];
+          allowedUDPPorts = [ ];
         };
       };
 
