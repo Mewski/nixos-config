@@ -40,7 +40,11 @@
       networking = {
         hostName = "zephyrus";
         networkmanager.enable = true;
-        firewall.enable = true;
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [ 3000 ];
+          allowedUDPPorts = [ 46692 ];
+        };
       };
 
       services.openssh.enable = true;
@@ -136,8 +140,7 @@
 
         device = {
           name = "asup1207:00-093a:3012-touchpad";
-          accel_profile = "flat";
-          sensitivity = 0.55;
+          sensitivity = 0.25;
         };
 
         bindel = [

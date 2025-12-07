@@ -6,7 +6,7 @@
       userSettings = {
         icon_theme = "Material Icon Theme";
         vim_mode = false;
-        cursor_blink = false;
+        tab_size = 2;
 
         vim = {
           use_smartcase_find = true;

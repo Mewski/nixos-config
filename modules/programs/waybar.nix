@@ -7,12 +7,12 @@
 
         settings = {
           mainBar = {
-            margin-top = 8;
-            margin-left = 8;
-            margin-right = 8;
-            spacing = 4;
-            modules-left = [ "hyprland/workspaces" ];
-            modules-center = [ "hyprland/window" ];
+            margin-top = 6;
+            margin-left = 6;
+            margin-right = 6;
+            spacing = 3;
+            modules-left = [ "hyprland/window" ];
+            modules-center = [ "hyprland/workspaces" ];
             modules-right = [
               "tray"
               "network"

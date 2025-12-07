@@ -16,6 +16,11 @@
           text-shadow: none;
         }
 
+        label, image {
+          margin-top: 1px;
+          margin-bottom: 1px;
+        }
+
         window#waybar {
           background: transparent;
           color: ${scheme.withHashtag.base05};
@@ -24,47 +29,55 @@
         tooltip {
           background: ${scheme.withHashtag.base00};
           border: 1px solid ${scheme.withHashtag.base03};
-          border-radius: 8px;
+          border-radius: 6px;
           color: ${scheme.withHashtag.base05};
         }
 
         .modules-left,
-        .modules-center,
-        .modules-right {
+        .modules-center {
           background: transparent;
         }
 
+        .modules-right {
+          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
+          border-radius: 6px;
+          padding: 0 4px;
+        }
+
         .modules-left > widget,
-        .modules-center > widget,
-        .modules-right > widget {
+        .modules-center > widget {
           margin: 0 4px;
         }
 
-        #window,
-        #clock,
+        #window {
+          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
+          padding: 4px 8px;
+          border-radius: 6px;
+        }
+
         #battery,
         #cpu,
         #memory,
         #network,
         #bluetooth,
         #pulseaudio,
+        #clock,
         #tray {
-          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
-          padding: 4px 12px;
-          border-radius: 8px;
+          background: transparent;
+          padding: 4px 8px;
         }
 
         #workspaces {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
           padding: 4px 2px;
-          border-radius: 8px;
+          border-radius: 6px;
         }
 
         #workspaces button {
           background: transparent;
           color: ${scheme.withHashtag.base05};
           padding: 0 6px;
-          border-radius: 4px;
+          border-radius: 3px;
           margin: 0 2px;
         }
 
