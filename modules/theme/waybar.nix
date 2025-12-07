@@ -73,21 +73,20 @@
 
         #workspaces {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
-          padding: 4px 2px;
           border-radius: 6px;
+          padding: 3px 2px 3px 2px;
         }
 
         #workspaces button {
           background: transparent;
           color: ${scheme.withHashtag.base05};
-          padding: 0 6px;
+          padding: 0px 6px;
           border-radius: 3px;
-          margin: 0 2px;
+          box-shadow: none;
         }
 
         #workspaces button:hover {
           background: ${scheme.withHashtag.base02};
-          box-shadow: none;
         }
 
         #workspaces button.active {

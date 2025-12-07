@@ -61,6 +61,10 @@
         gaps_out = 6;
       };
 
+      misc = {
+        disable_hyprland_logo = true;
+      };
+
       layerrule = [
         "blur, waybar"
         "ignorealpha 0.1, waybar"

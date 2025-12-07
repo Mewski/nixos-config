@@ -43,8 +43,14 @@
             no_donation_nag = true;
           };
 
+          cursor = {
+            inactive_timeout = 3;
+          };
+
           misc = {
+            key_press_enables_dpms = true;
             middle_click_paste = false;
+            mouse_move_enables_dpms = true;
             vfr = true;
           };
         };
