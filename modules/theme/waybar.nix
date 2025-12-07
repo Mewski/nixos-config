@@ -8,7 +8,7 @@
     {
       programs.waybar.style = ''
         * {
-          font-family: "${theme.fonts.sansSerif.name}";
+          font-family: "${theme.fonts.monospace.name}";
           font-size: ${toString theme.fonts.sizes.desktop}pt;
           border: none;
           border-radius: 0;
@@ -18,7 +18,7 @@
 
         label, image {
           margin-top: 1px;
-          margin-bottom: 1px;
+          margin-bottom: -1px;
         }
 
         window#waybar {
@@ -33,7 +33,12 @@
           color: ${scheme.withHashtag.base05};
         }
 
-        .modules-left,
+        .modules-left {
+          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
+          border-radius: 6px;
+          padding: 0 4px;
+        }
+
         .modules-center {
           background: transparent;
         }
@@ -50,9 +55,8 @@
         }
 
         #window {
-          background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
+          background: transparent;
           padding: 4px 8px;
-          border-radius: 6px;
         }
 
         #battery,
@@ -148,8 +152,13 @@
           color: ${scheme.withHashtag.base03};
         }
 
-        #tray {
-          padding: 4px 8px;
+        #custom-power {
+          background: transparent;
+          font-size: 22px;
+          margin-top: -11px;
+          margin-bottom: -11px;
+          padding: 0 0 0 4px;
+          color: ${scheme.withHashtag.base0D};
         }
 
         window#waybar.empty #window {
