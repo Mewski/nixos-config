@@ -43,8 +43,6 @@
               format = "{title}";
               max-length = 50;
               separate-outputs = true;
-              icon = true;
-              icon-size = 15;
             };
 
             clock = {

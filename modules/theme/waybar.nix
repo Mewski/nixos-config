@@ -157,7 +157,7 @@
           font-size: 22px;
           margin-top: -11px;
           margin-bottom: -11px;
-          padding: 0 0 0 4px;
+          padding: 0 2px 0 3px;
           color: ${scheme.withHashtag.base0D};
         }
 
