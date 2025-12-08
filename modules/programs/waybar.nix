@@ -19,8 +19,9 @@
             modules-center = [ "hyprland/workspaces" ];
             modules-right = [
               "tray"
-              "network"
+              "idle_inhibitor"
               "bluetooth"
+              "network"
               "pulseaudio"
               "cpu"
               "memory"
@@ -117,6 +118,16 @@
                 ];
               };
               on-click = "${lib.getExe pkgs.pavucontrol}";
+            };
+
+            idle_inhibitor = {
+              format = "{icon}";
+              format-icons = {
+                activated = "󰈈";
+                deactivated = "󰈉";
+              };
+              tooltip-format-activated = "Idle inhibitor active";
+              tooltip-format-deactivated = "Idle inhibitor inactive";
             };
           };
         };

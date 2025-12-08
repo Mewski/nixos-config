@@ -156,6 +156,16 @@
           color: ${scheme.withHashtag.base03};
         }
 
+        #idle_inhibitor {
+          background: transparent;
+          padding: 4px 8px;
+          color: ${scheme.withHashtag.base03};
+        }
+
+        #idle_inhibitor.activated {
+          color: ${scheme.withHashtag.base0A};
+        }
+
         #custom-power {
           background: transparent;
           font-size: 22px;
