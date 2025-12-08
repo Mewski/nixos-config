@@ -36,7 +36,7 @@
             --toolbar-bgcolor: ${scheme.withHashtag.base02} !important;
             --newtab-background-color: ${scheme.withHashtag.base00} !important;
             --zen-themed-toolbar-bg: ${scheme.withHashtag.base00} !important;
-            --zen-main-browser-background: ${scheme.withHashtag.base00} !important;
+            --zen-main-browser-background: #ffffff !important;
             --toolbox-bgcolor-inactive: ${scheme.withHashtag.base01} !important;
           }
 

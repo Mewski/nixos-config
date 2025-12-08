@@ -74,15 +74,20 @@
         #workspaces {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
           border-radius: 6px;
-          padding: 3px 2px 3px 2px;
+          padding: 4px;
         }
 
         #workspaces button {
           background: transparent;
           color: ${scheme.withHashtag.base05};
           padding: 0px 6px;
-          border-radius: 3px;
+          margin-left: 4px;
+          border-radius: 4px;
           box-shadow: none;
+        }
+
+        #workspaces button:first-child {
+          margin-left: 0;
         }
 
         #workspaces button:hover {
