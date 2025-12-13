@@ -84,9 +84,7 @@
       ];
 
       home.pointerCursor = {
-        name = theme.cursor.name;
-        package = theme.cursor.package;
-        size = theme.cursor.size;
+        inherit (theme.cursor) name package size;
         x11.enable = true;
         gtk.enable = true;
       };
@@ -105,6 +103,8 @@
         networkmanagerapplet
         pavucontrol
         qimgv
+
+        spotify
       ];
     };
 }

@@ -72,6 +72,8 @@
   outputs =
     inputs@{ flake-parts, import-tree, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
+
       imports = [
         inputs.disko.flakeModules.default
         inputs.home-manager.flakeModules.home-manager
@@ -79,6 +81,14 @@
         (import-tree ./modules)
       ];
 
-      systems = [ "x86_64-linux" ];
+      perSystem =
+        { system, ... }:
+        {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [ inputs.self.overlays.default ];
+            config.allowUnfree = true;
+          };
+        };
     };
 }

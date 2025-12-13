@@ -9,11 +9,7 @@
         useGlobalPkgs = true;
         useUserPackages = true;
 
-        extraSpecialArgs = {
-          preferences = config.preferences;
-          theme = config.theme;
-          scheme = config.scheme;
-        };
+        extraSpecialArgs = { inherit (config) preferences theme scheme; };
 
         sharedModules = [ self.homeModules.${config.networking.hostName} ];
 
