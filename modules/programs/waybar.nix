@@ -85,6 +85,7 @@
             tray = {
               spacing = 20;
               icon-size = 10;
+              show-passive-items = true;
             };
 
             network = {
