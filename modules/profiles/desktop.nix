@@ -104,6 +104,7 @@
 
         networkmanagerapplet
         pavucontrol
+        qimgv
       ];
     };
 }

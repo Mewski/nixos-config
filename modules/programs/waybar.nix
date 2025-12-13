@@ -73,12 +73,12 @@
             };
 
             cpu = {
-              format = "󰍛 {usage:2}%";
+              format = "󰍛 {usage}%";
               on-click = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.btop}";
             };
 
             memory = {
-              format = "󰘚 {percentage:2}%";
+              format = "󰘚 {percentage}%";
               on-click = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.btop}";
             };
 
@@ -88,7 +88,7 @@
             };
 
             network = {
-              format-wifi = "󰖩 {signalStrength:2}%";
+              format-wifi = "󰖩 {signalStrength}%";
               format-ethernet = "󰈀";
               format-disconnected = "󰖪";
               tooltip-format-wifi = "SSID: {essid}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}";

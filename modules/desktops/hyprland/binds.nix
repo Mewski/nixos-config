@@ -44,7 +44,7 @@
         bind = [
           "SUPER, R, exec, ${lib.getExe pkgs.rofi} -show drun"
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
-          "SUPER, L, exec, ${lib.getExe pkgs.hyprlock}"
+          "SUPER, L, exec, ${lib.getExe pkgs.hyprlock} --immediate-render"
           "SUPER, U, exec, ${lib.getExe pkgs.bitwarden-desktop}"
           "SUPER, E, exec, ${lib.getExe pkgs.nautilus}"
           "SUPER, I, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.btop}"
@@ -57,6 +57,8 @@
           "SUPER SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region -z -o ~/Pictures/Screenshots"
           "SUPER ALT, S, exec, ${lib.getExe pkgs.hyprshot} -m window -z -o ~/Pictures/Screenshots"
           "SUPER CONTROL_L, S, exec, ${lib.getExe pkgs.hyprshot} -m output -z -o ~/Pictures/Screenshots"
+
+          "SUPER, F, fullscreen"
 
           "SUPER, M, exit,"
 

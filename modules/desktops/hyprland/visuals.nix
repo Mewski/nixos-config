@@ -32,7 +32,7 @@
       };
 
       decoration = {
-        rounding = 6;
+        rounding = 8;
         rounding_power = 2;
 
         blur = {

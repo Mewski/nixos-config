@@ -43,7 +43,7 @@
         networkmanager.enable = true;
 
         firewall = {
-          enable = true;
+          enable = false;
 
           allowedTCPPorts = [ ];
 
@@ -112,8 +112,7 @@
 
       dimDisplay = pkgs.writeShellScript "dim-display" ''
         current=$(${getDisplayBrightness})
-        target=$((current < 10 ? current : 10))
-        ${brightnessctl} -d ${intelBacklight} -s set ''${target}%
+        ${brightnessctl} -d ${intelBacklight} -s set 5%
         ${brightnessctl} -d ${nvidiaBacklight} -s set 0%
       '';
 
@@ -126,7 +125,10 @@
       imports = [ self.homeModules.desktop ];
 
       wayland.windowManager.hyprland.settings = {
-        monitor = [ "${internalDisplayConfig}" ];
+        monitor = [
+          "${internalDisplayConfig}"
+          ", highres, auto, 1.0"
+        ];
 
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"

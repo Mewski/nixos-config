@@ -27,7 +27,7 @@
           }
           {
             text = ''cmd[update:1000] date +"%A, %B %d"'';
-            color = "rgb(${scheme.base04})";
+            color = "rgb(${scheme.base05})";
             font_size = 24;
             position = "0, -250";
             halign = "center";

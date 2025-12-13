@@ -29,13 +29,13 @@
         tooltip {
           background: ${scheme.withHashtag.base00};
           border: 1px solid ${scheme.withHashtag.base03};
-          border-radius: 6px;
+          border-radius: 8px;
           color: ${scheme.withHashtag.base05};
         }
 
         .modules-left {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
-          border-radius: 6px;
+          border-radius: 8px;
           padding: 0 4px;
         }
 
@@ -45,7 +45,7 @@
 
         .modules-right {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
-          border-radius: 6px;
+          border-radius: 8px;
           padding: 0 4px;
         }
 
@@ -73,7 +73,7 @@
 
         #workspaces {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
-          border-radius: 6px;
+          border-radius: 8px;
           padding: 4px;
         }
 

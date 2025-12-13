@@ -11,6 +11,12 @@
       ...
     }:
     {
+      dconf.settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = if theme.polarity == "dark" then "prefer-dark" else "default";
+        };
+      };
+
       gtk = {
         enable = true;
 

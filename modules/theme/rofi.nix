@@ -22,7 +22,7 @@
             background-color = mkLiteral "rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop})";
             border = mkLiteral "2px";
             border-color = mkLiteral "${scheme.withHashtag.base0D}";
-            border-radius = mkLiteral "10px";
+            border-radius = mkLiteral "8px";
             padding = mkLiteral "8px";
           };
 
@@ -35,7 +35,7 @@
             background-color = mkLiteral "rgba(${scheme.base01-rgb-r}, ${scheme.base01-rgb-g}, ${scheme.base01-rgb-b}, ${
               toString (theme.opacity.desktop * 0.8)
             })";
-            border-radius = mkLiteral "4px";
+            border-radius = mkLiteral "6px";
             padding = mkLiteral "8px";
             children = mkLiteral "[entry]";
           };
@@ -55,7 +55,7 @@
           element = {
             background-color = mkLiteral "transparent";
             text-color = mkLiteral "${scheme.withHashtag.base05}";
-            border-radius = mkLiteral "4px";
+            border-radius = mkLiteral "6px";
             padding = mkLiteral "8px";
             spacing = mkLiteral "8px";
           };

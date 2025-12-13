@@ -86,7 +86,7 @@
               on-resume = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
             }
             {
-              timeout = 195;
+              timeout = 250;
               on-timeout = "systemctl suspend";
             }
           ];
