@@ -12,6 +12,12 @@
           "nix-command"
           "flakes"
         ];
+
+        gc = {
+          automatic = true;
+          dates = "daily";
+          options = "--delete-older-than 7d";
+        };
       };
 
       nixpkgs.config.allowUnfree = true;
