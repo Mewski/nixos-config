@@ -43,7 +43,7 @@
         networkmanager.enable = true;
 
         firewall = {
-          enable = false;
+          enable = true;
 
           allowedTCPPorts = [ ];
 
