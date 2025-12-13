@@ -22,6 +22,8 @@
 
       nixpkgs.config.allowUnfree = true;
 
+      nixpkgs.overlays = [ inputs.self.overlays.default ];
+
       programs.nix-index-database.comma.enable = true;
 
       programs.nix-ld.enable = true;
