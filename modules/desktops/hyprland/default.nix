@@ -81,12 +81,12 @@
 
           listener = [
             {
-              timeout = 190;
+              timeout = 195;
               on-timeout = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms off";
               on-resume = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
             }
             {
-              timeout = 250;
+              timeout = 300;
               on-timeout = "systemctl suspend";
             }
           ];
