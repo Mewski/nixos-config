@@ -80,6 +80,7 @@
         self.homeModules.gemini-cli
 
         self.homeModules.nixcord
+        self.homeModules.obsidian
         self.homeModules.zen-browser
       ];
 
