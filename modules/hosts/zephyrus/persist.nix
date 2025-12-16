@@ -16,7 +16,6 @@
             "Projects"
             "Videos"
             ".nixos-config"
-            ".cache/spotify"
             ".claude"
             ".config/Bitwarden"
             ".config/discord"
