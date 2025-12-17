@@ -15,6 +15,8 @@
         self.nixosModules.fish
 
         self.nixosModules.pipewire
+
+        self.nixosModules.binary-ninja
       ];
 
       hardware = {

@@ -16,6 +16,7 @@
             "Projects"
             "Videos"
             ".nixos-config"
+            ".binaryninja"
             ".claude"
             ".config/Bitwarden"
             ".config/discord"

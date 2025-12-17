@@ -7,11 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland";
     base16.url = "github:SenchoPens/base16.nix";
-
-    binary-ninja = {
-      url = "github:jchv/nix-binary-ninja";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    binary-ninja.url = "github:jchv/nix-binary-ninja";
 
     disko = {
       url = "github:nix-community/disko";
@@ -65,6 +61,11 @@
 
     mewski-secrets = {
       url = "git+ssh://git@github.com/Mewski/mewski-secrets";
+      flake = false;
+    };
+
+    mewski-assets = {
+      url = "git+https://gitlab.mewski.dev/Mewski/mewski-assets.git";
       flake = false;
     };
   };

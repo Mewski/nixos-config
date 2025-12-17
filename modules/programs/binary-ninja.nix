@@ -7,7 +7,9 @@
 
       programs.binary-ninja = {
         enable = true;
-        package = pkgs.binary-ninja-personal-wayland;
+        package = inputs.binary-ninja.packages.${pkgs.system}.binary-ninja-personal-wayland.override {
+          overrideSource = "${inputs.mewski-assets}/installers/binaryninja_personal_linux.zip";
+        };
       };
     };
 }
