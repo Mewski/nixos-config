@@ -11,12 +11,16 @@
       batteryRefreshRate = pkgs.writeShellScript "battery-refresh-rate" ''
         while true; do
           STATUS=$(cat /sys/class/power_supply/ACAD/online)
-          CURRENT_RATE=$(${hyprctl} monitors -j | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | floor')
+          MONITOR_COUNT=$(${hyprctl} monitors -j | ${jq} '[.[] | select(.name == "eDP-1")] | length')
 
-          if [ "$STATUS" = "1" ]; then
-            [ "$CURRENT_RATE" != "240" ] && ${hyprctl} keyword monitor '${monitorHighRefresh}'
-          else
-            [ "$CURRENT_RATE" != "60" ] && ${hyprctl} keyword monitor '${monitorLowRefresh}'
+          if [ "$MONITOR_COUNT" -gt 0 ]; then
+            CURRENT_RATE=$(${hyprctl} monitors -j | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | floor')
+
+            if [ "$STATUS" = "1" ]; then
+              [ "$CURRENT_RATE" != "240" ] && ${hyprctl} keyword monitor '${monitorHighRefresh}'
+            else
+              [ "$CURRENT_RATE" != "60" ] && ${hyprctl} keyword monitor '${monitorLowRefresh}'
+            fi
           fi
 
           sleep 5

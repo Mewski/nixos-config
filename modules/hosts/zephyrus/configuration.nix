@@ -72,7 +72,6 @@
       brightnessctl = lib.getExe pkgs.brightnessctl;
       notify = lib.getExe pkgs.libnotify;
       jq = lib.getExe pkgs.jq;
-      supergfxctl = lib.getExe' pkgs.supergfxctl "supergfxctl";
 
       kbdBacklight = "asus::kbd_backlight";
       intelBacklight = "intel_backlight";
@@ -98,15 +97,22 @@
       '';
 
       lidSwitchOn = pkgs.writeShellScript "lid-switch-on" ''
-        if [[ $(${supergfxctl} -g) == 'AsusMuxDgpu' ]] && \
-           [[ $(hyprctl monitors -j | ${jq} 'length') -gt 1 ]]; then
+        external_connected=$(hyprctl monitors -j | ${jq} '[.[] | select(.name != "eDP-1")] | length > 0')
+        if [[ "$external_connected" == "true" ]]; then
+          for ws in {1..10}; do
+            hyprctl dispatch moveworkspacetomonitor "$ws" "$(hyprctl monitors -j | ${jq} -r '[.[] | select(.name != "eDP-1")][0].name')"
+          done
           hyprctl keyword monitor 'eDP-1, disable'
         fi
       '';
 
       lidSwitchOff = pkgs.writeShellScript "lid-switch-off" ''
-        if [[ $(${supergfxctl} -g) == 'AsusMuxDgpu' ]]; then
+        is_disabled=$(hyprctl monitors -j | ${jq} '[.[] | select(.name == "eDP-1")] | length == 0')
+        if [[ "$is_disabled" == "true" ]]; then
           hyprctl keyword monitor '${internalDisplayConfig}'
+          for ws in {1..10}; do
+            hyprctl dispatch moveworkspacetomonitor "$ws" "eDP-1"
+          done
         fi
       '';
 
@@ -127,7 +133,30 @@
       wayland.windowManager.hyprland.settings = {
         monitor = [
           "${internalDisplayConfig}"
-          ", highres, auto, 1.0"
+          ", preferred, auto, 1"
+        ];
+
+        workspace = [
+          "1, monitor:eDP-1, default:true"
+          "2, monitor:eDP-1"
+          "3, monitor:eDP-1"
+          "4, monitor:eDP-1"
+          "5, monitor:eDP-1"
+          "6, monitor:eDP-1"
+          "7, monitor:eDP-1"
+          "8, monitor:eDP-1"
+          "9, monitor:eDP-1"
+          "10, monitor:eDP-1"
+          "11, monitor:HDMI-A-1, default:true"
+          "12, monitor:HDMI-A-1"
+          "13, monitor:HDMI-A-1"
+          "14, monitor:HDMI-A-1"
+          "15, monitor:HDMI-A-1"
+          "16, monitor:HDMI-A-1"
+          "17, monitor:HDMI-A-1"
+          "18, monitor:HDMI-A-1"
+          "19, monitor:HDMI-A-1"
+          "20, monitor:HDMI-A-1"
         ];
 
         env = [
