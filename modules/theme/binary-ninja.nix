@@ -108,72 +108,68 @@
         };
 
         theme-colors = {
+          keywordColor = "base0E";
+          opcodeColor = "base0E";
+          codeSymbolColor = "base0D";
+          importColor = "base08";
+          typeNameColor = "base0A";
+          stringColor = "base0B";
+          numberColor = "base09";
           addressColor = "base09";
-          modifiedColor = "base08";
-          insertedColor = "base0C";
+          fieldNameColor = "base08";
+          stackVariableColor = "base08";
+          registerColor = "base08";
+          dataSymbolColor = "base08";
+          annotationColor = "base03";
+          uncertainColor = "base03";
+          tokenHighlightColor = "base05";
+          instructionHighlightColor = "base03";
           notPresentColor = "base03";
           selectionColor = "base02";
           outlineColor = "base05";
-
+          modifiedColor = "base0E";
+          insertedColor = "base0B";
           backgroundHighlightDarkColor = "base00";
           backgroundHighlightLightColor = "base01";
-
-          boldBackgroundHighlightDarkColor = "base0F";
-          boldBackgroundHighlightLightColor = "base03";
-
+          boldBackgroundHighlightDarkColor = "base01";
+          boldBackgroundHighlightLightColor = "base02";
           alphanumericHighlightColor = "base0A";
-          printableHighlightColor = "base08";
-
+          printableHighlightColor = "base0B";
           graphBackgroundDarkColor = "base01";
           graphBackgroundLightColor = "base01";
           graphNodeDarkColor = "base00";
           graphNodeLightColor = "base00";
           graphNodeOutlineColor = "base03";
-
           trueBranchColor = "base0B";
           falseBranchColor = "base08";
           unconditionalBranchColor = "base0D";
-          altTrueBranchColor = "base06";
-          altFalseBranchColor = "base07";
-          altUnconditionalBranchColor = "base08";
-
-          registerColor = "base0B";
-          numberColor = "base09";
-
-          codeSymbolColor = "base0D";
-          dataSymbolColor = "base0B";
-
-          stackVariableColor = "base08";
-          importColor = "base0D";
-          instructionHighlightColor = "base03";
-          tokenHighlightColor = "base05";
-          annotationColor = "base0E";
-          opcodeColor = "base03";
-
-          linearDisassemblyFunctionHeaderColor = "base00";
+          altTrueBranchColor = "base0C";
+          altFalseBranchColor = "base09";
+          altUnconditionalBranchColor = "base0E";
+          linearDisassemblyFunctionHeaderColor = "base01";
           linearDisassemblyBlockColor = "base00";
-          linearDisassemblyNoteColor = "base01";
+          linearDisassemblyNoteColor = "base02";
           linearDisassemblySeparatorColor = "base03";
-
-          stringColor = "base0B";
-          typeNameColor = "base0A";
-          fieldNameColor = "base05";
-          keywordColor = "base0E";
-          uncertainColor = "base03";
-
-          scriptConsoleOutputColor = "base0B";
+          scriptConsoleOutputColor = "base05";
           scriptConsoleErrorColor = "base08";
-          scriptConsoleEchoColor = "base05";
-
-          blueStandardHighlightColor = "base0D";
-          greenStandardHighlightColor = "base0B";
-          cyanStandardHighlightColor = "base0C";
+          scriptConsoleEchoColor = "base03";
+          blackStandardHighlightColor = "base00";
           redStandardHighlightColor = "base08";
-          magentaStandardHighlightColor = "base0E";
+          greenStandardHighlightColor = "base0B";
           yellowStandardHighlightColor = "base0A";
+          blueStandardHighlightColor = "base0D";
+          magentaStandardHighlightColor = "base0E";
+          cyanStandardHighlightColor = "base0C";
+          whiteStandardHighlightColor = "base05";
+          brightBlackStandardHighlightColor = "base03";
+          brightRedStandardHighlightColor = "base09";
+          brightGreenStandardHighlightColor = "base0F";
+          brightYellowStandardHighlightColor = "base01";
+          brightBlueStandardHighlightColor = "base02";
+          brightMagentaStandardHighlightColor = "base04";
+          brightCyanStandardHighlightColor = "base06";
+          brightWhiteStandardHighlightColor = "base07";
           orangeStandardHighlightColor = "base09";
-          whiteStandardHighlightColor = "base04";
-          blackStandardHighlightColor = "base02";
         };
       };
     };

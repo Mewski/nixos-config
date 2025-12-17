@@ -11,16 +11,15 @@
         inputs.disko.nixosModules.default
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
+
         self.diskoConfigurations.zephyrus
 
-        self.nixosModules.desktop
         self.nixosModules.impermanence
         self.nixosModules.nvidia
 
-        self.nixosModules.virtualization
-
-        self.nixosModules.docker
-        self.nixosModules.mullvad-vpn
+        self.nixosModules.desktop
+        self.nixosModules.development
+        self.nixosModules.gaming
       ];
 
       boot = {
@@ -50,6 +49,10 @@
       services.openssh.enable = true;
 
       services.blueman.enable = true;
+
+      services.udev.packages = with pkgs; [
+        wooting-udev-rules
+      ];
 
       environment.systemPackages = with pkgs; [
         sbctl
@@ -118,7 +121,11 @@
       '';
     in
     {
-      imports = [ self.homeModules.desktop ];
+      imports = [
+        self.homeModules.desktop
+        self.homeModules.development
+        self.homeModules.gaming
+      ];
 
       wayland.windowManager.hyprland.settings = {
         monitor = [
@@ -165,10 +172,6 @@
           on-timeout = "${dimDisplay}";
           on-resume = "${restoreDisplay}";
         }
-      ];
-
-      home.packages = with pkgs; [
-        bitwarden-desktop
       ];
     };
 }

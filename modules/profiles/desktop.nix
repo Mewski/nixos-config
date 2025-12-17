@@ -4,16 +4,18 @@
     { pkgs, ... }:
     {
       imports = [
+        self.nixosModules.nix
         self.nixosModules.options
         self.nixosModules.preferences
-        self.nixosModules.nix
         self.nixosModules.user
+
         self.nixosModules.home-manager
         self.nixosModules.hyprland
         self.nixosModules.theme
 
         self.nixosModules.fish
 
+        self.nixosModules.mullvad-vpn
         self.nixosModules.pipewire
       ];
 
@@ -62,28 +64,21 @@
     { pkgs, theme, ... }:
     {
       imports = [
-        self.homeModules.theme
         self.homeModules.hyprland
-        self.homeModules.hyprlock
-        self.homeModules.waybar
-        self.homeModules.rofi
+        self.homeModules.theme
+
         self.homeModules.dunst
+        self.homeModules.hyprlock
+        self.homeModules.rofi
+        self.homeModules.waybar
 
-        self.homeModules.fish
-        self.homeModules.git
-        self.homeModules.kitty
         self.homeModules.btop
-
-        self.homeModules.nixvim
-        self.homeModules.zed-editor
-        self.homeModules.claude-code
-        self.homeModules.gemini-cli
+        self.homeModules.fish
+        self.homeModules.kitty
 
         self.homeModules.nixcord
         self.homeModules.obsidian
         self.homeModules.zen-browser
-
-        self.homeModules.binary-ninja
       ];
 
       home.pointerCursor = {
@@ -107,6 +102,7 @@
         pavucontrol
         qimgv
 
+        bitwarden-desktop
         spotify
       ];
     };
