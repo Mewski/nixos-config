@@ -5,7 +5,7 @@ A modular NixOS configuration built with flakes, featuring impermanence, secure 
 ## Features
 
 - **Flakes** - Reproducible system configuration with pinned dependencies
-- **Impermanence** - Root filesystem is wiped on every boot, with snapshots retained for 30 days
+- **Impermanence** - Root filesystem is wiped on every boot, with snapshots retained for 7 days
 - **Secure Boot** - Lanzaboote integration for signed boot chain
 - **Secrets Management** - sops-nix with age encryption for managing sensitive data
 - **Theming** - Unified theming across applications via base16
@@ -20,17 +20,18 @@ ASUS ROG Zephyrus GU605MY with:
 - Hyprland compositor with waybar, rofi, dunst
 - asusd for ASUS-specific hardware control
 - Disko for declarative disk partitioning (LUKS + Btrfs)
+- Dynamic refresh rate (240Hz on AC, 60Hz on battery)
 
 ## Structure
 
 ```
 modules/
   desktops/hyprland/  # Hyprland config (binds, devices, layout, visuals)
-  features/           # System features (nix, nvidia, impermanence, user, options, preferences, virtualization)
-  hosts/zephyrus/     # Host-specific config (asusd, cachix, disko, persist, power, secrets)
+  features/           # System features (nix, nvidia, impermanence, user, virtualization)
+  hosts/zephyrus/     # Host-specific config (asusd, disko, persist, power, secrets, wireguard)
   profiles/           # Composable system profiles (desktop)
   programs/           # User applications (fish, git, kitty, nixvim, zed-editor, zen-browser, etc.)
-  services/           # System services (pipewire, docker, dunst)
+  services/           # System services (pipewire, docker, dunst, mullvad-vpn)
   theme/              # Per-application theming via base16
 ```
 
