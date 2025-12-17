@@ -15,8 +15,6 @@
         self.nixosModules.fish
 
         self.nixosModules.pipewire
-
-        self.nixosModules.binary-ninja
       ];
 
       hardware = {
@@ -84,6 +82,8 @@
         self.homeModules.nixcord
         self.homeModules.obsidian
         self.homeModules.zen-browser
+
+        self.homeModules.binary-ninja
       ];
 
       home.pointerCursor = {
