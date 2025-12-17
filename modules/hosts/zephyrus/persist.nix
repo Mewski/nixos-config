@@ -17,6 +17,8 @@
             "Videos"
             ".nixos-config"
             ".binaryninja"
+            ".cache/cliphist"
+            ".cache/spotify"
             ".claude"
             ".config/Bitwarden"
             ".config/discord"
