@@ -8,6 +8,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     base16.url = "github:SenchoPens/base16.nix";
     binary-ninja.url = "github:jchv/nix-binary-ninja";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     disko = {
       url = "github:nix-community/disko";

@@ -37,8 +37,8 @@
 
             "hyprland/workspaces" = {
               format = "{name}";
-              on-scroll-up = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e+1";
-              on-scroll-down = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e-1";
+              on-scroll-down = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e+1";
+              on-scroll-up = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e-1";
             };
 
             "hyprland/window" = {

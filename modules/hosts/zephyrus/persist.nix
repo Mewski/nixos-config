@@ -5,6 +5,7 @@
       environment.persistence."/persist" = {
         directories = [
           "/etc/mullvad-vpn"
+          "/var/lib/flatpak"
         ];
 
         users.${config.preferences.user.username} = {
@@ -25,7 +26,9 @@
             ".config/spotify"
             ".gemini"
             ".local/share/fish"
+            ".local/share/flatpak"
             ".local/share/libvirt"
+            ".local/share/PrismLauncher"
             ".local/share/zed"
             ".zen"
             {
