@@ -23,6 +23,10 @@
           sopsFile = "${inputs.mewski-secrets}/common.yaml";
           path = ".wakatime.cfg";
         };
+        binary-ninja-license = {
+          sopsFile = "${inputs.mewski-secrets}/common.yaml";
+          path = ".binaryninja/license.dat";
+        };
       };
     };
   };

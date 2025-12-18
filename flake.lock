@@ -718,11 +718,11 @@
     "mewski-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1764890395,
-        "narHash": "sha256-6WS6vHLUd0nNuLaeZtDMLkp7liIq3wHTq2fWu0lmkDo=",
+        "lastModified": 1766070537,
+        "narHash": "sha256-Fv9BF34Ktr6EN9Q3IVYxVkGdyiNqEfNGeHcO0mCLTuA=",
         "ref": "refs/heads/master",
-        "rev": "4b30cdf3ff1a21b8724479d14ee43a2cc91ee433",
-        "revCount": 9,
+        "rev": "94e08d64fb8fd382bf48ee8cfaa714126b02dfe6",
+        "revCount": 10,
         "type": "git",
         "url": "ssh://git@github.com/Mewski/mewski-secrets"
       },
