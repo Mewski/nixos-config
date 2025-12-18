@@ -101,6 +101,9 @@
 
           "SUPER, mouse_down, workspace, e+1"
           "SUPER, mouse_up, workspace, e-1"
+
+          "SUPER, grave, togglespecialworkspace,"
+          "SUPER SHIFT, grave, movetoworkspace, special"
         ];
 
         bindel = [

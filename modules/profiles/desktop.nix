@@ -87,6 +87,8 @@
         gtk.enable = true;
       };
 
+      services.ssh-agent.enable = true;
+
       home.packages = with pkgs; [
         unzip
         p7zip
@@ -101,6 +103,7 @@
         networkmanagerapplet
         pavucontrol
         qimgv
+        mpv
 
         bitwarden-desktop
         spotify

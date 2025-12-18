@@ -24,6 +24,7 @@
             border-color = mkLiteral "${scheme.withHashtag.base0D}";
             border-radius = mkLiteral "8px";
             padding = mkLiteral "8px";
+            width = mkLiteral "700px";
           };
 
           mainbox = {
@@ -50,6 +51,7 @@
             spacing = mkLiteral "4px";
             scrollbar = mkLiteral "false";
             lines = mkLiteral "8";
+            columns = mkLiteral "2";
           };
 
           element = {

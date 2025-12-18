@@ -22,11 +22,12 @@
           "fadeOut, 1, 1.46, almostLinear"
           "fade, 1, 3.03, quick"
           "layers, 1, 3.81, easeOutQuint"
-          "layersIn, 1, 4, easeOutQuint, fade"
-          "layersOut, 1, 1.5, linear, fade"
+          "layersIn, 1, 3, easeOutQuint, fade"
+          "layersOut, 1, 3, easeOutQuint, fade"
           "fadeLayersIn, 1, 1.79, almostLinear"
           "fadeLayersOut, 1, 1.39, almostLinear"
           "workspaces, 1, 3.8, easeOutQuint, slide"
+          "specialWorkspace, 1, 3, easeOutQuint, slidevert"
           "zoomFactor, 1, 7, quick"
         ];
       };
@@ -70,7 +71,7 @@
         "ignorealpha 0.1, waybar"
         "blur, rofi"
         "ignorealpha 0.1, rofi"
-        "animation slide top, rofi"
+        "animation slidefade top, rofi"
         "blur, notifications"
         "ignorealpha 0.1, notifications"
       ];
