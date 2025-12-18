@@ -56,8 +56,8 @@
             };
 
             battery = {
-              format = "{icon} {capacity:2}%";
-              format-charging = "󰂄 {capacity:2}%";
+              format = "{icon} {capacity}%";
+              format-charging = "󰂄 {capacity}%";
               format-icons = [
                 "󰂃"
                 "󰁺"
@@ -74,12 +74,12 @@
             };
 
             cpu = {
-              format = "󰍛 {usage:2}%";
+              format = "󰍛 {usage}%";
               on-click = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.btop}";
             };
 
             memory = {
-              format = "󰘚 {percentage:2}%";
+              format = "󰘚 {percentage}%";
               on-click = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.btop}";
             };
 
