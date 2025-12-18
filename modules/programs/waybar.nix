@@ -74,12 +74,12 @@
             };
 
             cpu = {
-              format = "󰍛 {usage}%";
+              format = "󰍛 {usage:2}%";
               on-click = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.btop}";
             };
 
             memory = {
-              format = "󰘚 {percentage}%";
+              format = "󰘚 {percentage:2}%";
               on-click = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.btop}";
             };
 
