@@ -32,6 +32,7 @@
             ".local/share/libvirt"
             ".local/share/PrismLauncher"
             ".local/share/zed"
+            ".var/app"
             ".zen"
             {
               directory = ".local/share/keyrings";
