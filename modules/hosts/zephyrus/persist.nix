@@ -5,6 +5,7 @@
       environment.persistence."/persist" = {
         directories = [
           "/etc/mullvad-vpn"
+          "/etc/supergfxctl.conf"
           "/var/lib/flatpak"
         ];
 
@@ -23,6 +24,7 @@
             ".claude"
             ".config/Bitwarden"
             ".config/discord"
+            ".config/github-copilot"
             ".config/spotify"
             ".gemini"
             ".local/share/fish"
