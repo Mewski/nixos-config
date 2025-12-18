@@ -3,8 +3,6 @@
   flake.nixosModules.gaming = {
     imports = [ self.nixosModules.flatpak ];
 
-    programs.gamemode.enable = true;
-
     services.flatpak.packages = [
       "org.vinegarhq.Sober"
     ];

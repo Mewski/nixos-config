@@ -96,6 +96,7 @@
         wget
         xxd
         jq
+        microfetch
 
         wl-clipboard
         cliphist
