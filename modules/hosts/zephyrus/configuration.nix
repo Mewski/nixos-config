@@ -173,5 +173,9 @@
           on-resume = "${restoreDisplay}";
         }
       ];
+
+      home.packages = with pkgs; [
+        wootility
+      ];
     };
 }

@@ -19,6 +19,7 @@
             modules-center = [ "hyprland/workspaces" ];
             modules-right = [
               "tray"
+              "privacy"
               "idle_inhibitor"
               "bluetooth"
               "network"
@@ -83,7 +84,7 @@
             };
 
             tray = {
-              spacing = 20;
+              spacing = 12;
               icon-size = 10;
               show-passive-items = true;
             };
@@ -129,6 +130,24 @@
               };
               tooltip-format-activated = "Idle inhibitor active";
               tooltip-format-deactivated = "Idle inhibitor inactive";
+            };
+
+            privacy = {
+              icon-spacing = 12;
+              icon-size = 10;
+              transition-duration = 250;
+              modules = [
+                {
+                  type = "screenshare";
+                  tooltip = true;
+                  "tooltip-icon-size" = 10;
+                }
+                {
+                  type = "audio-in";
+                  tooltip = true;
+                  "tooltip-icon-size" = 10;
+                }
+              ];
             };
           };
         };

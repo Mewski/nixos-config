@@ -166,6 +166,23 @@
           color: ${scheme.withHashtag.base0A};
         }
 
+        #privacy {
+          background: transparent;
+          padding: 4px 4px;
+        }
+
+        #privacy-item {
+          padding: 0 2px;
+        }
+
+        #privacy-item.screenshare {
+          color: ${scheme.withHashtag.base0B};
+        }
+
+        #privacy-item.audio-in {
+          color: ${scheme.withHashtag.base08};
+        }
+
         #custom-power {
           background: transparent;
           font-size: 22px;
