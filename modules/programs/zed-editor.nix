@@ -21,6 +21,19 @@
         features = {
           edit_prediction_provider = "copilot";
         };
+
+        lsp = {
+          clangd = {
+            binary = {
+              arguments = [
+                "--background-index"
+                "--clang-tidy"
+                "--completion-style=detailed"
+                "--function-arg-placeholders=0"
+              ];
+            };
+          };
+        };
       };
 
       mutableUserSettings = false;
@@ -28,16 +41,17 @@
       mutableUserTasks = false;
 
       extensions = [
-        "material-icon-theme"
-        "nix"
-        "wakatime"
-        "git-firefly"
-        "make"
-        "dockerfile"
         "docker-compose"
-        "toml"
+        "dockerfile"
+        "git-firefly"
         "go"
+        "make"
+        "material-icon-theme"
+        "neocmake"
+        "nix"
+        "toml"
         "vue"
+        "wakatime"
       ];
     };
   };
