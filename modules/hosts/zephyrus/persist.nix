@@ -5,8 +5,10 @@
       environment.persistence."/persist" = {
         directories = [
           "/etc/mullvad-vpn"
-          "/etc/supergfxctl.conf"
           "/var/lib/flatpak"
+        ];
+        files = [
+          "/etc/supergfxd.conf"
         ];
 
         users.${config.preferences.user.username} = {
