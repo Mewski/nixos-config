@@ -56,9 +56,26 @@
       hostName = "astraeus";
       hostId = "db2e0ee7";
 
+      useDHCP = false;
+
+      interfaces.ens1f0.ipv4.addresses = [
+        {
+          address = "10.0.1.50";
+          prefixLength = 24;
+        }
+      ];
+
+      defaultGateway = "10.0.1.1";
+      nameservers = [
+        "10.0.1.1"
+        "1.1.1.1"
+      ];
+
       firewall = {
         enable = true;
+
         allowedTCPPorts = [ 22 ];
+
         allowedUDPPorts = [ ];
       };
     };
