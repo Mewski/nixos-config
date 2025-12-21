@@ -56,18 +56,8 @@
       flake = false;
     };
 
-    mewski-wallpapers = {
-      url = "github:Mewski/mewski-wallpapers";
-      flake = false;
-    };
-
     mewski-secrets = {
       url = "git+ssh://git@github.com/Mewski/mewski-secrets";
-      flake = false;
-    };
-
-    mewski-assets = {
-      url = "git+https://gitlab.mewski.dev/Mewski/mewski-assets.git";
       flake = false;
     };
   };

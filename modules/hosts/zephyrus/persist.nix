@@ -32,7 +32,9 @@
             ".local/share/flatpak"
             ".local/share/libvirt"
             ".local/share/PrismLauncher"
+            ".local/share/Steam"
             ".local/share/zed"
+            ".steam"
             ".var/app"
             ".zen"
             {

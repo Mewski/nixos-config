@@ -8,10 +8,7 @@
       programs.binary-ninja = {
         enable = true;
         package =
-          inputs.binary-ninja.packages.${pkgs.stdenv.hostPlatform.system}.binary-ninja-personal-wayland.override
-            {
-              overrideSource = "${inputs.mewski-assets}/installers/binaryninja_personal_linux.zip";
-            };
+          inputs.binary-ninja.packages.${pkgs.stdenv.hostPlatform.system}.binary-ninja-personal-wayland;
       };
 
       home.file.".binaryninja/settings.json".text = builtins.toJSON {

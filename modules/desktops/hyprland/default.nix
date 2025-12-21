@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 {
   flake.nixosModules.hyprland =
     { config, pkgs, ... }:
@@ -63,8 +63,8 @@
         enable = true;
 
         settings = {
-          preload = [ "${inputs.mewski-wallpapers}/Kath.png" ];
-          wallpaper = [ ", ${inputs.mewski-wallpapers}/Kath.png" ];
+          preload = [ "${self}/assets/wallpapers/Kath.png" ];
+          wallpaper = [ ", ${self}/assets/wallpapers/Kath.png" ];
         };
       };
 
