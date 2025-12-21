@@ -24,9 +24,10 @@
 
       environment.systemPackages = with pkgs; [
         alejandra
+        statix
+
         nil
         nixd
-        statix
       ];
     };
 }

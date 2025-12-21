@@ -2,7 +2,7 @@
   flake.nixosModules.zephyrus =
     { config, pkgs, ... }:
     {
-      sops.secrets."users/mewski/passwd".neededForUsers = true;
+      sops.secrets."users/mewski/hashed_password".neededForUsers = true;
 
       users = {
         mutableUsers = false;
@@ -10,7 +10,7 @@
         users.mewski = {
           isNormalUser = true;
           description = "Mewski";
-          hashedPasswordFile = config.sops.secrets."users/mewski/passwd".path;
+          hashedPasswordFile = config.sops.secrets."users/mewski/hashed_password".path;
           shell = pkgs.fish;
           extraGroups = [
             "networkmanager"

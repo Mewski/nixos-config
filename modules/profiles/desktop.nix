@@ -4,17 +4,17 @@
     { pkgs, ... }:
     {
       imports = [
+        self.nixosModules.home-manager
         self.nixosModules.nix
         self.nixosModules.options
 
-        self.nixosModules.home-manager
         self.nixosModules.hyprland
-        self.nixosModules.theme
+
+        self.nixosModules.pipewire
 
         self.nixosModules.fish
 
-        self.nixosModules.mullvad-vpn
-        self.nixosModules.pipewire
+        self.nixosModules.theme
       ];
 
       hardware = {
@@ -63,7 +63,6 @@
     {
       imports = [
         self.homeModules.hyprland
-        self.homeModules.theme
 
         self.homeModules.dunst
         self.homeModules.hyprlock
@@ -73,10 +72,11 @@
         self.homeModules.btop
         self.homeModules.fish
         self.homeModules.kitty
-
         self.homeModules.nixcord
         self.homeModules.obsidian
         self.homeModules.zen-browser
+
+        self.homeModules.theme
       ];
 
       home.pointerCursor = {
@@ -88,21 +88,22 @@
       services.ssh-agent.enable = true;
 
       home.packages = with pkgs; [
-        unzip
         p7zip
+        unzip
 
-        wget
-        xxd
         jq
         microfetch
+        wget
+        xxd
 
-        wl-clipboard
         cliphist
+        wl-clipboard
 
         networkmanagerapplet
         pavucontrol
-        qimgv
+
         mpv
+        qimgv
 
         bitwarden-desktop
         spotify

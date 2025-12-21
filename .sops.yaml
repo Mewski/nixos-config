@@ -1,0 +1,16 @@
+keys:
+  - &user_mewski age1rxem9nf4ey78fgnxuz0w298gf34my2qtdygkt52d258v9w20m3ysk66xtn
+  - &host_zephyrus age1ryp5e29rqly3x5p9dugcrgf99fzp7kmggrw7ln43nc04gfpzhajqchum3c
+
+creation_rules:
+  - path_regex: secrets/shared/.*\.yaml$
+    key_groups:
+      - age:
+          - *user_mewski
+          - *host_zephyrus
+
+  - path_regex: secrets/zephyrus/.*\.yaml$
+    key_groups:
+      - age:
+          - *user_mewski
+          - *host_zephyrus

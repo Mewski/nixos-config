@@ -2,7 +2,6 @@
   flake.nixosModules.zephyrus = {
     environment.persistence."/persist" = {
       directories = [
-        "/etc/mullvad-vpn"
         "/var/lib/flatpak"
       ];
       files = [
