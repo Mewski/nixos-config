@@ -4,61 +4,72 @@
     modules = [ self.nixosModules.astraeus ];
   };
 
-  flake.nixosModules.astraeus =
-    { lib, ... }:
-    {
-      imports = [
-        inputs.disko.nixosModules.default
+  flake.nixosModules.astraeus = {
+    imports = [
+      inputs.disko.nixosModules.default
 
-        self.diskoConfigurations.astraeus
+      self.diskoConfigurations.astraeus
 
-        self.nixosModules.server
-      ];
+      self.nixosModules.server
+    ];
 
-      boot = {
-        loader.grub = {
-          enable = true;
-          efiSupport = false;
-          mirroredBoots = [
-            {
-              devices = [ "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0JB00809" ];
-              path = "/boot";
-            }
-            {
-              devices = [ "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J522696" ];
-              path = "/boot-fallback1";
-            }
-            {
-              devices = [ "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J511639" ];
-              path = "/boot-fallback2";
-            }
-          ];
-        };
-
-        supportedFilesystems = [ "zfs" ];
-        zfs.devNodes = "/dev/disk/by-id";
+    boot = {
+      loader.grub = {
+        enable = true;
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        mirroredBoots = [
+          {
+            path = "/boot/efis/ssd0";
+            devices = [ "nodev" ];
+          }
+          {
+            path = "/boot/efis/ssd1";
+            devices = [ "nodev" ];
+          }
+          {
+            path = "/boot/efis/ssd2";
+            devices = [ "nodev" ];
+          }
+          {
+            path = "/boot/efis/ssd3";
+            devices = [ "nodev" ];
+          }
+          {
+            path = "/boot/efis/ssd4";
+            devices = [ "nodev" ];
+          }
+          {
+            path = "/boot/efis/ssd5";
+            devices = [ "nodev" ];
+          }
+        ];
       };
 
-      networking = {
-        hostName = "astraeus";
-        hostId = "a57rae05";
+      loader.efi.canTouchEfiVariables = false;
 
-        useDHCP = lib.mkDefault true;
-
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [ 22 ];
-          allowedUDPPorts = [ ];
-        };
-      };
-
-      services.openssh.enable = true;
-
-      services.zfs = {
-        autoScrub.enable = true;
-        trim.enable = true;
-      };
-
-      system.stateVersion = "25.11";
+      supportedFilesystems = [ "zfs" ];
+      zfs.devNodes = "/dev/disk/by-id";
     };
+
+    networking = {
+      hostName = "astraeus";
+      hostId = "db2e0ee7";
+
+      firewall = {
+        enable = true;
+        allowedTCPPorts = [ 22 ];
+        allowedUDPPorts = [ ];
+      };
+    };
+
+    services.openssh.enable = true;
+
+    services.zfs = {
+      autoScrub.enable = true;
+      trim.enable = true;
+    };
+
+    system.stateVersion = "25.11";
+  };
 }

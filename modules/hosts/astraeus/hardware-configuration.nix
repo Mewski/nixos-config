@@ -16,11 +16,11 @@
         initrd = {
           availableKernelModules = [
             "ahci"
-            "ehci_pci"
-            "mpt3sas"
-            "sd_mod"
-            "uhci_hcd"
             "xhci_pci"
+            "ehci_pci"
+            "usbhid"
+            "usb_storage"
+            "sd_mod"
           ];
           kernelModules = [ ];
         };
