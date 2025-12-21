@@ -6,8 +6,6 @@
       imports = [
         self.nixosModules.nix
         self.nixosModules.options
-        self.nixosModules.preferences
-        self.nixosModules.user
 
         self.nixosModules.home-manager
         self.nixosModules.hyprland

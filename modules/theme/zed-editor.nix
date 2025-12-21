@@ -1,7 +1,6 @@
 {
   flake.homeModules.theme =
     {
-      preferences,
       theme,
       scheme,
       ...
@@ -22,7 +21,7 @@
         themes = {
           "Base16" = {
             name = "Base16";
-            author = "${preferences.user.name}";
+            author = "Mewski";
             themes = [
               {
                 name = "Base16";

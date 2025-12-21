@@ -1,15 +1,9 @@
 { inputs, ... }:
 {
-  flake.nixosModules.preferences =
+  flake.nixosModules.zephyrus =
     { config, pkgs, ... }:
     {
-      preferences = {
-        user = {
-          username = "mewski";
-          name = "Mewski";
-        };
-        theme = "mountain";
-      };
+      scheme = "${inputs.tinted-theming-schemes}/base24/mountain.yaml";
 
       theme = {
         polarity = "dark";
@@ -52,8 +46,6 @@
           popups = 0.8;
         };
       };
-
-      scheme = "${inputs.tinted-theming-schemes}/base24/${config.preferences.theme}.yaml";
 
       fonts.packages = with pkgs; [
         config.theme.fonts.emoji.package

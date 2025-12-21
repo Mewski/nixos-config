@@ -6,15 +6,6 @@
       imports = [ inputs.base16.nixosModule ];
 
       options = {
-        preferences = {
-          user = {
-            username = lib.mkOption { type = lib.types.str; };
-            name = lib.mkOption { type = lib.types.str; };
-          };
-
-          theme = lib.mkOption { type = lib.types.str; };
-        };
-
         theme = {
           polarity = lib.mkOption {
             type = lib.types.enum [
