@@ -22,6 +22,15 @@ ASUS ROG Zephyrus GU605MY with:
 - Disko for declarative disk partitioning (LUKS + Btrfs)
 - Dynamic refresh rate (240Hz on AC, 60Hz on battery)
 
+### Astraeus
+
+Supermicro SYS-2028TR-HTR with:
+- Intel Xeon dual processor system
+- 6x Samsung 1.9TB enterprise SSDs in ZFS raidz2 (~7TB usable)
+- UEFI boot with GRUB mirrored across all 6 drives
+- Disko for declarative ZFS pool management
+- NixOS stable (25.11) for reliability
+
 ## Structure
 
 ```
@@ -35,22 +44,27 @@ modules/
   theme/              # Per-application theming via base16
 ```
 
-Secrets are stored in a separate private repository ([mewski-secrets](https://github.com/Mewski/mewski-secrets)) and fetched via SSH.
+## Install
 
-## Install (Zephyrus)
+### Zephyrus
 
 ```bash
-nix-shell -p git gh
-gh auth login
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --flake github:Mewski/nixos-config#zephyrus --mode disko
 cd /mnt
 sudo nixos-install --flake github:Mewski/nixos-config#zephyrus --no-write-lock-file
 ```
 
+### Astraeus
+
+```bash
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --flake github:Mewski/nixos-config#astraeus --mode disko
+cd /mnt
+sudo nixos-install --flake github:Mewski/nixos-config#astraeus --no-write-lock-file
+```
+
 ## Rebuild
 
 ```bash
-nix flake update mewski-secrets --flake ~/.nixos-config
 sudo nixos-rebuild switch --flake ~/.nixos-config
 ```
 
