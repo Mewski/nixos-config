@@ -55,11 +55,6 @@
       url = "github:tinted-theming/schemes";
       flake = false;
     };
-
-    mewski-secrets = {
-      url = "git+ssh://git@github.com/Mewski/mewski-secrets";
-      flake = false;
-    };
   };
 
   outputs =
