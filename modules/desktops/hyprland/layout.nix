@@ -1,6 +1,10 @@
 {
   flake.homeModules.hyprland = {
     wayland.windowManager.hyprland.settings = {
+      xwayland = {
+        force_zero_scaling = true;
+      };
+
       dwindle = {
         preserve_split = true;
         pseudotile = true;
