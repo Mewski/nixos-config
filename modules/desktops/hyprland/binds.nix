@@ -1,6 +1,6 @@
 {
   flake.homeModules.hyprland =
-    { pkgs, lib, ... }:
+    { lib, pkgs, ... }:
     let
       wpctl = lib.getExe' pkgs.wireplumber "wpctl";
       notify = lib.getExe pkgs.libnotify;

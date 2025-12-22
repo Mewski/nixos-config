@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 {
   flake.nixosModules.zephyrus = {
     imports = [ inputs.sops-nix.nixosModules.sops ];
@@ -8,7 +8,7 @@
     fileSystems."/etc/ssh".neededForBoot = true;
 
     sops = {
-      defaultSopsFile = "${inputs.mewski-secrets}/zephyrus/secrets.yaml";
+      defaultSopsFile = "${self}/secrets/zephyrus/secrets.yaml";
 
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     };
@@ -20,11 +20,11 @@
 
       secrets = {
         wakatime_api_key = {
-          sopsFile = "${inputs.mewski-secrets}/shared/secrets.yaml";
+          sopsFile = "${self}/secrets/shared/secrets.yaml";
           path = ".wakatime.cfg";
         };
         binary_ninja_license = {
-          sopsFile = "${inputs.mewski-secrets}/shared/secrets.yaml";
+          sopsFile = "${self}/secrets/shared/secrets.yaml";
           path = ".binaryninja/license.dat";
         };
       };

@@ -1,6 +1,6 @@
 {
   flake.homeModules.waybar =
-    { pkgs, lib, ... }:
+    { lib, pkgs, ... }:
     {
       programs.waybar = {
         enable = true;

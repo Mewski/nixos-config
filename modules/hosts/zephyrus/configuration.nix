@@ -62,11 +62,7 @@
     };
 
   flake.homeModules.zephyrus =
-    {
-      pkgs,
-      lib,
-      ...
-    }:
+    { lib, pkgs, ... }:
     let
       brightnessctl = lib.getExe pkgs.brightnessctl;
       notify = lib.getExe pkgs.libnotify;

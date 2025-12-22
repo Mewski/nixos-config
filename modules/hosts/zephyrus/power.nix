@@ -1,6 +1,6 @@
 {
   flake.homeModules.zephyrus =
-    { pkgs, lib, ... }:
+    { lib, pkgs, ... }:
     let
       hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
       jq = lib.getExe pkgs.jq;
