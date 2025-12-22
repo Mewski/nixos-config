@@ -66,7 +66,7 @@ sudo nixos-install --flake github:Mewski/nixos-config#astraeus --no-write-lock-f
 ## Rebuild
 
 ```bash
-sudo nixos-rebuild switch --flake ~/.nixos-config
+sudo nixos-rebuild switch --flake github:Mewski/nixos-config --refresh
 ```
 
 ## License
