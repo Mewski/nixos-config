@@ -106,8 +106,8 @@
 
       dimDisplay = pkgs.writeShellScript "dim-display" ''
         current=$(${getDisplayBrightness})
-        ${brightnessctl} -d ${intelBacklight} -s set 5%
-        ${brightnessctl} -d ${nvidiaBacklight} -s set 0%
+        ${brightnessctl} -d ${intelBacklight} -s set 1%
+        ${brightnessctl} -d ${nvidiaBacklight} -s set 1%
       '';
 
       restoreDisplay = pkgs.writeShellScript "restore-display" ''
@@ -151,8 +151,8 @@
           ",XF86KbdBrightnessDown, exec, ${brightnessctl} -d ${kbdBacklight} set 1- && ${notifyKbdBrightness}"
           ",XF86KbdBrightnessUp, exec, ${brightnessctl} -d ${kbdBacklight} set 1+ && ${notifyKbdBrightness}"
 
-          ",XF86MonBrightnessDown, exec, ${brightnessctl} -d ${intelBacklight} set 10%-; ${brightnessctl} -d ${nvidiaBacklight} set 10%-; ${notifyDisplayBrightness}"
-          ",XF86MonBrightnessUp, exec, ${brightnessctl} -d ${intelBacklight} set 10%+; ${brightnessctl} -d ${nvidiaBacklight} set 10%+; ${notifyDisplayBrightness}"
+          ",XF86MonBrightnessDown, exec, ${brightnessctl} -d ${intelBacklight} set 5%-; ${brightnessctl} -d ${nvidiaBacklight} set 5%-; ${notifyDisplayBrightness}"
+          ",XF86MonBrightnessUp, exec, ${brightnessctl} -d ${intelBacklight} set 5%+; ${brightnessctl} -d ${nvidiaBacklight} set 5%+; ${notifyDisplayBrightness}"
         ];
 
         bindl = [
