@@ -33,7 +33,7 @@
 
         interfaces.ens1f0.ipv4.addresses = [
           {
-            address = "10.0.1.50";
+            address = "10.0.1.51";
             prefixLength = 24;
           }
         ];
