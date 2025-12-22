@@ -13,7 +13,6 @@
 
         self.diskoConfigurations.crosshair
 
-        self.nixosModules.impermanence
         self.nixosModules.nvidia
 
         self.nixosModules.desktop

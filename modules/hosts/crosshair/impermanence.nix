@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.impermanence =
+  flake.nixosModules.crosshair =
     { lib, ... }:
     {
       imports = [ inputs.impermanence.nixosModules.impermanence ];
@@ -10,17 +10,60 @@
       environment.persistence."/persist" = {
         hideMounts = true;
         directories = [
-          "/var/log"
+          "/etc/NetworkManager/system-connections"
+          "/etc/ssh"
           "/var/lib/bluetooth"
+          "/var/lib/flatpak"
           "/var/lib/nixos"
           "/var/lib/sbctl"
           "/var/lib/systemd/coredump"
-          "/etc/NetworkManager/system-connections"
-          "/etc/ssh"
+          "/var/log"
         ];
         files = [
           "/etc/machine-id"
+          "/etc/supergfxd.conf"
         ];
+
+        users.mewski = {
+          directories = [
+            ".binaryninja"
+            ".cache/spotify"
+            ".claude"
+            ".config/Bitwarden"
+            ".config/discord"
+            ".config/github-copilot"
+            ".config/spotify"
+            ".gemini"
+            ".local/share/fish"
+            ".local/share/flatpak"
+            ".local/share/libvirt"
+            ".local/share/PrismLauncher"
+            ".local/share/Steam"
+            ".local/share/zed"
+            ".nixos-config"
+            ".steam"
+            ".var/app"
+            ".zen"
+            "Documents"
+            "Downloads"
+            "Music"
+            "Pictures"
+            "Projects"
+            "Videos"
+            {
+              directory = ".local/share/keyrings";
+              mode = "0700";
+            }
+            {
+              directory = ".ssh";
+              mode = "0700";
+            }
+          ];
+          files = [
+            ".config/gh/hosts.yml"
+            ".config/sops/age/keys.txt"
+          ];
+        };
       };
 
       boot.initrd.postResumeCommands = lib.mkAfter ''

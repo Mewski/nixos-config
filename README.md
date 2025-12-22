@@ -26,9 +26,10 @@ ASUS ROG Zephyrus GU605MY with:
 
 Supermicro SYS-2028TR-HTR with:
 - Intel Xeon dual processor system
-- 6x Samsung 1.9TB enterprise SSDs in ZFS raidz2 (~7TB usable)
-- UEFI boot with GRUB mirrored across all 6 drives
-- Disko for declarative ZFS pool management
+- 6x Samsung 1.9TB enterprise SSDs in Btrfs raid10 (~5.7TB usable)
+- UEFI boot with systemd-boot
+- Disko for declarative Btrfs pool management
+- Impermanence with 7-day snapshot retention
 - NixOS stable (25.11) for reliability
 
 ## Structure

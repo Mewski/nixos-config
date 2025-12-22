@@ -14,7 +14,6 @@
 
         self.diskoConfigurations.zephyrus
 
-        self.nixosModules.impermanence
         self.nixosModules.nvidia
 
         self.nixosModules.desktop
