@@ -24,7 +24,7 @@ ASUS ROG Zephyrus GU605MY with:
 
 ### Astraeus
 
-Supermicro SYS-2028TR-HTR server with:
+Supermicro X10DRT-H with:
 - Intel Xeon dual processor system
 - 6x Samsung 1.9TB enterprise SSDs in Btrfs raid10 (~5.7TB usable)
 - UEFI boot with systemd-boot
