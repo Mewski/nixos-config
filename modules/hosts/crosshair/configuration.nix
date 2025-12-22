@@ -21,12 +21,17 @@
       ];
 
       boot = {
-        loader.systemd-boot.enable = true;
+        loader.systemd-boot.enable = false;
         loader.efi.canTouchEfiVariables = true;
 
         lanzaboote = {
-          enable = false;
+          enable = true;
           pkiBundle = "/var/lib/sbctl";
+          autoGenerateKeys.enable = true;
+          autoEnrollKeys = {
+            enable = true;
+            autoReboot.enable = true;
+          };
         };
       };
 
