@@ -19,6 +19,16 @@
         files = [
           "/etc/machine-id"
         ];
+
+        users.mewski = {
+          directories = [
+            ".nixos-config"
+            {
+              directory = ".ssh";
+              mode = "0700";
+            }
+          ];
+        };
       };
 
       boot.initrd.postDeviceCommands = lib.mkAfter ''
