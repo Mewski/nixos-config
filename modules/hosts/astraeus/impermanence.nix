@@ -22,7 +22,6 @@
 
         users.mewski = {
           directories = [
-            ".nixos-config"
             {
               directory = ".ssh";
               mode = "0700";
