@@ -24,24 +24,24 @@ ASUS ROG Zephyrus GU605MY with:
 
 ### Astraeus
 
-Supermicro SYS-2028TR-HTR with:
+Supermicro SYS-2028TR-HTR server with:
 - Intel Xeon dual processor system
 - 6x Samsung 1.9TB enterprise SSDs in Btrfs raid10 (~5.7TB usable)
 - UEFI boot with systemd-boot
 - Disko for declarative Btrfs pool management
 - Impermanence with 7-day snapshot retention
-- NixOS stable (25.11) for reliability
 
 ## Structure
 
 ```
 modules/
   desktops/hyprland/  # Hyprland config (binds, devices, layout, visuals)
-  features/           # System features (nix, nvidia, impermanence, user, virtualization)
-  hosts/zephyrus/     # Host-specific config (asusd, disko, persist, power, secrets, wireguard)
-  profiles/           # Composable system profiles (desktop)
+  features/           # System features (nix, nvidia, flatpak, home-manager, virtualization)
+  hosts/              # Host-specific configs (zephyrus, crosshair, astraeus)
+  overlays/           # Nixpkgs overlays (spotx)
+  profiles/           # Composable system profiles (desktop, development, gaming, server)
   programs/           # User applications (fish, git, kitty, nixvim, zed-editor, zen-browser, etc.)
-  services/           # System services (pipewire, docker, dunst, mullvad-vpn)
+  services/           # System services (pipewire, docker, dunst)
   theme/              # Per-application theming via base16
 ```
 
