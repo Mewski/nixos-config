@@ -15,10 +15,10 @@
     {
       imports = [ self.homeModules.flatpak ];
 
-      home.packages = with pkgs; [
-        (prismlauncher.override {
+      home.packages = [
+        (pkgs.prismlauncher.override {
           jdks = [
-            graalvmPackages.graalvm-ce
+            pkgs.graalvmPackages.graalvm-ce
           ];
         })
       ];

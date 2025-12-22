@@ -49,12 +49,12 @@
 
       services.blueman.enable = true;
 
-      services.udev.packages = with pkgs; [
-        wooting-udev-rules
+      services.udev.packages = [
+        pkgs.wooting-udev-rules
       ];
 
-      environment.systemPackages = with pkgs; [
-        sbctl
+      environment.systemPackages = [
+        pkgs.sbctl
       ];
 
       system.stateVersion = "25.11";
@@ -169,8 +169,8 @@
         }
       ];
 
-      home.packages = with pkgs; [
-        wootility
+      home.packages = [
+        pkgs.wootility
       ];
     };
 }

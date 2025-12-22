@@ -8,12 +8,12 @@
       ];
 
       hardware = {
-        graphics.extraPackages = with pkgs; [
-          libva
-          nvidia-vaapi-driver
+        graphics.extraPackages = [
+          pkgs.libva
+          pkgs.nvidia-vaapi-driver
 
-          libvdpau
-          libva-vdpau-driver
+          pkgs.libvdpau
+          pkgs.libva-vdpau-driver
         ];
 
         nvidia = {

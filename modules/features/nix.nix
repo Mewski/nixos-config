@@ -22,12 +22,12 @@
 
       programs.nix-ld.enable = true;
 
-      environment.systemPackages = with pkgs; [
-        alejandra
-        statix
+      environment.systemPackages = [
+        pkgs.alejandra
+        pkgs.statix
 
-        nil
-        nixd
+        pkgs.nil
+        pkgs.nixd
       ];
     };
 }

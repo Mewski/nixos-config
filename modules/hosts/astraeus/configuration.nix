@@ -52,8 +52,8 @@
 
       services.openssh.enable = true;
 
-      environment.systemPackages = with pkgs; [
-        sbctl
+      environment.systemPackages = [
+        pkgs.sbctl
       ];
 
       system.stateVersion = "25.11";

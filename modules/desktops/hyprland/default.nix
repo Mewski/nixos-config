@@ -15,9 +15,9 @@
         XCURSOR_SIZE = toString config.theme.cursor.size;
       };
 
-      environment.systemPackages = with pkgs; [
-        libsForQt5.qtwayland
-        kdePackages.qtwayland
+      environment.systemPackages = [
+        pkgs.libsForQt5.qtwayland
+        pkgs.kdePackages.qtwayland
       ];
     };
 

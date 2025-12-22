@@ -13,12 +13,12 @@
 
       programs.virt-manager.enable = true;
 
-      environment.systemPackages = with pkgs; [
-        spice
-        spice-gtk
-        spice-protocol
+      environment.systemPackages = [
+        pkgs.spice
+        pkgs.spice-gtk
+        pkgs.spice-protocol
 
-        virt-viewer
+        pkgs.virt-viewer
       ];
     };
 }

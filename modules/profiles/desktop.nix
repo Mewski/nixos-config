@@ -55,7 +55,7 @@
 
       services.gnome.gnome-keyring.enable = true;
 
-      environment.systemPackages = with pkgs; [ nautilus ];
+      environment.systemPackages = [ pkgs.nautilus ];
     };
 
   flake.homeModules.desktop =
@@ -87,26 +87,26 @@
 
       services.ssh-agent.enable = true;
 
-      home.packages = with pkgs; [
-        p7zip
-        unzip
+      home.packages = [
+        pkgs.p7zip
+        pkgs.unzip
 
-        jq
-        microfetch
-        wget
-        xxd
+        pkgs.jq
+        pkgs.microfetch
+        pkgs.wget
+        pkgs.xxd
 
-        cliphist
-        wl-clipboard
+        pkgs.cliphist
+        pkgs.wl-clipboard
 
-        networkmanagerapplet
-        pavucontrol
+        pkgs.networkmanagerapplet
+        pkgs.pavucontrol
 
-        mpv
-        qimgv
+        pkgs.mpv
+        pkgs.qimgv
 
-        bitwarden-desktop
-        spotify
+        pkgs.bitwarden-desktop
+        pkgs.spotify
       ];
     };
 }
