@@ -48,6 +48,5 @@ echo "==> Installing NixOS..."
 nixos-install --flake "$REPO#$HOST" --no-write-lock-file \
   --option extra-substituters "${SUBSTITUTERS[$HOST]}" \
   --option extra-trusted-public-keys "${KEYS[$HOST]}" \
-  --option tarball-ttl 0
 
 echo "==> Done! Reboot to complete installation."
