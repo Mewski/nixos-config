@@ -26,7 +26,7 @@
           autoGenerateKeys.enable = true;
           autoEnrollKeys = {
             enable = true;
-            autoReboot.enable = true;
+            autoReboot = true;
           };
         };
       };
