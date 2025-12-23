@@ -39,7 +39,7 @@ declare -A KEYS=(
 [[ -v "SUBSTITUTERS[$HOST]" ]] || abort "Unknown host: $HOST" "" "Run '$0 --help' for available hosts."
 
 echo "==> Partitioning disks for $HOST..."
-nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- \
+nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest --refresh -- \
   --flake "$REPO#$HOST" --mode disko
 
 cd /mnt || abort "Failed to cd to /mnt"
