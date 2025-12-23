@@ -1,10 +1,6 @@
 {
-  flake.homeModules.theme =
-    {
-      theme,
-      scheme,
-      ...
-    }:
+  flake.homeModules.zen-browser =
+    { theme, scheme, ... }:
     {
       programs.zen-browser.profiles.default = {
         settings = {

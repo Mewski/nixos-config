@@ -1,10 +1,6 @@
 {
-  flake.homeModules.theme =
-    {
-      theme,
-      scheme,
-      ...
-    }:
+  flake.homeModules.dunst =
+    { theme, scheme, ... }:
     let
       toHex =
         f:

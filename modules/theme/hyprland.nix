@@ -1,5 +1,5 @@
 {
-  flake.homeModules.theme =
+  flake.homeModules.hyprland =
     { scheme, ... }:
     {
       wayland.windowManager.hyprland.settings = {

@@ -1,10 +1,6 @@
 {
-  flake.homeModules.theme =
-    {
-      theme,
-      scheme,
-      ...
-    }:
+  flake.homeModules.kitty =
+    { theme, scheme, ... }:
     {
       programs.kitty = {
         font = {

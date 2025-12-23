@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.homeModules.theme =
+  flake.homeModules.binary-ninja =
     { scheme, ... }:
     {
       home.file.".binaryninja/themes/base16.bntheme".text = builtins.toJSON {

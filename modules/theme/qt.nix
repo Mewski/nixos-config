@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.theme =
+  flake.nixosModules.qt =
     { pkgs, ... }:
     {
       qt = {
@@ -17,7 +17,7 @@
       ];
     };
 
-  flake.homeModules.theme =
+  flake.homeModules.qt =
     {
       pkgs,
       theme,

@@ -1,9 +1,9 @@
 {
-  flake.nixosModules.theme = {
+  flake.nixosModules.gtk = {
     programs.dconf.enable = true;
   };
 
-  flake.homeModules.theme =
+  flake.homeModules.gtk =
     {
       pkgs,
       theme,

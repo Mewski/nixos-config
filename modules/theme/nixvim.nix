@@ -1,5 +1,5 @@
 {
-  flake.homeModules.theme =
+  flake.homeModules.nixvim =
     { scheme, ... }:
     {
       programs.nixvim.colorschemes.base16 = {

@@ -1,5 +1,5 @@
 {
-  flake.homeModules.theme =
+  flake.homeModules.rofi =
     {
       config,
       theme,

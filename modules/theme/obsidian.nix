@@ -1,10 +1,6 @@
 {
-  flake.homeModules.theme =
-    {
-      theme,
-      scheme,
-      ...
-    }:
+  flake.homeModules.obsidian =
+    { theme, scheme, ... }:
     {
       programs.obsidian.defaultSettings = {
         appearance = {

@@ -14,7 +14,8 @@
 
         self.nixosModules.fish
 
-        self.nixosModules.theme
+        self.nixosModules.gtk
+        self.nixosModules.qt
       ];
 
       hardware = {
@@ -76,7 +77,8 @@
         self.homeModules.obsidian
         self.homeModules.zen-browser
 
-        self.homeModules.theme
+        self.homeModules.gtk
+        self.homeModules.qt
       ];
 
       home.pointerCursor = {

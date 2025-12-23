@@ -1,10 +1,6 @@
 {
-  flake.homeModules.theme =
-    {
-      theme,
-      scheme,
-      ...
-    }:
+  flake.homeModules.zed-editor =
+    { theme, scheme, ... }:
     {
       programs.zed-editor = {
         enable = true;
