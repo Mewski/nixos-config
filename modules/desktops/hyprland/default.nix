@@ -73,10 +73,10 @@
 
         settings = {
           general = {
-            before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
+            before_sleep_cmd = "loginctl lock-session";
             after_sleep_cmd = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch dpms on";
             ignore_dbus_inhibit = false;
-            lock_cmd = "${lib.getExe pkgs.hyprlock}";
+            lock_cmd = "pidof hyprlock || ${lib.getExe pkgs.hyprlock}";
           };
 
           listener = [
