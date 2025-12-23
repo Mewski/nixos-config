@@ -67,8 +67,8 @@
     {
       imports = [
         self.homeModules.desktop
-        self.homeModules.development
-        self.homeModules.gaming
+        # self.homeModules.development
+        # self.homeModules.gaming
       ];
 
       wayland.windowManager.hyprland.settings = {
