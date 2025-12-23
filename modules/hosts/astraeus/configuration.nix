@@ -55,6 +55,8 @@
         };
       };
 
+      zramSwap.enable = true;
+
       services.openssh.enable = true;
 
       environment.systemPackages = [
