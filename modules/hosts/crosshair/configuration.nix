@@ -16,8 +16,8 @@
         self.nixosModules.nvidia
 
         self.nixosModules.desktop
-        # self.nixosModules.development
-        # self.nixosModules.gaming
+        self.nixosModules.development
+        self.nixosModules.gaming
       ];
 
       boot = {
@@ -67,8 +67,8 @@
     {
       imports = [
         self.homeModules.desktop
-        # self.homeModules.development
-        # self.homeModules.gaming
+        self.homeModules.development
+        self.homeModules.gaming
       ];
 
       wayland.windowManager.hyprland.settings = {

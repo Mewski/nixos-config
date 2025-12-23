@@ -49,7 +49,7 @@
         firewall = {
           enable = true;
 
-          allowedTCPPorts = [ 22 ];
+          allowedTCPPorts = [ ];
 
           allowedUDPPorts = [ ];
         };
