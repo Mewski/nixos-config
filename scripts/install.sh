@@ -39,7 +39,7 @@ declare -A KEYS=(
 [[ -v "SUBSTITUTERS[$HOST]" ]] || abort "Unknown host: $HOST" "" "Run '$0 --help' for available hosts."
 
 echo "==> Partitioning disks for $HOST..."
-nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest --refresh -- \
+nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- \
   --flake "$REPO#$HOST" --mode disko
 
 cd /mnt || abort "Failed to cd to /mnt"
@@ -47,6 +47,7 @@ cd /mnt || abort "Failed to cd to /mnt"
 echo "==> Installing NixOS..."
 nixos-install --flake "$REPO#$HOST" --no-write-lock-file \
   --option extra-substituters "${SUBSTITUTERS[$HOST]}" \
-  --option extra-trusted-public-keys "${KEYS[$HOST]}"
+  --option extra-trusted-public-keys "${KEYS[$HOST]}" \
+  --option tarball-ttl 0
 
 echo "==> Done! Reboot to complete installation."
