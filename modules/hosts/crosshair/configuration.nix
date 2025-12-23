@@ -16,8 +16,8 @@
         self.nixosModules.nvidia
 
         self.nixosModules.desktop
-        self.nixosModules.development
-        self.nixosModules.gaming
+        # self.nixosModules.development
+        # self.nixosModules.gaming
       ];
 
       boot = {

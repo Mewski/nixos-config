@@ -2,7 +2,7 @@
   flake.nixosModules.crosshair =
     { config, pkgs, ... }:
     {
-      sops.secrets."users/mewski/hashed_password".neededForUsers = true;
+      # sops.secrets."users/mewski/hashed_password".neededForUsers = true;
 
       users = {
         mutableUsers = false;
@@ -10,7 +10,8 @@
         users.mewski = {
           isNormalUser = true;
           description = "Mewski";
-          hashedPasswordFile = config.sops.secrets."users/mewski/hashed_password".path;
+          # hashedPasswordFile = config.sops.secrets."users/mewski/hashed_password".path;
+          initialPassword = "mewski";
           shell = pkgs.fish;
           extraGroups = [
             "networkmanager"

@@ -19,7 +19,7 @@ modules/
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Mewski/nixos-config/master/scripts/install.sh | sudo bash -s <hostname> </dev/tty
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/Mewski/nixos-config/master/scripts/install.sh)" -- <hostname>
 ```
 
 ## Rebuild
