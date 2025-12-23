@@ -31,8 +31,7 @@
       };
 
       boot.initrd.postDeviceCommands = lib.mkAfter ''
-        mkdir -p /mnt
-        mount -o subvol=/ /dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J511639-part1 /mnt
+        mount --mkdir -o subvol=/ /dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J511639-part1 /mnt
 
         if [[ -e /mnt/root ]]; then
           mkdir -p /mnt/snapshots

@@ -67,8 +67,7 @@
       };
 
       boot.initrd.postResumeCommands = lib.mkAfter ''
-        mkdir -p /mnt
-        mount -o subvol=/ /dev/mapper/cryptroot /mnt
+        mount --mkdir -o subvol=/ /dev/mapper/cryptroot /mnt
 
         if [[ -e /mnt/root ]]; then
           mkdir -p /mnt/snapshots
