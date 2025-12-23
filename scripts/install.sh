@@ -1,8 +1,6 @@
 #!/bin/bash
 set -u
 
-exec </dev/tty
-
 abort() {
   printf "%s\n" "$@" >&2
   exit 1
