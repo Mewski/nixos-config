@@ -73,7 +73,7 @@
 
       wayland.windowManager.hyprland.settings = {
         monitor = [
-          "DP-5, 3840x2160@240, 0x0, 1.25, vrr, 1, bitdepth, 10"
+          "DP-5, 3840x2160@240, 0x0, 1.25, vrr, 0, bitdepth, 10"
           ", preferred, auto, 1"
         ];
       };

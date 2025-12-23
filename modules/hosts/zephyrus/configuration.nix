@@ -76,7 +76,7 @@
       intelBacklight = "intel_backlight";
       nvidiaBacklight = "nvidia_0";
 
-      internalDisplayConfig = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
+      internalDisplayConfig = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 0, bitdepth, 10";
 
       getKbdBrightness = "${brightnessctl} -d ${kbdBacklight} -m | cut -d, -f4 | tr -d '%'";
       getDisplayBrightness = "${brightnessctl} -d ${intelBacklight} -m | cut -d, -f4 | tr -d '%'";
