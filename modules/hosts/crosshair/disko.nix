@@ -19,7 +19,7 @@
               };
             };
             swap = {
-              size = "32G";
+              size = "64G";
               content = {
                 type = "luks";
                 name = "cryptswap";
