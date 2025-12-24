@@ -13,6 +13,8 @@
 
         self.diskoConfigurations.astraeus
 
+        self.nixosModules.gitlab
+
         self.nixosModules.server
       ];
 

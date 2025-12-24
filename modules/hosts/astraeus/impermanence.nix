@@ -11,7 +11,11 @@
         hideMounts = true;
         directories = [
           "/etc/ssh"
+          "/var/gitlab"
+          "/var/lib/gitlab"
           "/var/lib/nixos"
+          "/var/lib/postgresql"
+          "/var/lib/redis-gitlab"
           "/var/lib/sbctl"
           "/var/lib/systemd/coredump"
           "/var/log"
