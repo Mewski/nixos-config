@@ -55,7 +55,10 @@
         };
       };
 
-      zramSwap.enable = true;
+      zramSwap = {
+        enable = true;
+        memorySize = 65536;
+      };
 
       services.openssh.enable = true;
 
