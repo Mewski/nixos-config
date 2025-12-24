@@ -29,7 +29,7 @@
 
         settings = {
           exec-once = [
-            "${lib.getExe pkgs.waybar}"
+            "sleep 1 && ${lib.getExe pkgs.waybar}"
             "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch ${lib.getExe pkgs.cliphist} store"
             "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch ${lib.getExe pkgs.cliphist} store"
           ];
