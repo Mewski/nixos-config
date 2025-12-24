@@ -57,7 +57,7 @@
 
       zramSwap = {
         enable = true;
-        memorySize = 65536;
+        memoryMax = 64 * 1024 * 1024 * 1024;
       };
 
       services.openssh.enable = true;
