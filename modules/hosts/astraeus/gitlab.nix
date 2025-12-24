@@ -1,27 +1,20 @@
 {
-  flake.nixosModules.gitlab =
+  flake.nixosModules.astraeus =
     { config, pkgs, ... }:
-    let
-      inherit (config.services.gitlab) user group;
-    in
     {
-      networking.firewall.allowedTCPPorts = [
-        80
-        443
-      ];
-
       services.gitlab = {
         enable = true;
         packages.gitlab = pkgs.gitlab-ee;
+
         host = "gitlab.mewski.dev";
         port = 443;
         https = true;
+
         user = "gitlab";
         group = "gitlab";
 
         databasePasswordFile = config.sops.secrets."gitlab/db_password".path;
         initialRootPasswordFile = config.sops.secrets."gitlab/initial_root_password".path;
-
         secrets = {
           activeRecordDeterministicKeyFile =
             config.sops.secrets."gitlab/active_record_deterministic_key".path;
@@ -35,10 +28,14 @@
 
         extraConfig = {
           gitlab = {
-            default_theme = 2;
             email_display_name = "GitLab";
             email_from = "gitlab@gitlab.mewski.dev";
+
+            default_theme = 2;
+
+            include_optional_metrics_in_service_ping = false;
             usage_ping_enabled = false;
+            usage_ping_generation_enabled = false;
           };
           gitlab_kas.enabled = false;
         };
@@ -46,12 +43,19 @@
 
       services.nginx = {
         enable = true;
+
         recommendedGzipSettings = true;
         recommendedOptimisation = true;
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
 
         virtualHosts."gitlab.mewski.dev" = {
+          listen = [
+            {
+              addr = "127.0.0.1";
+              port = 8929;
+            }
+          ];
           locations."/" = {
             proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
             proxyWebsockets = true;
@@ -60,60 +64,6 @@
               proxy_set_header X-Forwarded-Ssl on;
             '';
           };
-        };
-      };
-
-      systemd.services.cloudflared-tunnel = {
-        description = "Cloudflare Tunnel";
-        after = [ "network-online.target" ];
-        wants = [ "network-online.target" ];
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          DynamicUser = true;
-          EnvironmentFile = config.sops.secrets."cloudflared/tunnel_token".path;
-          ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token \${TUNNEL_TOKEN}";
-          Restart = "on-failure";
-          RestartSec = 5;
-        };
-      };
-
-      sops.secrets = {
-        "cloudflared/tunnel_token" = { };
-        "gitlab/active_record_deterministic_key" = {
-          owner = user;
-          inherit group;
-        };
-        "gitlab/active_record_primary_key" = {
-          owner = user;
-          inherit group;
-        };
-        "gitlab/active_record_salt" = {
-          owner = user;
-          inherit group;
-        };
-        "gitlab/db_password" = {
-          owner = user;
-          inherit group;
-        };
-        "gitlab/db_secret" = {
-          owner = user;
-          inherit group;
-        };
-        "gitlab/initial_root_password" = {
-          owner = user;
-          inherit group;
-        };
-        "gitlab/jws" = {
-          owner = user;
-          inherit group;
-        };
-        "gitlab/otp" = {
-          owner = user;
-          inherit group;
-        };
-        "gitlab/secret" = {
-          owner = user;
-          inherit group;
         };
       };
     };
