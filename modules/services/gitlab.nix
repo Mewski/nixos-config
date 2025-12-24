@@ -10,20 +10,6 @@
         443
       ];
 
-      systemd.services.cloudflared-tunnel = {
-        description = "Cloudflare Tunnel";
-        after = [ "network-online.target" ];
-        wants = [ "network-online.target" ];
-        wantedBy = [ "multi-user.target" ];
-        serviceConfig = {
-          ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token \${TUNNEL_TOKEN}";
-          EnvironmentFile = config.sops.secrets."cloudflared/tunnel_token".path;
-          Restart = "on-failure";
-          RestartSec = 5;
-          DynamicUser = true;
-        };
-      };
-
       services.gitlab = {
         enable = true;
         packages.gitlab = pkgs.gitlab-ee;
@@ -66,8 +52,28 @@
         recommendedTlsSettings = true;
 
         virtualHosts."gitlab.mewski.dev" = {
-          locations."/".proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
-          locations."/".proxyWebsockets = true;
+          locations."/" = {
+            proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
+            proxyWebsockets = true;
+            extraConfig = ''
+              proxy_set_header X-Forwarded-Proto https;
+              proxy_set_header X-Forwarded-Ssl on;
+            '';
+          };
+        };
+      };
+
+      systemd.services.cloudflared-tunnel = {
+        description = "Cloudflare Tunnel";
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          DynamicUser = true;
+          EnvironmentFile = config.sops.secrets."cloudflared/tunnel_token".path;
+          ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token \${TUNNEL_TOKEN}";
+          Restart = "on-failure";
+          RestartSec = 5;
         };
       };
 
