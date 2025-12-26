@@ -13,40 +13,40 @@
       secrets = {
         "cloudflared/tunnel_token" = { };
         "gitlab/active_record_deterministic_key" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
         "gitlab/active_record_primary_key" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
         "gitlab/active_record_salt" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
         "gitlab/db_password" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
         "gitlab/db_secret" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
         "gitlab/initial_root_password" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
         "gitlab/jws" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
         "gitlab/otp" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
         "gitlab/secret" = {
-          owner = "gitlab";
-          group = "gitlab";
+          owner = "git";
+          group = "git";
         };
       };
     };
