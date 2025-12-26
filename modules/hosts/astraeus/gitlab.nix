@@ -40,6 +40,8 @@
           port = 5000;
           externalAddress = "registry.gitlab.mewski.dev";
           externalPort = 443;
+          certFile = "/var/lib/gitlab/registry/registry-auth.crt";
+          keyFile = "/var/lib/gitlab/registry/registry-auth.key";
         };
 
         extraConfig = {
