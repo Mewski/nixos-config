@@ -12,6 +12,7 @@
 
         user = "git";
         group = "git";
+        databaseUsername = "git";
 
         databasePasswordFile = config.sops.secrets."gitlab/db_password".path;
         initialRootPasswordFile = config.sops.secrets."gitlab/initial_root_password".path;
