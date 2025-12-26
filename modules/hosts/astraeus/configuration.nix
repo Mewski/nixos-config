@@ -60,7 +60,13 @@
         memoryMax = 64 * 1024 * 1024 * 1024;
       };
 
-      services.openssh.enable = true;
+      services.openssh = {
+        enable = true;
+        settings = {
+          PasswordAuthentication = false;
+          KbdInteractiveAuthentication = false;
+        };
+      };
 
       environment.systemPackages = [
         pkgs.sbctl
