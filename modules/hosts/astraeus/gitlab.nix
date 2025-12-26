@@ -34,14 +34,19 @@
           tls = true;
         };
 
+        registry = {
+          enable = true;
+          host = "registry.gitlab.mewski.dev";
+          port = 5000;
+          externalAddress = "registry.gitlab.mewski.dev";
+          externalPort = 443;
+        };
+
         extraConfig = {
           gitlab = {
             email_display_name = "GitLab";
             email_from = "gitlab@gitlab.mewski.dev";
             email_reply_to = "no-reply@gitlab.mewski.dev";
-
-            default_theme = 2;
-            default_syntax_highlighting_theme = 2;
 
             include_optional_metrics_in_service_ping = false;
             usage_ping_enabled = false;
@@ -70,6 +75,23 @@
             proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
             proxyWebsockets = true;
             extraConfig = ''
+              proxy_set_header X-Forwarded-Proto https;
+              proxy_set_header X-Forwarded-Ssl on;
+            '';
+          };
+        };
+
+        virtualHosts."registry.gitlab.mewski.dev" = {
+          listen = [
+            {
+              addr = "127.0.0.1";
+              port = 8930;
+            }
+          ];
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:5000";
+            extraConfig = ''
+              client_max_body_size 0;
               proxy_set_header X-Forwarded-Proto https;
               proxy_set_header X-Forwarded-Ssl on;
             '';
