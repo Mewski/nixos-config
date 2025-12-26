@@ -36,20 +36,32 @@
 
         useDHCP = false;
 
-        interfaces.ens1f0.ipv4.addresses = [
-          {
-            address = "10.0.1.51";
-            prefixLength = 24;
-          }
-        ];
+        interfaces.ens1f0 = {
+          ipv4.addresses = [
+            {
+              address = "10.0.1.51";
+              prefixLength = 24;
+            }
+          ];
+          ipv6.addresses = [
+            {
+              address = "2601:244:4b06:5be1::51";
+              prefixLength = 64;
+            }
+          ];
+        };
 
         defaultGateway = "10.0.1.1";
+        defaultGateway6 = {
+          address = "fe80::9e05:d6ff:fec1:3143";
+          interface = "ens1f0";
+        };
         nameservers = [ "10.0.1.1" ];
 
         firewall = {
           enable = true;
 
-          allowedTCPPorts = [ ];
+          allowedTCPPorts = [ 22 ];
 
           allowedUDPPorts = [ ];
         };
