@@ -48,6 +48,10 @@
               address = "2601:244:4b06:5be1::51";
               prefixLength = 64;
             }
+            {
+              address = "2601:244:4b06:5be1::52";
+              prefixLength = 64;
+            }
           ];
         };
 
@@ -74,10 +78,34 @@
 
       services.openssh = {
         enable = true;
+
+        listenAddresses = [
+          {
+            addr = "10.0.1.51";
+            port = 22;
+          }
+          {
+            addr = "2601:244:4b06:5be1::51";
+            port = 22;
+          }
+          {
+            addr = "2601:244:4b06:5be1::52";
+            port = 22;
+          }
+        ];
+
         settings = {
           PasswordAuthentication = false;
           KbdInteractiveAuthentication = false;
         };
+
+        extraConfig = ''
+          Match LocalAddress 10.0.1.51,2601:244:4b06:5be1::51
+            AllowUsers mewski gitlab
+
+          Match LocalAddress 2601:244:4b06:5be1::52
+            AllowUsers gitlab
+        '';
       };
 
       environment.systemPackages = [
