@@ -1,7 +1,15 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  ...
+}:
 {
   flake.nixosModules.hyprland =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      ...
+    }:
     {
       programs.hyprland = {
         enable = true;
@@ -22,7 +30,11 @@
     };
 
   flake.homeModules.hyprland =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      ...
+    }:
     {
       wayland.windowManager.hyprland = {
         enable = true;

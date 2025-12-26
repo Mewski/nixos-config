@@ -23,7 +23,7 @@
       programs.nix-ld.enable = true;
 
       environment.systemPackages = [
-        pkgs.alejandra
+        pkgs.nixfmt-rfc-style
         pkgs.statix
 
         pkgs.nil
