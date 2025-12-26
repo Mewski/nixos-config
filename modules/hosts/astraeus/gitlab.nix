@@ -53,7 +53,10 @@
             include_optional_metrics_in_service_ping = false;
             usage_ping_enabled = false;
             usage_ping_generation_enabled = false;
+
+            ssh_host = "ssh.gitlab.mewski.dev";
           };
+
           gitlab_kas.enabled = false;
         };
       };
