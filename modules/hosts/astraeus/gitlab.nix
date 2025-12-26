@@ -10,8 +10,8 @@
         port = 443;
         https = true;
 
-        user = "gitlab";
-        group = "gitlab";
+        user = "git";
+        group = "git";
 
         databasePasswordFile = config.sops.secrets."gitlab/db_password".path;
         initialRootPasswordFile = config.sops.secrets."gitlab/initial_root_password".path;

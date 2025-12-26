@@ -101,10 +101,10 @@
 
         extraConfig = ''
           Match LocalAddress 10.0.1.51,2601:244:4b06:5be1::51
-            AllowUsers mewski gitlab
+            AllowUsers mewski git
 
           Match LocalAddress 2601:244:4b06:5be1::52
-            AllowUsers gitlab
+            AllowUsers git
         '';
       };
 
