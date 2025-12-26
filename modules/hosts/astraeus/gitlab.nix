@@ -26,12 +26,22 @@
           secretFile = config.sops.secrets."gitlab/secret".path;
         };
 
+        smtp = {
+          enable = true;
+          address = "smtp-relay.gmail.com";
+          port = 587;
+          domain = "gitlab.mewski.dev";
+          tls = true;
+        };
+
         extraConfig = {
           gitlab = {
             email_display_name = "GitLab";
             email_from = "gitlab@gitlab.mewski.dev";
+            email_reply_to = "no-reply@gitlab.mewski.dev";
 
             default_theme = 2;
+            default_syntax_highlighting_theme = 2;
 
             include_optional_metrics_in_service_ping = false;
             usage_ping_enabled = false;
