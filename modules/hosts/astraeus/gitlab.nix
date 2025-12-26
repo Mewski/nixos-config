@@ -31,7 +31,7 @@
           address = "smtp-relay.gmail.com";
           port = 587;
           domain = "gitlab.mewski.dev";
-          tls = true;
+          enableStartTLSAuto = true;
         };
 
         registry = {
