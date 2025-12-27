@@ -13,6 +13,8 @@
 
         self.diskoConfigurations.astraeus
 
+        self.nixosModules.docker
+
         self.nixosModules.server
       ];
 

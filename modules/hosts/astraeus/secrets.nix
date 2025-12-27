@@ -12,6 +12,7 @@
 
       secrets = {
         "cloudflared/tunnel_token" = { };
+
         "gitlab/active_record_deterministic_key" = {
           owner = "git";
           group = "git";
@@ -48,6 +49,8 @@
           owner = "git";
           group = "git";
         };
+
+        "gitlab-runner/token" = { };
       };
     };
   };

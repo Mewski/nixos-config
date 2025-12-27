@@ -18,6 +18,8 @@
           "/var/lib/redis-gitlab"
           "/var/lib/sbctl"
           "/var/lib/systemd/coredump"
+          "/var/lib/docker"
+          "/var/lib/gitlab-runner"
           "/var/log"
         ];
         files = [
