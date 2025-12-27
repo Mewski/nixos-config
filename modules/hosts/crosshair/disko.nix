@@ -18,6 +18,7 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
+
             swap = {
               size = "64G";
               content = {
@@ -26,12 +27,14 @@
                 settings = {
                   allowDiscards = true;
                 };
+
                 content = {
                   type = "swap";
                   resumeDevice = true;
                 };
               };
             };
+
             root = {
               size = "100%";
               content = {
@@ -40,6 +43,7 @@
                 settings = {
                   allowDiscards = true;
                 };
+
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ];
@@ -51,6 +55,7 @@
                         "noatime"
                       ];
                     };
+
                     "nix" = {
                       mountpoint = "/nix";
                       mountOptions = [
@@ -58,6 +63,7 @@
                         "noatime"
                       ];
                     };
+
                     "persist" = {
                       mountpoint = "/persist";
                       mountOptions = [

@@ -35,6 +35,7 @@
                 ];
               };
             };
+
             nil = {
               initialization_options = {
                 formatting = {
@@ -42,6 +43,7 @@
                 };
               };
             };
+
             nixd = {
               initialization_options = {
                 formatting = {

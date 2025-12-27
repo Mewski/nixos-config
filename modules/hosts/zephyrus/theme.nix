@@ -19,18 +19,22 @@
             name = "Noto Color Emoji";
             package = pkgs.noto-fonts-color-emoji;
           };
+
           monospace = {
             name = "FiraCode Nerd Font Mono";
             package = pkgs.nerd-fonts.fira-code;
           };
+
           sansSerif = {
             name = "Inter";
             package = pkgs.inter;
           };
+
           serif = {
             name = "Source Serif Pro";
             package = pkgs.source-serif;
           };
+
           sizes = {
             desktop = 10;
             application = 12;

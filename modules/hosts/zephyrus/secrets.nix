@@ -23,6 +23,7 @@
           sopsFile = "${self}/secrets/shared/secrets.yaml";
           path = ".wakatime.cfg";
         };
+
         binary_ninja_license = {
           sopsFile = "${self}/secrets/shared/secrets.yaml";
           path = ".binaryninja/license.dat";

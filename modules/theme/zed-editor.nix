@@ -189,11 +189,13 @@
                       font_style = null;
                       font_weight = null;
                     };
+
                     boolean = {
                       color = "#${scheme.base0E}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     comment = {
                       color = "#${scheme.base03}";
                       font_style = "italic";
@@ -204,26 +206,31 @@
                       font_style = "italic";
                       font_weight = 700;
                     };
+
                     constant = {
                       color = "#${scheme.base0E}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     constructor = {
                       color = "#${scheme.base0B}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     directive = {
                       color = "#${scheme.base0E}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     escape = {
                       color = "#${scheme.base0D}";
                       font_style = "italic";
                       font_weight = null;
                     };
+
                     function = {
                       color = "#${scheme.base0D}";
                       font_style = "italic";
@@ -239,106 +246,127 @@
                       font_style = "italic";
                       font_weight = null;
                     };
+
                     keyword = {
                       color = "#${scheme.base0E}";
                       font_style = "italic";
                       font_weight = null;
                     };
+
                     label = {
                       color = "#${scheme.base05}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     local = {
                       color = "#${scheme.base08}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     markup = {
                       color = "#${scheme.base09}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     meta = {
                       color = "#${scheme.base05}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     modifier = {
                       color = "#${scheme.base05}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     namespace = {
                       color = "#${scheme.base08}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     number = {
                       color = "#${scheme.base0A}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     operator = {
                       color = "#${scheme.base0E}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     parameter = {
                       color = "#${scheme.base05}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     punctuation = {
                       color = "#${scheme.base05}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     regexp = {
                       color = "#${scheme.base0C}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     self = {
                       color = "#${scheme.base05}";
                       font_style = null;
                       font_weight = 700;
                     };
+
                     string = {
                       color = "#${scheme.base0B}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     strong = {
                       color = "#${scheme.base0D}";
                       font_style = null;
                       font_weight = 700;
                     };
+
                     support = {
                       color = "#${scheme.base0E}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     symbol = {
                       color = "#${scheme.base0A}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     tag = {
                       color = "#${scheme.base0D}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     text = {
                       color = "#${scheme.base05}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     type = {
                       color = "#${scheme.base0B}";
                       font_style = null;
                       font_weight = null;
                     };
+
                     variable = {
                       color = "#${scheme.base05}";
                       font_style = null;

@@ -19,12 +19,14 @@
                   mountOptions = [ "umask=0077" ];
                 };
               };
+
               root = {
                 size = "100%";
               };
             };
           };
         };
+
         ssd1 = {
           type = "disk";
           device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J512741";
@@ -37,6 +39,7 @@
             };
           };
         };
+
         ssd2 = {
           type = "disk";
           device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNB0JB00115";
@@ -49,6 +52,7 @@
             };
           };
         };
+
         ssd3 = {
           type = "disk";
           device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J522696";
@@ -61,6 +65,7 @@
             };
           };
         };
+
         ssd4 = {
           type = "disk";
           device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0JB00809";
@@ -73,6 +78,7 @@
             };
           };
         };
+
         ssd5 = {
           type = "disk";
           device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J511639";
@@ -101,6 +107,7 @@
                         "noatime"
                       ];
                     };
+
                     "nix" = {
                       mountpoint = "/nix";
                       mountOptions = [
@@ -108,6 +115,7 @@
                         "noatime"
                       ];
                     };
+
                     "persist" = {
                       mountpoint = "/persist";
                       mountOptions = [
