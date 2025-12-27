@@ -33,8 +33,9 @@
 
       networking = {
         hostName = "astraeus";
+
         useDHCP = false;
-        useNetworkd = true;
+
         nameservers = [ "10.0.1.1" ];
 
         firewall = {
