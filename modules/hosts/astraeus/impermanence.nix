@@ -19,8 +19,11 @@
           "/var/lib/sbctl"
           "/var/lib/systemd/coredump"
           "/var/lib/docker"
-          "/var/lib/private/gitlab-runner"
           "/var/log"
+          {
+            directory = "/var/lib/private/gitlab-runner";
+            mode = "0700";
+          }
         ];
         files = [
           "/etc/machine-id"
