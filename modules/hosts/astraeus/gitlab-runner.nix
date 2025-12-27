@@ -9,7 +9,6 @@
           authenticationTokenConfigFile = config.sops.secrets."gitlab-runner/token".path;
           dockerImage = "alpine:latest";
           executor = "docker";
-          tagList = [ "docker" ];
         };
       };
     };
