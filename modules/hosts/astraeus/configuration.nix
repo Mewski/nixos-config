@@ -62,6 +62,7 @@
         enable = true;
         networks."10-ens1f0" = {
           matchConfig.Name = "ens1f0";
+          networkConfig.IPv6AcceptRA = false;
           addresses = [
             { Address = "10.0.1.51/24"; }
             { Address = "2601:244:4b06:5be1::51/64"; }
