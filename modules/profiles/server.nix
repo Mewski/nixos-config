@@ -3,6 +3,8 @@
   flake.nixosModules.server = {
     imports = [
       self.nixosModules.nix
+
+      self.nixosModules.docker
     ];
 
     time.timeZone = "America/Chicago";
@@ -22,5 +24,7 @@
         LC_TIME = "en_US.UTF-8";
       };
     };
+
+    programs.git.enable = true;
   };
 }
