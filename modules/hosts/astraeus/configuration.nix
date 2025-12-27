@@ -33,39 +33,47 @@
 
       networking = {
         hostName = "astraeus";
-
         useDHCP = false;
-
-        interfaces.ens1f0 = {
-          ipv4.addresses = [
-            {
-              address = "10.0.1.51";
-              prefixLength = 24;
-            }
-          ];
-          ipv6.addresses = [
-            {
-              address = "2601:244:4b06:5be1::51";
-              prefixLength = 64;
-            }
-            {
-              address = "2601:244:4b06:5be1::52";
-              prefixLength = 64;
-            }
-          ];
-        };
-
-        defaultGateway = "10.0.1.1";
-        defaultGateway6 = {
-          address = "fe80::9e05:d6ff:fec1:3143";
-          interface = "ens1f0";
-        };
+        useNetworkd = true;
         nameservers = [ "10.0.1.1" ];
 
         firewall = {
           enable = true;
           allowedTCPPorts = [ 22 ];
           allowedUDPPorts = [ ];
+        };
+
+        nftables = {
+          enable = true;
+          tables.smtp-nat = {
+            family = "ip6";
+            content = ''
+              chain postrouting {
+                type nat hook postrouting priority srcnat; policy accept;
+                tcp dport { 25, 465, 587 } snat to 2601:244:4b06:5be1::52
+              }
+            '';
+          };
+        };
+      };
+
+      systemd.network = {
+        enable = true;
+        networks."10-ens1f0" = {
+          matchConfig.Name = "ens1f0";
+          addresses = [
+            { Address = "10.0.1.51/24"; }
+            { Address = "2601:244:4b06:5be1::51/64"; }
+            {
+              Address = "2601:244:4b06:5be1::52/64";
+              PreferredLifetime = 0;
+            }
+          ];
+          routes = [
+            { Gateway = "10.0.1.1"; }
+            { Gateway = "fe80::9e05:d6ff:fec1:3143"; }
+          ];
+          linkConfig.RequiredForOnline = "routable";
         };
       };
 
