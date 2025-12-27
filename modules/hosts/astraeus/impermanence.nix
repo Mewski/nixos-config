@@ -21,7 +21,7 @@
           "/var/lib/docker"
           "/var/log"
           {
-            directory = "/var/lib/private/gitlab-runner";
+            directory = "/var/lib/private";
             mode = "0700";
           }
         ];
