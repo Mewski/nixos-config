@@ -28,7 +28,7 @@
           "fadeLayersOut, 1, 1.39, almostLinear"
           "workspaces, 1, 3.8, easeOutQuint, slide"
           "specialWorkspace, 1, 3, easeOutQuint, slidevert"
-          "zoomFactor, 1, 7, quick"
+          "zoomFactor, 1, 2, quick"
         ];
       };
 

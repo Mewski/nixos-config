@@ -86,12 +86,16 @@
           'Keyboard Brightness'
       '';
 
-      notifyDisplayBrightness = pkgs.writeShellScript "notify-display-brightness" ''
-        ${notify} -a osd -t 1000 \
-          -h string:x-dunst-stack-tag:brightness \
-          -h int:value:$(${getDisplayBrightness}) \
-          'Display Brightness'
-      '';
+      setDisplayBrightness =
+        direction:
+        pkgs.writeShellScript "set-display-brightness-${direction}" ''
+          ${brightnessctl} -d ${nvidiaBacklight} -q set 5%${direction} &
+          val=$(${brightnessctl} -d ${intelBacklight} -m set 5%${direction} | cut -d, -f4 | tr -d '%')
+          ${notify} -a osd -t 1000 \
+            -h string:x-dunst-stack-tag:brightness \
+            -h int:value:$val \
+            'Display Brightness' &
+        '';
 
       lidSwitchOn = pkgs.writeShellScript "lid-switch-on" ''
         external_connected=$(hyprctl monitors -j | ${jq} '[.[] | select(.name != "eDP-1")] | length > 0')
@@ -154,8 +158,8 @@
           ",XF86KbdBrightnessDown, exec, ${brightnessctl} -d ${kbdBacklight} set 1- && ${notifyKbdBrightness}"
           ",XF86KbdBrightnessUp, exec, ${brightnessctl} -d ${kbdBacklight} set 1+ && ${notifyKbdBrightness}"
 
-          ",XF86MonBrightnessDown, exec, ${brightnessctl} -d ${intelBacklight} set 5%-; ${brightnessctl} -d ${nvidiaBacklight} set 5%-; ${notifyDisplayBrightness}"
-          ",XF86MonBrightnessUp, exec, ${brightnessctl} -d ${intelBacklight} set 5%+; ${brightnessctl} -d ${nvidiaBacklight} set 5%+; ${notifyDisplayBrightness}"
+          ",XF86MonBrightnessDown, exec, ${setDisplayBrightness "-"}"
+          ",XF86MonBrightnessUp, exec, ${setDisplayBrightness "+"}"
         ];
 
         bindl = [
