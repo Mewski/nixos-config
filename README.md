@@ -31,20 +31,6 @@ Declarative NixOS configurations using flakes.
 | Launcher | rofi |
 | Notifications | dunst |
 
-## Structure
-
-```
-modules/
-├── desktops/        # Hyprland config
-├── features/        # nix, nvidia, flatpak, virtualization
-├── hosts/           # Machine-specific config
-├── overlays/        # Package overlays
-├── profiles/        # desktop, development, gaming, server
-├── programs/        # Application configs
-└── theme/           # Base16 theming
-secrets/             # SOPS encrypted secrets
-```
-
 ## Usage
 
 ### Install
