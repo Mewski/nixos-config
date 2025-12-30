@@ -17,6 +17,7 @@
             "wheel"
             "docker"
             "libvirtd"
+            "gamemode"
           ];
         };
       };

@@ -5,6 +5,8 @@
 
     programs.steam.enable = true;
 
+    programs.gamemode.enable = true;
+
     services.flatpak.packages = [
       "org.vinegarhq.Sober"
     ];
