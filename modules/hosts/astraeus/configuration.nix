@@ -38,46 +38,35 @@
 
         useDHCP = false;
 
-        nameservers = [ "10.0.1.1" ];
+        interfaces.ens1f0 = {
+          ipv4.addresses = [
+            {
+              address = "10.0.1.51";
+              prefixLength = 24;
+            }
+          ];
+          ipv6.addresses = [
+            {
+              address = "2601:244:4b06:5be1::51";
+              prefixLength = 64;
+            }
+          ];
+        };
+
+        defaultGateway = "10.0.1.1";
+        defaultGateway6 = {
+          address = "fe80::9e05:d6ff:fec1:3143";
+          interface = "ens1f0";
+        };
+
+        nameservers = [
+          "10.0.1.1"
+          "2601:244:4b06:5be1::1"
+        ];
 
         firewall = {
           enable = true;
           allowedTCPPorts = [ 22 ];
-          allowedUDPPorts = [ ];
-        };
-
-        nftables = {
-          enable = true;
-          tables.smtp-nat = {
-            family = "ip6";
-            content = ''
-              chain postrouting {
-                type nat hook postrouting priority srcnat; policy accept;
-                tcp dport { 25, 465, 587 } snat to 2601:244:4b06:5be1::52
-              }
-            '';
-          };
-        };
-      };
-
-      systemd.network = {
-        enable = true;
-        networks."10-ens1f0" = {
-          matchConfig.Name = "ens1f0";
-          networkConfig.IPv6AcceptRA = false;
-          addresses = [
-            { Address = "10.0.1.51/24"; }
-            { Address = "2601:244:4b06:5be1::51/64"; }
-            {
-              Address = "2601:244:4b06:5be1::52/64";
-              PreferredLifetime = 0;
-            }
-          ];
-          routes = [
-            { Gateway = "10.0.1.1"; }
-            { Gateway = "fe80::9e05:d6ff:fec1:3143"; }
-          ];
-          linkConfig.RequiredForOnline = "routable";
         };
       };
 
@@ -89,31 +78,16 @@
       services.openssh = {
         enable = true;
 
-        listenAddresses = [
-          {
-            addr = "10.0.1.51";
-            port = 22;
-          }
-          {
-            addr = "[2601:244:4b06:5be1::51]";
-            port = 22;
-          }
-          {
-            addr = "[2601:244:4b06:5be1::52]";
-            port = 22;
-          }
-        ];
-
         settings = {
           PasswordAuthentication = false;
           KbdInteractiveAuthentication = false;
         };
 
         extraConfig = ''
-          Match LocalAddress 10.0.1.51,2601:244:4b06:5be1::51
+          Match LocalAddress 10.0.1.51
             AllowUsers mewski git
 
-          Match LocalAddress 2601:244:4b06:5be1::52
+          Match LocalAddress 2601:244:4b06:5be1::51
             AllowUsers git
         '';
       };
