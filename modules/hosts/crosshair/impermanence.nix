@@ -9,6 +9,7 @@
 
       environment.persistence."/persist" = {
         hideMounts = true;
+
         directories = [
           "/etc/NetworkManager/system-connections"
           "/etc/ssh"
@@ -19,6 +20,7 @@
           "/var/lib/systemd/coredump"
           "/var/log"
         ];
+
         files = [
           "/etc/machine-id"
           "/etc/supergfxd.conf"
@@ -59,6 +61,7 @@
               mode = "0700";
             }
           ];
+
           files = [
             ".config/gh/hosts.yml"
             ".config/sops/age/keys.txt"

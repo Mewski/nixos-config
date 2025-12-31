@@ -18,6 +18,11 @@
           }
         ];
       };
+
+      proxyHeaders = ''
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-Ssl on;
+      '';
     in
     {
       services.gitlab = {
@@ -92,10 +97,7 @@
           locations."/" = {
             proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
             proxyWebsockets = true;
-            extraConfig = ''
-              proxy_set_header X-Forwarded-Proto https;
-              proxy_set_header X-Forwarded-Ssl on;
-            '';
+            extraConfig = proxyHeaders;
           };
         };
 
@@ -104,8 +106,7 @@
             proxyPass = "http://127.0.0.1:5000";
             extraConfig = ''
               client_max_body_size 0;
-              proxy_set_header X-Forwarded-Proto https;
-              proxy_set_header X-Forwarded-Ssl on;
+              ${proxyHeaders}
             '';
           };
         };

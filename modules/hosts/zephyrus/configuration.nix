@@ -11,19 +11,18 @@
         inputs.disko.nixosModules.default
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
-
         self.diskoConfigurations.zephyrus
-
         self.nixosModules.nvidia
-
         self.nixosModules.desktop
         self.nixosModules.development
         self.nixosModules.gaming
       ];
 
       boot = {
-        loader.systemd-boot.enable = false;
-        loader.efi.canTouchEfiVariables = true;
+        loader = {
+          systemd-boot.enable = false;
+          efi.canTouchEfiVariables = true;
+        };
 
         lanzaboote = {
           enable = true;
@@ -38,27 +37,17 @@
 
       networking = {
         hostName = "zephyrus";
-
         networkmanager.enable = true;
-
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [ ];
-          allowedUDPPorts = [ ];
-        };
+        firewall.enable = true;
       };
 
-      services.openssh.enable = true;
+      services = {
+        openssh.enable = true;
+        blueman.enable = true;
+        udev.packages = [ pkgs.wooting-udev-rules ];
+      };
 
-      services.blueman.enable = true;
-
-      services.udev.packages = [
-        pkgs.wooting-udev-rules
-      ];
-
-      environment.systemPackages = [
-        pkgs.sbctl
-      ];
+      environment.systemPackages = [ pkgs.sbctl ];
 
       system.stateVersion = "25.11";
     };
@@ -73,7 +62,6 @@
       kbdBacklight = "asus::kbd_backlight";
       intelBacklight = "intel_backlight";
       nvidiaBacklight = "nvidia_0";
-
       internalDisplayConfig = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 0, bitdepth, 10";
 
       getKbdBrightness = "${brightnessctl} -d ${kbdBacklight} -m | cut -d, -f4 | tr -d '%'";
@@ -131,7 +119,7 @@
 
       wayland.windowManager.hyprland.settings = {
         monitor = [
-          "${internalDisplayConfig}"
+          internalDisplayConfig
           ", preferred, auto, 1"
         ];
 
@@ -157,7 +145,6 @@
         bindel = [
           ",XF86KbdBrightnessDown, exec, ${brightnessctl} -d ${kbdBacklight} set 1- && ${notifyKbdBrightness}"
           ",XF86KbdBrightnessUp, exec, ${brightnessctl} -d ${kbdBacklight} set 1+ && ${notifyKbdBrightness}"
-
           ",XF86MonBrightnessDown, exec, ${setDisplayBrightness "-"}"
           ",XF86MonBrightnessUp, exec, ${setDisplayBrightness "+"}"
         ];
@@ -176,8 +163,6 @@
         }
       ];
 
-      home.packages = [
-        pkgs.wootility
-      ];
+      home.packages = [ pkgs.wootility ];
     };
 }

@@ -3,7 +3,6 @@
   flake.nixosModules.development = {
     imports = [
       self.nixosModules.virtualization
-
       self.nixosModules.docker
     ];
   };

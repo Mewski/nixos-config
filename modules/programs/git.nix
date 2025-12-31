@@ -4,21 +4,17 @@
     {
       programs.git = {
         enable = true;
-
         lfs.enable = true;
-
-        settings = {
-          user = {
-            name = "Mewski";
-            email = "mewski813@gmail.com";
-          };
-
-          gpg.format = "ssh";
-        };
-
         signing = {
           key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
           signByDefault = true;
+        };
+        settings = {
+          user = {
+            name = "Mewski";
+            email = "mewski@mewski.dev";
+          };
+          gpg.format = "ssh";
         };
       };
 

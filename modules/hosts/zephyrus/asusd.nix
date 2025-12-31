@@ -10,99 +10,14 @@
           brightness: Med,
           current_mode: Static,
           builtins: {
-            Static: (
-              mode: Static,
-              zone: r#None,
-              colour1: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              colour2: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              speed: Med,
-              direction: Right,
-            ),
-            Breathe: (
-              mode: Breathe,
-              zone: r#None,
-              colour1: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              colour2: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              speed: Med,
-              direction: Right,
-            ),
-            RainbowCycle: (
-              mode: RainbowCycle,
-              zone: r#None,
-              colour1: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              colour2: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              speed: Med,
-              direction: Right,
-            ),
-            RainbowWave: (
-              mode: RainbowWave,
-              zone: r#None,
-              colour1: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              colour2: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              speed: Med,
-              direction: Right,
-            ),
-            Pulse: (
-              mode: Pulse,
-              zone: r#None,
-              colour1: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              colour2: (
-                r: 255,
-                g: 255,
-                b: 255,
-              ),
-              speed: Med,
-              direction: Right,
-            ),
+            Static: (mode: Static, zone: r#None, colour1: (r: 255, g: 255, b: 255), colour2: (r: 255, g: 255, b: 255), speed: Med, direction: Right),
+            Breathe: (mode: Breathe, zone: r#None, colour1: (r: 255, g: 255, b: 255), colour2: (r: 255, g: 255, b: 255), speed: Med, direction: Right),
+            RainbowCycle: (mode: RainbowCycle, zone: r#None, colour1: (r: 255, g: 255, b: 255), colour2: (r: 255, g: 255, b: 255), speed: Med, direction: Right),
+            RainbowWave: (mode: RainbowWave, zone: r#None, colour1: (r: 255, g: 255, b: 255), colour2: (r: 255, g: 255, b: 255), speed: Med, direction: Right),
+            Pulse: (mode: Pulse, zone: r#None, colour1: (r: 255, g: 255, b: 255), colour2: (r: 255, g: 255, b: 255), speed: Med, direction: Right),
           },
           multizone_on: false,
-          enabled: (
-            states: [
-              (
-                zone: Keyboard,
-                boot: true,
-                awake: true,
-                sleep: true,
-                shutdown: true,
-              ),
-            ],
-          ),
+          enabled: (states: [(zone: Keyboard, boot: true, awake: true, sleep: true, shutdown: true)]),
         )
       '';
 

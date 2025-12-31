@@ -7,27 +7,27 @@
 
       nix = {
         package = pkgs.lix;
-
         settings.experimental-features = [
           "nix-command"
           "flakes"
         ];
       };
 
-      nixpkgs.config.allowUnfree = true;
+      nixpkgs = {
+        config.allowUnfree = true;
+        overlays = [ inputs.self.overlays.default ];
+      };
 
-      nixpkgs.overlays = [ inputs.self.overlays.default ];
+      programs = {
+        nix-index-database.comma.enable = true;
+        nix-ld.enable = true;
+      };
 
-      programs.nix-index-database.comma.enable = true;
-
-      programs.nix-ld.enable = true;
-
-      environment.systemPackages = [
-        pkgs.nixfmt-rfc-style
-        pkgs.statix
-
-        pkgs.nil
-        pkgs.nixd
+      environment.systemPackages = with pkgs; [
+        nixfmt-rfc-style
+        statix
+        nil
+        nixd
       ];
     };
 }

@@ -9,34 +9,32 @@
 
       environment.persistence."/persist" = {
         hideMounts = true;
+
         directories = [
           "/etc/ssh"
           "/var/gitlab"
+          "/var/lib/docker"
           "/var/lib/gitlab"
           "/var/lib/nixos"
           "/var/lib/postgresql"
           "/var/lib/redis-gitlab"
           "/var/lib/sbctl"
           "/var/lib/systemd/coredump"
-          "/var/lib/docker"
           "/var/log"
           {
             directory = "/var/lib/private";
             mode = "0700";
           }
         ];
-        files = [
-          "/etc/machine-id"
-        ];
 
-        users.mewski = {
-          directories = [
-            {
-              directory = ".ssh";
-              mode = "0700";
-            }
-          ];
-        };
+        files = [ "/etc/machine-id" ];
+
+        users.mewski.directories = [
+          {
+            directory = ".ssh";
+            mode = "0700";
+          }
+        ];
       };
 
       boot.initrd.postDeviceCommands = lib.mkAfter ''

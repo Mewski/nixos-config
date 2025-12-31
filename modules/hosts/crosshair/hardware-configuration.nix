@@ -12,7 +12,6 @@
       boot = {
         extraModulePackages = [ ];
         kernelModules = [ "kvm-amd" ];
-
         initrd = {
           availableKernelModules = [
             "xhci_pci"
@@ -28,9 +27,7 @@
       };
 
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
       networking.useDHCP = lib.mkDefault true;
-
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     };
 }

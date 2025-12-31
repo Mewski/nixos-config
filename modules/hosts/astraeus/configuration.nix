@@ -10,17 +10,16 @@
       imports = [
         inputs.disko.nixosModules.default
         inputs.lanzaboote.nixosModules.lanzaboote
-
         self.diskoConfigurations.astraeus
-
         self.nixosModules.docker
-
         self.nixosModules.server
       ];
 
       boot = {
-        loader.systemd-boot.enable = false;
-        loader.efi.canTouchEfiVariables = true;
+        loader = {
+          systemd-boot.enable = false;
+          efi.canTouchEfiVariables = true;
+        };
 
         lanzaboote = {
           enable = true;
@@ -35,7 +34,6 @@
 
       networking = {
         hostName = "astraeus";
-
         useDHCP = false;
 
         interfaces.ens1f0 = {
@@ -55,7 +53,6 @@
 
         defaultGateway = "10.0.1.1";
         defaultGateway6 = "2601:244:4b06:5be1::1";
-
         nameservers = [
           "10.0.1.1"
           "2601:244:4b06:5be1::1"
@@ -77,12 +74,10 @@
 
       services.openssh = {
         enable = true;
-
         settings = {
           PasswordAuthentication = false;
           KbdInteractiveAuthentication = false;
         };
-
         extraConfig = ''
           Match LocalAddress 10.0.1.51
             AllowUsers mewski git
@@ -92,9 +87,7 @@
         '';
       };
 
-      environment.systemPackages = [
-        pkgs.sbctl
-      ];
+      environment.systemPackages = [ pkgs.sbctl ];
 
       system.stateVersion = "25.11";
     };

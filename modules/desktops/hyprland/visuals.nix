@@ -1,6 +1,34 @@
 {
   flake.homeModules.hyprland = {
     wayland.windowManager.hyprland.settings = {
+      general = {
+        border_size = 2;
+        gaps_in = 3;
+        gaps_out = 6;
+        resize_on_border = false;
+        allow_tearing = true;
+      };
+
+      decoration = {
+        rounding = 8;
+        rounding_power = 2;
+
+        blur = {
+          enabled = true;
+          size = 5;
+          passes = 5;
+          popups = true;
+          new_optimizations = true;
+          vibrancy = 0.1696;
+        };
+
+        shadow = {
+          enabled = false;
+          range = 4;
+          render_power = 3;
+        };
+      };
+
       animations = {
         enabled = true;
 
@@ -32,39 +60,7 @@
         ];
       };
 
-      decoration = {
-        rounding = 8;
-        rounding_power = 2;
-
-        blur = {
-          enabled = true;
-          new_optimizations = true;
-          passes = 5;
-          popups = true;
-          size = 5;
-          vibrancy = 0.1696;
-        };
-
-        shadow = {
-          enabled = false;
-          range = 4;
-          render_power = 3;
-        };
-      };
-
-      general = {
-        allow_tearing = true;
-        resize_on_border = false;
-
-        border_size = 2;
-
-        gaps_in = 3;
-        gaps_out = 6;
-      };
-
-      misc = {
-        disable_hyprland_logo = true;
-      };
+      misc.disable_hyprland_logo = true;
 
       layerrule = [
         "blur, waybar"

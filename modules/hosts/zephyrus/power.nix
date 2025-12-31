@@ -34,17 +34,13 @@
           After = [ "graphical-session.target" ];
           PartOf = [ "graphical-session.target" ];
         };
-
         Service = {
           Type = "simple";
           ExecStart = batteryRefreshRate;
           Restart = "on-failure";
           RestartSec = 5;
         };
-
-        Install = {
-          WantedBy = [ "graphical-session.target" ];
-        };
+        Install.WantedBy = [ "graphical-session.target" ];
       };
     };
 }

@@ -1,9 +1,15 @@
 {
   flake.homeModules.zed-editor =
     { lib, pkgs, ... }:
+    let
+      nixfmt = lib.getExe pkgs.nixfmt-rfc-style;
+    in
     {
       programs.zed-editor = {
         enable = true;
+        mutableUserSettings = false;
+        mutableUserKeymaps = false;
+        mutableUserTasks = false;
 
         userSettings = {
           icon_theme = "Material Icon Theme";
@@ -16,47 +22,20 @@
             toggle_relative_line_numbers = true;
           };
 
-          telemetry = {
-            metrics = false;
-          };
-
-          features = {
-            edit_prediction_provider = "copilot";
-          };
+          telemetry.metrics = false;
+          features.edit_prediction_provider = "copilot";
 
           lsp = {
-            clangd = {
-              binary = {
-                arguments = [
-                  "--background-index"
-                  "--clang-tidy"
-                  "--completion-style=detailed"
-                  "--function-arg-placeholders=0"
-                ];
-              };
-            };
-
-            nil = {
-              initialization_options = {
-                formatting = {
-                  command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
-                };
-              };
-            };
-
-            nixd = {
-              initialization_options = {
-                formatting = {
-                  command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
-                };
-              };
-            };
+            clangd.binary.arguments = [
+              "--background-index"
+              "--clang-tidy"
+              "--completion-style=detailed"
+              "--function-arg-placeholders=0"
+            ];
+            nil.initialization_options.formatting.command = [ nixfmt ];
+            nixd.initialization_options.formatting.command = [ nixfmt ];
           };
         };
-
-        mutableUserSettings = false;
-        mutableUserKeymaps = false;
-        mutableUserTasks = false;
 
         extensions = [
           "docker-compose"

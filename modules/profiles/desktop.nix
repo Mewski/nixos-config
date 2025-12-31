@@ -7,13 +7,9 @@
         self.nixosModules.home-manager
         self.nixosModules.nix
         self.nixosModules.options
-
         self.nixosModules.hyprland
-
         self.nixosModules.pipewire
-
         self.nixosModules.fish
-
         self.nixosModules.gtk
         self.nixosModules.qt
       ];
@@ -36,7 +32,6 @@
 
       i18n = {
         defaultLocale = "en_US.UTF-8";
-
         extraLocaleSettings = {
           LC_ADDRESS = "en_US.UTF-8";
           LC_IDENTIFICATION = "en_US.UTF-8";
@@ -52,9 +47,10 @@
 
       security.polkit.enable = true;
 
-      services.upower.enable = true;
-
-      services.gnome.gnome-keyring.enable = true;
+      services = {
+        upower.enable = true;
+        gnome.gnome-keyring.enable = true;
+      };
 
       environment.systemPackages = [ pkgs.nautilus ];
     };
@@ -64,19 +60,16 @@
     {
       imports = [
         self.homeModules.hyprland
-
         self.homeModules.dunst
         self.homeModules.hyprlock
         self.homeModules.rofi
         self.homeModules.waybar
-
         self.homeModules.btop
         self.homeModules.fish
         self.homeModules.kitty
         self.homeModules.nixcord
         self.homeModules.obsidian
         self.homeModules.zen-browser
-
         self.homeModules.gtk
         self.homeModules.qt
       ];
@@ -89,26 +82,21 @@
 
       services.ssh-agent.enable = true;
 
-      home.packages = [
-        pkgs.p7zip
-        pkgs.unzip
-
-        pkgs.jq
-        pkgs.microfetch
-        pkgs.wget
-        pkgs.xxd
-
-        pkgs.cliphist
-        pkgs.wl-clipboard
-
-        pkgs.networkmanagerapplet
-        pkgs.pavucontrol
-
-        pkgs.mpv
-        pkgs.qimgv
-
-        pkgs.bitwarden-desktop
-        pkgs.spotify
+      home.packages = with pkgs; [
+        p7zip
+        unzip
+        jq
+        microfetch
+        wget
+        xxd
+        cliphist
+        wl-clipboard
+        networkmanagerapplet
+        pavucontrol
+        mpv
+        qimgv
+        bitwarden-desktop
+        spotify
       ];
     };
 }

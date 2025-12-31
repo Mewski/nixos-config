@@ -11,6 +11,7 @@
           lo = i - hi * 16;
         in
         builtins.substring hi 1 hex + builtins.substring lo 1 hex;
+
       popupsOpacityHex = toHex theme.opacity.popups;
     in
     {

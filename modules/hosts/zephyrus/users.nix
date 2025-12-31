@@ -6,7 +6,6 @@
 
       users = {
         mutableUsers = false;
-
         users.mewski = {
           isNormalUser = true;
           description = "Mewski";
@@ -23,12 +22,12 @@
       };
 
       home-manager.users.mewski = {
-        home.username = "mewski";
-        home.homeDirectory = "/home/mewski";
-
+        home = {
+          username = "mewski";
+          homeDirectory = "/home/mewski";
+          stateVersion = "25.11";
+        };
         programs.home-manager.enable = true;
-
-        home.stateVersion = "25.11";
       };
     };
 }

@@ -12,7 +12,7 @@
       };
 
       home.file.".binaryninja/settings.json".text = builtins.toJSON {
-        "ui.theme.name" = "Base16";
+        "ui.theme.name" = "Ninja Dark";
         "network.enableUpdates" = false;
         "network.enableReleaseNotes" = false;
       };

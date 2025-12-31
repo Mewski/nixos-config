@@ -1,7 +1,13 @@
 {
-  flake.diskoConfigurations.crosshair = {
-    disko.devices = {
-      disk.main = {
+  flake.diskoConfigurations.crosshair =
+    let
+      btrfsMountOptions = [
+        "compress=zstd"
+        "noatime"
+      ];
+    in
+    {
+      disko.devices.disk.main = {
         type = "disk";
         device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_4TB_S7KGNJ0WC01840T";
         content = {
@@ -24,10 +30,7 @@
               content = {
                 type = "luks";
                 name = "cryptswap";
-                settings = {
-                  allowDiscards = true;
-                };
-
+                settings.allowDiscards = true;
                 content = {
                   type = "swap";
                   resumeDevice = true;
@@ -40,36 +43,22 @@
               content = {
                 type = "luks";
                 name = "cryptroot";
-                settings = {
-                  allowDiscards = true;
-                };
-
+                settings.allowDiscards = true;
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ];
                   subvolumes = {
                     "root" = {
                       mountpoint = "/";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
+                      mountOptions = btrfsMountOptions;
                     };
-
                     "nix" = {
                       mountpoint = "/nix";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
+                      mountOptions = btrfsMountOptions;
                     };
-
                     "persist" = {
                       mountpoint = "/persist";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
+                      mountOptions = btrfsMountOptions;
                     };
                   };
                 };
@@ -79,5 +68,4 @@
         };
       };
     };
-  };
 }

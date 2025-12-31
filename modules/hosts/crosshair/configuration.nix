@@ -10,19 +10,18 @@
       imports = [
         inputs.disko.nixosModules.default
         inputs.lanzaboote.nixosModules.lanzaboote
-
         self.diskoConfigurations.crosshair
-
         self.nixosModules.nvidia
-
         self.nixosModules.desktop
         self.nixosModules.development
         self.nixosModules.gaming
       ];
 
       boot = {
-        loader.systemd-boot.enable = false;
-        loader.efi.canTouchEfiVariables = true;
+        loader = {
+          systemd-boot.enable = false;
+          efi.canTouchEfiVariables = true;
+        };
 
         lanzaboote = {
           enable = true;
@@ -37,25 +36,16 @@
 
       networking = {
         hostName = "crosshair";
-
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [ ];
-          allowedUDPPorts = [ ];
-        };
+        firewall.enable = true;
       };
 
-      services.openssh.enable = true;
+      services = {
+        openssh.enable = true;
+        blueman.enable = true;
+        udev.packages = [ pkgs.wooting-udev-rules ];
+      };
 
-      services.blueman.enable = true;
-
-      services.udev.packages = [
-        pkgs.wooting-udev-rules
-      ];
-
-      environment.systemPackages = [
-        pkgs.sbctl
-      ];
+      environment.systemPackages = [ pkgs.sbctl ];
 
       system.stateVersion = "25.11";
     };
@@ -83,8 +73,6 @@
         ];
       };
 
-      home.packages = [
-        pkgs.wootility
-      ];
+      home.packages = [ pkgs.wootility ];
     };
 }

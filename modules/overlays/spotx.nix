@@ -8,24 +8,24 @@
       };
     in
     {
-      overlayAttrs = {
-        spotify = pkgs.spotify.overrideAttrs (old: {
-          nativeBuildInputs = old.nativeBuildInputs ++ [
-            pkgs.util-linux
-            pkgs.perl
-            pkgs.unzip
-            pkgs.zip
-            pkgs.curl
-          ];
+      overlayAttrs.spotify = pkgs.spotify.overrideAttrs (old: {
+        nativeBuildInputs =
+          old.nativeBuildInputs
+          ++ (with pkgs; [
+            util-linux
+            perl
+            unzip
+            zip
+            curl
+          ]);
 
-          postUnpack = ''
-            patchShebangs --build ${spotx}
-          '';
+        postUnpack = ''
+          patchShebangs --build ${spotx}
+        '';
 
-          postInstall = (old.postInstall or "") + ''
-            bash ${spotx} -f -P "$out/share/spotify"
-          '';
-        });
-      };
+        postInstall = (old.postInstall or "") + ''
+          bash ${spotx} -f -P "$out/share/spotify"
+        '';
+      });
     };
 }
