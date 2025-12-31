@@ -54,10 +54,7 @@
         };
 
         defaultGateway = "10.0.1.1";
-        defaultGateway6 = {
-          address = "fe80::9e05:d6ff:fec1:3143";
-          interface = "ens1f0";
-        };
+        defaultGateway6 = "2601:244:4b06:5be1::1";
 
         nameservers = [
           "10.0.1.1"
