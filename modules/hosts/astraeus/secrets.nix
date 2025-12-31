@@ -1,5 +1,9 @@
 { inputs, self, ... }:
 let
+  nginxSecret = {
+    owner = "nginx";
+    group = "nginx";
+  };
   gitSecret = {
     owner = "git";
     group = "git";
@@ -16,14 +20,8 @@ in
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
       secrets = {
-        "cloudflare/cert" = {
-          owner = "nginx";
-          group = "nginx";
-        };
-        "cloudflare/key" = {
-          owner = "nginx";
-          group = "nginx";
-        };
+        "cloudflare/cert" = nginxSecret;
+        "cloudflare/key" = nginxSecret;
 
         "gitlab/active_record_deterministic_key" = gitSecret;
         "gitlab/active_record_primary_key" = gitSecret;
@@ -35,10 +33,7 @@ in
         "gitlab/otp" = gitSecret;
         "gitlab/secret" = gitSecret;
 
-        "gitlab-runner/token" = {
-          owner = "gitlab-runner";
-          group = "gitlab-runner";
-        };
+        "gitlab-runner/token" = { };
       };
     };
   };
