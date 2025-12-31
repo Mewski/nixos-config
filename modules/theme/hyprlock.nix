@@ -3,9 +3,7 @@
     { scheme, ... }:
     {
       programs.hyprlock.settings = {
-        background = {
-          color = "rgb(${scheme.base00})";
-        };
+        background.color = "rgb(${scheme.base00})";
         input-field = {
           outer_color = "rgb(${scheme.base03})";
           inner_color = "rgb(${scheme.base00})";

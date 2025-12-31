@@ -67,9 +67,7 @@
             text-color = mkLiteral "${scheme.withHashtag.base00}";
           };
 
-          "element alternate" = {
-            background-color = mkLiteral "transparent";
-          };
+          "element alternate".background-color = mkLiteral "transparent";
 
           "element-text" = {
             background-color = mkLiteral "transparent";

@@ -8,12 +8,11 @@
         platformTheme = "qt5ct";
       };
 
-      environment.systemPackages = [
-        pkgs.libsForQt5.qt5ct
-        pkgs.libsForQt5.qtstyleplugin-kvantum
-
-        pkgs.kdePackages.qt6ct
-        pkgs.kdePackages.qtstyleplugin-kvantum
+      environment.systemPackages = with pkgs; [
+        libsForQt5.qt5ct
+        kdePackages.qt6ct
+        libsForQt5.qtstyleplugin-kvantum
+        kdePackages.qtstyleplugin-kvantum
       ];
     };
 

@@ -123,13 +123,8 @@
           @define-color secondary_sidebar_shade_color rgba(0, 0, 0, 0.36);
         '';
 
-        gtk3.extraConfig = {
-          gtk-application-prefer-dark-theme = theme.polarity == "dark";
-        };
-
-        gtk4.extraConfig = {
-          gtk-application-prefer-dark-theme = theme.polarity == "dark";
-        };
+        gtk3.extraConfig.gtk-application-prefer-dark-theme = theme.polarity == "dark";
+        gtk4.extraConfig.gtk-application-prefer-dark-theme = theme.polarity == "dark";
       };
     };
 }
