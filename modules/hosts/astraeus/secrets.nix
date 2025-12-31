@@ -11,8 +11,14 @@
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
       secrets = {
-        "cloudflared/tunnel_token" = { };
-
+        "cloudflare/cert" = {
+          owner = "nginx";
+          group = "nginx";
+        };
+        "cloudflare/key" = {
+          owner = "nginx";
+          group = "nginx";
+        };
         "gitlab/active_record_deterministic_key" = {
           owner = "git";
           group = "git";
@@ -49,8 +55,10 @@
           owner = "git";
           group = "git";
         };
-
-        "gitlab-runner/token" = { };
+        "gitlab-runner/token" = {
+          owner = "gitlab-runner";
+          group = "gitlab-runner";
+        };
       };
     };
   };

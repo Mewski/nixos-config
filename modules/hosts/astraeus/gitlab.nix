@@ -1,12 +1,30 @@
 {
   flake.nixosModules.astraeus =
     { config, pkgs, ... }:
+    let
+      domain = "gitlab.mewski.dev";
+      registryDomain = "registry.gitlab.mewski.dev";
+      listenAddr = "[2601:244:4b06:5be1::51]";
+
+      sslConfig = {
+        forceSSL = true;
+        sslCertificate = config.sops.secrets."cloudflare/cert".path;
+        sslCertificateKey = config.sops.secrets."cloudflare/key".path;
+        listen = [
+          {
+            addr = listenAddr;
+            port = 443;
+            ssl = true;
+          }
+        ];
+      };
+    in
     {
       services.gitlab = {
         enable = true;
         packages.gitlab = pkgs.gitlab-ee;
 
-        host = "gitlab.mewski.dev";
+        host = domain;
         port = 443;
         https = true;
 
@@ -16,6 +34,7 @@
 
         databasePasswordFile = config.sops.secrets."gitlab/db_password".path;
         initialRootPasswordFile = config.sops.secrets."gitlab/initial_root_password".path;
+
         secrets = {
           activeRecordDeterministicKeyFile =
             config.sops.secrets."gitlab/active_record_deterministic_key".path;
@@ -31,15 +50,15 @@
           enable = true;
           address = "smtp-relay.gmail.com";
           port = 587;
-          domain = "gitlab.mewski.dev";
+          domain = domain;
           enableStartTLSAuto = true;
         };
 
         registry = {
           enable = true;
-          host = "registry.gitlab.mewski.dev";
+          host = registryDomain;
           port = 5000;
-          externalAddress = "registry.gitlab.mewski.dev";
+          externalAddress = registryDomain;
           externalPort = 443;
           certFile = "/var/lib/gitlab/registry/registry-auth.crt";
           keyFile = "/var/lib/gitlab/registry/registry-auth.key";
@@ -48,14 +67,13 @@
         extraConfig = {
           gitlab = {
             email_display_name = "GitLab";
-            email_from = "gitlab@gitlab.mewski.dev";
-            email_reply_to = "no-reply@gitlab.mewski.dev";
+            email_from = "gitlab@${domain}";
+            email_reply_to = "no-reply@${domain}";
+            ssh_host = "ssh.${domain}";
 
             include_optional_metrics_in_service_ping = false;
             usage_ping_enabled = false;
             usage_ping_generation_enabled = false;
-
-            ssh_host = "ssh.gitlab.mewski.dev";
           };
 
           gitlab_kas.enabled = false;
@@ -70,13 +88,7 @@
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
 
-        virtualHosts."gitlab.mewski.dev" = {
-          listen = [
-            {
-              addr = "127.0.0.1";
-              port = 8929;
-            }
-          ];
+        virtualHosts.${domain} = sslConfig // {
           locations."/" = {
             proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
             proxyWebsockets = true;
@@ -87,13 +99,7 @@
           };
         };
 
-        virtualHosts."registry.gitlab.mewski.dev" = {
-          listen = [
-            {
-              addr = "127.0.0.1";
-              port = 8930;
-            }
-          ];
+        virtualHosts.${registryDomain} = sslConfig // {
           locations."/" = {
             proxyPass = "http://127.0.0.1:5000";
             extraConfig = ''
