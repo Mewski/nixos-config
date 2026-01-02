@@ -34,6 +34,8 @@
         };
       };
 
+      powerManagement.cpuFreqGovernor = "performance";
+
       networking = {
         hostName = "crosshair";
         firewall.enable = true;
