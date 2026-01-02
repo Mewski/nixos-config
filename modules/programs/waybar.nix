@@ -36,7 +36,7 @@
           ];
 
           "custom/power" = {
-            format = "";
+            format = "";
             on-click = lib.getExe pkgs.wlogout;
             tooltip = false;
           };
