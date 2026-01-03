@@ -51,7 +51,7 @@
           ];
         };
 
-        defaultGateway = "10.0.1.1";
+        defaultGateway = "10.0.40.1";
         defaultGateway6 = "2601:244:4b06:5be2::1";
         nameservers = [
           "10.0.40.1"

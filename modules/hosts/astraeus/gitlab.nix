@@ -4,7 +4,7 @@
     let
       domain = "gitlab.mewski.dev";
       registryDomain = "registry.gitlab.mewski.dev";
-      listenAddr = "[2601:244:4b06:5be1::51]";
+      listenAddr = "[2601:244:4b06:5be2::10]";
 
       sslConfig = {
         forceSSL = true;
