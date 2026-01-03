@@ -63,15 +63,12 @@
 
       wayland.windowManager.hyprland.settings = {
         monitor = [
-          "DP-5, 3840x2160@240, 0x0, 1.25, vrr, 0, bitdepth, 10"
+          "DP-3, 3840x2160@240, 0x0, 1.25, vrr, 0, bitdepth, 10"
           ", preferred, auto, 1"
         ];
 
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          "LIBVA_DRIVER_NAME,nvidia"
-          "NVD_BACKEND,direct"
         ];
       };
 

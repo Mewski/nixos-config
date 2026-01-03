@@ -125,9 +125,6 @@
 
         env = [
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          "LIBVA_DRIVER_NAME,nvidia"
-          "NVD_BACKEND,direct"
         ];
 
         input.touchpad = {

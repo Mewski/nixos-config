@@ -12,6 +12,10 @@
       boot = {
         extraModulePackages = [ ];
         kernelModules = [ "kvm-amd" ];
+        kernelParams = [
+          "amd_iommu=on"
+          "vfio-pci.ids=10de:1e07,10de:10f7,10de:1ad6,10de:1ad7"
+        ];
         initrd = {
           availableKernelModules = [
             "xhci_pci"
@@ -22,7 +26,11 @@
             "usb_storage"
             "sd_mod"
           ];
-          kernelModules = [ ];
+          kernelModules = [
+            "vfio_pci"
+            "vfio"
+            "vfio_iommu_type1"
+          ];
         };
       };
 
