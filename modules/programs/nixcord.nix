@@ -1,8 +1,15 @@
 { inputs, ... }:
 {
-  flake.homeModules.nixcord = {
-    imports = [ inputs.nixcord.homeModules.nixcord ];
+  flake.homeModules.nixcord =
+    { pkgs, ... }:
+    {
+      imports = [ inputs.nixcord.homeModules.nixcord ];
 
-    programs.nixcord.enable = true;
-  };
+      programs.nixcord = {
+        enable = true;
+        discord.package = inputs.nixcord.packages.${pkgs.system}.discord.override {
+          commandLineArgs = "--enable-gpu-rasterization";
+        };
+      };
+    };
 }
