@@ -68,8 +68,9 @@
         ];
 
         env = [
-          "ELECTRON_OZONE_PLATFORM_HINT,auto"
-          "NIXOS_OZONE_WL,1"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+          "LIBVA_DRIVER_NAME,nvidia"
+          "NVD_BACKEND,direct"
         ];
       };
 
