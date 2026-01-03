@@ -85,15 +85,8 @@
         };
       };
 
-      services.nginx = {
-        enable = true;
-
-        recommendedGzipSettings = true;
-        recommendedOptimisation = true;
-        recommendedProxySettings = true;
-        recommendedTlsSettings = true;
-
-        virtualHosts.${domain} = sslConfig // {
+      services.nginx.virtualHosts = {
+        ${domain} = sslConfig // {
           locations."/" = {
             proxyPass = "http://unix:/run/gitlab/gitlab-workhorse.socket";
             proxyWebsockets = true;
@@ -101,7 +94,7 @@
           };
         };
 
-        virtualHosts.${registryDomain} = sslConfig // {
+        ${registryDomain} = sslConfig // {
           locations."/" = {
             proxyPass = "http://127.0.0.1:5000";
             extraConfig = ''
