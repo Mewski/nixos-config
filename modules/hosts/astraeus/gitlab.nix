@@ -70,6 +70,14 @@
           keyFile = "/var/lib/gitlab/registry/registry-auth.key";
         };
 
+        pages = {
+          enable = true;
+          settings = {
+            pages-domain = pagesDomain;
+            listen-proxy = [ "127.0.0.1:8090" ];
+          };
+        };
+
         extraConfig = {
           gitlab = {
             email_display_name = "GitLab";
@@ -90,14 +98,6 @@
           };
 
           gitlab_kas.enabled = false;
-        };
-
-        pages = {
-          enable = true;
-          settings = {
-            pages-domain = pagesDomain;
-            listen-proxy = "127.0.0.1:8090";
-          };
         };
       };
 
