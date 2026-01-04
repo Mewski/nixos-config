@@ -4,6 +4,7 @@
     let
       domain = "gitlab.mewski.dev";
       registryDomain = "registry.gitlab.mewski.dev";
+      pagesDomain = "pages.mewski.dev";
       listenAddr = "[2601:244:4b06:5be2::10]";
 
       sslConfig = {
@@ -81,7 +82,22 @@
             usage_ping_generation_enabled = false;
           };
 
+          pages = {
+            enabled = true;
+            host = pagesDomain;
+            port = 443;
+            https = true;
+          };
+
           gitlab_kas.enabled = false;
+        };
+
+        pages = {
+          enable = true;
+          settings = {
+            pages-domain = pagesDomain;
+            listen-proxy = "127.0.0.1:8090";
+          };
         };
       };
 
@@ -101,6 +117,13 @@
               client_max_body_size 0;
               ${proxyHeaders}
             '';
+          };
+        };
+
+        "~^(?<subdomain>.+)\\.${builtins.replaceStrings [ "." ] [ "\\." ] pagesDomain}$" = sslConfig // {
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:8090";
+            extraConfig = proxyHeaders;
           };
         };
       };
