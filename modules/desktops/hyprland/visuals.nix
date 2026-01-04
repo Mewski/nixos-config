@@ -63,13 +63,13 @@
       misc.disable_hyprland_logo = true;
 
       layerrule = [
-        "blur, waybar"
-        "ignorealpha 0.1, waybar"
-        "blur, rofi"
-        "ignorealpha 0.1, rofi"
-        "animation slidefade top, rofi"
-        "blur, notifications"
-        "ignorealpha 0.1, notifications"
+        "blur on, match:namespace waybar"
+        "ignore_alpha 0.1, match:namespace waybar"
+        "blur on, match:namespace rofi"
+        "ignore_alpha 0.1, match:namespace rofi"
+        "animation slidefade top, match:namespace rofi"
+        "blur on, match:namespace notifications"
+        "ignore_alpha 0.1, match:namespace notifications"
       ];
     };
   };
