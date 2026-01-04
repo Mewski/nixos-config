@@ -18,6 +18,8 @@
       ];
 
       boot = {
+        kernelPackages = pkgs.linuxPackages_testing;
+
         loader = {
           systemd-boot.enable = false;
           efi.canTouchEfiVariables = true;
@@ -61,18 +63,10 @@
         self.homeModules.gaming
       ];
 
-      wayland.windowManager.hyprland.settings = {
-        monitor = [
-          "DP-3, 3840x2160@240, 0x0, 1.25, vrr, 0, bitdepth, 10"
-          ", preferred, auto, 1"
-        ];
-
-        env = [
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          "LIBVA_DRIVER_NAME,nvidia"
-          "NVD_BACKEND,direct"
-        ];
-      };
+      wayland.windowManager.hyprland.settings.monitor = [
+        "DP-3, 3840x2160@240, 0x0, 1.25, vrr, 0, bitdepth, 10"
+        ", preferred, auto, 1"
+      ];
 
       home.packages = [ pkgs.wootility ];
     };

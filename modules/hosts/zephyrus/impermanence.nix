@@ -32,6 +32,7 @@
             ".cache/spotify"
             ".claude"
             ".config/Bitwarden"
+            ".config/discord"
             ".config/github-copilot"
             ".config/vesktop"
             ".config/spotify"

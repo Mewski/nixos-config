@@ -63,7 +63,7 @@
           "SUPER, I, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.btop}"
           "SUPER, K, exec, ${cliphistSelect}"
           "SUPER, Z, exec, ${lib.getExe pkgs.zed-editor}"
-          "SUPER, D, exec, vesktop"
+          "SUPER, D, exec, discord"
           "SUPER, B, exec, zen"
 
           "SUPER, S, exec, ${lib.getExe pkgs.hyprpicker} -a -r"

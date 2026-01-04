@@ -1,12 +1,18 @@
 { inputs, ... }:
 {
-  flake.homeModules.nixcord = {
-    imports = [ inputs.nixcord.homeModules.nixcord ];
+  flake.homeModules.nixcord =
+    { pkgs, ... }:
+    {
+      imports = [ inputs.nixcord.homeModules.nixcord ];
 
-    programs.nixcord = {
-      enable = true;
-      discord.enable = false;
-      vesktop.enable = true;
+      programs.nixcord = {
+        enable = true;
+        discord = {
+          vencord.enable = true;
+          package = pkgs.discord.override {
+            commandLineArgs = "-- --use-gl=angle --use-angle=opengl --ignore-gpu-blocklist --enable-gpu-rasterization";
+          };
+        };
+      };
     };
-  };
 }

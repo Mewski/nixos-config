@@ -19,6 +19,8 @@
       ];
 
       boot = {
+        kernelPackages = pkgs.linuxPackages_testing;
+
         loader = {
           systemd-boot.enable = false;
           efi.canTouchEfiVariables = true;
@@ -121,12 +123,6 @@
         monitor = [
           internalDisplayConfig
           ", preferred, auto, 1"
-        ];
-
-        env = [
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          "LIBVA_DRIVER_NAME,nvidia"
-          "NVD_BACKEND,direct"
         ];
 
         input.touchpad = {
