@@ -16,6 +16,10 @@
           vim_mode = false;
           tab_size = 2;
 
+          languages."C++" = {
+            format_on_save = "on";
+          };
+
           vim = {
             use_smartcase_find = true;
             use_system_clipboard = "always";
