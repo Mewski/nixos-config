@@ -5,11 +5,9 @@
 
     home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
 
-    fileSystems."/etc/ssh".neededForBoot = true;
-
     sops = {
       defaultSopsFile = "${self}/secrets/zephyrus/secrets.yaml";
-      age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
     };
   };
 

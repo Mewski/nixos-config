@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  flake.nixosConfigurations.astraeus = inputs.nixpkgs-stable.lib.nixosSystem {
+  flake.nixosConfigurations.astraeus = inputs.nixpkgs.lib.nixosSystem {
     modules = [ self.nixosModules.astraeus ];
   };
 
@@ -16,6 +16,8 @@
       ];
 
       boot = {
+        kernelPackages = pkgs.linuxPackages_latest;
+
         loader = {
           systemd-boot.enable = false;
           efi.canTouchEfiVariables = true;
