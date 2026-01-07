@@ -43,6 +43,12 @@
         firewall.enable = true;
       };
 
+      zramSwap = {
+        enable = true;
+        algorithm = "zstd";
+        memoryMax = 16 * 1024 * 1024 * 1024;
+      };
+
       services = {
         openssh.enable = true;
         blueman.enable = true;
