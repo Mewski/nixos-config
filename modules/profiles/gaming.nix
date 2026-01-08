@@ -17,6 +17,7 @@
       imports = [ self.homeModules.flatpak ];
 
       home.packages = [
+        pkgs.osu-lazer-bin
         (pkgs.prismlauncher.override {
           jdks = [ pkgs.graalvmPackages.graalvm-ce ];
         })

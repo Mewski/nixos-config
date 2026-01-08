@@ -11,7 +11,10 @@
 
       boot = {
         extraModulePackages = [ ];
-        kernelModules = [ "kvm-amd" ];
+        kernelModules = [
+          "kvm-amd"
+          "uinput"
+        ];
         kernelParams = [
           "amd_iommu=on"
           "vfio-pci.ids=10de:1e07,10de:10f7,10de:1ad6,10de:1ad7"
