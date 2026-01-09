@@ -4,14 +4,24 @@
     let
       hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
       jq = lib.getExe pkgs.jq;
+      notify = lib.getExe pkgs.libnotify;
 
       monitorHighRefresh = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
       monitorLowRefresh = "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10";
 
       batteryRefreshRate = pkgs.writeShellScript "battery-refresh-rate" ''
+        LAST_STATUS=""
         while true; do
           STATUS=$(cat /sys/class/power_supply/ACAD/online)
           MONITOR_COUNT=$(${hyprctl} monitors -j | ${jq} '[.[] | select(.name == "eDP-1")] | length')
+
+          if [ "$STATUS" != "$LAST_STATUS" ] && [ -n "$LAST_STATUS" ]; then
+            if [ "$STATUS" = "1" ]; then
+              ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Connected"
+            else
+              ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Disconnected"
+            fi
+          fi
 
           if [ "$MONITOR_COUNT" -gt 0 ]; then
             CURRENT_RATE=$(${hyprctl} monitors -j | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | floor')
@@ -23,6 +33,7 @@
             fi
           fi
 
+          LAST_STATUS="$STATUS"
           sleep 5
         done
       '';

@@ -2,7 +2,7 @@
   flake.homeModules.zed-editor =
     { lib, pkgs, ... }:
     let
-      nixfmt = lib.getExe pkgs.nixfmt-rfc-style;
+      nixfmt = lib.getExe pkgs.nixfmt;
     in
     {
       programs.zed-editor = {
