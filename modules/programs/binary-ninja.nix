@@ -7,8 +7,7 @@
 
       programs.binary-ninja = {
         enable = true;
-        package =
-          inputs.binary-ninja.packages.${pkgs.stdenv.hostPlatform.system}.binary-ninja-personal-wayland;
+        package = pkgs.binary-ninja-personal-wayland;
       };
 
       home.file.".binaryninja/settings.json".text = builtins.toJSON {
