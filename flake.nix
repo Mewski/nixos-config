@@ -8,7 +8,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland";
     base16.url = "github:SenchoPens/base16.nix";
-    binary-ninja.url = "github:jchv/nix-binary-ninja";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     disko = {
@@ -51,6 +50,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    binary-ninja = {
+      url = "github:Mewski/nix-binary-ninja";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     tinted-theming-schemes = {
       url = "github:tinted-theming/schemes";
       flake = false;
@@ -63,6 +67,7 @@
       systems = [ "x86_64-linux" ];
 
       imports = [
+        inputs.flake-parts.flakeModules.easyOverlay
         inputs.disko.flakeModules.default
         inputs.home-manager.flakeModules.home-manager
 
