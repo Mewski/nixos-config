@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  flake.nixosConfigurations.astraeus = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.astraeus = inputs.nixpkgs-stable.lib.nixosSystem {
     modules = [ self.nixosModules.astraeus ];
   };
 
