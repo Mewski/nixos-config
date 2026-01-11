@@ -1,6 +1,5 @@
 {
   flake.nixosModules.astraeus =
-    { ... }:
     let
       cloudflareIPs = [
         "173.245.48.0/20"

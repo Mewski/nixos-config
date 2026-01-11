@@ -1,26 +1,17 @@
 { self, ... }:
 {
   flake.nixosModules.gaming = {
-    imports = [ self.nixosModules.flatpak ];
-
-    programs = {
-      steam.enable = true;
-      gamemode.enable = true;
-    };
-
-    services.flatpak.packages = [ "org.vinegarhq.Sober" ];
+    imports = [
+      self.nixosModules.flatpak
+      self.nixosModules.steam
+      self.nixosModules.sober
+    ];
   };
 
-  flake.homeModules.gaming =
-    { pkgs, ... }:
-    {
-      imports = [ self.homeModules.flatpak ];
-
-      home.packages = [
-        pkgs.osu-lazer-bin
-        (pkgs.prismlauncher.override {
-          jdks = [ pkgs.graalvmPackages.graalvm-ce ];
-        })
-      ];
-    };
+  flake.homeModules.gaming = {
+    imports = [
+      self.homeModules.osu
+      self.homeModules.prism-launcher
+    ];
+  };
 }
