@@ -52,10 +52,10 @@
         config.theme.fonts.monospace.package
         config.theme.fonts.sansSerif.package
         config.theme.fonts.serif.package
-        noto-fonts
         corefonts
-        vista-fonts
         liberation_ttf
+        noto-fonts
+        vista-fonts
       ];
     };
 }

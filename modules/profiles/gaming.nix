@@ -3,8 +3,8 @@
   flake.nixosModules.gaming = {
     imports = [
       self.nixosModules.flatpak
-      self.nixosModules.steam
       self.nixosModules.sober
+      self.nixosModules.steam
     ];
   };
 

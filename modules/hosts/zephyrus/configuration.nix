@@ -12,10 +12,10 @@
         inputs.lanzaboote.nixosModules.lanzaboote
         inputs.nixos-hardware.nixosModules.asus-zephyrus-gu605my
         self.diskoConfigurations.zephyrus
-        self.nixosModules.nvidia
         self.nixosModules.desktop
         self.nixosModules.development
         self.nixosModules.gaming
+        self.nixosModules.nvidia
       ];
 
       boot = {

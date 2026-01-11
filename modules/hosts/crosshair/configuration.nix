@@ -11,11 +11,11 @@
         inputs.disko.nixosModules.default
         inputs.lanzaboote.nixosModules.lanzaboote
         self.diskoConfigurations.crosshair
-        self.nixosModules.nvidia
-        self.nixosModules.open-tablet-driver
         self.nixosModules.desktop
         self.nixosModules.development
         self.nixosModules.gaming
+        self.nixosModules.nvidia
+        self.nixosModules.open-tablet-driver
       ];
 
       boot = {

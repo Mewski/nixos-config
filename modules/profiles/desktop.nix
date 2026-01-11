@@ -4,13 +4,13 @@
     { pkgs, ... }:
     {
       imports = [
-        self.nixosModules.home-manager
-        self.nixosModules.nix
-        self.nixosModules.options
-        self.nixosModules.hyprland
-        self.nixosModules.pipewire
         self.nixosModules.fish
         self.nixosModules.gtk
+        self.nixosModules.home-manager
+        self.nixosModules.hyprland
+        self.nixosModules.nix
+        self.nixosModules.options
+        self.nixosModules.pipewire
         self.nixosModules.qt
       ];
 
@@ -59,19 +59,19 @@
     { pkgs, theme, ... }:
     {
       imports = [
-        self.homeModules.hyprland
-        self.homeModules.dunst
-        self.homeModules.hyprlock
-        self.homeModules.rofi
-        self.homeModules.waybar
         self.homeModules.btop
+        self.homeModules.dunst
         self.homeModules.fish
+        self.homeModules.gtk
+        self.homeModules.hyprland
+        self.homeModules.hyprlock
         self.homeModules.kitty
         self.homeModules.nixcord
         self.homeModules.obsidian
-        self.homeModules.zen-browser
-        self.homeModules.gtk
         self.homeModules.qt
+        self.homeModules.rofi
+        self.homeModules.waybar
+        self.homeModules.zen-browser
       ];
 
       home.pointerCursor = {
@@ -83,20 +83,20 @@
       services.ssh-agent.enable = true;
 
       home.packages = with pkgs; [
-        p7zip
-        unzip
+        bitwarden-desktop
+        cliphist
         jq
         microfetch
-        wget
-        xxd
-        cliphist
-        wl-clipboard
-        networkmanagerapplet
-        pavucontrol
         mpv
+        networkmanagerapplet
+        p7zip
+        pavucontrol
         qimgv
-        bitwarden-desktop
         spotify
+        unzip
+        wget
+        wl-clipboard
+        xxd
       ];
     };
 }

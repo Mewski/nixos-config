@@ -24,10 +24,10 @@
       };
 
       environment.systemPackages = with pkgs; [
-        nixfmt
-        statix
         nil
         nixd
+        nixfmt
+        statix
       ];
     };
 }
