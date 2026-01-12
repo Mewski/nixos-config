@@ -84,18 +84,25 @@
 
       home.packages = with pkgs; [
         bitwarden-desktop
+        brightnessctl
         cliphist
+        gnome-text-editor
+        hyprpicker
+        hyprshot
         jq
+        libnotify
         microfetch
         mpv
         networkmanagerapplet
         p7zip
         pavucontrol
+        playerctl
         qimgv
         spotify
         unzip
         wget
         wl-clipboard
+        wlogout
         xxd
       ];
     };
