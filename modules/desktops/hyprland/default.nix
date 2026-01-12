@@ -49,7 +49,10 @@
             no_donation_nag = true;
           };
 
-          cursor.no_hardware_cursors = 1;
+          cursor = {
+            no_hardware_cursors = false;
+            use_cpu_buffer = true;
+          };
 
           misc = {
             key_press_enables_dpms = true;
