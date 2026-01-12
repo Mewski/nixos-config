@@ -92,7 +92,10 @@
         '';
       };
 
-      environment.systemPackages = [ pkgs.sbctl ];
+      environment.systemPackages = with pkgs; [
+        git
+        sbctl
+      ];
 
       system.stateVersion = "25.11";
     };
