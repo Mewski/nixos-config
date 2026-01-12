@@ -16,6 +16,21 @@
           vim_mode = false;
           tab_size = 2;
           colorize_brackets = true;
+          relative_line_numbers = "enabled";
+
+          tabs = {
+            file_icons = true;
+            git_status = true;
+          };
+
+          indent_guides = {
+            enabled = true;
+            coloring = "indent_aware";
+          };
+
+          lsp_highlight_debounce = 100;
+          autosave = "on_focus_change";
+          git.word_diff_enabled = true;
 
           languages."C++" = {
             format_on_save = "on";
@@ -25,6 +40,8 @@
             use_smartcase_find = true;
             use_system_clipboard = "always";
             toggle_relative_line_numbers = true;
+            enable_vim_sneak = true;
+            use_multiline_find = true;
           };
 
           telemetry.metrics = false;
