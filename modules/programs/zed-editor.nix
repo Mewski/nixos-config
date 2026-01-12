@@ -15,6 +15,7 @@
           icon_theme = "Material Icon Theme";
           vim_mode = false;
           tab_size = 2;
+          colorize_brackets = true;
 
           languages."C++" = {
             format_on_save = "on";
