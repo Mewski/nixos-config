@@ -86,6 +86,7 @@
         bitwarden-desktop
         brightnessctl
         cliphist
+        drawing
         gnome-text-editor
         hyprpicker
         hyprshot
@@ -94,6 +95,7 @@
         microfetch
         mpv
         networkmanagerapplet
+        obs-studio
         p7zip
         pavucontrol
         playerctl
