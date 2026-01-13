@@ -21,6 +21,7 @@
       ];
 
       home.packages = with pkgs; [
+        clang-tools
         gdb
         radare2
       ];
