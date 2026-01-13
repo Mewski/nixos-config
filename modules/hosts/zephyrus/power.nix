@@ -13,7 +13,8 @@
         LAST_STATUS=""
         while true; do
           STATUS=$(cat /sys/class/power_supply/ACAD/online)
-          MONITOR_COUNT=$(${hyprctl} monitors -j | ${jq} '[.[] | select(.name == "eDP-1")] | length')
+          MONITOR_JSON=$(${hyprctl} monitors -j)
+          MONITOR_COUNT=$(echo "$MONITOR_JSON" | ${jq} '[.[] | select(.name == "eDP-1")] | length')
 
           if [ "$STATUS" != "$LAST_STATUS" ] && [ -n "$LAST_STATUS" ]; then
             if [ "$STATUS" = "1" ]; then
@@ -24,12 +25,12 @@
           fi
 
           if [ "$MONITOR_COUNT" -gt 0 ]; then
-            CURRENT_RATE=$(${hyprctl} monitors -j | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | floor')
+            CURRENT_RATE=$(echo "$MONITOR_JSON" | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | round')
 
             if [ "$STATUS" = "1" ]; then
-              [ "$CURRENT_RATE" != "240" ] && ${hyprctl} keyword monitor '${monitorHighRefresh}'
+              [ "$CURRENT_RATE" -ne 240 ] && ${hyprctl} keyword monitor '${monitorHighRefresh}'
             else
-              [ "$CURRENT_RATE" != "60" ] && ${hyprctl} keyword monitor '${monitorLowRefresh}'
+              [ "$CURRENT_RATE" -ne 60 ] && ${hyprctl} keyword monitor '${monitorLowRefresh}'
             fi
           fi
 
