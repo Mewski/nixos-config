@@ -44,6 +44,12 @@
         ${notify} -a osd-text -t 1000 'Text copied to clipboard'
       '';
 
+      hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
+      jq = lib.getExe pkgs.jq;
+      zoomIn = "${hyprctl} -q keyword cursor:zoom_factor $(${hyprctl} getoption cursor:zoom_factor -j | ${jq} '.float * 1.2')";
+      zoomOut = "${hyprctl} -q keyword cursor:zoom_factor $(${hyprctl} getoption cursor:zoom_factor -j | ${jq} '(.float / 1.2) | if . < 1 then 1 else . end')";
+      zoomReset = "${hyprctl} -q keyword cursor:zoom_factor 1";
+
       workspaceBinds = builtins.concatLists (
         builtins.genList (
           i:
@@ -59,6 +65,8 @@
     in
     {
       wayland.windowManager.hyprland.settings = {
+        binds.scroll_event_delay = 0;
+
         bind = [
           "SUPER, R, exec, ${lib.getExe pkgs.rofi} -show drun"
           "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
@@ -99,6 +107,13 @@
 
           "SUPER, grave, togglespecialworkspace,"
           "SUPER SHIFT, grave, movetoworkspace, special"
+
+          "SUPER, equal, exec, ${zoomIn}"
+          "SUPER, minus, exec, ${zoomOut}"
+          "SUPER SHIFT, mouse_down, exec, ${zoomIn}"
+          "SUPER SHIFT, mouse_up, exec, ${zoomOut}"
+          "SUPER SHIFT, mouse:274, exec, ${zoomReset}"
+          "SUPER, 0, exec, ${zoomReset}"
         ]
         ++ workspaceBinds;
 

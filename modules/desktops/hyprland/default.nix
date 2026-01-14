@@ -1,7 +1,7 @@
 { inputs, self, ... }:
 {
   flake.nixosModules.hyprland =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     let
       hyprlandPkgs = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
     in
@@ -13,10 +13,7 @@
       };
 
       environment = {
-        sessionVariables = {
-          NIXOS_OZONE_WL = "1";
-          XCURSOR_SIZE = toString config.theme.cursor.size;
-        };
+        sessionVariables.NIXOS_OZONE_WL = "1";
 
         systemPackages = with pkgs; [
           libsForQt5.qtwayland
@@ -52,6 +49,9 @@
           cursor = {
             no_hardware_cursors = false;
             use_cpu_buffer = true;
+            sync_gsettings_theme = true;
+            zoom_rigid = true;
+            zoom_detached_camera = false;
           };
 
           misc = {
