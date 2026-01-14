@@ -34,6 +34,7 @@
             ".config/Bitwarden"
             ".config/discord"
             ".config/github-copilot"
+            ".config/obsidian"
             ".config/vesktop"
             ".config/spotify"
             ".gemini"
