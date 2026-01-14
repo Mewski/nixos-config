@@ -104,5 +104,14 @@
         extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
         configPackages = [ pkgs.hyprland ];
       };
+
+      home.packages = with pkgs; [
+        cliphist
+        hyprpicker
+        hyprshot
+        satty
+        tesseract
+        wl-clipboard
+      ];
     };
 }

@@ -70,6 +70,7 @@
         self.homeModules.obsidian
         self.homeModules.qt
         self.homeModules.rofi
+        self.homeModules.starship
         self.homeModules.waybar
         self.homeModules.zen-browser
       ];
@@ -85,11 +86,8 @@
       home.packages = with pkgs; [
         bitwarden-desktop
         brightnessctl
-        cliphist
         drawing
         gnome-text-editor
-        hyprpicker
-        hyprshot
         jq
         libnotify
         microfetch
@@ -100,12 +98,9 @@
         pavucontrol
         playerctl
         qimgv
-        satty
         spotify
-        tesseract
         unzip
         wget
-        wl-clipboard
         wlogout
         xxd
       ];

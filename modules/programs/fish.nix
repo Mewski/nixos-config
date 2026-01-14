@@ -43,11 +43,6 @@
       eza.enable = true;
       fd.enable = true;
       ripgrep.enable = true;
-
-      starship = {
-        enable = true;
-        enableFishIntegration = true;
-      };
     };
   };
 }
