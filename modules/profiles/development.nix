@@ -22,8 +22,15 @@
 
       home.packages = with pkgs; [
         clang-tools
+        devenv
+        difftastic
         gdb
+        ghq
+        just
+        lazydocker
+        lazygit
         lldb
+        nix-output-monitor
         radare2
       ];
     };

@@ -100,6 +100,7 @@
         pavucontrol
         playerctl
         qimgv
+        satty
         spotify
         unzip
         wget
