@@ -39,6 +39,11 @@
         fi
       '';
 
+      ocr = pkgs.writeShellScript "ocr" ''
+        ${lib.getExe pkgs.hyprshot} -m region -z --raw | ${lib.getExe pkgs.tesseract} - - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
+        ${notify} -a osd-text -t 1000 'Text copied to clipboard'
+      '';
+
       workspaceBinds = builtins.concatLists (
         builtins.genList (
           i:
@@ -70,11 +75,12 @@
           "SUPER SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region -z -o ~/Pictures/Screenshots"
           "SUPER ALT, S, exec, ${lib.getExe pkgs.hyprshot} -m window -z -o ~/Pictures/Screenshots"
           "SUPER CONTROL_L, S, exec, ${lib.getExe pkgs.hyprshot} -m output -z -o ~/Pictures/Screenshots"
+          "SUPER, O, exec, ${ocr}"
 
           "SUPER, C, killactive,"
           "SUPER, F, fullscreen"
           "SUPER, J, togglesplit,"
-          "SUPER, M, exit,"
+          "SUPER SHIFT, M, exit,"
           "SUPER, P, pseudo,"
           "SUPER, V, togglefloating,"
 

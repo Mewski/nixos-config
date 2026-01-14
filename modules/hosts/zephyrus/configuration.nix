@@ -16,6 +16,7 @@
         self.nixosModules.development
         self.nixosModules.gaming
         self.nixosModules.nvidia
+        self.nixosModules.theme
       ];
 
       boot = {

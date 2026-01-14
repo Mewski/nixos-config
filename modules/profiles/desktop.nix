@@ -102,6 +102,7 @@
         qimgv
         satty
         spotify
+        tesseract
         unzip
         wget
         wl-clipboard

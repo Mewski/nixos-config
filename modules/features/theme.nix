@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.zephyrus =
+  flake.nixosModules.theme =
     { config, pkgs, ... }:
     {
       scheme = "${inputs.tinted-theming-schemes}/base24/mountain.yaml";
@@ -9,7 +9,7 @@
         polarity = "dark";
 
         cursor = {
-          name = "Bibata-Modern-Ice";
+          name = "Bibata-Modern-Classic";
           package = pkgs.bibata-cursors;
           size = 24;
         };

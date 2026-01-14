@@ -15,7 +15,8 @@
         self.nixosModules.development
         self.nixosModules.gaming
         self.nixosModules.nvidia
-        self.nixosModules.open-tablet-driver
+        self.nixosModules.tablet
+        self.nixosModules.theme
       ];
 
       boot = {
