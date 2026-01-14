@@ -2,11 +2,17 @@
   flake.homeModules.hyprland =
     { lib, pkgs, ... }:
     let
-      wpctl = lib.getExe' pkgs.wireplumber "wpctl";
+      hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
+      jq = lib.getExe pkgs.jq;
       notify = lib.getExe pkgs.libnotify;
+      wpctl = lib.getExe' pkgs.wireplumber "wpctl";
 
       getVolume = "${wpctl} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'";
       isMuted = sink: "${wpctl} get-volume ${sink} | grep -q MUTED";
+
+      zoomIn = "${hyprctl} -q keyword cursor:zoom_factor $(${hyprctl} getoption cursor:zoom_factor -j | ${jq} '.float * 1.2')";
+      zoomOut = "${hyprctl} -q keyword cursor:zoom_factor $(${hyprctl} getoption cursor:zoom_factor -j | ${jq} '(.float / 1.2) | if . < 1 then 1 else . end')";
+      zoomReset = "${hyprctl} -q keyword cursor:zoom_factor 1";
 
       notifyVolume = pkgs.writeShellScript "notify-volume" ''
         ${notify} -a osd -t 1000 \
@@ -39,16 +45,27 @@
         fi
       '';
 
+      screenshot = pkgs.writeShellScript "screenshot" ''
+        dir=~/Pictures/Screenshots
+        mkdir -p "$dir"
+        file="$dir/$(date +%Y-%m-%d-%H%M%S).png"
+
+        ${lib.getExe pkgs.hyprshot} -m "$1" -z -s -o "$dir" -f "$(basename "$file")"
+
+        action=$(${notify} -a Hyprshot -t 5000 -i "$file" \
+          -A "edit=Edit in Satty" \
+          "Screenshot saved" \
+          "Image saved in <i>$file</i> and copied to the clipboard.")
+
+        if [ "$action" = "edit" ]; then
+          ${lib.getExe pkgs.satty} -f "$file"
+        fi
+      '';
+
       ocr = pkgs.writeShellScript "ocr" ''
         ${lib.getExe pkgs.hyprshot} -m region -z --raw | ${lib.getExe pkgs.tesseract} - - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
         ${notify} -a osd-text -t 1000 'Text copied to clipboard'
       '';
-
-      hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
-      jq = lib.getExe pkgs.jq;
-      zoomIn = "${hyprctl} -q keyword cursor:zoom_factor $(${hyprctl} getoption cursor:zoom_factor -j | ${jq} '.float * 1.2')";
-      zoomOut = "${hyprctl} -q keyword cursor:zoom_factor $(${hyprctl} getoption cursor:zoom_factor -j | ${jq} '(.float / 1.2) | if . < 1 then 1 else . end')";
-      zoomReset = "${hyprctl} -q keyword cursor:zoom_factor 1";
 
       workspaceBinds = builtins.concatLists (
         builtins.genList (
@@ -80,9 +97,9 @@
           "SUPER, B, exec, zen"
 
           "SUPER, S, exec, ${lib.getExe pkgs.hyprpicker} -a -r"
-          "SUPER SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region -z -o ~/Pictures/Screenshots"
-          "SUPER ALT, S, exec, ${lib.getExe pkgs.hyprshot} -m window -z -o ~/Pictures/Screenshots"
-          "SUPER CONTROL_L, S, exec, ${lib.getExe pkgs.hyprshot} -m output -z -o ~/Pictures/Screenshots"
+          "SUPER SHIFT, S, exec, ${screenshot} region"
+          "SUPER ALT, S, exec, ${screenshot} window"
+          "SUPER CONTROL_L, S, exec, ${screenshot} output"
           "SUPER, O, exec, ${ocr}"
 
           "SUPER, C, killactive,"
@@ -104,7 +121,6 @@
 
           "SUPER, mouse_up, workspace, e+1"
           "SUPER, mouse_down, workspace, e-1"
-
           "SUPER, grave, togglespecialworkspace,"
           "SUPER SHIFT, grave, movetoworkspace, special"
 

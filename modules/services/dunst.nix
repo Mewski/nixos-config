@@ -30,7 +30,7 @@
           ignore_newline = false;
           stack_duplicates = true;
           hide_duplicate_count = false;
-          show_indicators = true;
+          show_indicators = false;
           icon_position = "left";
           min_icon_size = 32;
           max_icon_size = 64;
