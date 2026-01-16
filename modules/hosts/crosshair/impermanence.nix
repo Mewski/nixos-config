@@ -36,7 +36,7 @@
             ".config/github-copilot"
             ".config/obsidian"
             ".config/OpenTabletDriver"
-            ".config/vesktop"
+            ".config/Signal"
             ".config/spotify"
             ".gemini"
             ".local/share/fish"

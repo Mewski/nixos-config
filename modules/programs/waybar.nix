@@ -159,5 +159,12 @@
           };
         };
       };
+
+      systemd.user.services.waybar = {
+        Unit = {
+          After = [ "graphical-session.target" ];
+          Requires = [ "graphical-session.target" ];
+        };
+      };
     };
 }

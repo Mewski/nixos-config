@@ -98,6 +98,7 @@
         pavucontrol
         playerctl
         qimgv
+        signal-desktop
         spotify
         unzip
         wget

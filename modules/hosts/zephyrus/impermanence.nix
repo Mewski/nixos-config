@@ -35,7 +35,7 @@
             ".config/discord"
             ".config/github-copilot"
             ".config/obsidian"
-            ".config/vesktop"
+            ".config/Signal"
             ".config/spotify"
             ".gemini"
             ".local/share/fish"

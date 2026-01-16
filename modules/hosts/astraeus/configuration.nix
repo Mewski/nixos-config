@@ -34,8 +34,6 @@
         };
       };
 
-      powerManagement.cpuFreqGovernor = "performance";
-
       networking = {
         hostName = "astraeus";
         useDHCP = false;
