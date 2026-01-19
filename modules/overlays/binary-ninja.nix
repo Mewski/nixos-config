@@ -11,10 +11,18 @@
 
 
               # Enable headless mode with UI features
+              import threading
+
               BNInitUI = core.BNInitUI
               BNInitUI.argtypes = [ctypes.c_longlong]
               BNInitUI.restype = ctypes.c_longlong
-              assert BNInitUI(BNInitUI(0)) == 1
+
+              def init_ui():
+              	assert BNInitUI(BNInitUI(0)) == 1
+
+              ui_thread = threading.Thread(target=init_ui)
+              ui_thread.start()
+              ui_thread.join()
               EOF
             '';
           });

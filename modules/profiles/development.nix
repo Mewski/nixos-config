@@ -31,6 +31,7 @@
         lazygit
         lldb
         nix-output-monitor
+        python3
         radare2
       ];
     };
