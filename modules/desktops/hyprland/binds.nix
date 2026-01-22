@@ -50,7 +50,13 @@
         mkdir -p "$dir"
         file="$dir/$(date +%Y-%m-%d-%H%M%S).png"
 
-        ${lib.getExe pkgs.hyprshot} -m "$1" -z -s -o "$dir" -f "$(basename "$file")"
+        if ! ${lib.getExe pkgs.hyprshot} -m "$1" -z -s -o "$dir" -f "$(basename "$file")"; then
+          exit 0
+        fi
+
+        if [ ! -f "$file" ]; then
+          exit 0
+        fi
 
         action=$(${notify} -a Hyprshot -t 5000 -i "$file" \
           -A "edit=Edit in Satty" \
