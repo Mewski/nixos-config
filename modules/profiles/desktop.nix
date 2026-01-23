@@ -11,6 +11,7 @@
         self.nixosModules.nix
         self.nixosModules.options
         self.nixosModules.pipewire
+        self.nixosModules.printing
         self.nixosModules.qt
       ];
 
