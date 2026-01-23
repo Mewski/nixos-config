@@ -29,6 +29,11 @@
       wallpaper = "${self}/assets/wallpapers/Kath.png";
     in
     {
+      imports = [
+        self.homeModules.dunst
+        self.homeModules.waybar
+      ];
+
       wayland.windowManager.hyprland = {
         enable = true;
         systemd.enable = true;

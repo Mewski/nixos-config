@@ -61,7 +61,6 @@
     {
       imports = [
         self.homeModules.btop
-        self.homeModules.dunst
         self.homeModules.fish
         self.homeModules.gtk
         self.homeModules.hyprland
@@ -72,7 +71,6 @@
         self.homeModules.qt
         self.homeModules.rofi
         self.homeModules.starship
-        self.homeModules.waybar
         self.homeModules.zen-browser
       ];
 
