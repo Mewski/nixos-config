@@ -130,14 +130,16 @@
           "SUPER, grave, togglespecialworkspace,"
           "SUPER SHIFT, grave, movetoworkspace, special"
 
+          "SUPER SHIFT, mouse:274, exec, ${zoomReset}"
+        ]
+        ++ workspaceBinds;
+
+        binde = [
           "SUPER, equal, exec, ${zoomIn}"
           "SUPER, minus, exec, ${zoomOut}"
           "SUPER SHIFT, mouse_down, exec, ${zoomIn}"
           "SUPER SHIFT, mouse_up, exec, ${zoomOut}"
-          "SUPER SHIFT, mouse:274, exec, ${zoomReset}"
-          "SUPER, 0, exec, ${zoomReset}"
-        ]
-        ++ workspaceBinds;
+        ];
 
         bindel = [
           ",XF86AudioRaiseVolume, exec, ${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${notifyVolume}"

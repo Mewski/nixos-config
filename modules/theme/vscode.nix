@@ -5,7 +5,7 @@
       programs.vscode = {
         enable = true;
 
-        userSettings = {
+        profiles.default.userSettings = {
           "editor.fontFamily" = "'${theme.fonts.monospace.name}', monospace";
           "editor.fontSize" = theme.fonts.sizes.terminal * 4.0 / 3.0;
           "editor.fontLigatures" = true;

@@ -9,7 +9,7 @@
         enable = true;
         mutableExtensionsDir = false;
 
-        extensions = with pkgs.vscode-extensions; [
+        profiles.default.extensions = with pkgs.vscode-extensions; [
           eamodio.gitlens
           golang.go
           jnoortheen.nix-ide
@@ -23,7 +23,7 @@
           wakatime.vscode-wakatime
         ];
 
-        userSettings = {
+        profiles.default.userSettings = {
           "editor.tabSize" = 2;
           "editor.insertSpaces" = true;
           "editor.formatOnSave" = true;
