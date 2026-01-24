@@ -45,11 +45,7 @@
         firewall.enable = true;
       };
 
-      zramSwap = {
-        enable = true;
-        algorithm = "zstd";
-        memoryMax = 64 * 1024 * 1024 * 1024;
-      };
+      zramSwap.enable = true;
 
       services = {
         openssh.enable = true;
