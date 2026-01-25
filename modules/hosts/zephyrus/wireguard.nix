@@ -11,7 +11,14 @@
           {
             publicKey = "GcdVh6t9T3IqpAcbyzxaS3HWGLvtpIKVUvBs9IDysAc=";
             presharedKeyFile = config.sops.secrets."wireguard/ord-core-01/preshared_key".path;
-            allowedIPs = [ "0.0.0.0/0" ];
+            allowedIPs = [
+              "10.0.10.0/24"
+              "10.0.20.0/24"
+              "10.0.30.0/24"
+              "10.0.40.0/24"
+              "10.0.60.0/24"
+              "10.0.70.0/24"
+            ];
             endpoint = "ord-core-01.takoyaki.io:51820";
             persistentKeepalive = 25;
           }
