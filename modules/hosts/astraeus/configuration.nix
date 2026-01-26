@@ -38,6 +38,13 @@
         hostName = "astraeus";
         useDHCP = false;
 
+        defaultGateway = "10.0.40.1";
+        defaultGateway6 = "2601:244:4b06:5be2::1";
+        nameservers = [
+          "10.0.40.1"
+          "2601:244:4b06:5be2::1"
+        ];
+
         interfaces.ens1f0 = {
           ipv4.addresses = [
             {
@@ -52,13 +59,6 @@
             }
           ];
         };
-
-        defaultGateway = "10.0.40.1";
-        defaultGateway6 = "2601:244:4b06:5be2::1";
-        nameservers = [
-          "10.0.40.1"
-          "2601:244:4b06:5be2::1"
-        ];
 
         firewall = {
           enable = true;
