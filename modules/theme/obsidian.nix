@@ -39,11 +39,6 @@
           appearance = appearanceSettings;
           inherit cssSnippets;
         };
-
-        vaults.notes.settings = {
-          appearance = appearanceSettings;
-          inherit cssSnippets;
-        };
       };
     };
 }

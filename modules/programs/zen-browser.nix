@@ -46,6 +46,10 @@
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/cookie-editor/latest.xpi";
             installation_mode = "force_installed";
           };
+          "{e10a941c-9e0f-4d1c-93b4-2e5500d87b28}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tampermonkey/latest.xpi";
+            installation_mode = "force_installed";
+          };
         };
       };
 
@@ -54,6 +58,13 @@
         "zen.view.grey-out-inactive-windows" = false;
         "zen.theme.content-element-separation" = 0;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      };
+    };
+
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = [ "zen-beta.desktop" ];
       };
     };
   };
