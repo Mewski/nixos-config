@@ -7,7 +7,7 @@
     {
       programs.vscode = {
         enable = true;
-        mutableExtensionsDir = false;
+        mutableExtensionsDir = true;
 
         profiles.default.extensions = with pkgs.vscode-extensions; [
           eamodio.gitlens
@@ -16,6 +16,7 @@
           llvm-vs-code-extensions.vscode-clangd
           ms-azuretools.vscode-docker
           ms-vscode-remote.remote-containers
+          ms-vsliveshare.vsliveshare
           pkief.material-icon-theme
           tamasfe.even-better-toml
           twxs.cmake

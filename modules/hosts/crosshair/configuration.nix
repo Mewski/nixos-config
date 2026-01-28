@@ -42,7 +42,7 @@
 
       networking = {
         hostName = "crosshair";
-        firewall.enable = true;
+        networkmanager.enable = true;
       };
 
       zramSwap.enable = true;

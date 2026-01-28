@@ -26,6 +26,7 @@
         cmake
         devenv
         difftastic
+        gcc
         gdb
         ghq
         gnumake
@@ -34,6 +35,7 @@
         lazygit
         lldb
         nix-output-monitor
+        proxychains
         python3
         radare2
       ];

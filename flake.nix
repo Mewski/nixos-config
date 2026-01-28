@@ -55,6 +55,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    proxmox-nixos = {
+      url = "github:SaumonNet/proxmox-nixos";
+    };
+
     tinted-theming-schemes = {
       url = "github:tinted-theming/schemes";
       flake = false;

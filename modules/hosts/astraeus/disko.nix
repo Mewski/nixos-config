@@ -1,24 +1,6 @@
 {
   flake.diskoConfigurations.astraeus =
     let
-      btrfsMountOptions = [
-        "compress=zstd"
-        "noatime"
-      ];
-
-      mkDisk = device: partitions: {
-        type = "disk";
-        inherit device;
-        content = {
-          type = "gpt";
-          inherit partitions;
-        };
-      };
-
-      mkRootPartition = {
-        size = "100%";
-      };
-
       disks = {
         ssd0 = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0JB00887";
         ssd1 = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J512741";
@@ -27,59 +9,85 @@
         ssd4 = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0JB00809";
         ssd5 = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0J511639";
       };
-    in
-    {
-      disko.devices.disk = {
-        ssd0 = mkDisk disks.ssd0 {
-          ESP = {
-            priority = 1;
-            size = "1G";
-            type = "EF00";
-            content = {
-              type = "filesystem";
-              format = "vfat";
-              mountpoint = "/boot";
-              mountOptions = [ "umask=0077" ];
+
+      mkBootDisk = device: espMountpoint: {
+        type = "disk";
+        inherit device;
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              size = "1G";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = espMountpoint;
+                mountOptions = [
+                  "umask=0077"
+                  "nofail"
+                ];
+              };
+            };
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "rpool";
+              };
             };
           };
-          root = mkRootPartition;
+        };
+      };
+    in
+    {
+      disko.devices = {
+        disk = {
+          ssd0 = mkBootDisk disks.ssd0 "/boot1";
+          ssd1 = mkBootDisk disks.ssd1 "/boot2";
+          ssd2 = mkBootDisk disks.ssd2 "/boot3";
+          ssd3 = mkBootDisk disks.ssd3 "/boot4";
+          ssd4 = mkBootDisk disks.ssd4 "/boot5";
+          ssd5 = mkBootDisk disks.ssd5 "/boot6";
         };
 
-        ssd1 = mkDisk disks.ssd1 { root = mkRootPartition; };
-        ssd2 = mkDisk disks.ssd2 { root = mkRootPartition; };
-        ssd3 = mkDisk disks.ssd3 { root = mkRootPartition; };
-        ssd4 = mkDisk disks.ssd4 { root = mkRootPartition; };
+        zpool.rpool = {
+          type = "zpool";
+          mode = "raidz2";
+          options = {
+            ashift = "12";
+            autotrim = "on";
+            cachefile = "none";
+          };
+          rootFsOptions = {
+            compression = "zstd";
+            acltype = "posixacl";
+            xattr = "sa";
+            dnodesize = "auto";
+            normalization = "formD";
+            relatime = "on";
+            "com.sun:auto-snapshot" = "false";
+          };
 
-        ssd5 = mkDisk disks.ssd5 {
-          root = {
-            size = "100%";
-            content = {
-              type = "btrfs";
-              extraArgs = [
-                "-f"
-                "-d"
-                "raid10"
-                "-m"
-                "raid10"
-                "${disks.ssd0}-part2"
-                "${disks.ssd1}-part1"
-                "${disks.ssd2}-part1"
-                "${disks.ssd3}-part1"
-                "${disks.ssd4}-part1"
-              ];
-              subvolumes = {
-                "root" = {
-                  mountpoint = "/";
-                  mountOptions = btrfsMountOptions;
-                };
-                "nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = btrfsMountOptions;
-                };
-                "persist" = {
-                  mountpoint = "/persist";
-                  mountOptions = btrfsMountOptions;
-                };
+          datasets = {
+            root = {
+              type = "zfs_fs";
+              options.mountpoint = "legacy";
+              mountpoint = "/";
+            };
+            nix = {
+              type = "zfs_fs";
+              options = {
+                mountpoint = "legacy";
+                atime = "off";
+              };
+              mountpoint = "/nix";
+            };
+            data = {
+              type = "zfs_fs";
+              options = {
+                mountpoint = "none";
+                recordsize = "64K";
               };
             };
           };
