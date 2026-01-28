@@ -11,10 +11,13 @@
 
         profiles.default.extensions = with pkgs.vscode-extensions; [
           eamodio.gitlens
+          github.copilot
+          github.copilot-chat
           golang.go
           jnoortheen.nix-ide
           llvm-vs-code-extensions.vscode-clangd
           ms-azuretools.vscode-docker
+          ms-vscode.cmake-tools
           ms-vscode-remote.remote-containers
           ms-vsliveshare.vsliveshare
           pkief.material-icon-theme

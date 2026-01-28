@@ -8,6 +8,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland";
     base16.url = "github:SenchoPens/base16.nix";
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     disko = {
@@ -53,10 +54,6 @@
     binary-ninja = {
       url = "github:Mewski/nix-binary-ninja";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    proxmox-nixos = {
-      url = "github:SaumonNet/proxmox-nixos";
     };
 
     tinted-theming-schemes = {
