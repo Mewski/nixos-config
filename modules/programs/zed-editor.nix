@@ -28,7 +28,7 @@
             coloring = "indent_aware";
           };
 
-          show_whitespaces = "none";
+          show_whitespaces = "boundary";
 
           lsp_highlight_debounce = 100;
           autosave = "on_focus_change";

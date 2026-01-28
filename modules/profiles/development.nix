@@ -5,6 +5,8 @@
       self.nixosModules.docker
       self.nixosModules.virtualization
     ];
+
+    home-manager.sharedModules = [ self.homeModules.development ];
   };
 
   flake.homeModules.development =

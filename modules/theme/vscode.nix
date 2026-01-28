@@ -223,25 +223,7 @@
 
             "editorBracketMatch.background" = "${scheme.withHashtag.base02}80";
             "editorBracketMatch.border" = scheme.withHashtag.base03;
-            "editorBracketHighlight.foreground1" = scheme.withHashtag.base0D;
-            "editorBracketHighlight.foreground2" = scheme.withHashtag.base0E;
-            "editorBracketHighlight.foreground3" = scheme.withHashtag.base0B;
-            "editorBracketHighlight.foreground4" = scheme.withHashtag.base0C;
-            "editorBracketHighlight.foreground5" = scheme.withHashtag.base09;
-            "editorBracketHighlight.foreground6" = scheme.withHashtag.base08;
             "editorBracketHighlight.unexpectedBracket.foreground" = scheme.withHashtag.base08;
-            "editorBracketPairGuide.activeBackground1" = scheme.withHashtag.base0D;
-            "editorBracketPairGuide.activeBackground2" = scheme.withHashtag.base0E;
-            "editorBracketPairGuide.activeBackground3" = scheme.withHashtag.base0B;
-            "editorBracketPairGuide.activeBackground4" = scheme.withHashtag.base0C;
-            "editorBracketPairGuide.activeBackground5" = scheme.withHashtag.base09;
-            "editorBracketPairGuide.activeBackground6" = scheme.withHashtag.base08;
-            "editorBracketPairGuide.background1" = "${scheme.withHashtag.base0D}40";
-            "editorBracketPairGuide.background2" = "${scheme.withHashtag.base0E}40";
-            "editorBracketPairGuide.background3" = "${scheme.withHashtag.base0B}40";
-            "editorBracketPairGuide.background4" = "${scheme.withHashtag.base0C}40";
-            "editorBracketPairGuide.background5" = "${scheme.withHashtag.base09}40";
-            "editorBracketPairGuide.background6" = "${scheme.withHashtag.base08}40";
 
             "editorOverviewRuler.border" = scheme.withHashtag.base01;
             "editorOverviewRuler.background" = scheme.withHashtag.base00;
@@ -675,8 +657,8 @@
             "comments" = scheme.withHashtag.base03;
             "strings" = scheme.withHashtag.base0B;
             "keywords" = scheme.withHashtag.base0E;
-            "numbers" = scheme.withHashtag.base09;
-            "types" = scheme.withHashtag.base0A;
+            "numbers" = scheme.withHashtag.base0A;
+            "types" = scheme.withHashtag.base0B;
             "functions" = scheme.withHashtag.base0D;
             "variables" = scheme.withHashtag.base05;
             "textMateRules" = [
@@ -709,22 +691,13 @@
                 "settings"."foreground" = scheme.withHashtag.base0B;
               }
               {
-                "scope" = [
-                  "constant.numeric"
-                  "constant.numeric.integer"
-                  "constant.numeric.float"
-                  "constant.numeric.hex"
-                  "constant.numeric.octal"
-                  "constant.numeric.binary"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base09;
+                "scope" = [ "constant.numeric" ];
+                "settings"."foreground" = scheme.withHashtag.base0A;
               }
               {
                 "scope" = [
                   "constant.language"
                   "constant.language.boolean"
-                  "constant.language.null"
-                  "constant.language.undefined"
                 ];
                 "settings"."foreground" = scheme.withHashtag.base0E;
               }
@@ -733,15 +706,12 @@
                   "constant.other"
                   "constant.character"
                 ];
-                "settings"."foreground" = scheme.withHashtag.base09;
+                "settings"."foreground" = scheme.withHashtag.base0E;
               }
               {
-                "scope" = [
-                  "constant.character.escape"
-                  "constant.other.placeholder"
-                ];
+                "scope" = [ "constant.character.escape" ];
                 "settings" = {
-                  "foreground" = scheme.withHashtag.base0C;
+                  "foreground" = scheme.withHashtag.base0D;
                   "fontStyle" = "italic";
                 };
               }
@@ -758,11 +728,6 @@
                   "keyword.control"
                   "keyword.operator.new"
                   "keyword.operator.expression"
-                  "keyword.operator.logical"
-                  "keyword.operator.delete"
-                  "keyword.operator.typeof"
-                  "keyword.operator.void"
-                  "keyword.operator.instanceof"
                 ];
                 "settings" = {
                   "foreground" = scheme.withHashtag.base0E;
@@ -770,14 +735,7 @@
                 };
               }
               {
-                "scope" = [
-                  "keyword.operator"
-                  "keyword.operator.assignment"
-                  "keyword.operator.arithmetic"
-                  "keyword.operator.bitwise"
-                  "keyword.operator.comparison"
-                  "keyword.operator.relational"
-                ];
+                "scope" = [ "keyword.operator" ];
                 "settings"."foreground" = scheme.withHashtag.base0E;
               }
               {
@@ -806,43 +764,28 @@
                 "scope" = [
                   "entity.name.function.decorator"
                   "meta.decorator"
-                  "punctuation.decorator"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base0A;
-              }
-              {
-                "scope" = [
-                  "entity.name.type"
-                  "entity.name.class"
-                  "entity.name.namespace"
-                  "entity.name.scope-resolution"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base0A;
-              }
-              {
-                "scope" = [
-                  "entity.other.inherited-class"
-                  "entity.name.type.inherited"
                 ];
                 "settings" = {
-                  "foreground" = scheme.withHashtag.base0B;
+                  "foreground" = scheme.withHashtag.base0D;
                   "fontStyle" = "italic";
                 };
               }
               {
                 "scope" = [
+                  "entity.name.type"
+                  "entity.name.class"
                   "support.type"
                   "support.class"
                 ];
-                "settings"."foreground" = scheme.withHashtag.base0A;
+                "settings"."foreground" = scheme.withHashtag.base0B;
               }
               {
                 "scope" = [ "entity.name.type.interface" ];
-                "settings"."foreground" = scheme.withHashtag.base0C;
+                "settings"."foreground" = scheme.withHashtag.base0B;
               }
               {
-                "scope" = [ "entity.name.type.enum" ];
-                "settings"."foreground" = scheme.withHashtag.base09;
+                "scope" = [ "entity.other.inherited-class" ];
+                "settings"."foreground" = scheme.withHashtag.base0B;
               }
               {
                 "scope" = [
@@ -853,30 +796,23 @@
                 "settings"."foreground" = scheme.withHashtag.base05;
               }
               {
-                "scope" = [
-                  "variable.parameter"
-                  "variable.other.parameter"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base08;
+                "scope" = [ "variable.parameter" ];
+                "settings"."foreground" = scheme.withHashtag.base05;
               }
               {
                 "scope" = [
                   "variable.language"
                   "variable.language.this"
                   "variable.language.self"
-                  "variable.language.super"
                 ];
                 "settings" = {
-                  "foreground" = scheme.withHashtag.base08;
+                  "foreground" = scheme.withHashtag.base05;
                   "fontStyle" = "bold";
                 };
               }
               {
-                "scope" = [
-                  "variable.other.constant"
-                  "variable.other.enummember"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base09;
+                "scope" = [ "variable.other.constant" ];
+                "settings"."foreground" = scheme.withHashtag.base0E;
               }
               {
                 "scope" = [
@@ -896,65 +832,19 @@
                 "settings"."foreground" = scheme.withHashtag.base08;
               }
               {
-                "scope" = [
-                  "entity.other.attribute-name"
-                  "entity.other.attribute-name.html"
-                  "entity.other.attribute-name.xml"
-                  "entity.other.attribute-name.jsx"
-                  "entity.other.attribute-name.tsx"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base0A;
-              }
-              {
-                "scope" = [
-                  "support.type.property-name"
-                  "support.type.property-name.css"
-                  "support.type.property-name.scss"
-                  "support.type.property-name.less"
-                ];
+                "scope" = [ "entity.other.attribute-name" ];
                 "settings"."foreground" = scheme.withHashtag.base0D;
               }
               {
-                "scope" = [
-                  "support.constant.property-value"
-                  "support.constant.color"
-                  "support.constant.font-name"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base09;
+                "scope" = [ "support.type.property-name" ];
+                "settings"."foreground" = scheme.withHashtag.base0D;
               }
               {
-                "scope" = [
-                  "punctuation"
-                  "punctuation.definition"
-                  "punctuation.separator"
-                  "punctuation.terminator"
-                  "punctuation.accessor"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base05;
+                "scope" = [ "support.constant.property-value" ];
+                "settings"."foreground" = scheme.withHashtag.base0E;
               }
               {
-                "scope" = [
-                  "punctuation.definition.tag"
-                  "punctuation.definition.tag.html"
-                  "punctuation.definition.tag.xml"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base03;
-              }
-              {
-                "scope" = [
-                  "punctuation.definition.string"
-                  "punctuation.definition.string.begin"
-                  "punctuation.definition.string.end"
-                ];
-                "settings"."foreground" = scheme.withHashtag.base0B;
-              }
-              {
-                "scope" = [
-                  "meta.brace"
-                  "punctuation.definition.block"
-                  "punctuation.definition.parameters"
-                  "punctuation.definition.arguments"
-                ];
+                "scope" = [ "punctuation" ];
                 "settings"."foreground" = scheme.withHashtag.base05;
               }
               {

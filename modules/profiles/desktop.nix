@@ -15,6 +15,8 @@
         self.nixosModules.qt
       ];
 
+      home-manager.sharedModules = [ self.homeModules.desktop ];
+
       hardware = {
         enableAllFirmware = true;
 

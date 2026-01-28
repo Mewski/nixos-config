@@ -36,7 +36,7 @@
           "editor.guides.bracketPairs" = true;
           "editor.lineNumbers" = "relative";
           "editor.minimap.enabled" = false;
-          "editor.renderWhitespace" = "none";
+          "editor.renderWhitespace" = "boundary";
           "editor.cursorBlinking" = "smooth";
           "editor.cursorSmoothCaretAnimation" = "off";
           "editor.smoothScrolling" = true;
@@ -48,6 +48,8 @@
           "workbench.startupEditor" = "none";
           "workbench.sideBar.location" = "left";
           "workbench.tree.indent" = 16;
+
+          "window.restoreWindows" = "none";
 
           "git.enableSmartCommit" = true;
           "git.autofetch" = true;
