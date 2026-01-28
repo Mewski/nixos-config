@@ -28,6 +28,8 @@
             coloring = "indent_aware";
           };
 
+          show_whitespaces = "none";
+
           lsp_highlight_debounce = 100;
           autosave = "on_focus_change";
           git.word_diff_enabled = true;

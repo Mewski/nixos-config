@@ -1,15 +1,7 @@
 {
-  flake.nixosModules.astraeus =
-    { config, ... }:
-    {
-      users = {
-        mutableUsers = false;
-        users.mewski = {
-          isNormalUser = true;
-          description = "Mewski";
-          hashedPasswordFile = config.sops.secrets."users/mewski/hashed_password".path;
-          extraGroups = [ "wheel" ];
-        };
-      };
-    };
+  flake.nixosModules.astraeus = {
+    users.users.root.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJS08cEqHN1mAFtpou4jjJIxA//cqaerTk1cEnMBwe+f Mewski"
+    ];
+  };
 }

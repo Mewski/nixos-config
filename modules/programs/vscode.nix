@@ -7,7 +7,7 @@
     {
       programs.vscode = {
         enable = true;
-        mutableExtensionsDir = true;
+        mutableExtensionsDir = false;
 
         profiles.default.extensions = with pkgs.vscode-extensions; [
           eamodio.gitlens
@@ -36,9 +36,9 @@
           "editor.guides.bracketPairs" = true;
           "editor.lineNumbers" = "relative";
           "editor.minimap.enabled" = false;
-          "editor.renderWhitespace" = "boundary";
+          "editor.renderWhitespace" = "none";
           "editor.cursorBlinking" = "smooth";
-          "editor.cursorSmoothCaretAnimation" = "on";
+          "editor.cursorSmoothCaretAnimation" = "off";
           "editor.smoothScrolling" = true;
 
           "files.autoSave" = "onFocusChange";

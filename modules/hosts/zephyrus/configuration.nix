@@ -15,6 +15,7 @@
         self.nixosModules.desktop
         self.nixosModules.development
         self.nixosModules.gaming
+        self.nixosModules.work
         self.nixosModules.nvidia
         self.nixosModules.theme
       ];
@@ -117,6 +118,7 @@
         self.homeModules.desktop
         self.homeModules.development
         self.homeModules.gaming
+        self.homeModules.work
       ];
 
       wayland.windowManager.hyprland.settings = {

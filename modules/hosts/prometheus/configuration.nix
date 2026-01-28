@@ -10,8 +10,8 @@
       imports = [
         inputs.disko.nixosModules.default
         self.diskoConfigurations.prometheus
-        self.nixosModules.docker
         self.nixosModules.server
+        self.nixosModules.docker
       ];
 
       boot = {
