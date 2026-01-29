@@ -1,6 +1,6 @@
 {
   flake.nixosModules.aeolus =
-    { config, ... }:
+    { config, lib, ... }:
     {
       services.bird = {
         enable = true;
@@ -9,7 +9,7 @@
         config = "";
       };
 
-      environment.etc."bird/bird.conf".source = config.sops.templates."bird.conf".path;
+      environment.etc."bird/bird.conf".source = lib.mkForce config.sops.templates."bird.conf".path;
 
       systemd.services.bird = {
         wants = [ "sops-nix.service" ];

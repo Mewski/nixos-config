@@ -22,7 +22,6 @@
           ms-vsliveshare.vsliveshare
           pkief.material-icon-theme
           tamasfe.even-better-toml
-          twxs.cmake
           vue.volar
           wakatime.vscode-wakatime
         ];
