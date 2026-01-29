@@ -5,7 +5,7 @@
       networking = {
         firewall.allowedUDPPorts = [ 51820 ];
 
-        wireguard.interfaces.ord-core-01 = {
+        wireguard.interfaces.argus = {
           ips = [
             "10.100.0.1/30"
             "2602:fe18::1/128"
@@ -13,12 +13,12 @@
           listenPort = 51820;
           privateKeyFile = config.sops.secrets."wireguard/private_key".path;
           postSetup = ''
-            ip route add 23.152.236.0/24 dev ord-core-01
-            ip -6 route add 2602:fe18::/48 dev ord-core-01
+            ip route add 23.152.236.0/24 dev argus
+            ip -6 route add 2602:fe18::/48 dev argus
           '';
           postShutdown = ''
-            ip route del 23.152.236.0/24 dev ord-core-01 || true
-            ip -6 route del 2602:fe18::/48 dev ord-core-01 || true
+            ip route del 23.152.236.0/24 dev argus || true
+            ip -6 route del 2602:fe18::/48 dev argus || true
           '';
 
           peers = [

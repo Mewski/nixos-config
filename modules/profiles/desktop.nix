@@ -100,6 +100,7 @@
         playerctl
         qimgv
         signal-desktop
+        sops
         spotify
         unzip
         wget

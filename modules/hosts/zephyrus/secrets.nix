@@ -10,8 +10,8 @@
       age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
       secrets = {
-        "wireguard/ord-core-01/private_key" = { };
-        "wireguard/ord-core-01/preshared_key" = { };
+        "wireguard/argus/private_key" = { };
+        "wireguard/argus/preshared_key" = { };
       };
     };
   };
