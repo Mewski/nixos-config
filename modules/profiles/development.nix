@@ -3,6 +3,7 @@
   flake.nixosModules.development = {
     imports = [
       self.nixosModules.docker
+      self.nixosModules.samba
       self.nixosModules.virtualization
     ];
 
