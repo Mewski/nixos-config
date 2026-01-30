@@ -29,6 +29,7 @@
                 ];
               };
             };
+
             zfs = {
               size = "100%";
               content = {
@@ -75,6 +76,7 @@
               options.mountpoint = "legacy";
               mountpoint = "/";
             };
+
             nix = {
               type = "zfs_fs";
               options = {
@@ -83,12 +85,19 @@
               };
               mountpoint = "/nix";
             };
+
             data = {
               type = "zfs_fs";
               options = {
                 mountpoint = "none";
                 recordsize = "64K";
               };
+            };
+
+            vz = {
+              type = "zfs_fs";
+              options.mountpoint = "legacy";
+              mountpoint = "/var/lib/vz";
             };
           };
         };
