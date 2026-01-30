@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  flake.nixosConfigurations.astraeus = inputs.nixpkgs-stable.lib.nixosSystem {
+  flake.nixosConfigurations.astraeus = inputs.nixpkgs.lib.nixosSystem {
     modules = [ self.nixosModules.astraeus ];
   };
 
@@ -12,6 +12,10 @@
         inputs.proxmox-nixos.nixosModules.proxmox-ve
         self.diskoConfigurations.astraeus
         self.nixosModules.server
+      ];
+
+      nixpkgs.overlays = [
+        inputs.proxmox-nixos.overlays.x86_64-linux
       ];
 
       boot = {
