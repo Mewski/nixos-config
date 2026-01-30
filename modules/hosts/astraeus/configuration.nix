@@ -84,10 +84,10 @@
         ];
       };
 
-      # services.proxmox-ve = {
-      #   enable = true;
-      #   ipAddress = "10.0.20.10";
-      # };
+      services.proxmox-ve = {
+        enable = true;
+        ipAddress = "10.0.20.10";
+      };
 
       services.zfs = {
         autoScrub = {
