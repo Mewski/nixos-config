@@ -28,27 +28,27 @@
             device = "nodev";
             mirroredBoots = [
               {
-                path = "/boot1";
+                path = "/boot";
                 devices = [ "nodev" ];
               }
               {
-                path = "/boot2";
+                path = "/boot-fallback-1";
                 devices = [ "nodev" ];
               }
               {
-                path = "/boot3";
+                path = "/boot-fallback-2";
                 devices = [ "nodev" ];
               }
               {
-                path = "/boot4";
+                path = "/boot-fallback-3";
                 devices = [ "nodev" ];
               }
               {
-                path = "/boot5";
+                path = "/boot-fallback-4";
                 devices = [ "nodev" ];
               }
               {
-                path = "/boot6";
+                path = "/boot-fallback-5";
                 devices = [ "nodev" ];
               }
             ];

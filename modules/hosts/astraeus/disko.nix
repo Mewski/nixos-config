@@ -43,12 +43,12 @@
     {
       disko.devices = {
         disk = {
-          ssd0 = mkBootDisk disks.ssd0 "/boot1";
-          ssd1 = mkBootDisk disks.ssd1 "/boot2";
-          ssd2 = mkBootDisk disks.ssd2 "/boot3";
-          ssd3 = mkBootDisk disks.ssd3 "/boot4";
-          ssd4 = mkBootDisk disks.ssd4 "/boot5";
-          ssd5 = mkBootDisk disks.ssd5 "/boot6";
+          ssd0 = mkBootDisk disks.ssd0 "/boot";
+          ssd1 = mkBootDisk disks.ssd1 "/boot-fallback-1";
+          ssd2 = mkBootDisk disks.ssd2 "/boot-fallback-2";
+          ssd3 = mkBootDisk disks.ssd3 "/boot-fallback-3";
+          ssd4 = mkBootDisk disks.ssd4 "/boot-fallback-4";
+          ssd5 = mkBootDisk disks.ssd5 "/boot-fallback-5";
         };
 
         zpool.rpool = {
