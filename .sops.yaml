@@ -3,6 +3,8 @@ keys:
   - &host_zephyrus age1ryp5e29rqly3x5p9dugcrgf99fzp7kmggrw7ln43nc04gfpzhajqchum3c
   - &host_crosshair age13qfyvrs38pjkp7sna0gn6y25r7lyk43p20mj95m50qglms8fd3eq3dg4a8
   - &host_astraeus age1n20kgfw65s77jyctjncjstydjfydvc0cqjrm7nf2kd2rsurp9vgs7ppck3
+  - &host_aeolus age1e8dwku8xz0ajlpluzarne8gnty07kp2csv45psk9r7a5tr7q65gsl3sq9s
+  - &host_prometheus age19nd3sjtpgzdyysv6md8vqz9vqexy5pafk2ex5myuhps0zz9zevps63zftx
 
 creation_rules:
   - path_regex: secrets/shared/.*\.yaml$
@@ -12,6 +14,8 @@ creation_rules:
           - *host_zephyrus
           - *host_crosshair
           - *host_astraeus
+          - *host_aeolus
+          - *host_prometheus
 
   - path_regex: secrets/zephyrus/.*\.yaml$
     key_groups:
@@ -30,3 +34,15 @@ creation_rules:
       - age:
           - *user_mewski
           - *host_astraeus
+
+  - path_regex: secrets/aeolus/.*\.yaml$
+    key_groups:
+      - age:
+          - *user_mewski
+          - *host_aeolus
+
+  - path_regex: secrets/prometheus/.*\.yaml$
+    key_groups:
+      - age:
+          - *user_mewski
+          - *host_prometheus
