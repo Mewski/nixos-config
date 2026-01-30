@@ -30,10 +30,7 @@
 
         firewall = {
           enable = true;
-          allowedTCPPorts = [
-            22
-            179
-          ];
+          allowedTCPPorts = [ 22 ];
         };
       };
 
