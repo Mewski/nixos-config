@@ -20,6 +20,7 @@
 
       boot = {
         loader = {
+          efi.efiSysMountPoint = "/boot";
           efi.canTouchEfiVariables = true;
           grub = {
             enable = true;
@@ -56,6 +57,7 @@
         };
 
         supportedFilesystems = [ "zfs" ];
+        zfs.devNodes = "/dev/disk/by-id";
       };
 
       networking = {
