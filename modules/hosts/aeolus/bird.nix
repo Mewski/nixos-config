@@ -3,7 +3,7 @@
     { config, lib, ... }:
     {
       services.bird = {
-        enable = true;
+        enable = false;
         checkConfig = false;
         autoReload = false;
         config = "";
