@@ -107,6 +107,7 @@
       environment.systemPackages = with pkgs; [
         git
         openssl
+        cdrkit
       ];
 
       system.stateVersion = "25.11";
