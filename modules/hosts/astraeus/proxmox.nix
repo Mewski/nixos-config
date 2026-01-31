@@ -28,8 +28,28 @@
         vmbr2.interfaces = [ ];
       };
 
+      interfaces.vmbr2 = {
+        ipv4.addresses = [
+          {
+            address = "23.152.236.1";
+            prefixLength = 28;
+          }
+        ];
+        ipv6.addresses = [
+          {
+            address = "2602:fe18::1";
+            prefixLength = 48;
+          }
+        ];
+      };
+
       firewall = {
         extraCommands = ''
+          iptables -I FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
+          iptables -I FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
+          ip6tables -I FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
+          ip6tables -I FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
+
           iptables -I FORWARD -i vmbr2 -o vmbr2 -j DROP
           iptables -I FORWARD -i vmbr2 -d 10.0.0.0/8 -j DROP
           iptables -I FORWARD -i vmbr2 -d 192.168.0.0/16 -j DROP
@@ -41,6 +61,11 @@
         '';
 
         extraStopCommands = ''
+          iptables -D FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT || true
+          iptables -D FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT || true
+          ip6tables -D FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT || true
+          ip6tables -D FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT || true
+
           iptables -D FORWARD -i vmbr2 -o vmbr2 -j DROP || true
           iptables -D FORWARD -i vmbr2 -d 10.0.0.0/8 -j DROP || true
           iptables -D FORWARD -i vmbr2 -d 192.168.0.0/16 -j DROP || true
