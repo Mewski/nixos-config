@@ -106,6 +106,7 @@
 
       environment.systemPackages = with pkgs; [
         git
+        openssl
       ];
 
       system.stateVersion = "25.11";
