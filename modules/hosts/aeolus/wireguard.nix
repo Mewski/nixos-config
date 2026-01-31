@@ -3,9 +3,13 @@
     { config, ... }:
     {
       networking.wireguard.interfaces.wg-astraeus = {
-        ips = [ "23.152.236.1/32" ];
         listenPort = 51820;
         privateKeyFile = config.sops.secrets."wireguard/private_key".path;
+
+        ips = [
+          "23.152.236.1/32"
+          "2602:fe18::1/128"
+        ];
 
         postSetup = ''
           ip route add 23.152.236.0/28 dev wg-astraeus
