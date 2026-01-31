@@ -41,6 +41,7 @@
       networking = {
         hostName = "zephyrus";
         networkmanager.enable = true;
+        firewall.allowedTCPPorts = [ 80 ];
       };
 
       zramSwap.enable = true;

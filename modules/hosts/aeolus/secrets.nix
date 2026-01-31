@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  flake.nixosModules.aeolus = {
+  flake.nixosModules.aeolus-disabled = {
     imports = [ inputs.sops-nix.nixosModules.sops ];
 
     sops = {

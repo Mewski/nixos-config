@@ -5,7 +5,7 @@ Declarative NixOS configurations using flakes.
 ## Installation
 
 ```bash
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount --flake github:Mewski/nixos-config#<hostname>
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode disko --flake github:Mewski/nixos-config#<hostname>
 sudo nixos-install --flake github:Mewski/nixos-config#<hostname>
 ```
 
