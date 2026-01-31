@@ -11,7 +11,7 @@
 
           define OWN_AS = 402127;
           define OWN_V4 = [ 23.152.236.0/24 ];
-          define OWN_V6 = [ 2602:fe18::/48 ];
+          define OWN_V6 = [ 2602:fe18::/40 ];
 
           protocol device {
             scan time 10;
@@ -29,7 +29,7 @@
 
           protocol static static_v6 {
             ipv6;
-            route 2602:fe18::/48 blackhole;
+            route 2602:fe18::/40 blackhole;
           }
 
           protocol kernel kernel_v4 {
