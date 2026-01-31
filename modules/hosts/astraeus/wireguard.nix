@@ -9,6 +9,8 @@
         ];
         privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
+        allowedIPsAsRoutes = false;
+
         postSetup = ''
           ip rule add from 23.152.236.0/28 table 100
           ip route add default dev wg-aeolus table 100
@@ -29,8 +31,8 @@
             presharedKeyFile = config.sops.secrets."wireguard/aeolus/preshared_key".path;
             endpoint = "aeolus.takoyaki.io:51820";
             allowedIPs = [
-              "23.152.236.0/28"
-              "2602:fe18::/60"
+              "0.0.0.0/0"
+              "::/0"
             ];
             persistentKeepalive = 25;
           }
