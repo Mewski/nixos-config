@@ -28,20 +28,10 @@
         vmbr2.interfaces = [ ];
       };
 
-      interfaces.vmbr2 = {
-        ipv4.addresses = [
-          {
-            address = "23.152.236.1";
-            prefixLength = 28;
-          }
-        ];
-        ipv6.addresses = [
-          {
-            address = "2602:fe18::1";
-            prefixLength = 48;
-          }
-        ];
-      };
+      localCommands = ''
+        ip addr add 23.152.236.1/28 dev vmbr2 2>/dev/null || true
+        ip -6 addr add 2602:fe18::1/48 dev vmbr2 2>/dev/null || true
+      '';
 
       firewall = {
         extraCommands = ''
