@@ -10,7 +10,7 @@
           ip rule add from 23.152.236.0/28 lookup 100
           ip route add default dev wg-aeolus table 100
 
-          ip -6 rule add from 2602:fe18::/60 lookup 100
+          ip -6 rule add from 2602:fe18::/48 lookup 100
           ip -6 route add default dev wg-aeolus table 100
         '';
 
@@ -18,7 +18,7 @@
           ip rule del from 23.152.236.0/28 lookup 100 || true
           ip route del default dev wg-aeolus table 100 || true
 
-          ip -6 rule del from 2602:fe18::/60 lookup 100 || true
+          ip -6 rule del from 2602:fe18::/48 lookup 100 || true
           ip -6 route del default dev wg-aeolus table 100 || true
         '';
 
@@ -30,7 +30,7 @@
             persistentKeepalive = 25;
             allowedIPs = [
               "23.152.236.0/28"
-              "2602:fe18::/60"
+              "2602:fe18::/48"
             ];
           }
         ];
