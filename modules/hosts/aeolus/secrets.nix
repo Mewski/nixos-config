@@ -9,6 +9,9 @@
 
       secrets = {
         "bird/vultr/bgp_password" = { };
+
+        "wireguard/private_key" = { };
+        "wireguard/astraeus/preshared_key" = { };
       };
     };
   };

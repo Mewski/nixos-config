@@ -10,7 +10,7 @@
 
         accel_profile = "flat";
         follow_mouse = 1;
-        mouse_refocus = false;
+        mouse_refocus = true;
         sensitivity = 0;
       };
 
