@@ -9,13 +9,8 @@
     {
       imports = [
         inputs.disko.nixosModules.default
-        inputs.proxmox-nixos.nixosModules.proxmox-ve
         self.diskoConfigurations.astraeus
         self.nixosModules.server
-      ];
-
-      nixpkgs.overlays = [
-        inputs.proxmox-nixos.overlays.x86_64-linux
       ];
 
       boot = {
@@ -87,11 +82,6 @@
           22
           8006
         ];
-      };
-
-      services.proxmox-ve = {
-        enable = true;
-        ipAddress = "10.0.20.10";
       };
 
       services.zfs = {

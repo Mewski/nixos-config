@@ -3,10 +3,7 @@
     { config, ... }:
     {
       networking.wireguard.interfaces.wg-aeolus = {
-        ips = [
-          "23.152.236.2/32"
-          "2602:fe18::2/128"
-        ];
+        ips = [ ];
         privateKeyFile = config.sops.secrets."wireguard/private_key".path;
 
         peers = [
@@ -15,8 +12,8 @@
             presharedKeyFile = config.sops.secrets."wireguard/aeolus/preshared_key".path;
             endpoint = "aeolus.takoyaki.io:51820";
             allowedIPs = [
-              "0.0.0.0/0"
-              "::/0"
+              "23.152.236.0/28"
+              "2602:fe18::/60"
             ];
             persistentKeepalive = 25;
           }
