@@ -28,40 +28,51 @@
         vmbr2.interfaces = [ ];
       };
 
-      localCommands = ''
-        ip addr add 23.152.236.1/28 dev vmbr2 2>/dev/null || true
-        ip -6 addr add 2602:fe18::1/48 dev vmbr2 2>/dev/null || true
-      '';
+      interfaces.vmbr2 = {
+        ipv4.addresses = [
+          {
+            address = "23.152.236.1";
+            prefixLength = 28;
+          }
+        ];
+        ipv6.addresses = [
+          {
+            address = "2602:fe18::1";
+            prefixLength = 48;
+          }
+        ];
+      };
 
       firewall = {
         extraCommands = ''
-          iptables -I FORWARD -i vmbr2 -o vmbr2 -j DROP
-          iptables -I FORWARD -i vmbr2 -d 10.0.0.0/8 -j DROP
-          iptables -I FORWARD -i vmbr2 -d 192.168.0.0/16 -j DROP
-          iptables -I INPUT -i vmbr2 -j DROP
-          iptables -I FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
-          iptables -I FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
+          iptables -A FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
+          iptables -A FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
+          iptables -A FORWARD -i vmbr2 -o vmbr2 -j DROP
+          iptables -A FORWARD -i vmbr2 -d 10.0.0.0/8 -j DROP
+          iptables -A FORWARD -i vmbr2 -d 192.168.0.0/16 -j DROP
+          iptables -A INPUT -i vmbr2 -j DROP
 
-          ip6tables -I FORWARD -i vmbr2 -o vmbr2 -j DROP
-          ip6tables -I FORWARD -i vmbr2 -d fc00::/7 -j DROP
-          ip6tables -I INPUT -i vmbr2 -j DROP
-          ip6tables -I FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
-          ip6tables -I FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
+          ip6tables -A FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
+          ip6tables -A FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
+          ip6tables -A FORWARD -i vmbr2 -o vmbr2 -j DROP
+          ip6tables -A FORWARD -i vmbr2 -d fc00::/7 -j DROP
+          ip6tables -A INPUT -i vmbr2 -p ipv6-icmp -j ACCEPT
+          ip6tables -A INPUT -i vmbr2 -j DROP
         '';
 
         extraStopCommands = ''
-          iptables -D FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT || true
           iptables -D FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT || true
-          ip6tables -D FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT || true
-          ip6tables -D FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT || true
-
+          iptables -D FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT || true
           iptables -D FORWARD -i vmbr2 -o vmbr2 -j DROP || true
           iptables -D FORWARD -i vmbr2 -d 10.0.0.0/8 -j DROP || true
           iptables -D FORWARD -i vmbr2 -d 192.168.0.0/16 -j DROP || true
           iptables -D INPUT -i vmbr2 -j DROP || true
 
+          ip6tables -D FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT || true
+          ip6tables -D FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT || true
           ip6tables -D FORWARD -i vmbr2 -o vmbr2 -j DROP || true
           ip6tables -D FORWARD -i vmbr2 -d fc00::/7 -j DROP || true
+          ip6tables -D INPUT -i vmbr2 -p ipv6-icmp -j ACCEPT || true
           ip6tables -D INPUT -i vmbr2 -j DROP || true
         '';
       };
