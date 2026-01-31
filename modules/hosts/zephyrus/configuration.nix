@@ -117,7 +117,7 @@
       wayland.windowManager.hyprland.settings = {
         monitor = [
           internalDisplayConfig
-          ", preferred, auto, 1"
+          ", preferred, auto, 1.25"
         ];
 
         input.touchpad = {
