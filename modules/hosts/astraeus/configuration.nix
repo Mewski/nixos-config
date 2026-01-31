@@ -78,10 +78,12 @@
           }
         ];
 
-        firewall.allowedTCPPorts = [
-          22
-          8006
-        ];
+        firewall = {
+          allowedTCPPorts = [
+            22
+            8006
+          ];
+        };
       };
 
       services.zfs = {
