@@ -45,19 +45,18 @@
 
       firewall = {
         extraCommands = ''
-          iptables -I FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
-          iptables -I FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
-          ip6tables -I FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
-          ip6tables -I FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
-
           iptables -I FORWARD -i vmbr2 -o vmbr2 -j DROP
           iptables -I FORWARD -i vmbr2 -d 10.0.0.0/8 -j DROP
           iptables -I FORWARD -i vmbr2 -d 192.168.0.0/16 -j DROP
           iptables -I INPUT -i vmbr2 -j DROP
+          iptables -I FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
+          iptables -I FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
 
           ip6tables -I FORWARD -i vmbr2 -o vmbr2 -j DROP
           ip6tables -I FORWARD -i vmbr2 -d fc00::/7 -j DROP
           ip6tables -I INPUT -i vmbr2 -j DROP
+          ip6tables -I FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
+          ip6tables -I FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
         '';
 
         extraStopCommands = ''
