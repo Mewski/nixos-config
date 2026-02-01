@@ -19,6 +19,8 @@
           ms-azuretools.vscode-docker
           ms-vscode.cmake-tools
           ms-vscode-remote.remote-containers
+          ms-vscode-remote.remote-ssh
+          ms-vscode-remote.remote-ssh-edit
           ms-vsliveshare.vsliveshare
           pkief.material-icon-theme
           tamasfe.even-better-toml

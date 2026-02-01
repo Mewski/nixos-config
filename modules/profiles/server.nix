@@ -1,10 +1,7 @@
 { self, ... }:
 {
   flake.nixosModules.server = {
-    imports = [
-      self.nixosModules.docker
-      self.nixosModules.nix
-    ];
+    imports = [ self.nixosModules.nix ];
 
     time.timeZone = "America/Chicago";
 

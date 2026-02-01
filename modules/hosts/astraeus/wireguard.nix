@@ -12,6 +12,11 @@
 
           ip -6 rule add from 2602:fe18::/48 lookup 100
           ip -6 route add default dev wg-aeolus table 100
+
+          iptables -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o wg-aeolus -j TCPMSS --clamp-mss-to-pmtu
+          iptables -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -i wg-aeolus -j TCPMSS --clamp-mss-to-pmtu
+          ip6tables -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o wg-aeolus -j TCPMSS --clamp-mss-to-pmtu
+          ip6tables -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -i wg-aeolus -j TCPMSS --clamp-mss-to-pmtu
         '';
 
         postShutdown = ''
