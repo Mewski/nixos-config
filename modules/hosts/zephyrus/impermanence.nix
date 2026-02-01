@@ -15,6 +15,7 @@
           "/etc/ssh"
           "/var/lib/bluetooth"
           "/var/lib/flatpak"
+          "/var/lib/libvirt"
           "/var/lib/nixos"
           "/var/lib/sbctl"
           "/var/lib/systemd/coredump"
