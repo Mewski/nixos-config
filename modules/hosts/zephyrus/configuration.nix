@@ -81,12 +81,19 @@
       setDisplayBrightness =
         direction:
         pkgs.writeShellScript "set-display-brightness-${direction}" ''
-          ${brightnessctl} -d ${nvidiaBacklight} -q set 5%${direction} &
-          val=$(${brightnessctl} -d ${intelBacklight} -m set 5%${direction} | cut -d, -f4 | tr -d '%')
+          # Try nvidia first (when using dGPU via MUX)
+          if [ -d "/sys/class/backlight/${nvidiaBacklight}" ]; then
+            val=$(${brightnessctl} -d ${nvidiaBacklight} -m set 5%${direction} | cut -d, -f4 | tr -d '%')
+          fi
+          # Try intel (when using iGPU or hybrid)
+          if [ -d "/sys/class/backlight/${intelBacklight}" ]; then
+            val=$(${brightnessctl} -d ${intelBacklight} -m set 5%${direction} | cut -d, -f4 | tr -d '%')
+          fi
+
           ${notify} -a osd -t 1000 \
             -h string:x-dunst-stack-tag:brightness \
-            -h int:value:$val \
-            'Display Brightness' &
+            -h int:value:''${val:-0} \
+            'Display Brightness'
         '';
 
       lidSwitchOn = pkgs.writeShellScript "lid-switch-on" ''
