@@ -24,6 +24,7 @@
       ];
 
       home.packages = with pkgs; [
+        bc
         clang-tools
         cmake
         devenv
@@ -40,6 +41,8 @@
         proxychains
         python3
         radare2
+        rstudio
+        vt-cli
       ];
     };
 }
