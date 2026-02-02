@@ -38,8 +38,14 @@
         lazygit
         lldb
         nix-output-monitor
-        proxychains
-        python3
+        proxychains-ng
+        (python3.withPackages (
+          ps: with ps; [
+            numpy
+            pip
+            requests
+          ]
+        ))
         radare2
         rstudio
         vt-cli
