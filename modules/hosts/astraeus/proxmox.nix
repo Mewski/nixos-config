@@ -6,8 +6,8 @@
     nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
 
     boot.kernel.sysctl = {
-      "net.bridge.bridge-nf-call-iptables" = 1;
-      "net.bridge.bridge-nf-call-ip6tables" = 1;
+      "net.bridge.bridge-nf-call-iptables" = 0;
+      "net.bridge.bridge-nf-call-ip6tables" = 0;
     };
 
     networking = {
