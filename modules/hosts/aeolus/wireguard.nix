@@ -1,6 +1,14 @@
 {
   flake.nixosModules.aeolus =
-    { config, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    let
+      ip = lib.getExe' pkgs.iproute2 "ip";
+    in
     {
       networking.wireguard.interfaces.wg-astraeus = {
         listenPort = 51820;
@@ -12,13 +20,13 @@
         ];
 
         postSetup = ''
-          ip route add 23.152.236.0/28 dev wg-astraeus
-          ip -6 route add 2602:fe18::/48 dev wg-astraeus
+          ${ip} route add 23.152.236.0/28 dev wg-astraeus
+          ${ip} -6 route add 2602:fe18::/48 dev wg-astraeus
         '';
 
         postShutdown = ''
-          ip route del 23.152.236.0/28 dev wg-astraeus || true
-          ip -6 route del 2602:fe18::/48 dev wg-astraeus || true
+          ${ip} route del 23.152.236.0/28 dev wg-astraeus || true
+          ${ip} -6 route del 2602:fe18::/48 dev wg-astraeus || true
         '';
 
         peers = [
