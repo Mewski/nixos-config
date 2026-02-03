@@ -29,6 +29,18 @@
         domain = "takoyaki.io";
         useDHCP = false;
 
+        defaultGateway = "10.0.40.1";
+        nameservers = [
+          "10.0.40.1"
+        ];
+
+        interfaces.ens18.ipv4.addresses = [
+          {
+            address = "10.0.40.67";
+            prefixLength = 24;
+          }
+        ];
+
         firewall.allowedTCPPorts = [
           22
           443
