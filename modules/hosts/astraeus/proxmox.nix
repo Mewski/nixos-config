@@ -3,16 +3,7 @@
   flake.nixosModules.astraeus = {
     imports = [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
 
-    nixpkgs.overlays = [
-      (final: prev: {
-        libxcrypt = prev.libxcrypt.overrideAttrs (old: {
-          configureFlags = (old.configureFlags or [ ]) ++ [
-            "--enable-hashes=strong,glibc"
-          ];
-        });
-      })
-      inputs.proxmox-nixos.overlays.x86_64-linux
-    ];
+    nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
 
     boot.kernel.sysctl = {
       "net.bridge.bridge-nf-call-iptables" = 0;
