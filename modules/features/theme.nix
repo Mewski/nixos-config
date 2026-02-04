@@ -7,6 +7,7 @@
 
       theme = {
         polarity = "dark";
+        wallpaper = "${inputs.self}/assets/wallpapers/Kath.png";
 
         cursor = {
           name = "Bibata-Modern-Ice";

@@ -49,6 +49,8 @@
             };
           };
 
+          wallpaper = lib.mkOption { type = lib.types.path; };
+
           opacity = {
             desktop = lib.mkOption { type = lib.types.float; };
             application = lib.mkOption { type = lib.types.float; };
