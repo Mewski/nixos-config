@@ -137,7 +137,7 @@
           { pkg = languagetool; }
           { pkg = editor-syntax-highlight; }
           { pkg = relay; }
-          # { pkg = livesync; }
+          { pkg = livesync; }
         ];
 
         vaults.notes = {
