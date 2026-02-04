@@ -32,6 +32,11 @@ in
         "gitlab/secret" = gitSecret;
 
         "gitlab-runner/token" = { };
+
+        "couchdb/config" = {
+          owner = "couchdb";
+          group = "couchdb";
+        };
       };
     };
   };

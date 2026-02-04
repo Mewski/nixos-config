@@ -108,6 +108,23 @@
           hash = "sha256-O9nrEIKaJ21tu1S9qRFSGeBD5bYdA/VEpByDUH0PM0U=";
         };
       };
+
+      relay = mkObsidianPlugin {
+        name = "relay";
+        version = "0.7.4";
+        mainJs = pkgs.fetchurl {
+          url = "https://github.com/No-Instructions/Relay/releases/download/0.7.4/main.js";
+          hash = "sha256-eeNmGWKnhCV3OKI7x1zWD93AaF6qV3pd7XV1+W01ceQ=";
+        };
+        manifest = pkgs.fetchurl {
+          url = "https://github.com/No-Instructions/Relay/releases/download/0.7.4/manifest.json";
+          hash = "sha256-7Dc4Z6wcV67bjnf64L2SmatYzjQIPtfZjUiG18PrDcU=";
+        };
+        styles = pkgs.fetchurl {
+          url = "https://github.com/No-Instructions/Relay/releases/download/0.7.4/styles.css";
+          hash = "sha256-iu6MT/ws0h5KrVGO8vJXvTNPHg0AeZtz1rx0dEXAXuA=";
+        };
+      };
     in
     {
       programs.obsidian = {
@@ -119,7 +136,8 @@
           { pkg = latex-suite; }
           { pkg = languagetool; }
           { pkg = editor-syntax-highlight; }
-          { pkg = livesync; }
+          { pkg = relay; }
+          # { pkg = livesync; }
         ];
 
         vaults.notes = {
