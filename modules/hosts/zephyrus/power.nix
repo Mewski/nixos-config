@@ -5,37 +5,42 @@
       hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
       jq = lib.getExe pkgs.jq;
       notify = lib.getExe pkgs.libnotify;
+      udevadm = lib.getExe' pkgs.systemd "udevadm";
 
       monitorHighRefresh = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
       monitorLowRefresh = "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10";
 
+      applyPowerState = pkgs.writeShellScript "apply-power-state" ''
+        STATUS=$(cat /sys/class/power_supply/ACAD/online)
+        MONITOR_JSON=$(${hyprctl} monitors -j)
+        MONITOR_COUNT=$(echo "$MONITOR_JSON" | ${jq} '[.[] | select(.name == "eDP-1")] | length')
+
+        if [ "$STATUS" = "1" ]; then
+          ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Connected"
+        else
+          ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Disconnected"
+        fi
+
+        if [ "$MONITOR_COUNT" -gt 0 ]; then
+          CURRENT_RATE=$(echo "$MONITOR_JSON" | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | round')
+
+          if [ "$STATUS" = "1" ]; then
+            [ "$CURRENT_RATE" -ne 240 ] && ${hyprctl} keyword monitor '${monitorHighRefresh}'
+          else
+            [ "$CURRENT_RATE" -ne 60 ] && ${hyprctl} keyword monitor '${monitorLowRefresh}'
+          fi
+        fi
+      '';
+
       batteryRefreshRate = pkgs.writeShellScript "battery-refresh-rate" ''
-        LAST_STATUS=""
-        while true; do
-          STATUS=$(cat /sys/class/power_supply/ACAD/online)
-          MONITOR_JSON=$(${hyprctl} monitors -j)
-          MONITOR_COUNT=$(echo "$MONITOR_JSON" | ${jq} '[.[] | select(.name == "eDP-1")] | length')
+        ${applyPowerState}
 
-          if [ "$STATUS" != "$LAST_STATUS" ] && [ -n "$LAST_STATUS" ]; then
-            if [ "$STATUS" = "1" ]; then
-              ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Connected"
-            else
-              ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Disconnected"
-            fi
-          fi
-
-          if [ "$MONITOR_COUNT" -gt 0 ]; then
-            CURRENT_RATE=$(echo "$MONITOR_JSON" | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | round')
-
-            if [ "$STATUS" = "1" ]; then
-              [ "$CURRENT_RATE" -ne 240 ] && ${hyprctl} keyword monitor '${monitorHighRefresh}'
-            else
-              [ "$CURRENT_RATE" -ne 60 ] && ${hyprctl} keyword monitor '${monitorLowRefresh}'
-            fi
-          fi
-
-          LAST_STATUS="$STATUS"
-          sleep 5
+        ${udevadm} monitor -u -s power_supply | while read -r line; do
+          case "$line" in
+            *change*|*POWER_SUPPLY*)
+              ${applyPowerState}
+              ;;
+          esac
         done
       '';
     in
