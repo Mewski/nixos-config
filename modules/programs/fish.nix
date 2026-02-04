@@ -15,10 +15,10 @@
         '';
 
         shellAliases = {
-          ls = "eza";
-          ll = "eza -la";
-          la = "eza -a";
-          lt = "eza --tree";
+          ls = "eza --icons";
+          ll = "eza -la --icons";
+          la = "eza -a --icons";
+          lt = "eza --tree --icons";
           find = "fd";
           grep = "rg";
         };

@@ -91,40 +91,6 @@
           hash = "sha256-P2eaQQvyqaVQISq1zvhepPRrhlWDg49VsSgu+SVkx3k=";
         };
       };
-
-      livesync = mkObsidianPlugin {
-        name = "livesync";
-        version = "0.25.41";
-        mainJs = pkgs.fetchurl {
-          url = "https://github.com/vrtmrz/obsidian-livesync/releases/download/0.25.41/main.js";
-          hash = "sha256-c1t+VJOjgOGFnS/nWV+dxPlegqSMx2LWEtTZ4gxiOgs=";
-        };
-        manifest = pkgs.fetchurl {
-          url = "https://github.com/vrtmrz/obsidian-livesync/releases/download/0.25.41/manifest.json";
-          hash = "sha256-1yhipm4n6Knaj5ZUIAxWvzLmVzw8dKg0JUvS5Uuoa3Y=";
-        };
-        styles = pkgs.fetchurl {
-          url = "https://github.com/vrtmrz/obsidian-livesync/releases/download/0.25.41/styles.css";
-          hash = "sha256-O9nrEIKaJ21tu1S9qRFSGeBD5bYdA/VEpByDUH0PM0U=";
-        };
-      };
-
-      relay = mkObsidianPlugin {
-        name = "relay";
-        version = "0.7.4";
-        mainJs = pkgs.fetchurl {
-          url = "https://github.com/No-Instructions/Relay/releases/download/0.7.4/main.js";
-          hash = "sha256-eeNmGWKnhCV3OKI7x1zWD93AaF6qV3pd7XV1+W01ceQ=";
-        };
-        manifest = pkgs.fetchurl {
-          url = "https://github.com/No-Instructions/Relay/releases/download/0.7.4/manifest.json";
-          hash = "sha256-7Dc4Z6wcV67bjnf64L2SmatYzjQIPtfZjUiG18PrDcU=";
-        };
-        styles = pkgs.fetchurl {
-          url = "https://github.com/No-Instructions/Relay/releases/download/0.7.4/styles.css";
-          hash = "sha256-iu6MT/ws0h5KrVGO8vJXvTNPHg0AeZtz1rx0dEXAXuA=";
-        };
-      };
     in
     {
       programs.obsidian = {
@@ -136,18 +102,11 @@
           { pkg = latex-suite; }
           { pkg = languagetool; }
           { pkg = editor-syntax-highlight; }
-          { pkg = relay; }
-          { pkg = livesync; }
         ];
 
         vaults.notes = {
           enable = true;
           target = "Documents/Notes";
-        };
-
-        vaults.business = {
-          enable = true;
-          target = "Documents/Business";
         };
       };
     };
