@@ -53,6 +53,8 @@
         #window {
           background: transparent;
           padding: 4px 8px;
+          margin-top: -50px;
+          margin-bottom: -50px;
         }
 
         #battery,

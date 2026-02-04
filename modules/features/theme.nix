@@ -55,6 +55,7 @@
         corefonts
         liberation_ttf
         noto-fonts
+        noto-fonts-cjk-sans
         vista-fonts
       ];
     };
