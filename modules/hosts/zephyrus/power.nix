@@ -10,8 +10,18 @@
       monitorHighRefresh = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
       monitorLowRefresh = "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10";
 
+      stateFile = "/tmp/power-state-last";
+
       applyPowerState = pkgs.writeShellScript "apply-power-state" ''
         STATUS=$(cat /sys/class/power_supply/ACAD/online)
+        PREV=$(cat ${stateFile} 2>/dev/null || echo "")
+
+        if [ "$STATUS" = "$PREV" ]; then
+          exit 0
+        fi
+
+        echo "$STATUS" > ${stateFile}
+
         MONITOR_JSON=$(${hyprctl} monitors -j)
         MONITOR_COUNT=$(echo "$MONITOR_JSON" | ${jq} '[.[] | select(.name == "eDP-1")] | length')
 
