@@ -16,20 +16,8 @@
         STATUS=$(cat /sys/class/power_supply/ACAD/online)
         PREV=$(cat ${stateFile} 2>/dev/null || echo "")
 
-        if [ "$STATUS" = "$PREV" ]; then
-          exit 0
-        fi
-
-        echo "$STATUS" > ${stateFile}
-
         MONITOR_JSON=$(${hyprctl} monitors -j)
         MONITOR_COUNT=$(echo "$MONITOR_JSON" | ${jq} '[.[] | select(.name == "eDP-1")] | length')
-
-        if [ "$STATUS" = "1" ]; then
-          ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Connected"
-        else
-          ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Disconnected"
-        fi
 
         if [ "$MONITOR_COUNT" -gt 0 ]; then
           CURRENT_RATE=$(echo "$MONITOR_JSON" | ${jq} -r '.[] | select(.name == "eDP-1") | .refreshRate | round')
@@ -39,6 +27,18 @@
           else
             [ "$CURRENT_RATE" -ne 60 ] && ${hyprctl} keyword monitor '${monitorLowRefresh}'
           fi
+        fi
+
+        if [ "$STATUS" = "$PREV" ]; then
+          exit 0
+        fi
+
+        echo "$STATUS" > ${stateFile}
+
+        if [ "$STATUS" = "1" ]; then
+          ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Connected"
+        else
+          ${notify} -a osd-text -t 5000 -h string:x-dunst-stack-tag:power "Power Disconnected"
         fi
       '';
 
