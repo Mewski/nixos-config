@@ -23,11 +23,14 @@
         nix-ld.enable = true;
       };
 
-      environment.systemPackages = with pkgs; [
-        nil
-        nixd
-        nixfmt
-        statix
-      ];
+      environment = {
+        variables.NIXPKGS_ALLOW_UNFREE = "1";
+        systemPackages = with pkgs; [
+          nil
+          nixd
+          nixfmt
+          statix
+        ];
+      };
     };
 }
