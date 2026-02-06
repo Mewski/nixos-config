@@ -25,6 +25,7 @@
 
       environment = {
         variables.NIXPKGS_ALLOW_UNFREE = "1";
+
         systemPackages = with pkgs; [
           nil
           nixd
