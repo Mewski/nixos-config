@@ -81,11 +81,10 @@
       setDisplayBrightness =
         direction:
         pkgs.writeShellScript "set-display-brightness-${direction}" ''
-          # Try nvidia first (when using dGPU via MUX)
           if [ -d "/sys/class/backlight/${nvidiaBacklight}" ]; then
             val=$(${brightnessctl} -d ${nvidiaBacklight} -m set 5%${direction} | cut -d, -f4 | tr -d '%')
           fi
-          # Try intel (when using iGPU or hybrid)
+
           if [ -d "/sys/class/backlight/${intelBacklight}" ]; then
             val=$(${brightnessctl} -d ${intelBacklight} -m set 5%${direction} | cut -d, -f4 | tr -d '%')
           fi
@@ -124,7 +123,20 @@
       wayland.windowManager.hyprland.settings = {
         monitor = [
           internalDisplayConfig
-          ", preferred, auto, 1.25"
+          ", highrr, auto, 1.25"
+        ];
+
+        workspace = [
+          "1, monitor:eDP-1, default:true"
+          "2, monitor:eDP-1, default:true"
+          "3, monitor:eDP-1, default:true"
+          "4, monitor:eDP-1, default:true"
+          "5, monitor:eDP-1, default:true"
+          "6, monitor:DP-1, default:true"
+          "7, monitor:DP-1, default:true"
+          "8, monitor:DP-1, default:true"
+          "9, monitor:DP-1, default:true"
+          "10, monitor:DP-1, default:true"
         ];
 
         input.touchpad = {
