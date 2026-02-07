@@ -38,6 +38,7 @@
         lazygit
         lldb
         nix-output-monitor
+        nodejs
         proxychains-ng
         (python3.withPackages (
           ps: with ps; [

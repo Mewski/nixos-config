@@ -29,6 +29,7 @@
       };
 
       interfaces.vmbr2 = {
+        mtu = 1420;
         ipv4.addresses = [
           {
             address = "23.152.236.1";
