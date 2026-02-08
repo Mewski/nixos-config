@@ -3,13 +3,24 @@
     { lib, pkgs, ... }:
     let
       nixfmt = lib.getExe pkgs.nixfmt;
+      claude-code = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          name = "claude-code";
+          publisher = "anthropic";
+          version = "2.1.37";
+          sha256 = "sha256-Lc3TNj74BW/M1sK+bz/xw4L5B6KKBUh2uzXckScwPr8=";
+        };
+      };
     in
     {
       programs.vscode = {
         enable = true;
         mutableExtensionsDir = false;
 
-        profiles.default.extensions = with pkgs.vscode-extensions; [
+        profiles.default.extensions = [
+          claude-code
+        ]
+        ++ (with pkgs.vscode-extensions; [
           eamodio.gitlens
           github.copilot
           github.copilot-chat
@@ -29,7 +40,7 @@
           tamasfe.even-better-toml
           vue.volar
           wakatime.vscode-wakatime
-        ];
+        ]);
 
         profiles.default.userSettings = {
           "editor.tabSize" = 2;

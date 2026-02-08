@@ -41,8 +41,6 @@
       networking = {
         hostName = "zephyrus";
         networkmanager.enable = true;
-        firewall.enable = false;
-        firewall.allowedTCPPorts = [ 80 ];
       };
 
       zramSwap.enable = true;
@@ -67,7 +65,6 @@
     let
       brightnessctl = lib.getExe pkgs.brightnessctl;
       notify = lib.getExe pkgs.libnotify;
-      jq = lib.getExe pkgs.jq;
 
       kbdBacklight = "asus::kbd_backlight";
       intelBacklight = "intel_backlight";
@@ -99,20 +96,6 @@
             -h int:value:''${val:-0} \
             'Display Brightness'
         '';
-
-      lidSwitchOn = pkgs.writeShellScript "lid-switch-on" ''
-        external_count=$(hyprctl monitors -j | ${jq} '[.[] | select(.name != "eDP-1")] | length')
-        if [ "$external_count" -gt 0 ]; then
-          hyprctl keyword monitor 'eDP-1, disable'
-        fi
-      '';
-
-      lidSwitchOff = pkgs.writeShellScript "lid-switch-off" ''
-        internal_count=$(hyprctl monitors -j | ${jq} '[.[] | select(.name == "eDP-1")] | length')
-        if [ "$internal_count" -eq 0 ]; then
-          hyprctl keyword monitor '${internalDisplayConfig}'
-        fi
-      '';
 
       dimDisplay = pkgs.writeShellScript "dim-display" ''
         ${brightnessctl} -d ${intelBacklight} -s set 1%
@@ -161,11 +144,6 @@
           ",XF86KbdBrightnessUp, exec, ${brightnessctl} -d ${kbdBacklight} set 1+ && ${notifyKbdBrightness}"
           ",XF86MonBrightnessDown, exec, ${setDisplayBrightness "-"}"
           ",XF86MonBrightnessUp, exec, ${setDisplayBrightness "+"}"
-        ];
-
-        bindl = [
-          ",switch:on:Lid Switch, exec, ${lidSwitchOn}"
-          ",switch:off:Lid Switch, exec, ${lidSwitchOff}"
         ];
       };
 
