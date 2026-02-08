@@ -41,6 +41,7 @@
       networking = {
         hostName = "zephyrus";
         networkmanager.enable = true;
+        firewall.enable = false;
         firewall.allowedTCPPorts = [ 80 ];
       };
 
@@ -49,10 +50,14 @@
       services = {
         openssh.enable = true;
         blueman.enable = true;
+        resolved.enable = true;
         udev.packages = [ pkgs.wooting-udev-rules ];
       };
 
-      environment.systemPackages = [ pkgs.sbctl ];
+      environment.systemPackages = with pkgs; [
+        openvpn
+        sbctl
+      ];
 
       system.stateVersion = "25.11";
     };

@@ -17,6 +17,7 @@
         spice
         spice-gtk
         spice-protocol
+        libguestfs-with-appliance
         virt-viewer
       ];
     };

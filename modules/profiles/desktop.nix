@@ -88,6 +88,7 @@
         bitwarden-desktop
         brightnessctl
         drawing
+        file
         gnome-text-editor
         jq
         libnotify
