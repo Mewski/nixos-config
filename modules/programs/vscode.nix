@@ -32,6 +32,7 @@
           ms-python.vscode-pylance
           ms-toolsai.jupyter
           ms-vscode.cmake-tools
+          ms-vscode.makefile-tools
           ms-vscode-remote.remote-containers
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.remote-ssh-edit

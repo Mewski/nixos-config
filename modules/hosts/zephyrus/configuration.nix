@@ -111,20 +111,22 @@
       wayland.windowManager.hyprland.settings = {
         monitor = [
           internalDisplayConfig
+          "DP-1, 2560x1600@144, 2048x0, 1.25"
+          "HDMI-A-1, 3840x2160@60, -512x-1728, 1.25"
           ", highrr, auto, 1.25"
         ];
 
         workspace = [
           "1, monitor:eDP-1, default:true"
-          "2, monitor:eDP-1, default:true"
-          "3, monitor:eDP-1, default:true"
-          "4, monitor:eDP-1, default:true"
-          "5, monitor:eDP-1, default:true"
+          "2, monitor:eDP-1"
+          "3, monitor:eDP-1"
+          "4, monitor:eDP-1"
+          "5, monitor:eDP-1"
           "6, monitor:DP-1, default:true"
-          "7, monitor:DP-1, default:true"
-          "8, monitor:DP-1, default:true"
-          "9, monitor:DP-1, default:true"
-          "10, monitor:DP-1, default:true"
+          "7, monitor:DP-1"
+          "8, monitor:HDMI-A-1, default:true"
+          "9, monitor:HDMI-A-1"
+          "10, monitor:HDMI-A-1"
         ];
 
         input.touchpad = {
