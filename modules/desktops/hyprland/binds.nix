@@ -54,6 +54,11 @@
           exit 0
         fi
 
+        for _ in $(seq 1 10); do
+          [ -f "$file" ] && break
+          sleep 0.1
+        done
+
         if [ ! -f "$file" ]; then
           exit 0
         fi
