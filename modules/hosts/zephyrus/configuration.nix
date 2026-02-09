@@ -64,7 +64,10 @@
     { lib, pkgs, ... }:
     let
       brightnessctl = lib.getExe pkgs.brightnessctl;
+      hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
+      jq = lib.getExe pkgs.jq;
       notify = lib.getExe pkgs.libnotify;
+      socat = lib.getExe pkgs.socat;
 
       kbdBacklight = "asus::kbd_backlight";
       intelBacklight = "intel_backlight";
@@ -106,6 +109,47 @@
         ${brightnessctl} -d ${intelBacklight} -r
         ${brightnessctl} -d ${nvidiaBacklight} -r
       '';
+
+      assignWorkspaces = pkgs.writeShellScript "assign-workspaces" ''
+        ${hyprctl} reload config-only
+
+        monitors=$(${hyprctl} monitors -j | ${jq} -r '.[].name')
+        count=$(echo "$monitors" | wc -l)
+
+        has_dp=$(echo "$monitors" | grep -c "^DP-1$")
+        has_hdmi=$(echo "$monitors" | grep -c "^HDMI-A-1$")
+
+        assign() {
+          local ws=$1 mon=$2 default=''${3:-}
+          ${hyprctl} keyword workspace "$ws, monitor:$mon''${default:+, default:true}" >/dev/null
+          ${hyprctl} dispatch moveworkspacetomonitor "$ws $mon" >/dev/null 2>&1
+        }
+
+        if [ "$count" -ge 3 ] && [ "$has_dp" -eq 1 ] && [ "$has_hdmi" -eq 1 ]; then
+          for i in 1 2 3 4; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo y)"; done
+          for i in 5 6 7;   do assign "$i" DP-1 "$([ "$i" -eq 5 ] && echo y)"; done
+          for i in 8 9 10;  do assign "$i" HDMI-A-1 "$([ "$i" -eq 8 ] && echo y)"; done
+        elif [ "$count" -eq 2 ]; then
+          for i in 1 2 3 4 5; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo y)"; done
+          if [ "$has_dp" -eq 1 ]; then secondary=DP-1; else secondary=HDMI-A-1; fi
+          for i in 6 7 8 9 10; do assign "$i" "$secondary" "$([ "$i" -eq 6 ] && echo y)"; done
+        else
+          for i in 1 2 3 4 5 6 7 8 9 10; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo y)"; done
+        fi
+      '';
+
+      monitorEventListener = pkgs.writeShellScript "monitor-event-listener" ''
+        trap "" HUP
+        ${socat} -U - UNIX-CONNECT:"$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | \
+          while IFS= read -r line; do
+            case "$line" in
+              monitoradded*|monitorremoved*)
+                sleep 1
+                ${assignWorkspaces}
+                ;;
+            esac
+          done
+      '';
     in
     {
       wayland.windowManager.hyprland.settings = {
@@ -116,17 +160,9 @@
           ", highrr, auto, 1.25"
         ];
 
-        workspace = [
-          "1, monitor:eDP-1, default:true"
-          "2, monitor:eDP-1"
-          "3, monitor:eDP-1"
-          "4, monitor:eDP-1"
-          "5, monitor:eDP-1"
-          "6, monitor:DP-1, default:true"
-          "7, monitor:DP-1"
-          "8, monitor:HDMI-A-1, default:true"
-          "9, monitor:HDMI-A-1"
-          "10, monitor:HDMI-A-1"
+        exec-once = [
+          "${assignWorkspaces}"
+          "${monitorEventListener}"
         ];
 
         input.touchpad = {
