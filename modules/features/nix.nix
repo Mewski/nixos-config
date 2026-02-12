@@ -28,6 +28,7 @@
 
         systemPackages = with pkgs; [
           nil
+          nix-output-monitor
           nixd
           nixfmt
           statix

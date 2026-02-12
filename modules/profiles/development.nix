@@ -42,7 +42,6 @@
         lazygit
         libtool
         llvm
-        nix-output-monitor
         nodejs
         perf
         pkg-config
