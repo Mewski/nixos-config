@@ -38,6 +38,8 @@
           ms-vscode-remote.remote-ssh-edit
           ms-vsliveshare.vsliveshare
           pkief.material-icon-theme
+          fill-labs.dependi
+          rust-lang.rust-analyzer
           tamasfe.even-better-toml
           vue.volar
           wakatime.vscode-wakatime

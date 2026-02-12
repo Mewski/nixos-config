@@ -14,6 +14,7 @@
         self.nixosModules.desktop
         self.nixosModules.development
         self.nixosModules.gaming
+        self.nixosModules.security
         self.nixosModules.nvidia
         self.nixosModules.tablet
         self.nixosModules.theme

@@ -13,7 +13,6 @@
     { pkgs, ... }:
     {
       imports = [
-        self.homeModules.binary-ninja
         self.homeModules.claude-code
         self.homeModules.direnv
         self.homeModules.gemini-cli
@@ -30,16 +29,13 @@
         devenv
         difftastic
         gcc
-        gdb
         ghq
         gnumake
         just
         lazydocker
         lazygit
-        lldb
         nix-output-monitor
         nodejs
-        proxychains-ng
         (python3.withPackages (
           ps: with ps; [
             numpy
@@ -47,9 +43,7 @@
             requests
           ]
         ))
-        radare2
         rstudio
-        vt-cli
       ];
     };
 }
