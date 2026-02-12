@@ -18,12 +18,18 @@
         self.homeModules.gemini-cli
         self.homeModules.git
         self.homeModules.nixvim
+        self.homeModules.python
         self.homeModules.vscode
         self.homeModules.zed-editor
       ];
 
       home.packages = with pkgs; [
+        autoconf
+        automake
         bc
+        boost
+        bun
+        bzip2
         clang-tools
         cmake
         devenv
@@ -34,16 +40,15 @@
         just
         lazydocker
         lazygit
+        libtool
+        llvm
         nix-output-monitor
         nodejs
-        (python3.withPackages (
-          ps: with ps; [
-            numpy
-            pip
-            requests
-          ]
-        ))
+        perf
+        pkg-config
         rstudio
+        sqlite
+        zlib
       ];
     };
 }
