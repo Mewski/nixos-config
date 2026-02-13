@@ -4,12 +4,18 @@
     let
       domain = "gitlab.mewski.dev";
       registryDomain = "registry.gitlab.mewski.dev";
-      pagesDomain = "pages.mewski.dev";
+      pagesDomain = "mewski.io";
 
       sslConfig = {
         forceSSL = true;
-        sslCertificate = config.sops.secrets."cloudflare/cert".path;
-        sslCertificateKey = config.sops.secrets."cloudflare/key".path;
+        sslCertificate = config.sops.secrets."cloudflare/mewski-dev/cert".path;
+        sslCertificateKey = config.sops.secrets."cloudflare/mewski-dev/key".path;
+      };
+
+      pagesSslConfig = {
+        forceSSL = true;
+        sslCertificate = config.sops.secrets."cloudflare/mewski-io/cert".path;
+        sslCertificateKey = config.sops.secrets."cloudflare/mewski-io/key".path;
       };
 
       proxyHeaders = ''
@@ -112,12 +118,14 @@
           };
         };
 
-        "~^(?<subdomain>.+)\\.${builtins.replaceStrings [ "." ] [ "\\." ] pagesDomain}$" = sslConfig // {
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:8090";
-            extraConfig = proxyHeaders;
+        "~^(?<subdomain>.+)\\.${builtins.replaceStrings [ "." ] [ "\\." ] pagesDomain}$" =
+          pagesSslConfig
+          // {
+            locations."/" = {
+              proxyPass = "http://127.0.0.1:8090";
+              extraConfig = proxyHeaders;
+            };
           };
-        };
       };
     };
 }

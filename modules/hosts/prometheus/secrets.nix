@@ -18,8 +18,10 @@ in
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
       secrets = {
-        "cloudflare/cert" = nginxSecret;
-        "cloudflare/key" = nginxSecret;
+        "cloudflare/mewski-dev/cert" = nginxSecret;
+        "cloudflare/mewski-dev/key" = nginxSecret;
+        "cloudflare/mewski-io/cert" = nginxSecret;
+        "cloudflare/mewski-io/key" = nginxSecret;
 
         "gitlab/active_record_deterministic_key" = gitSecret;
         "gitlab/active_record_primary_key" = gitSecret;
