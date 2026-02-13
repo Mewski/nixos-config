@@ -27,6 +27,13 @@
         };
       };
 
-      users.users.gitlab-runner.extraGroups = [ "docker" ];
+      users = {
+        users.gitlab-runner = {
+          isSystemUser = true;
+          group = "gitlab-runner";
+          extraGroups = [ "docker" ];
+        };
+        groups.gitlab-runner = { };
+      };
     };
 }
