@@ -51,6 +51,10 @@
           "cloud.takoyaki.io" = sslConfig // {
             locations."/".proxyPass = "http://127.0.0.1:3100";
           };
+
+          "takoyaki.io" = sslConfig // {
+            locations."/".proxyPass = "http://127.0.0.1:3200";
+          };
         };
       };
     };
