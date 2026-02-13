@@ -34,10 +34,6 @@
           autosave = "on_focus_change";
           git.word_diff_enabled = true;
 
-          languages."C++" = {
-            format_on_save = "on";
-          };
-
           vim = {
             use_smartcase_find = true;
             use_system_clipboard = "always";
@@ -48,6 +44,15 @@
 
           telemetry.metrics = false;
           features.edit_prediction_provider = "copilot";
+
+          languages = {
+            "C++".format_on_save = "on";
+            CSS.language_servers = [
+              "tailwindcss-intellisense-css"
+              "!vscode-css-language-server"
+              "..."
+            ];
+          };
 
           lsp = {
             clangd.binary.arguments = [
@@ -70,6 +75,8 @@
           "material-icon-theme"
           "neocmake"
           "nix"
+          "prettier"
+          "tailwind-css"
           "toml"
           "astro"
           "vue"
