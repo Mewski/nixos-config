@@ -1,5 +1,6 @@
 {
   flake.nixosModules.prometheus =
+    { config, ... }:
     let
       cloudflareIPs = [
         "173.245.48.0/20"
@@ -25,6 +26,12 @@
         "2a06:98c0::/29"
         "2c0f:f248::/32"
       ];
+
+      sslConfig = {
+        forceSSL = true;
+        sslCertificate = config.sops.secrets."cloudflare/cert".path;
+        sslCertificateKey = config.sops.secrets."cloudflare/key".path;
+      };
     in
     {
       services.nginx = {
@@ -39,6 +46,12 @@
           ${builtins.concatStringsSep "\n" (map (ip: "set_real_ip_from ${ip};") cloudflareIPs)}
           real_ip_header CF-Connecting-IP;
         '';
+
+        virtualHosts = {
+          "cloud.takoyaki.io" = sslConfig // {
+            locations."/".proxyPass = "http://127.0.0.1:3100";
+          };
+        };
       };
     };
 }
