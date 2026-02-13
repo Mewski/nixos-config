@@ -71,6 +71,7 @@
           "neocmake"
           "nix"
           "toml"
+          "astro"
           "vue"
           "wakatime"
         ];

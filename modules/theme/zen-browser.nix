@@ -143,6 +143,10 @@
             background-color: ${scheme.withHashtag.base00} !important;
           }
 
+          #tabbrowser-tabpanels {
+            background-color: white !important;
+          }
+
           #contentAreaContextMenu menu,
           menuitem,
           menupopup {
