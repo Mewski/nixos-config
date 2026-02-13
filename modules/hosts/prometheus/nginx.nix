@@ -29,8 +29,8 @@
 
       sslConfig = {
         forceSSL = true;
-        sslCertificate = config.sops.secrets."cloudflare/cert".path;
-        sslCertificateKey = config.sops.secrets."cloudflare/key".path;
+        sslCertificate = config.sops.secrets."cloudflare/mewski-io/cert".path;
+        sslCertificateKey = config.sops.secrets."cloudflare/mewski-io/key".path;
       };
     in
     {
