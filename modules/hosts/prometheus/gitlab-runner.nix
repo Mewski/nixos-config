@@ -5,8 +5,13 @@
       services.gitlab-runner = {
         enable = true;
 
+        services.shell-runner = {
+          authenticationTokenConfigFile = config.sops.secrets."gitlab-runner/shell-token".path;
+          executor = "shell";
+        };
+
         services.docker-runner = {
-          authenticationTokenConfigFile = config.sops.secrets."gitlab-runner/token".path;
+          authenticationTokenConfigFile = config.sops.secrets."gitlab-runner/docker-token".path;
           dockerImage = "alpine:latest";
           dockerPrivileged = true;
           dockerVolumes = [
@@ -21,5 +26,7 @@
           executor = "docker";
         };
       };
+
+      users.users.gitlab-runner.extraGroups = [ "docker" ];
     };
 }

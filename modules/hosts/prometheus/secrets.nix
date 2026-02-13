@@ -31,7 +31,8 @@ in
         "gitlab/otp" = gitSecret;
         "gitlab/secret" = gitSecret;
 
-        "gitlab-runner/token" = { };
+        "gitlab-runner/shell-token" = { };
+        "gitlab-runner/docker-token" = { };
       };
     };
   };
