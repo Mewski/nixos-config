@@ -73,6 +73,7 @@
           settings = {
             pages-domain = pagesDomain;
             listen-proxy = [ "127.0.0.1:8090" ];
+            custom-domain-mode = "https";
           };
         };
 
