@@ -73,7 +73,6 @@
           settings = {
             pages-domain = pagesDomain;
             listen-proxy = [ "127.0.0.1:8090" ];
-            custom-domain-mode = "https";
           };
         };
 
@@ -94,6 +93,7 @@
             host = pagesDomain;
             port = 443;
             https = true;
+            external_https = [ "127.0.0.1:443" ];
           };
 
           gitlab_kas.enabled = false;
@@ -127,6 +127,14 @@
               extraConfig = proxyHeaders;
             };
           };
+
+        "_" = {
+          default = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:8090";
+            extraConfig = proxyHeaders;
+          };
+        };
       };
     };
 }
