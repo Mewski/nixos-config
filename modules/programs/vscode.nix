@@ -52,7 +52,7 @@
           "editor.bracketPairColorization.enabled" = true;
           "editor.guides.indentation" = true;
           "editor.guides.bracketPairs" = true;
-          "editor.lineNumbers" = "relative";
+          "editor.lineNumbers" = "on";
           "editor.minimap.enabled" = false;
           "editor.renderWhitespace" = "boundary";
           "editor.cursorBlinking" = "smooth";
