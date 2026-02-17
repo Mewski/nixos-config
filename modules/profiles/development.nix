@@ -37,6 +37,8 @@
         gcc
         ghq
         gnumake
+        go
+        gopls
         just
         lazydocker
         lazygit

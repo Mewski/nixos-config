@@ -94,6 +94,8 @@
         trim.enable = true;
       };
 
+      powerManagement.cpuFreqGovernor = "performance";
+
       zramSwap.enable = true;
 
       services.openssh = {
