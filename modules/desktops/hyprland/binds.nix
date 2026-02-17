@@ -105,7 +105,7 @@
           "SUPER, K, exec, ${cliphistSelect}"
           "SUPER, Z, exec, ${lib.getExe pkgs.zed-editor}"
           "SUPER, D, exec, discord"
-          "SUPER, B, exec, zen"
+          "SUPER, B, exec, zen-beta"
 
           "SUPER, S, exec, ${lib.getExe pkgs.hyprpicker} -a -r"
           "SUPER SHIFT, S, exec, ${screenshot} region"

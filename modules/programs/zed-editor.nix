@@ -42,6 +42,7 @@
             use_multiline_find = true;
           };
 
+          restore_on_startup = "empty_tab";
           telemetry.metrics = false;
           features.edit_prediction_provider = "copilot";
 
