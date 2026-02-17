@@ -79,6 +79,38 @@
       };
     };
 
+    systemd.services.proxmox-bridge-reattach = {
+      after = [
+        "vmbr0-netdev.service"
+        "vmbr1-netdev.service"
+        "vmbr2-netdev.service"
+      ];
+      wantedBy = [ "network.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      path = [ "/run/current-system/sw" ];
+      script = ''
+        for conf in /etc/pve/qemu-server/*.conf; do
+          [ -f "$conf" ] || continue
+          vmid=$(basename "$conf" .conf)
+          grep -oP 'net\d+: .+' "$conf" | while IFS= read -r line; do
+            idx=$(echo "$line" | grep -oP 'net\K\d+')
+            bridge=$(echo "$line" | grep -oP 'bridge=\K[^,]+')
+            tap="tap''${vmid}i''${idx}"
+            if [ -d "/sys/class/net/$tap" ] && [ -d "/sys/class/net/$bridge" ]; then
+              current=$(cat "/sys/class/net/$tap/master/uevent" 2>/dev/null | grep -oP 'INTERFACE=\K.+' || true)
+              if [ "$current" != "$bridge" ]; then
+                echo "Re-attaching $tap to $bridge"
+                ip link set dev "$tap" master "$bridge" || true
+              fi
+            fi
+          done
+        done
+      '';
+    };
+
     services.proxmox-ve = {
       enable = true;
       ipAddress = "10.0.20.10";
