@@ -113,31 +113,46 @@
       '';
 
       assignWorkspaces = pkgs.writeShellScript "assign-workspaces" ''
-        ${hyprctl} reload config-only
-
         monitors=$(${hyprctl} monitors -j | ${jq} -r '.[].name')
         count=$(echo "$monitors" | wc -l)
-
         has_dp=$(echo "$monitors" | grep -c "^DP-1$")
         has_hdmi=$(echo "$monitors" | grep -c "^HDMI-A-1$")
 
         assign() {
-          local ws=$1 mon=$2 default=''${3:-}
-          ${hyprctl} keyword workspace "$ws, monitor:$mon''${default:+, default:true}" >/dev/null
-          ${hyprctl} dispatch moveworkspacetomonitor "$ws $mon" >/dev/null 2>&1
+          ${hyprctl} --batch \
+            "keyword workspace $1, monitor:$2, default:$3 ; \
+             dispatch moveworkspacetomonitor $1 $2" >/dev/null 2>&1
         }
 
         if [ "$count" -ge 3 ] && [ "$has_dp" -eq 1 ] && [ "$has_hdmi" -eq 1 ]; then
-          for i in 1 2 3 4; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo y)"; done
-          for i in 5 6 7;   do assign "$i" DP-1 "$([ "$i" -eq 5 ] && echo y)"; done
-          for i in 8 9 10;  do assign "$i" HDMI-A-1 "$([ "$i" -eq 8 ] && echo y)"; done
+          for i in 1 2 3 4; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo true || echo false)"; done
+          for i in 5 6 7;   do assign "$i" DP-1 "$([ "$i" -eq 5 ] && echo true || echo false)"; done
+          for i in 8 9 10;  do assign "$i" HDMI-A-1 "$([ "$i" -eq 8 ] && echo true || echo false)"; done
         elif [ "$count" -eq 2 ]; then
-          for i in 1 2 3 4 5; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo y)"; done
+          for i in 1 2 3 4 5; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo true || echo false)"; done
           if [ "$has_dp" -eq 1 ]; then secondary=DP-1; else secondary=HDMI-A-1; fi
-          for i in 6 7 8 9 10; do assign "$i" "$secondary" "$([ "$i" -eq 6 ] && echo y)"; done
+          for i in 6 7 8 9 10; do assign "$i" "$secondary" "$([ "$i" -eq 6 ] && echo true || echo false)"; done
         else
-          for i in 1 2 3 4 5 6 7 8 9 10; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo y)"; done
+          for i in 1 2 3 4 5 6 7 8 9 10; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo true || echo false)"; done
         fi
+
+        stray_workspaces=$(${hyprctl} workspaces -j | ${jq} -r '.[] | select(.id > 10) | .id')
+        for ws in $stray_workspaces; do
+          ws_mon=$(${hyprctl} workspaces -j | ${jq} -r ".[] | select(.id == $ws) | .monitor")
+          if [ "$ws_mon" = "eDP-1" ]; then target_ws=1;
+          elif [ "$ws_mon" = "DP-1" ]; then
+            if [ "$count" -ge 3 ]; then target_ws=5; else target_ws=6; fi
+          elif [ "$ws_mon" = "HDMI-A-1" ]; then target_ws=8;
+          else target_ws=1; fi
+
+          for addr in $(${hyprctl} clients -j | ${jq} -r ".[] | select(.workspace.id == $ws) | .address"); do
+            ${hyprctl} dispatch movetoworkspace "$target_ws,address:$addr" >/dev/null 2>&1
+          done
+
+          ${hyprctl} --batch \
+            "dispatch focusmonitor $ws_mon ; \
+             dispatch workspace $target_ws" >/dev/null 2>&1
+        done
       '';
 
       monitorEventListener = pkgs.writeShellScript "monitor-event-listener" ''
