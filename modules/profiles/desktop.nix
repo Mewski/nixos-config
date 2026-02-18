@@ -76,6 +76,20 @@
         self.homeModules.zen-browser
       ];
 
+      xdg.mimeApps = {
+        enable = true;
+        defaultApplications = {
+          "application/zip" = "org.gnome.FileRoller.desktop";
+          "application/x-7z-compressed" = "org.gnome.FileRoller.desktop";
+          "application/x-tar" = "org.gnome.FileRoller.desktop";
+          "application/gzip" = "org.gnome.FileRoller.desktop";
+          "application/x-compressed-tar" = "org.gnome.FileRoller.desktop";
+          "application/x-bzip2-compressed-tar" = "org.gnome.FileRoller.desktop";
+          "application/x-xz-compressed-tar" = "org.gnome.FileRoller.desktop";
+          "application/x-rar" = "org.gnome.FileRoller.desktop";
+        };
+      };
+
       home.pointerCursor = {
         inherit (theme.cursor) name package size;
         x11.enable = true;
@@ -89,6 +103,7 @@
         brightnessctl
         drawing
         file
+        file-roller
         gnome-text-editor
         jq
         libnotify

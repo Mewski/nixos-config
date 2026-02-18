@@ -3,7 +3,7 @@
     disko.devices = {
       disk.ssd0 = {
         type = "disk";
-        device = "/dev/disk/by-id/TODO-replace-with-actual-disk-id";
+        device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LM1T9HMJP-00005_S2TVNX0JB00808";
         content = {
           type = "gpt";
           partitions = {
