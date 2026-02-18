@@ -6,7 +6,7 @@
     nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
 
     networking.bridges = {
-      vmbr0.interfaces = [ ];
+      vmbr0.interfaces = [ "ens1f0" ];
       vmbr1.interfaces = [ ];
       vmbr2.interfaces = [ ];
     };

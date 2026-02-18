@@ -45,7 +45,7 @@
           "10.0.50.1"
         ];
 
-        interfaces.ens1f0.ipv4.addresses = [
+        interfaces.vmbr0.ipv4.addresses = [
           {
             address = "10.0.50.10";
             prefixLength = 24;
