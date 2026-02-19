@@ -54,7 +54,6 @@
 
         firewall = {
           allowedTCPPorts = [ 22 ];
-          interfaces.vmbr0.allowedTCPPorts = [ 8006 ];
         };
       };
 

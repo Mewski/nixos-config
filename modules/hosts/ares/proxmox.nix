@@ -40,6 +40,8 @@
         };
 
         firewall.extraCommands = ''
+          ${iptables} -I nixos-fw -p tcp --dport 8006 ! -i vmbr0 -j nixos-fw-refuse
+          ${ip6tables} -I nixos-fw -p tcp --dport 8006 ! -i vmbr0 -j nixos-fw-refuse
           ${iptables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o wg0 -j TCPMSS --clamp-mss-to-pmtu
           ${iptables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -i wg0 -j TCPMSS --clamp-mss-to-pmtu
           ${ip6tables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o wg0 -j TCPMSS --clamp-mss-to-pmtu
