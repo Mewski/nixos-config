@@ -21,14 +21,14 @@
 
         postSetup = ''
           ${ip} route add 23.152.236.0/28 dev wg0
-          ${ip} route add 23.152.236.16/28 dev wg0
+          ${ip} route add 23.152.236.16/27 dev wg0
           ${ip} -6 route add 2602:fe18::/48 dev wg0
           ${ip} -6 route add 2602:fe18:1::/48 dev wg0
         '';
 
         postShutdown = ''
           ${ip} route del 23.152.236.0/28 dev wg0 || true
-          ${ip} route del 23.152.236.16/28 dev wg0 || true
+          ${ip} route del 23.152.236.16/27 dev wg0 || true
           ${ip} -6 route del 2602:fe18::/48 dev wg0 || true
           ${ip} -6 route del 2602:fe18:1::/48 dev wg0 || true
         '';
@@ -46,7 +46,7 @@
             publicKey = "FYjYrpCpShODVevBeBo99oViDU0hyFkx/NAE6GtLUCI=";
             presharedKeyFile = config.sops.secrets."wireguard/ares/preshared_key".path;
             allowedIPs = [
-              "23.152.236.16/28"
+              "23.152.236.16/27"
               "2602:fe18:1::/48"
             ];
           }

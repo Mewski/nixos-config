@@ -24,20 +24,24 @@
         };
 
         interfaces.vmbr1 = {
-          mtu = 1420;
           ipv4.addresses = [
             {
-              address = "23.152.236.16";
-              prefixLength = 28;
+              address = "10.0.50.17";
+              prefixLength = 30;
             }
           ];
           ipv6.addresses = [
             {
-              address = "2602:fe18:1::1";
-              prefixLength = 48;
+              address = "fd00::1";
+              prefixLength = 126;
             }
           ];
         };
+
+        localCommands = ''
+          ${lib.getExe' pkgs.iproute2 "ip"} route replace 23.152.236.16/27 via 10.0.50.18
+          ${lib.getExe' pkgs.iproute2 "ip"} -6 route replace 2602:fe18:1::/48 via fd00::2
+        '';
 
         firewall.extraCommands = ''
           ${iptables} -I nixos-fw -p tcp --dport 8006 ! -i vmbr0 -j nixos-fw-refuse
