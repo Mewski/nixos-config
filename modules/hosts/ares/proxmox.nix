@@ -24,6 +24,7 @@
         };
 
         interfaces.vmbr1 = {
+          mtu = 1420;
           ipv4.addresses = [
             {
               address = "172.16.0.1";
@@ -39,20 +40,13 @@
         };
 
         localCommands = ''
-          ${lib.getExe' pkgs.iproute2 "ip"} route replace 23.152.236.32/27 via 172.16.0.2
+          ${lib.getExe' pkgs.iproute2 "ip"} route replace 23.152.236.16/28 via 172.16.0.2
           ${lib.getExe' pkgs.iproute2 "ip"} -6 route replace 2602:fe18:1::/48 via fd00::2
         '';
 
-        nat = {
-          enable = true;
-          extraCommands = ''
-            ${iptables} -t nat -A POSTROUTING -s 172.16.0.0/30 -o wg0 -j SNAT --to-source 23.152.236.32
-          '';
-        };
-
         firewall.extraCommands = ''
-          ${iptables} -I nixos-fw -p tcp --dport 8006 ! -i vmbr0 -j nixos-fw-refuse
-          ${ip6tables} -I nixos-fw -p tcp --dport 8006 ! -i vmbr0 -j nixos-fw-refuse
+          ${iptables} -A nixos-fw -i vmbr1 -p tcp --dport 8006 -j nixos-fw-accept
+          ${ip6tables} -A nixos-fw -i vmbr1 -p tcp --dport 8006 -j nixos-fw-accept
           ${iptables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o wg0 -j TCPMSS --clamp-mss-to-pmtu
           ${iptables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -i wg0 -j TCPMSS --clamp-mss-to-pmtu
           ${ip6tables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o wg0 -j TCPMSS --clamp-mss-to-pmtu
