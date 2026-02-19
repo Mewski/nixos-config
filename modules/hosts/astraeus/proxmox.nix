@@ -1,124 +1,103 @@
 { inputs, ... }:
 {
-  flake.nixosModules.astraeus = {
-    imports = [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
+  flake.nixosModules.astraeus =
+    { pkgs, lib, ... }:
+    let
+      iptables = lib.getExe' pkgs.iptables "iptables";
+      ip6tables = lib.getExe' pkgs.iptables "ip6tables";
+    in
+    {
+      imports = [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
 
-    nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
+      nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
 
-    boot.kernel.sysctl = {
-      "net.bridge.bridge-nf-call-iptables" = 0;
-      "net.bridge.bridge-nf-call-ip6tables" = 0;
-    };
+      boot.kernel.sysctl = {
+        "net.bridge.bridge-nf-call-iptables" = 0;
+        "net.bridge.bridge-nf-call-ip6tables" = 0;
+      };
 
-    networking = {
-      vlans = {
-        vlan30 = {
-          id = 30;
-          interface = "ens1f0";
+      networking = {
+        vlans = {
+          vlan30 = {
+            id = 30;
+            interface = "ens1f0";
+          };
+          vlan40 = {
+            id = 40;
+            interface = "ens1f0";
+          };
         };
-        vlan40 = {
-          id = 40;
-          interface = "ens1f0";
+
+        bridges = {
+          vmbr0.interfaces = [ "vlan30" ];
+          vmbr1.interfaces = [ "vlan40" ];
+          vmbr2.interfaces = [ ];
         };
-      };
 
-      bridges = {
-        vmbr0.interfaces = [ "vlan30" ];
-        vmbr1.interfaces = [ "vlan40" ];
-        vmbr2.interfaces = [ ];
-      };
+        interfaces.vmbr2 = {
+          mtu = 1420;
+          ipv4.addresses = [
+            {
+              address = "23.152.236.1";
+              prefixLength = 28;
+            }
+          ];
+          ipv6.addresses = [
+            {
+              address = "2602:fe18::1";
+              prefixLength = 48;
+            }
+          ];
+        };
 
-      interfaces.vmbr2 = {
-        mtu = 1420;
-        ipv4.addresses = [
-          {
-            address = "23.152.236.1";
-            prefixLength = 28;
-          }
-        ];
-        ipv6.addresses = [
-          {
-            address = "2602:fe18::1";
-            prefixLength = 48;
-          }
-        ];
-      };
-
-      firewall = {
-        extraCommands = ''
-          iptables -A FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
-          iptables -A FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
-          iptables -A FORWARD -i vmbr2 -o vmbr2 -j DROP
-          iptables -A FORWARD -i vmbr2 -d 10.0.0.0/8 -j DROP
-          iptables -A FORWARD -i vmbr2 -d 192.168.0.0/16 -j DROP
-          iptables -A INPUT -i vmbr2 -j DROP
-
-          ip6tables -A FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT
-          ip6tables -A FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT
-          ip6tables -A FORWARD -i vmbr2 -o vmbr2 -j DROP
-          ip6tables -A FORWARD -i vmbr2 -d fc00::/7 -j DROP
-          ip6tables -A INPUT -i vmbr2 -p ipv6-icmp -j ACCEPT
-          ip6tables -A INPUT -i vmbr2 -j DROP
-        '';
-
-        extraStopCommands = ''
-          iptables -D FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT || true
-          iptables -D FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT || true
-          iptables -D FORWARD -i vmbr2 -o vmbr2 -j DROP || true
-          iptables -D FORWARD -i vmbr2 -d 10.0.0.0/8 -j DROP || true
-          iptables -D FORWARD -i vmbr2 -d 192.168.0.0/16 -j DROP || true
-          iptables -D INPUT -i vmbr2 -j DROP || true
-
-          ip6tables -D FORWARD -i vmbr2 -o wg-aeolus -j ACCEPT || true
-          ip6tables -D FORWARD -i wg-aeolus -o vmbr2 -j ACCEPT || true
-          ip6tables -D FORWARD -i vmbr2 -o vmbr2 -j DROP || true
-          ip6tables -D FORWARD -i vmbr2 -d fc00::/7 -j DROP || true
-          ip6tables -D INPUT -i vmbr2 -p ipv6-icmp -j ACCEPT || true
-          ip6tables -D INPUT -i vmbr2 -j DROP || true
+        firewall.extraCommands = ''
+          ${iptables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o wg0 -j TCPMSS --clamp-mss-to-pmtu
+          ${iptables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -i wg0 -j TCPMSS --clamp-mss-to-pmtu
+          ${ip6tables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -o wg0 -j TCPMSS --clamp-mss-to-pmtu
+          ${ip6tables} -t mangle -A FORWARD -p tcp --tcp-flags SYN,RST SYN -i wg0 -j TCPMSS --clamp-mss-to-pmtu
         '';
       };
-    };
 
-    systemd.services.proxmox-bridge-reattach = {
-      after = [
-        "vmbr0-netdev.service"
-        "vmbr1-netdev.service"
-        "vmbr2-netdev.service"
-      ];
-      wantedBy = [ "network.target" ];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
-      path = [ "/run/current-system/sw" ];
-      script = ''
-        for conf in /etc/pve/qemu-server/*.conf; do
-          [ -f "$conf" ] || continue
-          vmid=$(basename "$conf" .conf)
-          grep -oP 'net\d+: .+' "$conf" | while IFS= read -r line; do
-            idx=$(echo "$line" | grep -oP 'net\K\d+')
-            bridge=$(echo "$line" | grep -oP 'bridge=\K[^,]+')
-            tap="tap''${vmid}i''${idx}"
-            if [ -d "/sys/class/net/$tap" ] && [ -d "/sys/class/net/$bridge" ]; then
-              current=$(cat "/sys/class/net/$tap/master/uevent" 2>/dev/null | grep -oP 'INTERFACE=\K.+' || true)
-              if [ "$current" != "$bridge" ]; then
-                echo "Re-attaching $tap to $bridge"
-                ip link set dev "$tap" master "$bridge" || true
+      systemd.services.proxmox-bridge-reattach = {
+        after = [
+          "vmbr0-netdev.service"
+          "vmbr1-netdev.service"
+          "vmbr2-netdev.service"
+        ];
+        wantedBy = [ "network.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+        path = [ "/run/current-system/sw" ];
+        script = ''
+          for conf in /etc/pve/qemu-server/*.conf; do
+            [ -f "$conf" ] || continue
+            vmid=$(basename "$conf" .conf)
+            grep -oP 'net\d+: .+' "$conf" | while IFS= read -r line; do
+              idx=$(echo "$line" | grep -oP 'net\K\d+')
+              bridge=$(echo "$line" | grep -oP 'bridge=\K[^,]+')
+              tap="tap''${vmid}i''${idx}"
+              if [ -d "/sys/class/net/$tap" ] && [ -d "/sys/class/net/$bridge" ]; then
+                current=$(cat "/sys/class/net/$tap/master/uevent" 2>/dev/null | grep -oP 'INTERFACE=\K.+' || true)
+                if [ "$current" != "$bridge" ]; then
+                  echo "Re-attaching $tap to $bridge"
+                  ip link set dev "$tap" master "$bridge" || true
+                fi
               fi
-            fi
+            done
           done
-        done
-      '';
-    };
+        '';
+      };
 
-    services.proxmox-ve = {
-      enable = true;
-      ipAddress = "10.0.20.10";
-      bridges = [
-        "vmbr0"
-        "vmbr1"
-        "vmbr2"
-      ];
+      services.proxmox-ve = {
+        enable = true;
+        ipAddress = "10.0.20.10";
+        bridges = [
+          "vmbr0"
+          "vmbr1"
+          "vmbr2"
+        ];
+      };
     };
-  };
 }
