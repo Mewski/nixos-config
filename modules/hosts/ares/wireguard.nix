@@ -20,29 +20,29 @@
         allowedIPsAsRoutes = false;
 
         ips = [
-          "23.152.236.16/32"
-          "2602:fe18:1::1/128"
+          "23.152.236.33/32"
+          "2602:fe18:2::1/128"
         ];
 
         postSetup = ''
-          ${ip} rule add from 23.152.236.16/28 lookup 100 || true
-          ${ip} route replace 23.152.236.16/28 dev vmbr1 table 100
+          ${ip} rule add from 23.152.236.32/28 lookup 100 || true
+          ${ip} route replace 23.152.236.32/28 dev vmbr1 table 100
           ${ip} route replace default dev wg0 table 100
 
-          ${ip} -6 rule add from 2602:fe18:1::/48 lookup 100 || true
-          ${ip} -6 route replace 2602:fe18:1::/64 dev vmbr1 table 100
-          ${ip} -6 route replace 2602:fe18:1:10::/64 via 2602:fe18:1::2 dev vmbr1 table 100
+          ${ip} -6 rule add from 2602:fe18:2::/48 lookup 100 || true
+          ${ip} -6 route replace 2602:fe18:2::/64 dev vmbr1 table 100
+          ${ip} -6 route replace 2602:fe18:2:10::/64 via 2602:fe18:2::2 dev vmbr1 table 100
           ${ip} -6 route replace default dev wg0 table 100
         '';
 
         postShutdown = ''
-          ${ip} rule del from 23.152.236.16/28 lookup 100 || true
-          ${ip} route del 23.152.236.16/28 dev vmbr1 table 100 || true
+          ${ip} rule del from 23.152.236.32/28 lookup 100 || true
+          ${ip} route del 23.152.236.32/28 dev vmbr1 table 100 || true
           ${ip} route del default dev wg0 table 100 || true
 
-          ${ip} -6 rule del from 2602:fe18:1::/48 lookup 100 || true
-          ${ip} -6 route del 2602:fe18:1::/64 dev vmbr1 table 100 || true
-          ${ip} -6 route del 2602:fe18:1:10::/64 via 2602:fe18:1::2 dev vmbr1 table 100 || true
+          ${ip} -6 rule del from 2602:fe18:2::/48 lookup 100 || true
+          ${ip} -6 route del 2602:fe18:2::/64 dev vmbr1 table 100 || true
+          ${ip} -6 route del 2602:fe18:2:10::/64 via 2602:fe18:2::2 dev vmbr1 table 100 || true
           ${ip} -6 route del default dev wg0 table 100 || true
         '';
 

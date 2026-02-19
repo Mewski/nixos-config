@@ -38,13 +38,13 @@
           mtu = 1420;
           ipv4.addresses = [
             {
-              address = "23.152.236.1";
+              address = "23.152.236.17";
               prefixLength = 28;
             }
           ];
           ipv6.addresses = [
             {
-              address = "2602:fe18::1";
+              address = "2602:fe18:1::1";
               prefixLength = 48;
             }
           ];

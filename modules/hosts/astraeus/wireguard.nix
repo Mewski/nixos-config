@@ -15,18 +15,18 @@
         allowedIPsAsRoutes = false;
 
         postSetup = ''
-          ${ip} rule add from 23.152.236.0/28 lookup 100
+          ${ip} rule add from 23.152.236.16/28 lookup 100
           ${ip} route add default dev wg0 table 100
 
-          ${ip} -6 rule add from 2602:fe18::/48 lookup 100
+          ${ip} -6 rule add from 2602:fe18:1::/48 lookup 100
           ${ip} -6 route add default dev wg0 table 100
         '';
 
         postShutdown = ''
-          ${ip} rule del from 23.152.236.0/28 lookup 100 || true
+          ${ip} rule del from 23.152.236.16/28 lookup 100 || true
           ${ip} route del default dev wg0 table 100 || true
 
-          ${ip} -6 rule del from 2602:fe18::/48 lookup 100 || true
+          ${ip} -6 rule del from 2602:fe18:1::/48 lookup 100 || true
           ${ip} -6 route del default dev wg0 table 100 || true
         '';
 

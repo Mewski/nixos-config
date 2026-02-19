@@ -28,6 +28,21 @@
         hostName = "aeolus";
         domain = "takoyaki.io";
 
+        interfaces.lo = {
+          ipv4.addresses = [
+            {
+              address = "23.152.236.1";
+              prefixLength = 32;
+            }
+          ];
+          ipv6.addresses = [
+            {
+              address = "2602:fe18::1";
+              prefixLength = 128;
+            }
+          ];
+        };
+
         firewall = {
           enable = true;
           allowedTCPPorts = [ 22 ];

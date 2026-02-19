@@ -20,17 +20,17 @@
         ];
 
         postSetup = ''
-          ${ip} route add 23.152.236.0/28 dev wg0
           ${ip} route add 23.152.236.16/28 dev wg0
-          ${ip} -6 route add 2602:fe18::/48 dev wg0
+          ${ip} route add 23.152.236.32/28 dev wg0
           ${ip} -6 route add 2602:fe18:1::/48 dev wg0
+          ${ip} -6 route add 2602:fe18:2::/48 dev wg0
         '';
 
         postShutdown = ''
-          ${ip} route del 23.152.236.0/28 dev wg0 || true
           ${ip} route del 23.152.236.16/28 dev wg0 || true
-          ${ip} -6 route del 2602:fe18::/48 dev wg0 || true
+          ${ip} route del 23.152.236.32/28 dev wg0 || true
           ${ip} -6 route del 2602:fe18:1::/48 dev wg0 || true
+          ${ip} -6 route del 2602:fe18:2::/48 dev wg0 || true
         '';
 
         peers = [
@@ -38,16 +38,16 @@
             publicKey = "Vs0DokjJNb9Da+GRm6p15r1pZlqR2U4FNHKEEnCRfEU=";
             presharedKeyFile = config.sops.secrets."wireguard/astraeus/preshared_key".path;
             allowedIPs = [
-              "23.152.236.0/28"
-              "2602:fe18::/48"
+              "23.152.236.16/28"
+              "2602:fe18:1::/48"
             ];
           }
           {
             publicKey = "FYjYrpCpShODVevBeBo99oViDU0hyFkx/NAE6GtLUCI=";
             presharedKeyFile = config.sops.secrets."wireguard/ares/preshared_key".path;
             allowedIPs = [
-              "23.152.236.16/28"
-              "2602:fe18:1::/48"
+              "23.152.236.32/28"
+              "2602:fe18:2::/48"
             ];
           }
         ];
