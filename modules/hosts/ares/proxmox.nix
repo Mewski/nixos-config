@@ -39,7 +39,7 @@
         };
 
         localCommands = ''
-          ${lib.getExe' pkgs.iproute2 "ip"} route replace 23.152.236.16/27 via 10.0.50.18
+          ${lib.getExe' pkgs.iproute2 "ip"} route replace 23.152.236.32/27 via 10.0.50.18
           ${lib.getExe' pkgs.iproute2 "ip"} -6 route replace 2602:fe18:1::/48 via fd00::2
         '';
 
