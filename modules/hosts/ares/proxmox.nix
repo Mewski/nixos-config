@@ -44,6 +44,13 @@
           ${lib.getExe' pkgs.iproute2 "ip"} -6 route replace 2602:fe18:1::/48 via fd00::2
         '';
 
+        nat = {
+          enable = true;
+          extraCommands = ''
+            ${iptables} -t nat -A POSTROUTING -s 172.16.0.0/30 -o wg0 -j SNAT --to-source 23.152.236.16
+          '';
+        };
+
         firewall.extraCommands = ''
           ${iptables} -A nixos-fw -i vmbr1 -p tcp --dport 8006 -j nixos-fw-accept
           ${ip6tables} -A nixos-fw -i vmbr1 -p tcp --dport 8006 -j nixos-fw-accept
