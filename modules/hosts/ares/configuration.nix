@@ -81,6 +81,7 @@
         git
         openssl
         cdrkit
+        swtpm
       ];
 
       system.stateVersion = "25.11";
