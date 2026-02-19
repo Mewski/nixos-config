@@ -34,7 +34,14 @@
           ipv6.addresses = [
             {
               address = "2602:fe18:1::1";
-              prefixLength = 48;
+              prefixLength = 64;
+            }
+          ];
+          ipv6.routes = [
+            {
+              address = "2602:fe18:1:10::";
+              prefixLength = 64;
+              via = "2602:fe18:1::2";
             }
           ];
         };
