@@ -11,6 +11,8 @@
           {
             publicKey = "GcdVh6t9T3IqpAcbyzxaS3HWGLvtpIKVUvBs9IDysAc=";
             presharedKeyFile = config.sops.secrets."wg0/preshared_key".path;
+            endpoint = "udm.takoyaki.io:51820";
+            persistentKeepalive = 25;
             allowedIPs = [
               "10.0.10.0/24"
               "10.0.20.0/24"
@@ -20,8 +22,6 @@
               "10.0.60.0/24"
               "10.0.70.0/24"
             ];
-            endpoint = "udm.takoyaki.io:51820";
-            persistentKeepalive = 25;
           }
         ];
       };
@@ -37,12 +37,12 @@
           {
             publicKey = "KyEVt7nfNKSuIcRYBQ0tbiJ5cSH2xl+zngQiQOYVl3o=";
             presharedKeyFile = config.sops.secrets."wg1/preshared_key".path;
+            endpoint = "144.202.48.125:51821";
+            persistentKeepalive = 25;
             allowedIPs = [
               "23.152.236.32/28"
               "2602:fe18:2::/48"
             ];
-            endpoint = "144.202.48.125:51821";
-            persistentKeepalive = 25;
           }
         ];
       };
