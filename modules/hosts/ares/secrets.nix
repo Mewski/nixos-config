@@ -7,7 +7,10 @@
       defaultSopsFile = "${self}/secrets/ares/secrets.yaml";
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
-      secrets = { };
+      secrets = {
+        "wireguard/private_key" = { };
+        "wireguard/aeolus/preshared_key" = { };
+      };
     };
   };
 }

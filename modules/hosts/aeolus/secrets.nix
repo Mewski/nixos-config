@@ -12,6 +12,7 @@
 
         "wireguard/private_key" = { };
         "wireguard/astraeus/preshared_key" = { };
+        "wireguard/ares/preshared_key" = { };
       };
     };
   };
