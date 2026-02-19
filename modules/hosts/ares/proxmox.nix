@@ -27,22 +27,17 @@
           mtu = 1420;
           ipv4.addresses = [
             {
-              address = "172.16.0.1";
-              prefixLength = 30;
+              address = "23.152.236.16";
+              prefixLength = 28;
             }
           ];
           ipv6.addresses = [
             {
-              address = "fd00::1";
-              prefixLength = 126;
+              address = "2602:fe18:1::1";
+              prefixLength = 48;
             }
           ];
         };
-
-        localCommands = ''
-          ${lib.getExe' pkgs.iproute2 "ip"} route replace 23.152.236.16/28 via 172.16.0.2
-          ${lib.getExe' pkgs.iproute2 "ip"} -6 route replace 2602:fe18:1::/48 via fd00::2
-        '';
 
         firewall.extraCommands = ''
           ${iptables} -A nixos-fw -i vmbr1 -p tcp --dport 8006 -j nixos-fw-accept
