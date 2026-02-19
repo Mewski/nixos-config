@@ -10,8 +10,11 @@
       age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
       secrets = {
-        "wireguard/udm/private_key" = { };
-        "wireguard/udm/preshared_key" = { };
+        "wg0/private_key" = { };
+        "wg0/preshared_key" = { };
+
+        "wg1/private_key" = { };
+        "wg1/preshared_key" = { };
       };
     };
   };

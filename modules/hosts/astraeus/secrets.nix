@@ -8,8 +8,8 @@
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
       secrets = {
-        "wireguard/private_key" = { };
-        "wireguard/aeolus/preshared_key" = { };
+        "wg0/private_key" = { };
+        "wg0/aeolus/preshared_key" = { };
       };
     };
   };

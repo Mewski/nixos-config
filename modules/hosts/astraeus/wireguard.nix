@@ -11,7 +11,7 @@
     in
     {
       networking.wireguard.interfaces.wg0 = {
-        privateKeyFile = config.sops.secrets."wireguard/private_key".path;
+        privateKeyFile = config.sops.secrets."wg0/private_key".path;
         allowedIPsAsRoutes = false;
 
         postSetup = ''
@@ -33,7 +33,7 @@
         peers = [
           {
             publicKey = "Ez3Fx1SmQHoPEuGasq235KNMPr3TqK6CCPE+VTnwUCk=";
-            presharedKeyFile = config.sops.secrets."wireguard/aeolus/preshared_key".path;
+            presharedKeyFile = config.sops.secrets."wg0/aeolus/preshared_key".path;
             endpoint = "144.202.48.125:51820";
             persistentKeepalive = 25;
             allowedIPs = [
