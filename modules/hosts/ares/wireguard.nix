@@ -25,14 +25,14 @@
         ];
 
         postSetup = ''
-          ${ip} rule add from 23.152.236.16/28 lookup 100
-          ${ip} route add 23.152.236.16/28 dev vmbr1 table 100
-          ${ip} route add default dev wg0 table 100
+          ${ip} rule add from 23.152.236.16/28 lookup 100 || true
+          ${ip} route replace 23.152.236.16/28 dev vmbr1 table 100
+          ${ip} route replace default dev wg0 table 100
 
-          ${ip} -6 rule add from 2602:fe18:1::/48 lookup 100
-          ${ip} -6 route add 2602:fe18:1::/64 dev vmbr1 table 100
-          ${ip} -6 route add 2602:fe18:1:10::/64 via 2602:fe18:1::2 dev vmbr1 table 100
-          ${ip} -6 route add default dev wg0 table 100
+          ${ip} -6 rule add from 2602:fe18:1::/48 lookup 100 || true
+          ${ip} -6 route replace 2602:fe18:1::/64 dev vmbr1 table 100
+          ${ip} -6 route replace 2602:fe18:1:10::/64 via 2602:fe18:1::2 dev vmbr1 table 100
+          ${ip} -6 route replace default dev wg0 table 100
         '';
 
         postShutdown = ''
