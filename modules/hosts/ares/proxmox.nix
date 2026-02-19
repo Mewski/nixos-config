@@ -26,7 +26,7 @@
         interfaces.vmbr1 = {
           ipv4.addresses = [
             {
-              address = "10.0.50.17";
+              address = "172.16.0.1";
               prefixLength = 30;
             }
           ];
@@ -39,7 +39,7 @@
         };
 
         localCommands = ''
-          ${lib.getExe' pkgs.iproute2 "ip"} route replace 23.152.236.32/27 via 10.0.50.18
+          ${lib.getExe' pkgs.iproute2 "ip"} route replace 23.152.236.32/27 via 172.16.0.2
           ${lib.getExe' pkgs.iproute2 "ip"} -6 route replace 2602:fe18:1::/48 via fd00::2
         '';
 
