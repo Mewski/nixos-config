@@ -87,6 +87,7 @@
           onesixtyone
           openvpn
           parsero
+          pdfrip
           pixiewps
           powershell
           proxychains-ng
