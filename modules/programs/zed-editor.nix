@@ -16,7 +16,7 @@
           vim_mode = false;
           tab_size = 2;
           colorize_brackets = true;
-          relative_line_numbers = false;
+          relative_line_numbers = "disabled";
 
           tabs = {
             file_icons = true;
