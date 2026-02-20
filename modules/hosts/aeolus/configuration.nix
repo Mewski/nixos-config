@@ -61,18 +61,16 @@
           extraCommands = ''
             ${iptables} -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
             ${ip6tables} -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+            ${iptables} -A FORWARD -i wg1 -d 23.152.236.16/28 -j ACCEPT
             ${iptables} -A FORWARD -i wg1 -d 23.152.236.32/28 -j ACCEPT
             ${iptables} -A FORWARD -i wg1 -j DROP
+            ${ip6tables} -A FORWARD -i wg1 -d 2602:fe18:1::/48 -j ACCEPT
             ${ip6tables} -A FORWARD -i wg1 -d 2602:fe18:2::/48 -j ACCEPT
             ${ip6tables} -A FORWARD -i wg1 -j DROP
             ${iptables} -A FORWARD -i wg0 -s 23.152.236.32/28 -d 23.152.236.16/28 -j DROP
             ${iptables} -A FORWARD -i wg0 -s 23.152.236.16/28 -d 23.152.236.32/28 -j DROP
             ${ip6tables} -A FORWARD -i wg0 -s 2602:fe18:2::/48 -d 2602:fe18:1::/48 -j DROP
             ${ip6tables} -A FORWARD -i wg0 -s 2602:fe18:1::/48 -d 2602:fe18:2::/48 -j DROP
-            ${iptables} -A FORWARD -i enp1s0 -d 23.152.236.16/28 -j DROP
-            ${iptables} -A FORWARD -i enp1s0 -d 23.152.236.32/28 -j DROP
-            ${ip6tables} -A FORWARD -i enp1s0 -d 2602:fe18:1::/48 -j DROP
-            ${ip6tables} -A FORWARD -i enp1s0 -d 2602:fe18:2::/48 -j DROP
           '';
         };
       };
