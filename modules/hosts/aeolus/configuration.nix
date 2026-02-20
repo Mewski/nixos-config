@@ -54,6 +54,10 @@
             51820
             51821
           ];
+          extraStopCommands = ''
+            ${iptables} -F FORWARD || true
+            ${ip6tables} -F FORWARD || true
+          '';
           extraCommands = ''
             ${iptables} -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
             ${ip6tables} -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
