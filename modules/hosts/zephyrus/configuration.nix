@@ -48,6 +48,8 @@
       zramSwap.enable = true;
 
       services = {
+        logind.lidSwitchDocked = "suspend";
+
         openssh.enable = true;
         blueman.enable = true;
         resolved.enable = true;
