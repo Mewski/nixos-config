@@ -53,6 +53,13 @@
               "!vscode-css-language-server"
               "..."
             ];
+            LaTeX = {
+              format_on_save = "on";
+              language_servers = [
+                "texlab"
+                "..."
+              ];
+            };
           };
 
           lsp = {
@@ -82,6 +89,7 @@
           "astro"
           "vue"
           "wakatime"
+          "latex"
         ];
       };
     };
