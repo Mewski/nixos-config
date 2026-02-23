@@ -69,8 +69,10 @@
           "vmbr0-netdev.service"
           "vmbr1-netdev.service"
           "vmbr2-netdev.service"
+          "pve-guests.service"
         ];
-        wantedBy = [ "network.target" ];
+        wants = [ "pve-guests.service" ];
+        wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = true;
