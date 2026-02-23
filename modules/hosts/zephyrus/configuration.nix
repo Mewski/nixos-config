@@ -48,7 +48,7 @@
       zramSwap.enable = true;
 
       services = {
-        logind.lidSwitchDocked = "suspend";
+        logind.settings.Login.HandleLidSwitchDocked = "suspend";
 
         openssh = {
           enable = true;
@@ -60,7 +60,6 @@
 
         blueman.enable = true;
         resolved.enable = true;
-
         udev.packages = [ pkgs.wooting-udev-rules ];
       };
 
