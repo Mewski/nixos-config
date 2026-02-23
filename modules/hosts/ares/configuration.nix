@@ -14,6 +14,12 @@
       ];
 
       boot = {
+        kernel.sysctl = {
+          "net.ipv4.ip_forward" = 1;
+          "net.ipv6.conf.all.forwarding" = 1;
+          "vm.swappiness" = 10;
+        };
+
         loader = {
           efi.efiSysMountPoint = "/boot";
           efi.canTouchEfiVariables = true;
@@ -29,12 +35,6 @@
         zfs.devNodes = "/dev/disk/by-id";
       };
 
-      boot.kernel.sysctl = {
-        "net.ipv4.ip_forward" = 1;
-        "net.ipv6.conf.all.forwarding" = 1;
-        "vm.swappiness" = 10;
-      };
-
       networking = {
         hostName = "ares";
         domain = "takoyaki.io";
@@ -42,9 +42,7 @@
         useDHCP = false;
 
         defaultGateway = "10.0.50.1";
-        nameservers = [
-          "10.0.50.1"
-        ];
+        nameservers = [ "10.0.50.1" ];
 
         interfaces.vmbr0.ipv4.addresses = [
           {
@@ -53,35 +51,35 @@
           }
         ];
 
-        firewall = {
-          allowedTCPPorts = [ 22 ];
-        };
+        firewall.allowedTCPPorts = [ 22 ];
       };
 
-      services.zfs = {
-        autoScrub = {
-          enable = true;
-          interval = "weekly";
+      services = {
+        zfs = {
+          autoScrub = {
+            enable = true;
+            interval = "weekly";
+          };
+          trim.enable = true;
         };
-        trim.enable = true;
+
+        openssh = {
+          enable = true;
+          settings = {
+            PasswordAuthentication = false;
+            KbdInteractiveAuthentication = false;
+          };
+        };
       };
 
       powerManagement.cpuFreqGovernor = "performance";
 
       zramSwap.enable = true;
 
-      services.openssh = {
-        enable = true;
-        settings = {
-          PasswordAuthentication = false;
-          KbdInteractiveAuthentication = false;
-        };
-      };
-
       environment.systemPackages = with pkgs; [
+        cdrkit
         git
         openssl
-        cdrkit
         swtpm
       ];
 

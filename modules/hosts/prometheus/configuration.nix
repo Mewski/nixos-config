@@ -16,6 +16,7 @@
 
       boot = {
         kernelPackages = pkgs.linuxPackages_latest;
+
         loader.grub = {
           enable = true;
           efiSupport = true;
@@ -30,9 +31,7 @@
         useDHCP = false;
 
         defaultGateway = "10.0.40.1";
-        nameservers = [
-          "10.0.40.1"
-        ];
+        nameservers = [ "10.0.40.1" ];
 
         interfaces.ens18.ipv4.addresses = [
           {
@@ -47,17 +46,19 @@
         ];
       };
 
-      zramSwap.enable = true;
-
-      services.openssh = {
-        enable = true;
-        settings = {
-          PasswordAuthentication = false;
-          KbdInteractiveAuthentication = false;
+      services = {
+        openssh = {
+          enable = true;
+          settings = {
+            PasswordAuthentication = false;
+            KbdInteractiveAuthentication = false;
+          };
         };
+
+        qemuGuest.enable = true;
       };
 
-      services.qemuGuest.enable = true;
+      zramSwap.enable = true;
 
       environment.systemPackages = with pkgs; [
         git

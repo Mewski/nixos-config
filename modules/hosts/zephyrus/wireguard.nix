@@ -47,14 +47,16 @@
         ];
       };
 
-      systemd.services."wg-quick-wg0" = {
-        wants = [ "network-online.target" ];
-        after = [ "network-online.target" ];
-      };
+      systemd.services = {
+        "wg-quick-wg0" = {
+          wants = [ "network-online.target" ];
+          after = [ "network-online.target" ];
+        };
 
-      systemd.services."wg-quick-wg1" = {
-        wants = [ "network-online.target" ];
-        after = [ "network-online.target" ];
+        "wg-quick-wg1" = {
+          wants = [ "network-online.target" ];
+          after = [ "network-online.target" ];
+        };
       };
     };
 }
