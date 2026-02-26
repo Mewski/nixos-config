@@ -75,10 +75,13 @@
         };
 
         extensions = [
+          "astro"
+          "biome"
           "docker-compose"
           "dockerfile"
           "git-firefly"
           "go"
+          "latex"
           "make"
           "material-icon-theme"
           "neocmake"
@@ -86,10 +89,8 @@
           "prettier"
           "tailwind-css"
           "toml"
-          "astro"
           "vue"
           "wakatime"
-          "latex"
         ];
       };
     };
