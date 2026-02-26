@@ -33,6 +33,9 @@
           ${ip} -6 route replace 2602:fe18:2::/64 dev vmbr1 table 100
           ${ip} -6 route replace 2602:fe18:2:10::/64 via 2602:fe18:2::2 dev vmbr1 table 100
           ${ip} -6 route replace default dev wg0 table 100
+
+          ${ip} route replace default dev wg0 src 23.152.236.33
+          ${ip} -6 route replace default dev wg0 src 2602:fe18:2::1
         '';
 
         postShutdown = ''
@@ -44,6 +47,9 @@
           ${ip} -6 route del 2602:fe18:2::/64 dev vmbr1 table 100 || true
           ${ip} -6 route del 2602:fe18:2:10::/64 via 2602:fe18:2::2 dev vmbr1 table 100 || true
           ${ip} -6 route del default dev wg0 table 100 || true
+
+          ${ip} route del default dev wg0 src 23.152.236.33 || true
+          ${ip} -6 route del default dev wg0 src 2602:fe18:2::1 || true
         '';
 
         peers = [

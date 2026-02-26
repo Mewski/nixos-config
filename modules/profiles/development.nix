@@ -43,6 +43,7 @@
         lazydocker
         lazygit
         libtool
+        lsof
         llvm
         nodejs
         perf

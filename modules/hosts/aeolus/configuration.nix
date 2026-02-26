@@ -61,12 +61,30 @@
           extraCommands = ''
             ${iptables} -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
             ${ip6tables} -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-            ${iptables} -A FORWARD -i wg0 -s 23.152.236.32/28 -d 23.152.236.16/28 -j DROP
-            ${iptables} -A FORWARD -i wg0 -s 23.152.236.16/28 -d 23.152.236.32/28 -j DROP
-            ${ip6tables} -A FORWARD -i wg0 -s 2602:fe18:2::/48 -d 2602:fe18:1::/48 -j DROP
-            ${ip6tables} -A FORWARD -i wg0 -s 2602:fe18:1::/48 -d 2602:fe18:2::/48 -j DROP
           '';
         };
+      };
+
+      systemd.services.set-default-src = {
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+        path = [
+          pkgs.iproute2
+          pkgs.gawk
+        ];
+        script = ''
+          gw=$(ip route show default | head -1 | awk '{print $3}')
+          dev=$(ip route show default | head -1 | awk '{print $5}')
+          [ -n "$gw" ] && [ -n "$dev" ] && ip route replace default via "$gw" dev "$dev" src 23.152.236.1
+          gw6=$(ip -6 route show default | head -1 | awk '{print $3}')
+          dev6=$(ip -6 route show default | head -1 | awk '{print $5}')
+          [ -n "$gw6" ] && [ -n "$dev6" ] && ip -6 route replace default via "$gw6" dev "$dev6" src 2602:fe18::1
+        '';
       };
 
       zramSwap.enable = true;
