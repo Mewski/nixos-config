@@ -75,6 +75,23 @@
         };
       };
 
+      brat = mkObsidianPlugin {
+        name = "brat";
+        version = "2.0.2";
+        mainJs = pkgs.fetchurl {
+          url = "https://github.com/TfTHacker/obsidian42-brat/releases/download/2.0.2/main.js";
+          hash = "sha256-+TRfrMfhNUxvNr+Rh205k+WKqssxgtfML3ISy3leBmY=";
+        };
+        manifest = pkgs.fetchurl {
+          url = "https://github.com/TfTHacker/obsidian42-brat/releases/download/2.0.2/manifest.json";
+          hash = "sha256-cvbIhOAn7MBHJRF0AtXDnfPSw+xiKTyTQq3yrZ/XPyc=";
+        };
+        styles = pkgs.fetchurl {
+          url = "https://github.com/TfTHacker/obsidian42-brat/releases/download/2.0.2/styles.css";
+          hash = "sha256-ruUC02dBfQl12DqczUdp09KvBH75UWJBriC4apDevDA=";
+        };
+      };
+
       editor-syntax-highlight = mkObsidianPlugin {
         name = "editor-syntax-highlight";
         version = "0.1.3";
@@ -102,6 +119,7 @@
           { pkg = latex-suite; }
           { pkg = languagetool; }
           { pkg = editor-syntax-highlight; }
+          { pkg = brat; }
         ];
 
         vaults.notes = {
