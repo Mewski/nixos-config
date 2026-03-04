@@ -24,43 +24,51 @@
       ];
 
       home.packages = with pkgs; [
+        age
         autoconf
         automake
         bc
         boost
+        bottom
         bun
         bzip2
         clang-tools
         cmake
         devenv
+        difftastic
+        dust
         gcc
+        ghq
         gnumake
         go
         gopls
-        just
-        libtool
-        llvm
-        nodejs
-        pkg-config
-        zlib
-        difftastic
-        ghq
-        lazydocker
-        lazygit
         hexyl
+        httpie
         hyperfine
-        tokei
-        watchexec
-        bottom
-        dust
-        lsof
-        perf
-        procs
-        rstudio
-        sqlite
+        just
         k9s
         kubectl
+        lazydocker
+        lazygit
+        libtool
+        llvm
+        lsof
+        nix-diff
+        nix-tree
+        nodejs
+        perf
+        perl
+        php
+        pkg-config
         podman
+        procs
+        rstudio
+        ruby
+        shellcheck
+        sqlite
+        tokei
+        watchexec
+        zlib
       ];
     };
 }

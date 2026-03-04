@@ -51,7 +51,10 @@
       navi.enable = true;
       ripgrep.enable = true;
       tealdeer.enable = true;
-      yazi.enable = true;
+      yazi = {
+        enable = true;
+        shellWrapperName = "y";
+      };
     };
   };
 }
