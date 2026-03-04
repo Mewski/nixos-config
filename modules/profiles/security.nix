@@ -42,7 +42,6 @@
           crowbar
           crunch
           cewl
-          cupp
           cutter
           dalfox
           davtest

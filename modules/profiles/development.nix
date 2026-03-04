@@ -66,6 +66,7 @@
         ruby
         shellcheck
         sqlite
+        tmux
         tokei
         watchexec
         zlib
