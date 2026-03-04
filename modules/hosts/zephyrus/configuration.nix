@@ -125,6 +125,9 @@
       '';
 
       assignWorkspaces = pkgs.writeShellScript "assign-workspaces" ''
+        ${hyprctl} reload >/dev/null 2>&1
+        sleep 1
+
         monitors=$(${hyprctl} monitors -j | ${jq} -r '.[].name')
         count=$(echo "$monitors" | wc -l)
         has_dp=$(echo "$monitors" | grep -c "^DP-1$")
@@ -140,10 +143,12 @@
           for i in 1 2 3 4; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo true || echo false)"; done
           for i in 5 6 7;   do assign "$i" DP-1 "$([ "$i" -eq 5 ] && echo true || echo false)"; done
           for i in 8 9 10;  do assign "$i" HDMI-A-1 "$([ "$i" -eq 8 ] && echo true || echo false)"; done
+          ${hyprctl} dispatch workspace 1 >/dev/null 2>&1
         elif [ "$count" -eq 2 ]; then
           for i in 1 2 3 4 5; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo true || echo false)"; done
           if [ "$has_dp" -eq 1 ]; then secondary=DP-1; else secondary=HDMI-A-1; fi
           for i in 6 7 8 9 10; do assign "$i" "$secondary" "$([ "$i" -eq 6 ] && echo true || echo false)"; done
+          ${hyprctl} dispatch workspace 1 >/dev/null 2>&1
         else
           for i in 1 2 3 4 5 6 7 8 9 10; do assign "$i" eDP-1 "$([ "$i" -eq 1 ] && echo true || echo false)"; done
         fi
