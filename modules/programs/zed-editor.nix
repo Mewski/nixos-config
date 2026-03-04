@@ -29,6 +29,9 @@
           };
 
           show_whitespaces = "boundary";
+          semantic_tokens = true;
+          lsp_folding_ranges = "on";
+          document_symbols = "on";
 
           lsp_highlight_debounce = 100;
           autosave = "on_focus_change";

@@ -2,7 +2,6 @@
   flake.nixosModules.zephyrus = {
     services.asusd = {
       enable = true;
-      enableUserService = true;
 
       auraConfigs."19b6".text = ''
         (

@@ -17,7 +17,6 @@
         packages = with pkgs; [
           aircrack-ng
           amass
-          angr-management
           arjun
           bettercap
           binwalk
@@ -128,7 +127,6 @@
           vt-cli
           wabt
           waybackurls
-          wfuzz
           whatweb
           whois
           wifite2
