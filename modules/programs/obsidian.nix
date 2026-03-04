@@ -8,7 +8,7 @@
           version,
           mainJs,
           manifest,
-          styles,
+          styles ? null,
         }:
         pkgs.stdenvNoCC.mkDerivation {
           pname = "obsidian-plugin-${name}";
@@ -20,7 +20,7 @@
             mkdir -p $out
             cp ${mainJs} $out/main.js
             cp ${manifest} $out/manifest.json
-            cp ${styles} $out/styles.css
+            ${if styles != null then "cp ${styles} $out/styles.css" else ""}
           '';
         };
 
@@ -92,6 +92,36 @@
         };
       };
 
+      dataview = mkObsidianPlugin {
+        name = "dataview";
+        version = "0.5.67";
+        mainJs = pkgs.fetchurl {
+          url = "https://github.com/blacksmithgu/obsidian-dataview/releases/download/0.5.67/main.js";
+          hash = "sha256-YyYDb51+5z2yJtXKUeB3Sx4YG+gJZWcn/xvQSDovY2s=";
+        };
+        manifest = pkgs.fetchurl {
+          url = "https://github.com/blacksmithgu/obsidian-dataview/releases/download/0.5.67/manifest.json";
+          hash = "sha256-P1XnPUPruazBaKbXsguFS29EXcvoVwWIVLHbhLgkqBw=";
+        };
+        styles = pkgs.fetchurl {
+          url = "https://github.com/blacksmithgu/obsidian-dataview/releases/download/0.5.67/styles.css";
+          hash = "sha256-z8T/vXpQffcNan0khWGks5v2y1RbuEeKWoCsju4YxGw=";
+        };
+      };
+
+      calendar = mkObsidianPlugin {
+        name = "calendar";
+        version = "1.5.10";
+        mainJs = pkgs.fetchurl {
+          url = "https://github.com/liamcain/obsidian-calendar-plugin/releases/download/1.5.10/main.js";
+          hash = "sha256-f7M56c+f2+WoAforirhbNmtbN3f70ZPLyHKLwncR0SU=";
+        };
+        manifest = pkgs.fetchurl {
+          url = "https://github.com/liamcain/obsidian-calendar-plugin/releases/download/1.5.10/manifest.json";
+          hash = "sha256-8+lYEzhkhRK6oS1bRYSQ9/02eRj3vba9hhcc5Xvn0Is=";
+        };
+      };
+
       editor-syntax-highlight = mkObsidianPlugin {
         name = "editor-syntax-highlight";
         version = "0.1.3";
@@ -119,6 +149,8 @@
           { pkg = latex-suite; }
           { pkg = languagetool; }
           { pkg = editor-syntax-highlight; }
+          { pkg = dataview; }
+          { pkg = calendar; }
           { pkg = brat; }
         ];
 

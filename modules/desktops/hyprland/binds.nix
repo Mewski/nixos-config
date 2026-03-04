@@ -78,6 +78,22 @@
         ${notify} -a osd-text -t 1000 'Text copied to clipboard'
       '';
 
+      screenRecord = pkgs.writeShellScript "screen-record" ''
+        pidfile=/tmp/wf-recorder.pid
+        if [ -f "$pidfile" ] && kill -0 "$(cat "$pidfile")" 2>/dev/null; then
+          kill "$(cat "$pidfile")"
+          rm -f "$pidfile"
+          ${notify} -a osd-text -t 2000 'Recording stopped'
+        else
+          dir=~/Videos/Recordings
+          mkdir -p "$dir"
+          file="$dir/$(date +%Y-%m-%d-%H%M%S).mp4"
+          ${lib.getExe pkgs.wf-recorder} -f "$file" &
+          echo $! > "$pidfile"
+          ${notify} -a osd-text -t 2000 'Recording started'
+        fi
+      '';
+
       workspaceBinds = builtins.concatLists (
         builtins.genList (
           i:
@@ -112,6 +128,10 @@
           "SUPER ALT, S, exec, ${screenshot} window"
           "SUPER CONTROL_L, S, exec, ${screenshot} output"
           "SUPER, O, exec, ${ocr}"
+          "SUPER SHIFT, R, exec, ${screenRecord}"
+
+          "SUPER, T, togglespecialworkspace, scratchterm"
+          "SUPER, M, togglespecialworkspace, scratchmusic"
 
           "SUPER, C, killactive,"
           "SUPER, F, fullscreen"

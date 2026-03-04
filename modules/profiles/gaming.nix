@@ -10,10 +10,17 @@
     home-manager.sharedModules = [ self.homeModules.gaming ];
   };
 
-  flake.homeModules.gaming = {
-    imports = [
-      self.homeModules.osu
-      self.homeModules.prism-launcher
-    ];
-  };
+  flake.homeModules.gaming =
+    { pkgs, ... }:
+    {
+      imports = [
+        self.homeModules.osu
+        self.homeModules.prism-launcher
+      ];
+
+      home.packages = with pkgs; [
+        lutris
+        mangohud
+      ];
+    };
 }

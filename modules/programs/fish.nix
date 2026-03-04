@@ -38,9 +38,16 @@
         enableFishIntegration = true;
       };
 
+      atuin = {
+        enable = true;
+        enableFishIntegration = true;
+        flags = [ "--disable-up-arrow" ];
+      };
+
       bat.enable = true;
       eza.enable = true;
       fd.enable = true;
+      fastfetch.enable = true;
       ripgrep.enable = true;
     };
   };
