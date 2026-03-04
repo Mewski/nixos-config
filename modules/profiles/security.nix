@@ -46,7 +46,6 @@
           dalfox
           davtest
           dex2jar
-          dirsearch
           dnsrecon
           dnsutils
           dnsx
@@ -109,7 +108,6 @@
           mimikatz
           mitmproxy
           mtr
-          name-that-hash
           nasm
           nbtscan
           net-snmp
@@ -119,7 +117,6 @@
           nikto
           nmap
           nuclei
-          objection
           one_gadget
           onesixtyone
           openvpn
@@ -130,8 +127,6 @@
           pixiewps
           powershell
           proxychains-ng
-          pwndbg
-          pwndbg-lldb
           radare2
           rdesktop
           reaverwps-t6x
@@ -141,11 +136,9 @@
           responder
           rizin
           rlwrap
-          ropper
           rustscan
           sage
           samba
-          seccomp-tools
           seclists
           sherlock
           sleuthkit
@@ -156,7 +149,6 @@
           sqlmap
           sshpass
           sshuttle
-          sslyze
           starkiller
           steghide
           stegsolve
@@ -188,7 +180,6 @@
           wordlists
           wpscan
           xh
-          xsstrike
           xxd
           yara
           zsteg
