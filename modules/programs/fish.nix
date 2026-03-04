@@ -48,7 +48,10 @@
       eza.enable = true;
       fd.enable = true;
       fastfetch.enable = true;
+      navi.enable = true;
       ripgrep.enable = true;
+      tealdeer.enable = true;
+      yazi.enable = true;
     };
   };
 }

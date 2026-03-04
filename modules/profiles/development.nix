@@ -33,24 +33,34 @@
         clang-tools
         cmake
         devenv
-        difftastic
         gcc
-        ghq
         gnumake
         go
         gopls
         just
-        lazydocker
-        lazygit
         libtool
-        lsof
         llvm
         nodejs
-        perf
         pkg-config
+        zlib
+        difftastic
+        ghq
+        lazydocker
+        lazygit
+        hexyl
+        hyperfine
+        tokei
+        watchexec
+        bottom
+        dust
+        lsof
+        perf
+        procs
         rstudio
         sqlite
-        zlib
+        k9s
+        kubectl
+        podman
       ];
     };
 }

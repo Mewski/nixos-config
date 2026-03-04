@@ -33,6 +33,25 @@
           lsp_folding_ranges = "on";
           document_symbols = "on";
 
+          inlay_hints.enabled = true;
+
+          scrollbar = {
+            show = "auto";
+            cursors = true;
+            git_diff = true;
+            search_results = true;
+            diagnostics = true;
+          };
+
+          file_scan_exclusions = [
+            "**/.git"
+            "**/.svn"
+            "**/node_modules"
+            "**/target"
+            "**/.direnv"
+            "**/result"
+          ];
+
           lsp_highlight_debounce = 100;
           autosave = "on_focus_change";
           git.word_diff_enabled = true;
