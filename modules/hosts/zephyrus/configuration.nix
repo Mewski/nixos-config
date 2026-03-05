@@ -189,8 +189,8 @@
       wayland.windowManager.hyprland.settings = {
         monitor = [
           internalDisplayConfig
-          "DP-1, 2560x1600@144, 2048x0, 1.00"
-          "HDMI-A-1, 3840x2160@60, -512x-1728, 1.00"
+          "DP-1, 2560x1600@144, 2560x0, 1.00"
+          "HDMI-A-1, 3840x2160@60, -640x-2160, 1.00"
           ", highrr, auto, 1.00"
         ];
 
