@@ -18,7 +18,9 @@
           "/var/lib/libvirt"
           "/var/lib/nixos"
           "/var/lib/sbctl"
+          "/var/lib/systemd/backlight"
           "/var/lib/systemd/coredump"
+          "/var/lib/alsa"
           "/var/log"
         ];
 
@@ -44,6 +46,7 @@
             ".docker"
             ".gemini"
             ".local/share/fish"
+            ".local/state/wireplumber"
             ".local/share/flatpak"
             ".local/share/libvirt"
             ".local/share/PrismLauncher"
