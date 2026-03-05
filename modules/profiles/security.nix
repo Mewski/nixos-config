@@ -177,7 +177,7 @@
           wifite2
           wireguard-tools
           wireshark-cli
-          wordlists
+          # wordlists
           wpscan
           xh
           xxd
