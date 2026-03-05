@@ -7,8 +7,8 @@
       notify = lib.getExe pkgs.libnotify;
       udevadm = lib.getExe' pkgs.systemd "udevadm";
 
-      monitorHighRefresh = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
-      monitorLowRefresh = "eDP-1, 2560x1600@60, 0x0, 1.25, vrr, 1, bitdepth, 10";
+      monitorHighRefresh = "eDP-1, 2560x1600@240, 0x0, 1.00, vrr, 1, bitdepth, 10";
+      monitorLowRefresh = "eDP-1, 2560x1600@60, 0x0, 1.00, vrr, 1, bitdepth, 10";
 
       stateFile = "/tmp/power-state-last";
 

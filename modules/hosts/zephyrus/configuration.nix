@@ -86,7 +86,7 @@
       kbdBacklight = "asus::kbd_backlight";
       intelBacklight = "intel_backlight";
       nvidiaBacklight = "nvidia_0";
-      internalDisplayConfig = "eDP-1, 2560x1600@240, 0x0, 1.25, vrr, 1, bitdepth, 10";
+      internalDisplayConfig = "eDP-1, 2560x1600@240, 0x0, 1.00, vrr, 1, bitdepth, 10";
 
       getKbdBrightness = "${brightnessctl} -d ${kbdBacklight} -m | cut -d, -f4 | tr -d '%'";
 
@@ -189,9 +189,9 @@
       wayland.windowManager.hyprland.settings = {
         monitor = [
           internalDisplayConfig
-          "DP-1, 2560x1600@144, 2048x0, 1.25"
-          "HDMI-A-1, 3840x2160@60, -512x-1728, 1.25"
-          ", highrr, auto, 1.25"
+          "DP-1, 2560x1600@144, 2048x0, 1.00"
+          "HDMI-A-1, 3840x2160@60, -512x-1728, 1.00"
+          ", highrr, auto, 1.00"
         ];
 
         exec-once = [
