@@ -15,6 +15,9 @@
 
         "wg1/private_key" = { };
         "wg1/preshared_key" = { };
+
+        "wg2/private_key" = { };
+        "wg2/preshared_key" = { };
       };
     };
   };
