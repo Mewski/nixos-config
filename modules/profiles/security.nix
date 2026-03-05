@@ -35,7 +35,7 @@
           burpsuite
           cadaver
           certipy
-          checksec
+          # checksec  # provided by python3 env (via pwntools)
           chisel
           coercer
           commix

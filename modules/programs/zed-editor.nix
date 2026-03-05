@@ -29,8 +29,8 @@
           };
 
           show_whitespaces = "boundary";
-          semantic_tokens = true;
-          lsp_folding_ranges = "on";
+          semantic_tokens = "combined";
+          document_folding_ranges = "on";
           document_symbols = "on";
 
           inlay_hints.enabled = true;
@@ -40,7 +40,7 @@
             cursors = true;
             git_diff = true;
             search_results = true;
-            diagnostics = true;
+            diagnostics = "all";
           };
 
           file_scan_exclusions = [
@@ -54,14 +54,10 @@
 
           lsp_highlight_debounce = 100;
           autosave = "on_focus_change";
-          git.word_diff_enabled = true;
-
           vim = {
             use_smartcase_find = true;
             use_system_clipboard = "always";
             toggle_relative_line_numbers = true;
-            enable_vim_sneak = true;
-            use_multiline_find = true;
           };
 
           restore_on_startup = "empty_tab";

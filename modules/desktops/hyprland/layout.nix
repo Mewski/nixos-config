@@ -23,9 +23,9 @@
           "no_initial_focus on, match:class ^$, match:title ^$, match:xwayland true, match:float true, match:fullscreen false, match:pin false"
           "suppress_event maximize, match:class .*"
           "immediate on, match:xwayland 1"
-          "float, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
+          "float on, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
           "size 900 600, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
-          "center, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
+          "center on, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
         ];
       };
     };
