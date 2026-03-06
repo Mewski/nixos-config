@@ -69,16 +69,28 @@
         "wg-quick-wg0" = {
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
+          serviceConfig = {
+            Restart = "on-failure";
+            RestartSec = 5;
+          };
         };
 
         "wg-quick-wg1" = {
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
+          serviceConfig = {
+            Restart = "on-failure";
+            RestartSec = 5;
+          };
         };
 
         "wg-quick-wg2" = {
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
+          serviceConfig = {
+            Restart = "on-failure";
+            RestartSec = 5;
+          };
         };
       };
     };
