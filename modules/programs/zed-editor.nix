@@ -93,6 +93,7 @@
         };
 
         extensions = [
+          "asm"
           "astro"
           "biome"
           "docker-compose"

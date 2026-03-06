@@ -14,6 +14,7 @@
           "/etc/NetworkManager/system-connections"
           "/etc/ssh"
           "/var/lib/bluetooth"
+          "/var/lib/docker"
           "/var/lib/flatpak"
           "/var/lib/libvirt"
           "/var/lib/nixos"
