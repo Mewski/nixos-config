@@ -1,13 +1,15 @@
 { inputs, ... }:
 {
   flake.nixosModules.theme =
-    { config, pkgs, ... }:
+    { config, lib, pkgs, ... }:
     {
       scheme = "${inputs.tinted-theming-schemes}/base24/mountain.yaml";
 
       theme = {
         polarity = "dark";
         wallpaper = "${inputs.self}/assets/wallpapers/Kath.png";
+
+        scale = lib.mkDefault 1.0;
 
         cursor = {
           name = "Bibata-Modern-Ice";

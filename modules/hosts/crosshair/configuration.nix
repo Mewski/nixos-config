@@ -39,6 +39,8 @@
         };
       };
 
+      theme.scale = 1.25;
+
       powerManagement.cpuFreqGovernor = "performance";
 
       networking = {
@@ -67,11 +69,14 @@
     };
 
   flake.homeModules.crosshair =
-    { pkgs, ... }:
+    { lib, pkgs, theme, ... }:
+    let
+      scale = lib.strings.floatToString theme.scale;
+    in
     {
       wayland.windowManager.hyprland.settings.monitor = [
-        "DP-3, 3840x2160@240, 0x0, 1.25, vrr, 0, bitdepth, 10"
-        ", preferred, auto, 1"
+        "DP-3, 3840x2160@240, 0x0, ${scale}, vrr, 0, bitdepth, 10"
+        ", preferred, auto, ${scale}"
       ];
 
       home.packages = [ pkgs.wootility ];

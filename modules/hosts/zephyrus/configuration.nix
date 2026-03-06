@@ -75,8 +75,15 @@
     };
 
   flake.homeModules.zephyrus =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      ...
+    }:
     let
+      s = 1.25;
+      scale = lib.strings.floatToString s;
+      pos = x: y: "${toString (builtins.floor (x / s))}x${toString (builtins.floor (y / s))}";
       brightnessctl = lib.getExe pkgs.brightnessctl;
       hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
       jq = lib.getExe pkgs.jq;
@@ -86,7 +93,7 @@
       kbdBacklight = "asus::kbd_backlight";
       intelBacklight = "intel_backlight";
       nvidiaBacklight = "nvidia_0";
-      internalDisplayConfig = "eDP-1, 2560x1600@240, 0x0, 1.00, vrr, 1, bitdepth, 10";
+      internalDisplayConfig = "eDP-1, 2560x1600@240, 0x0, ${scale}, vrr, 1, bitdepth, 10";
 
       getKbdBrightness = "${brightnessctl} -d ${kbdBacklight} -m | cut -d, -f4 | tr -d '%'";
 
@@ -189,9 +196,9 @@
       wayland.windowManager.hyprland.settings = {
         monitor = [
           internalDisplayConfig
-          "DP-1, 2560x1600@144, 2560x0, 1.00"
-          "HDMI-A-1, 3840x2160@60, -640x-2160, 1.00"
-          ", highrr, auto, 1.00"
+          "DP-1, 2560x1600@144, ${pos 2560 0}, ${scale}"
+          "HDMI-A-1, 3840x2160@60, ${pos (-640) (-2160)}, ${scale}"
+          ", highrr, auto, ${scale}"
         ];
 
         exec-once = [

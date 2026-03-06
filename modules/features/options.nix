@@ -49,6 +49,8 @@
             };
           };
 
+          scale = lib.mkOption { type = lib.types.float; };
+
           wallpaper = lib.mkOption { type = lib.types.path; };
 
           opacity = {
