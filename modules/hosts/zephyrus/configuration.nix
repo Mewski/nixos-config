@@ -71,6 +71,8 @@
         sbctl
       ];
 
+      theme.scale = 1.25;
+
       system.stateVersion = "25.11";
     };
 
@@ -78,10 +80,11 @@
     {
       lib,
       pkgs,
+      theme,
       ...
     }:
     let
-      s = 1.25;
+      s = theme.scale;
       scale = lib.strings.floatToString s;
       pos = x: y: "${toString (builtins.floor (x / s))}x${toString (builtins.floor (y / s))}";
       brightnessctl = lib.getExe pkgs.brightnessctl;
