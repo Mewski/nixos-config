@@ -24,7 +24,7 @@
           "suppress_event maximize, match:class .*"
           "immediate on, match:xwayland 1"
           "float on, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
-          "size 900 600, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
+          "size 900 500, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
           "center on, match:title (Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download)"
         ];
       };
