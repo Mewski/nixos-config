@@ -8,15 +8,12 @@
       nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
 
       environment.etc."ssl/openssl-override.cnf".source =
-        let
-          opensslDir = "${pkgs.openssl}/etc/ssl";
-        in
         pkgs.runCommand "openssl-cnf-patched" { } ''
-          sed 's/# activate = 1/activate = 1/' ${opensslDir}/openssl.cnf > $out
+          sed 's/# activate = 1/activate = 1/' ${pkgs.openssl.out}/etc/ssl/openssl.cnf > $out
         '';
 
       systemd.services.pveproxy.serviceConfig.ExecStartPre = lib.mkBefore [
-        "+${pkgs.bash}/bin/bash -c '${pkgs.util-linux}/bin/mount --bind /etc/ssl/openssl-override.cnf ${pkgs.openssl}/etc/ssl/openssl.cnf'"
+        "+${pkgs.bash}/bin/bash -c '${pkgs.util-linux}/bin/mount --bind /etc/ssl/openssl-override.cnf ${pkgs.openssl.out}/etc/ssl/openssl.cnf'"
       ];
 
       boot.kernel.sysctl = {
