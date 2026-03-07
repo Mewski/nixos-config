@@ -3,7 +3,16 @@
   flake.nixosModules.ares = {
     imports = [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
 
-    nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
+    nixpkgs.overlays = [
+      inputs.proxmox-nixos.overlays.x86_64-linux
+      (final: prev: {
+        openssl = prev.openssl.overrideAttrs (old: {
+          postInstall = (old.postInstall or "") + ''
+            sed -i 's/# activate = 1/activate = 1/' $out/etc/ssl/openssl.cnf
+          '';
+        });
+      })
+    ];
 
     boot.kernel.sysctl = {
       "net.bridge.bridge-nf-call-iptables" = 0;
@@ -17,23 +26,6 @@
     };
 
     networking.firewall.allowedTCPPorts = [ 8006 ];
-
-    environment.etc."ssl/openssl.cnf".text = ''
-      openssl_conf = openssl_init
-
-      [openssl_init]
-      providers = provider_sect
-
-      [provider_sect]
-      default = default_sect
-
-      [default_sect]
-      activate = 1
-    '';
-
-    systemd.services.pveproxy.environment = {
-      OPENSSL_CONF = "/etc/ssl/openssl.cnf";
-    };
 
     services.proxmox-ve = {
       enable = true;
