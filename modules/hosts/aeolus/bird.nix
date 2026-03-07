@@ -17,11 +17,6 @@
             scan time 10;
           }
 
-          protocol direct {
-            ipv4;
-            ipv6;
-          }
-
           protocol static static_v4 {
             ipv4;
             route 23.152.236.0/24 blackhole;

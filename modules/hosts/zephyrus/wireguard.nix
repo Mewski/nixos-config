@@ -44,27 +44,6 @@
         ];
       };
 
-      networking.wg-quick.interfaces.wg2 = {
-        address = [
-          "23.152.236.2/32"
-          "2602:fe18::2/128"
-        ];
-        privateKeyFile = config.sops.secrets."wg2/private_key".path;
-
-        peers = [
-          {
-            publicKey = "KyEVt7nfNKSuIcRYBQ0tbiJ5cSH2xl+zngQiQOYVl3o=";
-            presharedKeyFile = config.sops.secrets."wg2/preshared_key".path;
-            endpoint = "144.202.48.125:51821";
-            persistentKeepalive = 25;
-            allowedIPs = [
-              "23.152.236.1/24"
-              "2602:fe18::/48"
-            ];
-          }
-        ];
-      };
-
       systemd.services = {
         "wg-quick-wg0" = {
           wants = [ "network-online.target" ];
@@ -76,15 +55,6 @@
         };
 
         "wg-quick-wg1" = {
-          wants = [ "network-online.target" ];
-          after = [ "network-online.target" ];
-          serviceConfig = {
-            Restart = "on-failure";
-            RestartSec = 5;
-          };
-        };
-
-        "wg-quick-wg2" = {
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
           serviceConfig = {

@@ -69,12 +69,20 @@
         defaultGateway = "10.0.20.1";
         nameservers = [ "10.0.20.1" ];
 
-        interfaces.ens1f0.ipv4.addresses = [
-          {
-            address = "10.0.20.10";
-            prefixLength = 24;
-          }
-        ];
+        interfaces.ens1f0 = {
+          ipv4.addresses = [
+            {
+              address = "10.0.20.10";
+              prefixLength = 24;
+            }
+          ];
+          ipv6.addresses = [
+            {
+              address = "2600:1700:5820:5af1::10";
+              prefixLength = 64;
+            }
+          ];
+        };
 
         firewall.allowedTCPPorts = [
           22
@@ -101,8 +109,6 @@
       };
 
       powerManagement.cpuFreqGovernor = "performance";
-
-      zramSwap.enable = true;
 
       environment.systemPackages = with pkgs; [
         cdrkit

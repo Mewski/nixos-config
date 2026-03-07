@@ -41,7 +41,7 @@
         hostId = "fad41e6c";
         useDHCP = false;
 
-        nameservers = [ "23.152.236.1" ];
+        nameservers = [ "10.0.50.1" ];
 
         interfaces.vmbr0 = {
           ipv4.addresses = [
@@ -50,16 +50,13 @@
               prefixLength = 24;
             }
           ];
-          ipv4.routes = [
+          ipv6.addresses = [
             {
-              address = "144.202.48.125";
-              prefixLength = 32;
-              via = "10.0.50.1";
+              address = "2600:1700:5820:5af4::10";
+              prefixLength = 64;
             }
           ];
         };
-
-        firewall.allowedTCPPorts = [ 22 ];
       };
 
       services = {
@@ -81,8 +78,6 @@
       };
 
       powerManagement.cpuFreqGovernor = "performance";
-
-      zramSwap.enable = true;
 
       environment.systemPackages = with pkgs; [
         cdrkit
