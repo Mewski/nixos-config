@@ -15,11 +15,6 @@
       ];
 
       boot = {
-        kernel.sysctl = {
-          "net.ipv4.ip_forward" = 1;
-          "net.ipv6.conf.all.forwarding" = 1;
-        };
-
         loader = {
           systemd-boot.enable = false;
           efi.efiSysMountPoint = "/boot";
@@ -46,6 +41,7 @@
         hostId = "fad41e6c";
         useDHCP = false;
 
+        defaultGateway = "10.0.50.1";
         nameservers = [ "10.0.50.1" ];
 
         interfaces.vmbr0 = {
