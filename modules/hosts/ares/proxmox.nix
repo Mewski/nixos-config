@@ -10,7 +10,11 @@
       "net.bridge.bridge-nf-call-ip6tables" = 0;
     };
 
-    networking.bridges.vmbr0.interfaces = [ "ens1f0" ];
+    networking.bridges = {
+      vmbr0.interfaces = [ "ens1f0" ];
+      vmbr1.interfaces = [ ];
+      vmbr2.interfaces = [ ];
+    };
 
     networking.firewall.allowedTCPPorts = [ 8006 ];
 
