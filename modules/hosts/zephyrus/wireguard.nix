@@ -44,6 +44,23 @@
         ];
       };
 
+      networking.wg-quick.interfaces.wg2 = {
+        address = [ "192.168.30.137/32" ];
+        privateKeyFile = config.sops.secrets."wg2/private_key".path;
+
+        peers = [
+          {
+            publicKey = "n34BKPybcDFPO0E+HHNDTfY5EAtuMxHrHE+ireTi7gU=";
+            presharedKeyFile = config.sops.secrets."wg2/preshared_key".path;
+            endpoint = "cyberrange.takoyaki.sh:51822";
+            persistentKeepalive = 25;
+            allowedIPs = [
+              "192.168.20.0/24"
+            ];
+          }
+        ];
+      };
+
       systemd.services = {
         "wg-quick-wg0" = {
           wants = [ "network-online.target" ];
@@ -55,6 +72,15 @@
         };
 
         "wg-quick-wg1" = {
+          wants = [ "network-online.target" ];
+          after = [ "network-online.target" ];
+          serviceConfig = {
+            Restart = "on-failure";
+            RestartSec = 5;
+          };
+        };
+
+        "wg-quick-wg2" = {
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
           serviceConfig = {
