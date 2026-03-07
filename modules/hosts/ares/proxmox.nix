@@ -1,22 +1,20 @@
 { inputs, ... }:
 {
-  flake.nixosModules.ares = {
+  flake.nixosModules.ares = { pkgs, lib, ... }: {
     imports = [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
 
-    nixpkgs.overlays = [
-      inputs.proxmox-nixos.overlays.x86_64-linux
-      (final: prev: {
-        openssl = prev.openssl.overrideAttrs (old: {
-          postInstall = (old.postInstall or "") + ''
-            sed -i 's/# activate = 1/activate = 1/' $out/etc/ssl/openssl.cnf
-          '';
-        });
-        python313 = prev.python313.override {
-          packageOverrides = pfinal: pprev: {
-            psutil = pprev.psutil.overrideAttrs { doCheck = false; };
-          };
-        };
-      })
+    nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
+
+    environment.etc."ssl/openssl-override.cnf".source =
+      let
+        opensslDir = "${pkgs.openssl}/etc/ssl";
+      in
+        pkgs.runCommand "openssl-cnf-patched" { } ''
+          sed 's/# activate = 1/activate = 1/' ${opensslDir}/openssl.cnf > $out
+        '';
+
+    systemd.services.pveproxy.serviceConfig.ExecStartPre = lib.mkBefore [
+      "+${pkgs.bash}/bin/bash -c '${pkgs.util-linux}/bin/mount --bind /etc/ssl/openssl-override.cnf ${pkgs.openssl}/etc/ssl/openssl.cnf'"
     ];
 
     boot.kernel.sysctl = {
@@ -41,5 +39,6 @@
         "vmbr2"
       ];
     };
+  };
   };
 }
