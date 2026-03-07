@@ -9,6 +9,7 @@
     {
       imports = [
         inputs.disko.nixosModules.default
+        inputs.lanzaboote.nixosModules.lanzaboote
         self.diskoConfigurations.ares
         self.nixosModules.server
       ];
@@ -20,13 +21,18 @@
         };
 
         loader = {
+          systemd-boot.enable = false;
           efi.efiSysMountPoint = "/boot";
           efi.canTouchEfiVariables = true;
-          grub = {
+        };
+
+        lanzaboote = {
+          enable = true;
+          pkiBundle = "/var/lib/sbctl";
+          autoGenerateKeys.enable = true;
+          autoEnrollKeys = {
             enable = true;
-            zfsSupport = true;
-            efiSupport = true;
-            device = "nodev";
+            autoReboot = true;
           };
         };
 
