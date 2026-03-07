@@ -11,6 +11,11 @@
             sed -i 's/# activate = 1/activate = 1/' $out/etc/ssl/openssl.cnf
           '';
         });
+        python313 = prev.python313.override {
+          packageOverrides = pfinal: pprev: {
+            psutil = pprev.psutil.overrideAttrs { doCheck = false; };
+          };
+        };
       })
     ];
 
