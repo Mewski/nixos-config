@@ -18,6 +18,23 @@
 
     networking.firewall.allowedTCPPorts = [ 8006 ];
 
+    environment.etc."ssl/openssl.cnf".text = ''
+      openssl_conf = openssl_init
+
+      [openssl_init]
+      providers = provider_sect
+
+      [provider_sect]
+      default = default_sect
+
+      [default_sect]
+      activate = 1
+    '';
+
+    systemd.services.pveproxy.environment = {
+      OPENSSL_CONF = "/etc/ssl/openssl.cnf";
+    };
+
     services.proxmox-ve = {
       enable = true;
       ipAddress = "10.0.50.10";
