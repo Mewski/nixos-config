@@ -42,6 +42,10 @@
         useDHCP = false;
 
         defaultGateway = "10.0.50.1";
+        defaultGateway6 = {
+          address = "2600:1700:5820:5af4::1";
+          interface = "vmbr0";
+        };
         nameservers = [ "10.0.50.1" ];
 
         interfaces.vmbr0 = {
