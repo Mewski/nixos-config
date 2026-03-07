@@ -17,8 +17,6 @@
       };
 
       bridges.vmbr0.interfaces = [ "vlan30" ];
-      bridges.vmbr1.interfaces = [ ];
-      bridges.vmbr2.interfaces = [ ];
     };
 
     networking.firewall.allowedTCPPorts = [ 8006 ];
@@ -28,8 +26,6 @@
       ipAddress = "10.0.20.10";
       bridges = [
         "vmbr0"
-        "vmbr1"
-        "vmbr2"
       ];
     };
   };
