@@ -13,7 +13,6 @@
     networking.bridges = {
       vmbr0.interfaces = [ "ens1f0" ];
       vmbr1.interfaces = [ ];
-      vmbr2.interfaces = [ ];
     };
 
     networking.firewall.allowedTCPPorts = [ 8006 ];
@@ -24,7 +23,6 @@
       bridges = [
         "vmbr0"
         "vmbr1"
-        "vmbr2"
       ];
     };
   };
