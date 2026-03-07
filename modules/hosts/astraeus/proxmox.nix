@@ -19,6 +19,8 @@
       bridges.vmbr0.interfaces = [ "vlan30" ];
     };
 
+    networking.firewall.allowedTCPPorts = [ 8006 ];
+
     services.proxmox-ve = {
       enable = true;
       ipAddress = "10.0.20.10";
