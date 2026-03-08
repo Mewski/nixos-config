@@ -6,7 +6,7 @@
     nixpkgs.overlays = [
       inputs.proxmox-nixos.overlays.x86_64-linux
       (_final: prev: {
-        pve-qemu = prev.pve-qemu.overrideAttrs (old: {
+        qemu = prev.qemu.overrideAttrs (old: {
           buildInputs = old.buildInputs ++ [ prev.fuse3 ];
           configureFlags = old.configureFlags ++ [ "--enable-fuse" ];
         });
