@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   flake.nixosModules.ares = {
     imports = [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
@@ -6,7 +6,10 @@
     nixpkgs.overlays = [
       inputs.proxmox-nixos.overlays.x86_64-linux
       (_final: prev: {
-        pve-qemu = prev.pve-qemu.override { fuseSupport = true; };
+        pve-qemu = prev.pve-qemu.overrideAttrs (old: {
+          buildInputs = old.buildInputs ++ [ prev.fuse3 ];
+          configureFlags = old.configureFlags ++ [ "--enable-fuse" ];
+        });
       })
     ];
 
