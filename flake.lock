@@ -1070,11 +1070,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1772949196,
-        "narHash": "sha256-0XU5L/4cEWH53Ipxeln6Tca9hYtBk+C38TPkU926akQ=",
+        "lastModified": 1772944896,
+        "narHash": "sha256-sVWZGPNlBaEMM/70LdwOd0AJaAoC2VIpw9bRujKjixU=",
         "owner": "Mewski",
         "repo": "proxmox-nixos",
-        "rev": "9cfb373863ffaa7f54120712404b3711cc00f223",
+        "rev": "fff958394590507f65f5f99fb32a2111cba5fdc9",
         "type": "github"
       },
       "original": {
