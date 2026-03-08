@@ -9,6 +9,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     base16.url = "github:SenchoPens/base16.nix";
     pwndbg.url = "github:pwndbg/pwndbg";
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     disko = {
@@ -64,11 +65,6 @@
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    proxmox-nixos = {
-      url = "github:SaumonNet/proxmox-nixos";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
   };
 
