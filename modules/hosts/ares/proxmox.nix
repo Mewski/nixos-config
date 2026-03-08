@@ -1,17 +1,9 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.ares = {
     imports = [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
 
-    nixpkgs.overlays = [
-      inputs.proxmox-nixos.overlays.x86_64-linux
-      (_final: prev: {
-        pve-qemu = prev.pve-qemu.overrideAttrs (old: {
-          buildInputs = old.buildInputs ++ [ prev.fuse3 ];
-          configureFlags = old.configureFlags ++ [ "--enable-fuse" ];
-        });
-      })
-    ];
+    nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
 
     boot.kernel.sysctl = {
       "net.bridge.bridge-nf-call-iptables" = 0;
