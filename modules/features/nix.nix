@@ -7,6 +7,7 @@
 
       nix = {
         package = pkgs.lix;
+        registry.nixos-config.flake = inputs.self;
         settings.experimental-features = [
           "nix-command"
           "flakes"

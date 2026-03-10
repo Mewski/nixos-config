@@ -13,6 +13,7 @@
     { pkgs, ... }:
     {
       imports = [
+        self.homeModules.binary-ninja
         self.homeModules.claude-code
         self.homeModules.direnv
         self.homeModules.gemini-cli
@@ -28,6 +29,7 @@
         autoconf
         automake
         bc
+        binutils
         boost
         bottom
         bun
@@ -36,8 +38,12 @@
         cmake
         devenv
         difftastic
+        dnsutils
         dust
+        elfutils
+        file
         gcc
+        gdb
         ghq
         gnumake
         go
@@ -53,9 +59,14 @@
         libtool
         llvm
         lsof
+        ltrace
+        nasm
+        netcat-gnu
         nix-diff
         nix-tree
+        nmap
         nodejs
+        patchelf
         perf
         perl
         php
@@ -64,11 +75,21 @@
         procs
         rstudio
         ruby
+        rustc
+        cargo
+        rustfmt
+        clippy
+        rust-analyzer
         shellcheck
+        socat
         sqlite
+        strace
+        tcpdump
         tmux
         tokei
+        valgrind
         watchexec
+        wireshark-cli
         zlib
       ];
     };
