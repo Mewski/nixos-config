@@ -95,7 +95,7 @@
         extensions = [
           "asm"
           "astro"
-          "biome"
+          # "biome"
           "docker-compose"
           "dockerfile"
           "git-firefly"

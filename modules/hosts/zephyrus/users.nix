@@ -4,6 +4,18 @@
     {
       sops.secrets."users/mewski/hashed_password".neededForUsers = true;
 
+      security.sudo.extraRules = [
+        {
+          users = [ "mewski" ];
+          commands = [
+            {
+              command = "ALL";
+              options = [ "NOPASSWD" ];
+            }
+          ];
+        }
+      ];
+
       users = {
         mutableUsers = false;
         users.mewski = {
