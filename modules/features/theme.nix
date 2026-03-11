@@ -1,13 +1,18 @@
 { inputs, ... }:
 {
   flake.nixosModules.theme =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       scheme = "${inputs.tinted-theming-schemes}/base24/mountain.yaml";
 
       theme = {
         polarity = "dark";
-        wallpaper = "${inputs.self}/assets/wallpapers/Kath.png";
+        wallpaper = "${inputs.self}/assets/wallpapers/Sparkle.png";
 
         scale = lib.mkDefault 1.0;
 

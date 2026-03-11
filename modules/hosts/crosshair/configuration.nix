@@ -68,7 +68,12 @@
     };
 
   flake.homeModules.crosshair =
-    { lib, pkgs, theme, ... }:
+    {
+      lib,
+      pkgs,
+      theme,
+      ...
+    }:
     let
       scale = lib.strings.floatToString theme.scale;
     in
