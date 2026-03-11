@@ -6,7 +6,10 @@
         settings = {
           "zen.view.window.scheme" = if theme.polarity == "dark" then 0 else 1;
           "layout.css.prefers-color-scheme.content-override" = if theme.polarity == "dark" then 0 else 1;
+          "devtools.theme" = if theme.polarity == "dark" then "dark" else "light";
           "zen.theme.accent-color" = scheme.withHashtag.base0D;
+          "browser.display.use_system_colors" = true;
+          "browser.tabs.allow_transparent_browser" = false;
         };
 
         userChrome = ''
@@ -140,10 +143,6 @@
 
           #zen-appcontent-navbar-container {
             background-color: ${scheme.withHashtag.base00} !important;
-          }
-
-          #tabbrowser-tabpanels {
-            background-color: white !important;
           }
 
           #contentAreaContextMenu menu,
