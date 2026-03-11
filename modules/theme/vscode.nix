@@ -427,10 +427,10 @@
 
             "extensionButton.prominentForeground" = scheme.withHashtag.base00;
             "extensionButton.prominentBackground" = scheme.withHashtag.base0D;
-            "extensionButton.prominentHoverBackground" = scheme.withHashtag.base16;
+            "extensionButton.prominentHoverBackground" = scheme.withHashtag.base16 or scheme.withHashtag.base0D;
             "extensionButton.background" = scheme.withHashtag.base0D;
             "extensionButton.foreground" = scheme.withHashtag.base00;
-            "extensionButton.hoverBackground" = scheme.withHashtag.base16;
+            "extensionButton.hoverBackground" = scheme.withHashtag.base16 or scheme.withHashtag.base0D;
             "extensionButton.separator" = "${scheme.withHashtag.base00}40";
             "extensionBadge.remoteBackground" = scheme.withHashtag.base0D;
             "extensionBadge.remoteForeground" = scheme.withHashtag.base00;
@@ -482,12 +482,12 @@
             "terminal.ansiCyan" = scheme.withHashtag.base0C;
             "terminal.ansiWhite" = scheme.withHashtag.base05;
             "terminal.ansiBrightBlack" = scheme.withHashtag.base03;
-            "terminal.ansiBrightRed" = scheme.withHashtag.base12;
-            "terminal.ansiBrightGreen" = scheme.withHashtag.base14;
-            "terminal.ansiBrightYellow" = scheme.withHashtag.base13;
-            "terminal.ansiBrightBlue" = scheme.withHashtag.base16;
-            "terminal.ansiBrightMagenta" = scheme.withHashtag.base17;
-            "terminal.ansiBrightCyan" = scheme.withHashtag.base15;
+            "terminal.ansiBrightRed" = scheme.withHashtag.base12 or scheme.withHashtag.base08;
+            "terminal.ansiBrightGreen" = scheme.withHashtag.base14 or scheme.withHashtag.base0B;
+            "terminal.ansiBrightYellow" = scheme.withHashtag.base13 or scheme.withHashtag.base0A;
+            "terminal.ansiBrightBlue" = scheme.withHashtag.base16 or scheme.withHashtag.base0D;
+            "terminal.ansiBrightMagenta" = scheme.withHashtag.base17 or scheme.withHashtag.base0E;
+            "terminal.ansiBrightCyan" = scheme.withHashtag.base15 or scheme.withHashtag.base0C;
             "terminal.ansiBrightWhite" = scheme.withHashtag.base07;
 
             "debugToolBar.background" = scheme.withHashtag.base01;

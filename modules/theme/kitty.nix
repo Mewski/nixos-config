@@ -43,12 +43,12 @@
           color7 = scheme.withHashtag.base05;
 
           color8 = scheme.withHashtag.base02;
-          color9 = scheme.withHashtag.base12;
-          color10 = scheme.withHashtag.base14;
-          color11 = scheme.withHashtag.base13;
-          color12 = scheme.withHashtag.base16;
-          color13 = scheme.withHashtag.base17;
-          color14 = scheme.withHashtag.base15;
+          color9 = scheme.withHashtag.base12 or scheme.withHashtag.base08;
+          color10 = scheme.withHashtag.base14 or scheme.withHashtag.base0B;
+          color11 = scheme.withHashtag.base13 or scheme.withHashtag.base0A;
+          color12 = scheme.withHashtag.base16 or scheme.withHashtag.base0D;
+          color13 = scheme.withHashtag.base17 or scheme.withHashtag.base0E;
+          color14 = scheme.withHashtag.base15 or scheme.withHashtag.base0C;
           color15 = scheme.withHashtag.base07;
 
           color16 = scheme.withHashtag.base09;
