@@ -9,7 +9,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     base16.url = "github:SenchoPens/base16.nix";
     pwndbg.url = "github:pwndbg/pwndbg";
-    proxmox-nixos.url = "github:Mewski/proxmox-nixos";
+    proxmox-nixos.url = "github:Mewski/proxmox-nixos/deploy";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
     disko = {
