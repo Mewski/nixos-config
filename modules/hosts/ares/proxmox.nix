@@ -69,6 +69,11 @@
       '';
     };
 
+    systemd.tmpfiles.rules = [
+      "d /usr/sbin 0755 root root -"
+      "L+ /usr/sbin/qm - - - - /run/current-system/sw/bin/qm"
+    ];
+
     services.proxmox-ve = {
       enable = true;
       ipAddress = "10.0.50.10";
