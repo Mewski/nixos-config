@@ -3,7 +3,22 @@
   flake.nixosModules.ares = {
     imports = [ inputs.proxmox-nixos.nixosModules.proxmox-ve ];
 
-    nixpkgs.overlays = [ inputs.proxmox-nixos.overlays.x86_64-linux ];
+    nixpkgs.overlays = [
+      inputs.proxmox-nixos.overlays.x86_64-linux
+      (_final: prev: {
+        perl540 = prev.perl540.override {
+          packageOverrides = _perlFinal: perlPrev: {
+            CryptOpenSSLRSA = perlPrev.CryptOpenSSLRSA.overrideAttrs (_old: {
+              version = "0.33";
+              src = prev.fetchurl {
+                url = "mirror://cpan/authors/id/T/TO/TODDR/Crypt-OpenSSL-RSA-0.33.tar.gz";
+                hash = "sha256-xpsIlwnB+UE/s9MmzpdVdK0JXEQG8HnfqlYjGurpjXA=";
+              };
+            });
+          };
+        };
+      })
+    ];
 
     boot.kernel.sysctl = {
       "net.bridge.bridge-nf-call-iptables" = 0;
