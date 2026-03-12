@@ -69,11 +69,11 @@
       '';
     };
 
+    systemd.services.qmeventd.path = [ "/run/current-system/sw" ];
+
     systemd.tmpfiles.rules = [
       "d /usr/sbin 0755 root root -"
       "L+ /usr/sbin/qm - - - - /run/current-system/sw/bin/qm"
-      "L+ /usr/sbin/swtpm_setup - - - - /run/current-system/sw/bin/swtpm_setup"
-      "L+ /usr/sbin/swtpm - - - - /run/current-system/sw/bin/swtpm"
     ];
 
     services.proxmox-ve = {
