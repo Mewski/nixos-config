@@ -29,6 +29,7 @@
       vmbr0.interfaces = [ "ens1f0" ];
       vmbr1.interfaces = [ ];
       vmbr2.interfaces = [ ];
+      vmbr3.interfaces = [ ];
     };
 
     networking.firewall.allowedTCPPorts = [ 8006 ];
@@ -38,6 +39,7 @@
         "vmbr0-netdev.service"
         "vmbr1-netdev.service"
         "vmbr2-netdev.service"
+        "vmbr3-netdev.service"
         "pve-guests.service"
       ];
       wants = [ "pve-guests.service" ];
@@ -74,6 +76,7 @@
         "vmbr0"
         "vmbr1"
         "vmbr2"
+        "vmbr3"
       ];
     };
   };
