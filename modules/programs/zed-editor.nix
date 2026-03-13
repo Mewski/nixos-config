@@ -95,7 +95,7 @@
         extensions = [
           "asm"
           "astro"
-          # "biome"
+          "biome"
           "docker-compose"
           "dockerfile"
           "git-firefly"
@@ -106,6 +106,7 @@
           "neocmake"
           "nix"
           "prettier"
+          "svelte"
           "tailwind-css"
           "toml"
           "vue"
