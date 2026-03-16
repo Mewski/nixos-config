@@ -68,6 +68,7 @@
             "C++".format_on_save = "on";
             CSS.language_servers = [
               "tailwindcss-intellisense-css"
+              "biome"
               "!vscode-css-language-server"
               "..."
             ];
@@ -78,9 +79,26 @@
                 "..."
               ];
             };
+            Svelte.language_servers = [
+              "svelte-language-server"
+              "biome"
+              "!eslint"
+              "..."
+            ];
+            TypeScript.language_servers = [
+              "biome"
+              "!eslint"
+              "..."
+            ];
+            JavaScript.language_servers = [
+              "biome"
+              "!eslint"
+              "..."
+            ];
           };
 
           lsp = {
+            biome.settings.require_config_file = true;
             clangd.binary.arguments = [
               "--background-index"
               "--clang-tidy"

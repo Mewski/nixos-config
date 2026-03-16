@@ -198,8 +198,9 @@
       wayland.windowManager.hyprland.settings = {
         monitor = [
           internalDisplayConfig
-          "DP-1, 2560x1600@144, ${pos 2560 0}, ${scale}"
-          "HDMI-A-1, 3840x2160@60, ${pos (-640) (-2160)}, ${scale}"
+          "DP-1, highrr, ${pos 2560 0}, ${scale}"
+          "desc:LG Electronics LG ULTRAGEAR+ 0x01010101, 3440x1440@240, ${pos (-440) (-1440)}, ${scale}"
+          "HDMI-A-1, highrr, auto-up, ${scale}"
           ", highrr, auto, ${scale}"
         ];
 
