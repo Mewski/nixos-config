@@ -101,11 +101,15 @@
       home.packages = with pkgs; [
         bitwarden-desktop
         brightnessctl
+        davinci-resolve
         drawing
         file
         file-roller
+        gimp
         gnome-text-editor
+        inkscape
         jq
+        libreoffice
         libnotify
         microfetch
         mpv
