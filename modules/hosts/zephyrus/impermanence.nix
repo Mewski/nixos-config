@@ -28,6 +28,7 @@
         files = [
           "/etc/machine-id"
           "/etc/supergfxd.conf"
+          "/var/lib/systemd/credential.secret"
         ];
 
         users.mewski = {
