@@ -46,6 +46,7 @@
             ".config/zen"
             ".docker"
             ".gemini"
+            ".local/share/atuin"
             ".local/share/fish"
             ".local/state/wireplumber"
             ".local/share/flatpak"

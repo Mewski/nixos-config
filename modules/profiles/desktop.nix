@@ -68,6 +68,7 @@
         self.homeModules.hyprland
         self.homeModules.hyprlock
         self.homeModules.kitty
+        self.homeModules.mpv
         self.homeModules.nixcord
         self.homeModules.obsidian
         self.homeModules.qt
@@ -112,7 +113,6 @@
         libreoffice
         libnotify
         microfetch
-        mpv
         networkmanagerapplet
         obs-studio
         p7zip
