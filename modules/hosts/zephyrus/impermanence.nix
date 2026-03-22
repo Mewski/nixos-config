@@ -35,11 +35,13 @@
           directories = [
             ".binaryninja"
             ".cache/spotify"
+            ".cargo"
             ".claude"
             ".config/Bitwarden"
             ".config/Code"
             ".config/discord"
             ".config/github-copilot"
+            ".config/obs-studio"
             ".config/obsidian"
             ".config/rstudio"
             ".config/Signal"

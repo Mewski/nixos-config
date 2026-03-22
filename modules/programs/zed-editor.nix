@@ -15,6 +15,7 @@
           icon_theme = "Material Icon Theme";
           vim_mode = false;
           tab_size = 2;
+          hard_tabs = false;
           colorize_brackets = true;
           relative_line_numbers = "disabled";
 
@@ -33,7 +34,7 @@
           document_folding_ranges = "on";
           document_symbols = "on";
 
-          inlay_hints.enabled = true;
+          inlay_hints.enabled = false;
 
           scrollbar = {
             show = "auto";
@@ -79,22 +80,18 @@
                 "..."
               ];
             };
-            Svelte.language_servers = [
-              "svelte-language-server"
-              "biome"
-              "!eslint"
-              "..."
-            ];
-            TypeScript.language_servers = [
-              "biome"
-              "!eslint"
-              "..."
-            ];
-            JavaScript.language_servers = [
-              "biome"
-              "!eslint"
-              "..."
-            ];
+            Svelte = {
+              hard_tabs = false;
+              tab_size = 2;
+            };
+            TypeScript = {
+              hard_tabs = false;
+              tab_size = 2;
+            };
+            JavaScript = {
+              hard_tabs = false;
+              tab_size = 2;
+            };
           };
 
           lsp = {

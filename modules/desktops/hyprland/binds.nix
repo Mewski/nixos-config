@@ -137,7 +137,7 @@
           "SUPER, F, fullscreen"
           "SUPER, J, layoutmsg, togglesplit"
           "SUPER SHIFT, M, exit,"
-          "SUPER, P, layoutmsg, pseudo"
+          "SUPER, P, pseudo, active"
           "SUPER, V, togglefloating,"
 
           "SUPER, up, movefocus, u"
