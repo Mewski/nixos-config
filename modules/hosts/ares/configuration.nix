@@ -31,6 +31,7 @@
           };
         };
 
+        kernel.sysctl."kernel.mm.ksm.run" = 1;
         supportedFilesystems = [ "zfs" ];
         zfs.devNodes = "/dev/disk/by-id";
       };
