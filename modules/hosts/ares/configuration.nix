@@ -31,6 +31,7 @@
           };
         };
 
+        kernelParams = [ "transparent_hugepage=always" ];
         kernel.sysctl."kernel.mm.ksm.run" = 1;
         supportedFilesystems = [ "zfs" ];
         zfs.devNodes = "/dev/disk/by-id";
@@ -84,6 +85,8 @@
           };
         };
       };
+
+      swapDevices = [{ device = "/dev/zvol/rpool/swap"; }];
 
       powerManagement.cpuFreqGovernor = "performance";
 

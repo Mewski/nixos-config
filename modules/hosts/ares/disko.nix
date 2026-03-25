@@ -78,6 +78,18 @@
             options.mountpoint = "legacy";
             mountpoint = "/var/lib/vz";
           };
+
+          swap = {
+            type = "zfs_volume";
+            size = "16G";
+            options = {
+              compression = "zle";
+              sync = "always";
+              primarycache = "metadata";
+              secondarycache = "none";
+              logbias = "throughput";
+            };
+          };
         };
       };
     };
