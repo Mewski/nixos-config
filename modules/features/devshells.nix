@@ -110,7 +110,7 @@
             medusa
             metasploit
             mimikatz
-            mitmproxy
+            # mitmproxy
             mtr
             nbtscan
             net-snmp
