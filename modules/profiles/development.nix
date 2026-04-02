@@ -73,7 +73,7 @@
         pkg-config
         podman
         procs
-        rstudio
+        # rstudio
         ruby
         rustc
         cargo

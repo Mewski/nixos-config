@@ -65,11 +65,15 @@
           telemetry.metrics = false;
           edit_predictions.provider = "copilot";
 
+          agent = {
+            show_turn_stats = true;
+          };
+
           languages = {
             "C++".format_on_save = "on";
             CSS.language_servers = [
               "tailwindcss-intellisense-css"
-              "biome"
+              "eslint"
               "!vscode-css-language-server"
               "..."
             ];
@@ -83,14 +87,35 @@
             Svelte = {
               hard_tabs = false;
               tab_size = 2;
+              language_servers = [
+                "svelte-language-server"
+                "eslint"
+                "..."
+              ];
             };
             TypeScript = {
               hard_tabs = false;
               tab_size = 2;
+              language_servers = [
+                "typescript-language-server"
+                "eslint"
+                "..."
+              ];
             };
             JavaScript = {
               hard_tabs = false;
               tab_size = 2;
+              language_servers = [
+                "typescript-language-server"
+                "eslint"
+                "..."
+              ];
+            };
+          };
+
+          agent_servers = {
+            claude-acp = {
+              type = "registry";
             };
           };
 
@@ -110,7 +135,6 @@
         extensions = [
           "asm"
           "astro"
-          "biome"
           "docker-compose"
           "dockerfile"
           "git-firefly"
@@ -119,6 +143,7 @@
           "make"
           "material-icon-theme"
           "neocmake"
+          "eslint"
           "nix"
           "prettier"
           "svelte"

@@ -25,6 +25,8 @@
           name = if theme.polarity == "dark" then "adw-gtk3-dark" else "adw-gtk3";
         };
 
+        gtk4.theme = null;
+
         iconTheme = {
           package = pkgs.adwaita-icon-theme;
           name = "Adwaita";
