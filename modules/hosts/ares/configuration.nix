@@ -86,7 +86,7 @@
         };
       };
 
-      swapDevices = [{ device = "/dev/zvol/rpool/swap"; }];
+      swapDevices = [ { device = "/dev/zvol/rpool/swap"; } ];
 
       powerManagement.cpuFreqGovernor = "performance";
 
