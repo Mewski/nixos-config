@@ -22,19 +22,28 @@
     };
   };
 
-  flake.homeModules.zephyrus = {
-    sops = {
-      age.keyFile = ".config/sops/age/keys.txt";
-      secrets = {
-        wakatime_api_key = {
-          sopsFile = "${self}/secrets/shared/secrets.yaml";
-          path = ".wakatime.cfg";
+  flake.homeModules.zephyrus =
+    { config, ... }:
+    {
+      sops = {
+        age.keyFile = ".config/sops/age/keys.txt";
+        secrets = {
+          wakatime_api_key = {
+            sopsFile = "${self}/secrets/shared/secrets.yaml";
+          };
+          binary_ninja_license = {
+            sopsFile = "${self}/secrets/shared/secrets.yaml";
+            path = ".binaryninja/license.dat";
+          };
         };
-        binary_ninja_license = {
-          sopsFile = "${self}/secrets/shared/secrets.yaml";
-          path = ".binaryninja/license.dat";
+        templates."wakatime.cfg" = {
+          path = ".wakatime.cfg";
+          content = ''
+            [settings]
+            api_key=${config.sops.placeholder.wakatime_api_key}
+            sync_ai_disabled=true
+          '';
         };
       };
     };
-  };
 }
