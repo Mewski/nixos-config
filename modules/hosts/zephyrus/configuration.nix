@@ -42,7 +42,7 @@
         hostName = "zephyrus";
         networkmanager.enable = true;
         firewall.allowedTCPPorts = [
-          8080
+          3000
         ];
       };
 
