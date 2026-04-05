@@ -34,6 +34,7 @@
         users.mewski = {
           directories = [
             ".binaryninja"
+            ".idapro"
             ".cache/spotify"
             ".cargo"
             ".claude"
