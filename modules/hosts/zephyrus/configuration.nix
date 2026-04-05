@@ -67,7 +67,7 @@
       environment.systemPackages = with pkgs; [
         openvpn
         sbctl
-        tor
+        tor-browser
       ];
 
       theme.scale = 1.25;
