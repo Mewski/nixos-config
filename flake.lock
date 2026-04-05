@@ -748,11 +748,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775362371,
-        "narHash": "sha256-WZiVKIZygZjr3EIXzL4o2fwDwgWCkfPkuPj16QsxuDI=",
+        "lastModified": 1775364079,
+        "narHash": "sha256-uRpvNQ3NU217Xh6WvqiZMnWvsd/HkMU61MkReW8ZVa0=",
         "owner": "Mewski",
         "repo": "nix-ida-pro",
-        "rev": "f4aa12711786286475c2988630dc5734ac754e94",
+        "rev": "6e4b61f546fa5a4b8c1eff0eb93a26e6a6888a1f",
         "type": "github"
       },
       "original": {

@@ -23,6 +23,11 @@
             ];
             timeout = 1800;
           };
+          ida_pro_mcp = {
+            type = "stdio";
+            command = "${pkgs.ida-pro-mcp}/bin/ida-pro-mcp";
+            timeout = 1800;
+          };
           gdb = {
             type = "stdio";
             command = "${pkgs.nodejs_latest}/bin/npx";

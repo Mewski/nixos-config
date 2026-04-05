@@ -3,6 +3,20 @@
   perSystem =
     { system, pkgs, ... }:
     {
+      overlayAttrs.ida-pro-mcp = pkgs.python3Packages.buildPythonApplication {
+        pname = "ida-pro-mcp";
+        version = "1.4.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "mrexodia";
+          repo = "ida-pro-mcp";
+          rev = "1.4.0";
+          hash = "sha256-abH6i/Xr3P3/gP8L151FZBU9ovp/olFWwKenPz7BuF8=";
+        };
+        pyproject = true;
+        build-system = [ pkgs.python3Packages.setuptools ];
+        dependencies = [ pkgs.python3Packages.mcp ];
+      };
+
       overlayAttrs.ida-pro-wayland =
         inputs.ida-pro.packages.${system}.ida-pro-wayland.overrideAttrs
           (old: {
