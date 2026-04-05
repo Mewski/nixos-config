@@ -35,6 +35,10 @@
             sopsFile = "${self}/secrets/shared/secrets.yaml";
             path = ".binaryninja/license.dat";
           };
+          ida_pro_license = {
+            sopsFile = "${self}/secrets/shared/secrets.yaml";
+            path = ".idapro/idapro.hexlic";
+          };
         };
         templates."wakatime.cfg" = {
           path = ".wakatime.cfg";
