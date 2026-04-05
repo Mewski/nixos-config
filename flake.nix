@@ -82,10 +82,10 @@
       ];
 
       perSystem =
-        { system, ... }:
+        { pkgs, ... }:
         {
           _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
+            inherit (pkgs.stdenv.hostPlatform) system;
             overlays = [ inputs.self.overlays.default ];
             config.allowUnfree = true;
           };
