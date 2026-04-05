@@ -1,11 +1,12 @@
 { inputs, ... }:
 {
   perSystem =
-    { system, ... }:
+    { system, pkgs, ... }:
     {
       overlayAttrs.ida-pro-wayland =
         inputs.ida-pro.packages.${system}.ida-pro-wayland.overrideAttrs
           (old: {
+            nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.tinyxxd ];
             postFixup = (old.postFixup or "") + ''
               for lib in $out/opt/ida-pro/libida.so $out/opt/ida-pro/libida32.so; do
                 if [ -f "$lib" ]; then
