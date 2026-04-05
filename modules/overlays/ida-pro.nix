@@ -26,6 +26,7 @@
                 if [ -f "$lib" ]; then
                   xxd -p "$lib" | tr -d '\n' \
                     | sed 's/edfd425cf978/edfd42cbf978/g' \
+                    | sed 's/ff90f800000085c00f858d000000/ff90f800000085c0909090909090/g' \
                     | xxd -r -p > "$lib.patched"
                   mv "$lib.patched" "$lib"
                   chmod +x "$lib"
