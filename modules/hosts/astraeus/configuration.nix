@@ -14,11 +14,6 @@
       ];
 
       boot = {
-        kernel.sysctl = {
-          "net.ipv4.ip_forward" = 1;
-          "net.ipv6.conf.all.forwarding" = 1;
-        };
-
         loader = {
           efi.efiSysMountPoint = "/boot";
           efi.canTouchEfiVariables = true;
@@ -56,6 +51,8 @@
           };
         };
 
+        kernelParams = [ "transparent_hugepage=always" ];
+        kernel.sysctl."kernel.mm.ksm.run" = 1;
         supportedFilesystems = [ "zfs" ];
         zfs.devNodes = "/dev/disk/by-id";
       };
@@ -66,19 +63,23 @@
         hostId = "d2a7615d";
         useDHCP = false;
 
-        defaultGateway = "10.0.20.1";
-        nameservers = [ "10.0.20.1" ];
+        defaultGateway = "10.0.50.1";
+        defaultGateway6 = {
+          address = "2600:1700:5820:5af4::1";
+          interface = "vmbr0";
+        };
+        nameservers = [ "10.0.50.1" ];
 
-        interfaces.ens1f0 = {
+        interfaces.vmbr0 = {
           ipv4.addresses = [
             {
-              address = "10.0.20.10";
+              address = "10.0.50.20";
               prefixLength = 24;
             }
           ];
           ipv6.addresses = [
             {
-              address = "2600:1700:5820:5af1::10";
+              address = "2600:1700:5820:5af4::20";
               prefixLength = 64;
             }
           ];
@@ -111,6 +112,7 @@
         cdrkit
         git
         openssl
+        swtpm
       ];
 
       system.stateVersion = "25.11";
