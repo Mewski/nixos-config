@@ -57,6 +57,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ida-pro = {
+      url = "github:Mewski/nix-ida-pro";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     tinted-theming-schemes = {
       url = "github:tinted-theming/schemes";
       flake = false;
