@@ -29,6 +29,7 @@
             "docker"
             "libvirtd"
             "gamemode"
+            "dialout"
           ];
         };
       };
