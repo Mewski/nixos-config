@@ -48,11 +48,24 @@
         rev = "e7ecb93a4d242e83b9356b8258108773464646d4";
         hash = "sha256-MTOMYH0y70B6NeLmdEJucYuvmo/V4bRXTd7iaTbo/IQ=";
       };
-      patching = pkgs.fetchFromGitHub {
-        owner = "gaasedelen";
-        repo = "patching";
-        rev = "f7902033f9c2be9ea71017ce9eb13691906cc858";
-        hash = "sha256-yAh78oVMRlQq4wvJkjsid/ZdUQwMv6GubIut3ljB2Qc=";
+      patching = pkgs.stdenv.mkDerivation {
+        pname = "ida-patching";
+        version = "0.2.0";
+        src = pkgs.fetchurl {
+          url = "https://github.com/gaasedelen/patching/releases/download/v0.2.0/patching_linux.zip";
+          hash = "sha256-csTvwh11h62LrgzOu+zI6v/qaQ4HQqLnF9doy6IQhrk=";
+        };
+        nativeBuildInputs = [
+          pkgs.unzip
+          pkgs.autoPatchelfHook
+        ];
+        buildInputs = [ pkgs.stdenv.cc.cc.lib ];
+        sourceRoot = ".";
+        installPhase = ''
+          mkdir -p $out/patching
+          cp patching.py $out/
+          cp -r patching/* $out/patching/
+        '';
       };
       ret-sync = pkgs.fetchFromGitHub {
         owner = "bootleg";
@@ -132,8 +145,8 @@
 
         file.".idapro/plugins/keypatch.py".source = "${keypatch}/keypatch.py";
 
-        file.".idapro/plugins/patching.py".source = "${patching}/plugins/patching.py";
-        file.".idapro/plugins/patching".source = "${patching}/plugins/patching";
+        file.".idapro/plugins/patching.py".source = "${patching}/patching.py";
+        file.".idapro/plugins/patching".source = "${patching}/patching";
 
         file.".idapro/plugins/SyncPlugin.py".source = "${ret-sync}/ext_ida/SyncPlugin.py";
         file.".idapro/plugins/retsync".source = "${ret-sync}/ext_ida/retsync";
