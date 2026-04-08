@@ -30,7 +30,10 @@
         autoconf
         automake
         bc
+        android-tools
+        bindiff
         binutils
+        binwalk
         boost
         bottom
         bun
@@ -42,9 +45,11 @@
         dnsutils
         dust
         elfutils
+        exiftool
         file
         gcc
         gdb
+        ghidra
         ghq
         gnumake
         go
@@ -89,6 +94,7 @@
         tmux
         tokei
         valgrind
+        wabt
         watchexec
         wireshark-cli
         zlib

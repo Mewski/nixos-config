@@ -34,5 +34,64 @@
               done
             '';
           });
+      overlayAttrs.bindiff = pkgs.stdenv.mkDerivation {
+        pname = "bindiff";
+        version = "8";
+        src = pkgs.fetchurl {
+          url = "https://github.com/google/bindiff/releases/download/v8/bindiff_8_amd64.deb";
+          hash = "sha256-ghmQ45dKnfZzN5Q3DkhUhqwna6XXd6BrTr5XXwkvTdo=";
+        };
+        nativeBuildInputs = [
+          pkgs.dpkg
+          pkgs.autoPatchelfHook
+        ];
+        autoPatchelfIgnoreMissingDeps = [ "libbinaryninjacore.so.1" ];
+        buildInputs = [
+          pkgs.stdenv.cc.cc.lib
+          pkgs.zlib
+          pkgs.libx11
+          pkgs.libxext
+          pkgs.libxi
+          pkgs.libxrender
+          pkgs.libxtst
+          pkgs.alsa-lib
+        ];
+        unpackPhase = ''
+          dpkg-deb -x $src .
+        '';
+        installPhase = ''
+          mkdir -p $out
+          cp -r opt/bindiff/* $out/
+        '';
+      };
+
+      overlayAttrs.bindiff-ida-plugins = pkgs.stdenv.mkDerivation {
+        pname = "bindiff-ida-plugins";
+        version = "9.3-20260302";
+        srcs = [
+          (pkgs.fetchurl {
+            url = "https://github.com/Lil-Ran/build-bindiff-for-ida-9/releases/download/release-20260302-1/BinDiff-IDA_9.3-x86_64-linux-built_on_ubuntu_24.04.zip";
+            hash = "sha256-iF3ZKsRqqSzLgx2+tsZ9SCi/LOqc6yV4Vt+2QWTgMGk=";
+          })
+          (pkgs.fetchurl {
+            url = "https://github.com/Lil-Ran/build-bindiff-for-ida-9/releases/download/release-20260302-1/BinExport-IDA_9.3-x86_64-linux-built_on_ubuntu_24.04.zip";
+            hash = "sha256-zYiEh/LHJlkYIE4PXMQoYkyHtfQFEdNSMKB1Ex6HZSE=";
+          })
+        ];
+        nativeBuildInputs = [
+          pkgs.unzip
+          pkgs.autoPatchelfHook
+        ];
+        autoPatchelfIgnoreMissingDeps = [ "libida.so" ];
+        buildInputs = [
+          pkgs.stdenv.cc.cc.lib
+        ];
+        sourceRoot = ".";
+        installPhase = ''
+          mkdir -p $out
+          cp ida/bindiff8_ida64.so $out/
+          cp ida/binexport12_ida64.so $out/
+        '';
+      };
     };
 }

@@ -30,7 +30,6 @@
             adidnsdump
             aircrack-ng
             amass
-            android-tools
             apktool
             aria2
             arjun
@@ -38,7 +37,6 @@
             autopsy
             bandwhich
             bettercap
-            binwalk
             bloodhound
             bloodhound-py
             bulk_extractor
@@ -63,7 +61,6 @@
             enum4linux-ng
             ettercap
             evil-winrm
-            exiftool
             exploitdb
             eyewitness
             fcrackzip
@@ -75,7 +72,6 @@
             freerdp
             frida-tools
             gau
-            ghidra
             gitleaks
             gobuster
             gowitness
@@ -165,7 +161,6 @@
             upx
             volatility3
             vt-cli
-            wabt
             wafw00f
             waybackurls
             whatweb

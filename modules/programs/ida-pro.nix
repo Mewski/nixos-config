@@ -26,6 +26,9 @@
         file.".idapro/plugins/vulfi_prototypes.json".source = "${vulfi}/vulfi_prototypes.json";
         file.".idapro/plugins/wakatime.py".source = "${ida-wakatime}/wakatime.py";
 
+        file.".idapro/plugins/bindiff8_ida64.so".source = "${pkgs.bindiff-ida-plugins}/bindiff8_ida64.so";
+        file.".idapro/plugins/binexport12_ida64.so".source = "${pkgs.bindiff-ida-plugins}/binexport12_ida64.so";
+
         activation.ida-pro-mcp = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           ${pkgs.ida-pro-mcp}/bin/ida-pro-mcp --install 2>/dev/null || true
         '';
