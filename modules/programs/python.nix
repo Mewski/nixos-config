@@ -16,17 +16,21 @@
             numpy
             openai
             opencv4
+            pandas
             paramiko
             pillow
             arrow
             capstone
             networkx
             pip
+            protobuf
+            pyyaml
             pygments
             setuptools
             six
             requests
             sympy
+            tiktoken
             tqdm
             unicorn
             uvicorn
