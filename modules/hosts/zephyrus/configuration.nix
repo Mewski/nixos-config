@@ -62,6 +62,7 @@
         blueman.enable = true;
         resolved.enable = true;
         udev.packages = [
+          pkgs.probe-rs-tools
           pkgs.python3Packages.chipwhisperer
           pkgs.wooting-udev-rules
         ];

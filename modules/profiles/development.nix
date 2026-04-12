@@ -77,6 +77,7 @@
         perl
         php
         pkg-config
+        probe-rs-tools
         podman
         procs
         # rstudio
