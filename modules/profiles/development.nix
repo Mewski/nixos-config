@@ -93,6 +93,7 @@
         tcpdump
         tmux
         tokei
+        uv
         valgrind
         wabt
         watchexec

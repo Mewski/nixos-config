@@ -61,7 +61,10 @@
 
         blueman.enable = true;
         resolved.enable = true;
-        udev.packages = [ pkgs.wooting-udev-rules ];
+        udev.packages = [
+          pkgs.python3Packages.chipwhisperer
+          pkgs.wooting-udev-rules
+        ];
       };
 
       environment.systemPackages = with pkgs; [
@@ -69,6 +72,8 @@
         sbctl
         tor-browser
       ];
+
+      hardware.flipperzero.enable = true;
 
       theme.scale = 1.25;
 
