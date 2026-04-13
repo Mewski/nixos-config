@@ -29,6 +29,7 @@
         age
         autoconf
         automake
+        avrdude
         bc
         android-tools
         bindiff
@@ -41,10 +42,12 @@
         clang-tools
         cmake
         devenv
+        dfu-util
         difftastic
         dnsutils
         dust
         elfutils
+        esptool
         exiftool
         file
         gcc
@@ -66,12 +69,14 @@
         llvm
         lsof
         ltrace
+        minicom
         nasm
         netcat-gnu
         nix-diff
         nix-tree
         nmap
         nodejs
+        openocd
         patchelf
         perf
         perl
@@ -80,6 +85,7 @@
         probe-rs-tools
         podman
         procs
+        pulseview
         # rstudio
         ruby
         rustc
@@ -87,7 +93,9 @@
         rustfmt
         clippy
         rust-analyzer
+        screen
         shellcheck
+        sigrok-cli
         socat
         sqlite
         strace
