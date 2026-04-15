@@ -41,7 +41,9 @@
         bottom
         bun
         bzip2
+        cargo
         clang-tools
+        clippy
         cmake
         devenv
         dfu-util
@@ -90,8 +92,6 @@
         pulseview
         rstudio
         ruby
-        cargo
-        clippy
         rust-analyzer
         rustc
         rustfmt

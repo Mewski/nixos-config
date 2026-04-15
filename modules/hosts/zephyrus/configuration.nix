@@ -62,6 +62,7 @@
         };
 
         blueman.enable = true;
+
         resolved = {
           enable = true;
           dnsovertls = "opportunistic";
