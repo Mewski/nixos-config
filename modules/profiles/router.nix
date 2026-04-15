@@ -1,18 +1,17 @@
 { self, ... }:
 {
   flake.nixosModules.router =
-    { lib, pkgs, ... }:
+    { pkgs, ... }:
     {
-      imports = [ self.nixosModules.nix ];
+      imports = [
+        self.nixosModules.locale
+        self.nixosModules.nix
+      ];
 
       boot.kernel.sysctl = {
         "net.ipv4.ip_forward" = 1;
         "net.ipv6.conf.all.forwarding" = 1;
       };
-
-      time.timeZone = lib.mkDefault "America/Chicago";
-
-      i18n.defaultLocale = "en_US.UTF-8";
 
       services.openssh = {
         enable = true;
