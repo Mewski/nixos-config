@@ -12,6 +12,11 @@
           "nix-command"
           "flakes"
         ];
+        gc = {
+          automatic = true;
+          dates = "weekly";
+          options = "--delete-older-than 14d";
+        };
       };
 
       nixpkgs = {
@@ -32,6 +37,7 @@
           nix-output-monitor
           nixd
           nixfmt
+          nvd
           statix
         ];
       };

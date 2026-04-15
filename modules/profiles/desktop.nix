@@ -44,6 +44,13 @@
         gnome.gnome-keyring.enable = true;
       };
 
+      systemd.oomd = {
+        enable = true;
+        enableRootSlice = true;
+        enableUserSlices = true;
+        enableSystemSlice = true;
+      };
+
       environment.systemPackages = [ pkgs.nautilus ];
     };
 
