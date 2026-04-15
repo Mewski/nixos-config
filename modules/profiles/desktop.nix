@@ -67,9 +67,9 @@
         enable = true;
         defaultApplications =
           let
-            browser = "zen.desktop";
+            browser = "zen-beta.desktop";
             fileManager = "org.gnome.Nautilus.desktop";
-            imageViewer = "com.github.qarber.qimgv.desktop";
+            imageViewer = "qimgv.desktop";
             videoPlayer = "mpv.desktop";
             textEditor = "org.gnome.TextEditor.desktop";
             archiver = "org.gnome.FileRoller.desktop";

@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.nixosModules.crosshair =
-    { lib, ... }:
+    { ... }:
     {
       imports = [ inputs.impermanence.nixosModules.impermanence ];
 
@@ -75,29 +75,36 @@
         };
       };
 
-      boot.initrd.postResumeCommands = lib.mkAfter ''
-        mount --mkdir -o subvol=/ /dev/mapper/cryptroot /mnt
+      boot.initrd.systemd.services.wipe-root = {
+        wantedBy = [ "initrd.target" ];
+        after = [ "cryptsetup.target" ];
+        before = [ "sysroot.mount" ];
+        unitConfig.DefaultDependencies = "no";
+        serviceConfig.Type = "oneshot";
+        script = ''
+          mount --mkdir -o subvol=/ /dev/mapper/cryptroot /mnt
 
-        if [[ -e /mnt/root ]]; then
-          mkdir -p /mnt/snapshots
-          timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
-          mv /mnt/root "/mnt/snapshots/$timestamp"
-        fi
+          if [[ -e /mnt/root ]]; then
+            mkdir -p /mnt/snapshots
+            timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
+            mv /mnt/root "/mnt/snapshots/$timestamp"
+          fi
 
-        delete_subvolume_recursively() {
-          IFS=$'\n'
-          for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-            delete_subvolume_recursively "/mnt/$i"
+          delete_subvolume_recursively() {
+            IFS=$'\n'
+            for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+              delete_subvolume_recursively "/mnt/$i"
+            done
+            btrfs subvolume delete "$1"
+          }
+
+          for i in $(find /mnt/snapshots/ -maxdepth 1 -mtime +7); do
+            delete_subvolume_recursively "$i"
           done
-          btrfs subvolume delete "$1"
-        }
 
-        for i in $(find /mnt/snapshots/ -maxdepth 1 -mtime +7); do
-          delete_subvolume_recursively "$i"
-        done
-
-        btrfs subvolume create /mnt/root
-        umount /mnt
-      '';
+          btrfs subvolume create /mnt/root
+          umount /mnt
+        '';
+      };
     };
 }
