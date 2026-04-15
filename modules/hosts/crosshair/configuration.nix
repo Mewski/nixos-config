@@ -14,6 +14,7 @@
         self.nixosModules.desktop
         self.nixosModules.development
         self.nixosModules.gaming
+        self.nixosModules.hyprland
         self.nixosModules.nvidia
         self.nixosModules.theme
       ];

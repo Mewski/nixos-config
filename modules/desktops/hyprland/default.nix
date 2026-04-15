@@ -12,6 +12,8 @@
         portalPackage = hyprlandPkgs.xdg-desktop-portal-hyprland;
       };
 
+      home-manager.sharedModules = [ self.homeModules.hyprland ];
+
       environment = {
         sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -28,7 +30,9 @@
       imports = [
         self.homeModules.dunst
         self.homeModules.hypridle
+        self.homeModules.hyprlock
         self.homeModules.hyprpaper
+        self.homeModules.rofi
         self.homeModules.waybar
       ];
 

@@ -7,7 +7,6 @@
         self.nixosModules.fish
         self.nixosModules.gtk
         self.nixosModules.home-manager
-        self.nixosModules.hyprland
         self.nixosModules.locale
         self.nixosModules.nix
         self.nixosModules.options
@@ -55,14 +54,11 @@
         self.homeModules.btop
         self.homeModules.fish
         self.homeModules.gtk
-        self.homeModules.hyprland
-        self.homeModules.hyprlock
         self.homeModules.kitty
         self.homeModules.mpv
         self.homeModules.nixcord
         self.homeModules.obsidian
         self.homeModules.qt
-        self.homeModules.rofi
         self.homeModules.starship
         self.homeModules.zen-browser
       ];
