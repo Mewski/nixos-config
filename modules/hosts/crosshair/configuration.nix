@@ -23,8 +23,10 @@
         kernelPackages = pkgs.linuxPackages_latest;
 
         loader = {
-          systemd-boot.enable = false;
-          systemd-boot.configurationLimit = 10;
+          systemd-boot = {
+            enable = false;
+            configurationLimit = 10;
+          };
           efi.canTouchEfiVariables = true;
         };
 
@@ -39,21 +41,13 @@
         };
       };
 
-      hardware = {
-        opentabletdriver.enable = true;
-        uinput.enable = true;
-      };
-
-      theme.scale = 1.25;
-
-      powerManagement.cpuFreqGovernor = "performance";
-
       networking = {
         hostName = "crosshair";
         networkmanager.enable = true;
       };
 
       zramSwap.enable = true;
+      powerManagement.cpuFreqGovernor = "performance";
 
       services = {
         openssh = {
@@ -68,7 +62,14 @@
         udev.packages = [ pkgs.wooting-udev-rules ];
       };
 
+      hardware = {
+        opentabletdriver.enable = true;
+        uinput.enable = true;
+      };
+
       environment.systemPackages = [ pkgs.sbctl ];
+
+      theme.scale = 1.25;
 
       system.stateVersion = "25.11";
     };

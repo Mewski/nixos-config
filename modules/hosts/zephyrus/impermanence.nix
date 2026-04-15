@@ -88,8 +88,12 @@
       wantedBy = [ "initrd.target" ];
       after = [ "cryptsetup.target" ];
       before = [ "sysroot.mount" ];
-      unitConfig.DefaultDependencies = "no";
-      serviceConfig.Type = "oneshot";
+      unitConfig = {
+        DefaultDependencies = "no";
+      };
+      serviceConfig = {
+        Type = "oneshot";
+      };
       script = ''
         mount --mkdir -o subvol=/ /dev/mapper/cryptroot /mnt
 

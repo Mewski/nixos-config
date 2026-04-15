@@ -144,8 +144,8 @@
         bitwarden-desktop
         brightnessctl
         davinci-resolve
-        evince
         drawing
+        evince
         file
         file-roller
         gimp

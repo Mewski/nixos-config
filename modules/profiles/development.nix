@@ -29,11 +29,11 @@
 
       home.packages = with pkgs; [
         age
+        android-tools
         autoconf
         automake
         avrdude
         bc
-        android-tools
         bindiff
         binutils
         binwalk
@@ -84,17 +84,17 @@
         perl
         php
         pkg-config
-        probe-rs-tools
         podman
+        probe-rs-tools
         procs
         pulseview
-        # rstudio
+        rstudio
         ruby
-        rustc
         cargo
-        rustfmt
         clippy
         rust-analyzer
+        rustc
+        rustfmt
         screen
         shellcheck
         sigrok-cli

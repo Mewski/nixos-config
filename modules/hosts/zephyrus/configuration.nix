@@ -24,8 +24,10 @@
         kernelPackages = pkgs.linuxPackages_latest;
 
         loader = {
-          systemd-boot.enable = false;
-          systemd-boot.configurationLimit = 10;
+          systemd-boot = {
+            enable = false;
+            configurationLimit = 10;
+          };
           efi.canTouchEfiVariables = true;
         };
 
@@ -43,9 +45,7 @@
       networking = {
         hostName = "zephyrus";
         networkmanager.enable = true;
-        firewall.allowedTCPPorts = [
-          3000
-        ];
+        firewall.allowedTCPPorts = [ 1337 ];
       };
 
       zramSwap.enable = true;
