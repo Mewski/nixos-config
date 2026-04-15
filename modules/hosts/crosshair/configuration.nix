@@ -15,7 +15,6 @@
         self.nixosModules.development
         self.nixosModules.gaming
         self.nixosModules.nvidia
-        self.nixosModules.tablet
         self.nixosModules.theme
       ];
 
@@ -36,6 +35,11 @@
             autoReboot = true;
           };
         };
+      };
+
+      hardware = {
+        opentabletdriver.enable = true;
+        uinput.enable = true;
       };
 
       theme.scale = 1.25;

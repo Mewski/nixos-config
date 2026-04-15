@@ -12,7 +12,6 @@
         self.nixosModules.nix
         self.nixosModules.options
         self.nixosModules.pipewire
-        self.nixosModules.printing
         self.nixosModules.qt
       ];
 
@@ -41,6 +40,7 @@
       security.polkit.enable = true;
 
       services = {
+        printing.enable = true;
         upower.enable = true;
         gnome.gnome-keyring.enable = true;
       };

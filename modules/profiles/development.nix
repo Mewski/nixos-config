@@ -1,10 +1,12 @@
 { self, ... }:
 {
   flake.nixosModules.development = {
-    imports = [
-      self.nixosModules.docker
-      self.nixosModules.virtualization
-    ];
+    imports = [ self.nixosModules.virtualization ];
+
+    virtualisation.docker = {
+      enable = true;
+      enableOnBoot = true;
+    };
 
     home-manager.sharedModules = [ self.homeModules.development ];
   };
