@@ -14,6 +14,7 @@
     { pkgs, ... }:
     {
       imports = [
+        self.homeModules.flatpak
         self.homeModules.osu
         self.homeModules.prism-launcher
       ];
