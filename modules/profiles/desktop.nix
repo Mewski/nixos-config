@@ -65,16 +65,64 @@
 
       xdg.mimeApps = {
         enable = true;
-        defaultApplications = {
-          "application/zip" = "org.gnome.FileRoller.desktop";
-          "application/x-7z-compressed" = "org.gnome.FileRoller.desktop";
-          "application/x-tar" = "org.gnome.FileRoller.desktop";
-          "application/gzip" = "org.gnome.FileRoller.desktop";
-          "application/x-compressed-tar" = "org.gnome.FileRoller.desktop";
-          "application/x-bzip2-compressed-tar" = "org.gnome.FileRoller.desktop";
-          "application/x-xz-compressed-tar" = "org.gnome.FileRoller.desktop";
-          "application/x-rar" = "org.gnome.FileRoller.desktop";
-        };
+        defaultApplications =
+          let
+            browser = "zen.desktop";
+            fileManager = "org.gnome.Nautilus.desktop";
+            imageViewer = "com.github.qarber.qimgv.desktop";
+            videoPlayer = "mpv.desktop";
+            textEditor = "org.gnome.TextEditor.desktop";
+            archiver = "org.gnome.FileRoller.desktop";
+            pdfViewer = "org.gnome.Evince.desktop";
+          in
+          {
+            "x-scheme-handler/http" = browser;
+            "x-scheme-handler/https" = browser;
+            "x-scheme-handler/chrome" = browser;
+            "text/html" = browser;
+            "application/xhtml+xml" = browser;
+
+            "application/pdf" = pdfViewer;
+
+            "inode/directory" = fileManager;
+
+            "image/png" = imageViewer;
+            "image/jpeg" = imageViewer;
+            "image/gif" = imageViewer;
+            "image/webp" = imageViewer;
+            "image/bmp" = imageViewer;
+            "image/tiff" = imageViewer;
+            "image/svg+xml" = imageViewer;
+
+            "video/mp4" = videoPlayer;
+            "video/x-matroska" = videoPlayer;
+            "video/webm" = videoPlayer;
+            "video/x-msvideo" = videoPlayer;
+            "video/quicktime" = videoPlayer;
+            "audio/mpeg" = videoPlayer;
+            "audio/flac" = videoPlayer;
+            "audio/ogg" = videoPlayer;
+            "audio/x-wav" = videoPlayer;
+
+            "text/plain" = textEditor;
+            "text/x-csrc" = textEditor;
+            "text/x-chdr" = textEditor;
+            "text/x-python" = textEditor;
+            "text/x-shellscript" = textEditor;
+            "text/markdown" = textEditor;
+            "application/json" = textEditor;
+            "application/xml" = textEditor;
+            "application/x-yaml" = textEditor;
+
+            "application/zip" = archiver;
+            "application/x-7z-compressed" = archiver;
+            "application/x-tar" = archiver;
+            "application/gzip" = archiver;
+            "application/x-compressed-tar" = archiver;
+            "application/x-bzip2-compressed-tar" = archiver;
+            "application/x-xz-compressed-tar" = archiver;
+            "application/x-rar" = archiver;
+          };
       };
 
       home.pointerCursor = {
@@ -89,6 +137,7 @@
         bitwarden-desktop
         brightnessctl
         davinci-resolve
+        evince
         drawing
         file
         file-roller
