@@ -1,33 +1,25 @@
 { inputs, self, ... }:
+let
+  deployNodes = [
+    "astraeus"
+    "aeolus"
+    "prometheus"
+  ];
+in
 {
-  flake.deploy.nodes = {
-    astraeus = {
-      hostname = "astraeus.takoyaki.io";
-      profiles.system = {
-        user = "root";
-        sshUser = "root";
-        path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.astraeus;
+  flake.deploy.nodes = builtins.listToAttrs (
+    map (name: {
+      inherit name;
+      value = {
+        hostname = "${name}.takoyaki.io";
+        profiles.system = {
+          user = "root";
+          sshUser = "root";
+          path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.${name};
+        };
       };
-    };
-
-    aeolus = {
-      hostname = "aeolus.takoyaki.io";
-      profiles.system = {
-        user = "root";
-        sshUser = "root";
-        path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.aeolus;
-      };
-    };
-
-    prometheus = {
-      hostname = "prometheus.takoyaki.io";
-      profiles.system = {
-        user = "root";
-        sshUser = "root";
-        path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.prometheus;
-      };
-    };
-  };
+    }) deployNodes
+  );
 
   flake.checks = builtins.mapAttrs (
     system: deployLib: deployLib.deployChecks self.deploy
