@@ -6,6 +6,11 @@
       imports = [ inputs.base16.nixosModule ];
 
       options = {
+        desktop.session.command = lib.mkOption {
+          type = lib.types.nullOr lib.types.str;
+          default = null;
+        };
+
         theme = {
           polarity = lib.mkOption {
             type = lib.types.enum [

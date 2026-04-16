@@ -5,6 +5,7 @@
     {
       imports = [
         self.nixosModules.fish
+        self.nixosModules.greetd
         self.nixosModules.gtk
         self.nixosModules.home-manager
         self.nixosModules.locale

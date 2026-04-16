@@ -10,6 +10,8 @@
         package = pkgs.niri;
       };
 
+      desktop.session.command = "niri-session";
+
       home-manager.sharedModules = [ self.homeModules.niri ];
 
       environment = {

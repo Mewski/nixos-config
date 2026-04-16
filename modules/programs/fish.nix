@@ -8,12 +8,6 @@
       fish = {
         enable = true;
 
-        loginShellInit = ''
-          if test -z "$DISPLAY" -a "$XDG_VTNR" = "1"
-            exec start-hyprland
-          end
-        '';
-
         shellAliases = {
           ls = "eza --icons";
           ll = "eza -la --icons";

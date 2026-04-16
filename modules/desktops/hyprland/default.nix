@@ -12,6 +12,8 @@
         portalPackage = hyprlandPkgs.xdg-desktop-portal-hyprland;
       };
 
+      desktop.session.command = "start-hyprland";
+
       home-manager.sharedModules = [ self.homeModules.hyprland ];
 
       environment = {
