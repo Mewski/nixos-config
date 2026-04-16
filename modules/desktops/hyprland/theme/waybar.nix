@@ -1,5 +1,5 @@
 {
-  flake.homeModules.waybar =
+  flake.homeModules.hyprland =
     { theme, scheme, ... }:
     {
       programs.waybar.style = ''

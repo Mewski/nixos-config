@@ -1,5 +1,5 @@
 {
-  flake.homeModules.hyprpaper =
+  flake.homeModules.hyprland =
     { theme, ... }:
     {
       services.hyprpaper = {

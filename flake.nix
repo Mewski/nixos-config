@@ -8,6 +8,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixcord.url = "github:kaylorben/nixcord";
     hyprland.url = "github:hyprwm/Hyprland";
+    niri.url = "github:sodiboo/niri-flake";
     base16.url = "github:SenchoPens/base16.nix";
     pwndbg.url = "github:pwndbg/pwndbg";
     proxmox-nixos.url = "github:Mewski/proxmox-nixos/deploy";

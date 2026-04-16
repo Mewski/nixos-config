@@ -1,5 +1,5 @@
 {
-  flake.homeModules.hyprlock =
+  flake.homeModules.hyprland =
     { scheme, ... }:
     {
       programs.hyprlock.settings = {

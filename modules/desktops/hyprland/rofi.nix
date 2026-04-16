@@ -1,5 +1,5 @@
 {
-  flake.homeModules.rofi = {
+  flake.homeModules.hyprland = {
     programs.rofi = {
       enable = true;
       extraConfig = {

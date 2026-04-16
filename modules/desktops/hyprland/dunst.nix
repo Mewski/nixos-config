@@ -1,5 +1,5 @@
 {
-  flake.homeModules.dunst = {
+  flake.homeModules.hyprland = {
     services.dunst = {
       enable = true;
 

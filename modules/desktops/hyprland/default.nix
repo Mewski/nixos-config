@@ -27,15 +27,6 @@
   flake.homeModules.hyprland =
     { lib, pkgs, ... }:
     {
-      imports = [
-        self.homeModules.dunst
-        self.homeModules.hypridle
-        self.homeModules.hyprlock
-        self.homeModules.hyprpaper
-        self.homeModules.rofi
-        self.homeModules.waybar
-      ];
-
       wayland.windowManager.hyprland = {
         enable = true;
         systemd.enable = true;

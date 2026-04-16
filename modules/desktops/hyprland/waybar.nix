@@ -1,5 +1,5 @@
 {
-  flake.homeModules.waybar =
+  flake.homeModules.hyprland =
     { lib, pkgs, ... }:
     let
       hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
