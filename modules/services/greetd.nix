@@ -1,19 +1,15 @@
 {
   flake.nixosModules.greetd =
-    { config, lib, ... }:
+    { config, lib, pkgs, ... }:
     let
-      primaryUser = builtins.head (builtins.attrNames config.home-manager.users);
-      session = {
-        user = primaryUser;
-        command = config.desktop.session.command;
-      };
+      tuigreet = lib.getExe pkgs.tuigreet;
     in
     lib.mkIf (config.desktop.session.command != null) {
       services.greetd = {
         enable = true;
-        settings = {
-          default_session = session;
-          initial_session = session;
+        settings.default_session = {
+          user = "greeter";
+          command = "${tuigreet} --time --remember --remember-session --asterisks --cmd ${config.desktop.session.command}";
         };
       };
     };

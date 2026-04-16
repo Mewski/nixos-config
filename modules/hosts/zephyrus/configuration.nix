@@ -94,4 +94,10 @@
 
       system.stateVersion = "25.11";
     };
+
+  flake.homeModules.zephyrus =
+    { pkgs, ... }:
+    {
+      home.packages = [ pkgs.wootility ];
+    };
 }
