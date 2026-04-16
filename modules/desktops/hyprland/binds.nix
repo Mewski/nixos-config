@@ -6,6 +6,21 @@
       jq = lib.getExe pkgs.jq;
       notify = lib.getExe pkgs.libnotify;
       wpctl = lib.getExe' pkgs.wireplumber "wpctl";
+      kitty = lib.getExe pkgs.kitty;
+      rofi = lib.getExe pkgs.rofi;
+      hyprlock = lib.getExe pkgs.hyprlock;
+      bitwarden = lib.getExe pkgs.bitwarden-desktop;
+      nautilus = lib.getExe pkgs.nautilus;
+      btop = lib.getExe pkgs.btop;
+      zed = lib.getExe pkgs.zed-editor;
+      hyprpicker = lib.getExe pkgs.hyprpicker;
+      hyprshot = lib.getExe pkgs.hyprshot;
+      tesseract = lib.getExe pkgs.tesseract;
+      satty = lib.getExe pkgs.satty;
+      cliphist = lib.getExe pkgs.cliphist;
+      wfrecorder = lib.getExe pkgs.wf-recorder;
+      playerctl = lib.getExe pkgs.playerctl;
+      wlcopy = lib.getExe' pkgs.wl-clipboard "wl-copy";
 
       getVolume = "${wpctl} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'";
       isMuted = sink: "${wpctl} get-volume ${sink} | grep -q MUTED";
@@ -38,9 +53,9 @@
       '';
 
       cliphistSelect = pkgs.writeShellScript "cliphist-select" ''
-        selected=$(${lib.getExe pkgs.cliphist} list | ${lib.getExe pkgs.rofi} -dmenu -display-columns 2 -no-show-icons)
+        selected=$(${cliphist} list | ${rofi} -dmenu -display-columns 2 -no-show-icons)
         if [ -n "$selected" ]; then
-          echo "$selected" | ${lib.getExe pkgs.cliphist} decode | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
+          echo "$selected" | ${cliphist} decode | ${wlcopy}
           ${notify} -a osd-text -t 1000 'Copied to clipboard'
         fi
       '';
@@ -50,7 +65,7 @@
         mkdir -p "$dir"
         file="$dir/$(date +%Y-%m-%d-%H%M%S).png"
 
-        if ! ${lib.getExe pkgs.hyprshot} -m "$1" -z -s -o "$dir" -f "$(basename "$file")"; then
+        if ! ${hyprshot} -m "$1" -z -s -o "$dir" -f "$(basename "$file")"; then
           exit 0
         fi
 
@@ -69,12 +84,12 @@
           "Image saved in <i>$file</i> and copied to the clipboard.")
 
         if [ "$action" = "edit" ]; then
-          ${lib.getExe pkgs.satty} -f "$file"
+          ${satty} -f "$file"
         fi
       '';
 
       ocr = pkgs.writeShellScript "ocr" ''
-        ${lib.getExe pkgs.hyprshot} -m region -z --raw | ${lib.getExe pkgs.tesseract} - - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}
+        ${hyprshot} -m region -z --raw | ${tesseract} - - | ${wlcopy}
         ${notify} -a osd-text -t 1000 'Text copied to clipboard'
       '';
 
@@ -88,7 +103,7 @@
           dir=~/Videos/Recordings
           mkdir -p "$dir"
           file="$dir/$(date +%Y-%m-%d-%H%M%S).mp4"
-          ${lib.getExe pkgs.wf-recorder} -f "$file" &
+          ${wfrecorder} -f "$file" &
           echo $! > "$pidfile"
           ${notify} -a osd-text -t 2000 'Recording started'
         fi
@@ -112,18 +127,18 @@
         binds.scroll_event_delay = 0;
 
         bind = [
-          "SUPER, R, exec, ${lib.getExe pkgs.rofi} -show drun"
-          "SUPER, Q, exec, ${lib.getExe pkgs.kitty}"
-          "SUPER, L, exec, ${lib.getExe pkgs.hyprlock} --immediate-render"
-          "SUPER, U, exec, ${lib.getExe pkgs.bitwarden-desktop}"
-          "SUPER, E, exec, ${lib.getExe pkgs.nautilus}"
-          "SUPER, I, exec, ${lib.getExe pkgs.kitty} ${lib.getExe pkgs.btop}"
+          "SUPER, R, exec, ${rofi} -show drun"
+          "SUPER, Q, exec, ${kitty}"
+          "SUPER, L, exec, ${hyprlock} --immediate-render"
+          "SUPER, U, exec, ${bitwarden}"
+          "SUPER, E, exec, ${nautilus}"
+          "SUPER, I, exec, ${kitty} ${btop}"
           "SUPER, K, exec, ${cliphistSelect}"
-          "SUPER, Z, exec, ${lib.getExe pkgs.zed-editor}"
+          "SUPER, Z, exec, ${zed}"
           "SUPER, D, exec, discord"
           "SUPER, B, exec, zen-beta"
 
-          "SUPER, S, exec, ${lib.getExe pkgs.hyprpicker} -a -r"
+          "SUPER, S, exec, ${hyprpicker} -a -r"
           "SUPER SHIFT, S, exec, ${screenshot} region"
           "SUPER ALT, S, exec, ${screenshot} window"
           "SUPER CONTROL_L, S, exec, ${screenshot} output"
@@ -179,10 +194,10 @@
         ];
 
         bindl = [
-          ",XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
-          ",XF86AudioPause, exec, ${lib.getExe pkgs.playerctl} play-pause"
-          ",XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
-          ",XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
+          ",XF86AudioPlay, exec, ${playerctl} play-pause"
+          ",XF86AudioPause, exec, ${playerctl} play-pause"
+          ",XF86AudioNext, exec, ${playerctl} next"
+          ",XF86AudioPrev, exec, ${playerctl} previous"
         ];
 
         bindm = [

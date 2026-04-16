@@ -4,8 +4,10 @@
     {
       programs.niri.settings.layout = {
         focus-ring = {
-          enable = true;
-          width = 2;
+          active.color = "#${scheme.base0D}";
+          inactive.color = "#${scheme.base03}";
+        };
+        border = {
           active.color = "#${scheme.base0D}";
           inactive.color = "#${scheme.base03}";
         };

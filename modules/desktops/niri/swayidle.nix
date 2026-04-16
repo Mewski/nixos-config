@@ -1,16 +1,30 @@
 {
   flake.homeModules.niri =
     { lib, pkgs, ... }:
+    let
+      niri = lib.getExe pkgs.niri;
+      swaylock = lib.getExe pkgs.swaylock;
+    in
     {
       services.swayidle = {
         enable = true;
-        events = [
+
+        events = {
+          before-sleep = "loginctl lock-session";
+          lock = "${swaylock} -f";
+        };
+
+        timeouts = [
           {
-            event = "before-sleep";
-            command = "${lib.getExe pkgs.swaylock} -f";
+            timeout = 195;
+            command = "${niri} msg action power-off-monitors";
+            resumeCommand = "${niri} msg action power-on-monitors";
+          }
+          {
+            timeout = 300;
+            command = "systemctl suspend";
           }
         ];
-        timeouts = [ ];
       };
     };
 }

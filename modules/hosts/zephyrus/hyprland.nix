@@ -1,7 +1,8 @@
 {
-  flake.homeModules.zephyrus =
+  flake.homeModules.hyprland =
     {
       lib,
+      osConfig,
       pkgs,
       theme,
       ...
@@ -165,7 +166,7 @@
         done
       '';
     in
-    {
+    lib.mkIf (osConfig.networking.hostName == "zephyrus") {
       wayland.windowManager.hyprland.settings = {
         monitor = [
           internalDisplayConfig
@@ -222,7 +223,5 @@
         };
         Install.WantedBy = [ "graphical-session.target" ];
       };
-
-      home.packages = [ pkgs.wootility ];
     };
 }
