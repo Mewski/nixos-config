@@ -69,6 +69,7 @@
         enable = true;
         extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
         configPackages = [ pkgs.hyprland ];
+        config.common.default = "*";
       };
 
       home.packages = with pkgs; [
