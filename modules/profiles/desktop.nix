@@ -160,6 +160,7 @@
         p7zip
         pavucontrol
         playerctl
+        qalculate-gtk
         qimgv
         signal-desktop
         sops
