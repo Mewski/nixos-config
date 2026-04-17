@@ -6,12 +6,12 @@
       overlayAttrs.binary-ninja-personal-wayland =
         inputs.binary-ninja.packages.${system}.binary-ninja-personal-wayland.overrideAttrs
           (old: {
-            version = "dev";
+            version = "5.3.9434";
 
             src = pkgs.requireFile {
-              name = "binaryninja_linux_dev_personal.zip";
+              name = "binaryninja_linux_stable_personal.zip";
               url = "https://binary.ninja/recover/";
-              sha256 = "7afd705f5cd65da4bf0c5f0bc6c073717f873b268d23bd0fbf2797a21f7d4a81";
+              sha256 = "7cf3e8b871023f735855ce90179fef02c5738faaf32c8d5ae1f8e901599aff7c";
             };
 
             postFixup = (old.postFixup or "") + ''
