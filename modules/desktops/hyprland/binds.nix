@@ -165,8 +165,8 @@
           "SUPER SHIFT, left, swapwindow, l"
           "SUPER SHIFT, right, swapwindow, r"
 
-          "SUPER, mouse_up, workspace, e+1"
-          "SUPER, mouse_down, workspace, e-1"
+          "SUPER, mouse_up, split-cycleworkspaces, +1"
+          "SUPER, mouse_down, split-cycleworkspaces, -1"
           "SUPER, grave, togglespecialworkspace,"
           "SUPER SHIFT, grave, movetoworkspace, special"
 

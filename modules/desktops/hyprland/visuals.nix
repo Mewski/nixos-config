@@ -54,7 +54,7 @@
           "layersOut, 1, 3, easeOutQuint, fade"
           "fadeLayersIn, 1, 1.79, almostLinear"
           "fadeLayersOut, 1, 1.39, almostLinear"
-          "workspaces, 1, 3.8, easeOutQuint, slide"
+          "workspaces, 1, 3.8, easeOutQuint, slidevert"
           "specialWorkspace, 1, 3, easeOutQuint, slidevert"
           "zoomFactor, 1, 2, quick"
         ];

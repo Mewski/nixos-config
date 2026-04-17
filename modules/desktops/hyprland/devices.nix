@@ -14,7 +14,7 @@
         sensitivity = 0;
       };
 
-      gesture = [ "3, horizontal, workspace" ];
+      gesture = [ "3, vertical, workspace" ];
     };
   };
 }

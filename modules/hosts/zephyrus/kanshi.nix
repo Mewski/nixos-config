@@ -16,7 +16,7 @@
           ];
         }
         {
-          profile.name = "portable-monitor";
+          profile.name = "docked-dp";
           profile.outputs = [
             {
               criteria = "eDP-1";
@@ -25,7 +25,7 @@
               scale = 1.25;
             }
             {
-              criteria = "Genesys ATE Inc PM160K1-H";
+              criteria = "DP-1";
               mode = "2560x1600@144Hz";
               position = "2048,0";
               scale = 1.25;
