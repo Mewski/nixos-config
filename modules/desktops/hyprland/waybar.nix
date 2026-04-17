@@ -180,6 +180,10 @@
           After = [ "graphical-session.target" ];
           Requires = [ "graphical-session.target" ];
         };
+        Service = {
+          Restart = "on-failure";
+          RestartSec = 2;
+        };
       };
     };
 }
