@@ -93,6 +93,15 @@
         ${notify} -a osd-text -t 1000 'Text copied to clipboard'
       '';
 
+      layoutAction = action: dwindle: scrolling: pkgs.writeShellScript "layout-${action}" ''
+        current=$(${hyprctl} getoption general:layout -j | ${jq} -r '.str')
+        if [ "$current" = "dwindle" ]; then
+          ${hyprctl} dispatch ${dwindle}
+        else
+          ${hyprctl} dispatch ${scrolling}
+        fi
+      '';
+
       toggleLayout = pkgs.writeShellScript "toggle-layout" ''
         current=$(${hyprctl} getoption general:layout -j | ${jq} -r '.str')
         if [ "$current" = "dwindle" ]; then
@@ -156,14 +165,13 @@
           "SUPER, O, exec, ${ocr}"
           "SUPER SHIFT, R, exec, ${screenRecord}"
 
-          "SUPER, T, togglespecialworkspace, scratchterm"
-          "SUPER, M, togglespecialworkspace, scratchmusic"
-
           "SUPER, A, exec, ${toggleLayout}"
 
           "SUPER, C, killactive,"
           "SUPER, F, fullscreen"
           "SUPER, J, layoutmsg, togglesplit"
+          "SUPER, Comma, layoutmsg, consume r"
+          "SUPER, Period, layoutmsg, expel r"
           "SUPER SHIFT, M, exit,"
           "SUPER, P, pseudo, active"
           "SUPER, V, togglefloating,"

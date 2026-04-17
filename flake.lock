@@ -498,11 +498,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1776417914,
-        "narHash": "sha256-MpgXz8IRNK7U9YAzma0zU9BscuPwhs3niV/VQAS6pg4=",
+        "lastModified": 1776440421,
+        "narHash": "sha256-57UBBos/dJeV2O6o7uEXfyPBk/oCyZScIO84pCVf0OU=",
         "owner": "Mewski",
         "repo": "Hyprland",
-        "rev": "12e60aca32bf0751844f5195b89c6dd75a9502e3",
+        "rev": "f7594413487d82f36a6da1751d806c9f8ef08a0d",
         "type": "github"
       },
       "original": {

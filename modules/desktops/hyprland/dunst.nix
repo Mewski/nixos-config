@@ -7,9 +7,9 @@
         global = {
           follow = "mouse";
           width = "(0, 300)";
-          height = 150;
+          height = "(0, 150)";
           origin = "top-center";
-          offset = "0x18";
+          offset = "(0, 18)";
           notification_limit = 5;
           gap_size = 4;
           padding = 12;
@@ -18,7 +18,7 @@
           corner_radius = 8;
           separator_height = 2;
           sort = "yes";
-          idle_threshold = 120;
+          idle_threshold = 0;
           line_height = 0;
           markup = "full";
           format = "<b>%s</b>\\n%b";
