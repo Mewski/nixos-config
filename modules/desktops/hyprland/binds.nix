@@ -93,6 +93,17 @@
         ${notify} -a osd-text -t 1000 'Text copied to clipboard'
       '';
 
+      toggleLayout = pkgs.writeShellScript "toggle-layout" ''
+        current=$(${hyprctl} getoption general:layout -j | ${jq} -r '.str')
+        if [ "$current" = "dwindle" ]; then
+          ${hyprctl} keyword general:layout scrolling
+          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:layout "Scrolling Layout"
+        else
+          ${hyprctl} keyword general:layout dwindle
+          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:layout "Dwindle Layout"
+        fi
+      '';
+
       screenRecord = pkgs.writeShellScript "screen-record" ''
         pidfile=/tmp/wf-recorder.pid
         if [ -f "$pidfile" ] && kill -0 "$(cat "$pidfile")" 2>/dev/null; then
@@ -147,6 +158,8 @@
 
           "SUPER, T, togglespecialworkspace, scratchterm"
           "SUPER, M, togglespecialworkspace, scratchmusic"
+
+          "SUPER, A, exec, ${toggleLayout}"
 
           "SUPER, C, killactive,"
           "SUPER, F, fullscreen"

@@ -29,12 +29,12 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.54.3";
+      url = "github:Mewski/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     split-monitor-workspaces = {
-      url = "github:zjeffer/split-monitor-workspaces/v0.54.3";
+      url = "github:zjeffer/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
 

@@ -59,7 +59,6 @@
             key_press_enables_dpms = true;
             middle_click_paste = false;
             mouse_move_enables_dpms = true;
-            vfr = true;
           };
         };
       };
