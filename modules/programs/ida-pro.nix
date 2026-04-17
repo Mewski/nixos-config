@@ -2,6 +2,29 @@
   flake.homeModules.ida-pro =
     { lib, pkgs, ... }:
     let
+      cdifflib = pkgs.python313Packages.buildPythonPackage rec {
+        pname = "cdifflib";
+        version = "1.2.9";
+        pyproject = true;
+        build-system = with pkgs.python313Packages; [
+          setuptools
+          twine
+          pytest
+          ruff
+        ];
+        doCheck = false;
+        src = pkgs.fetchPypi {
+          inherit pname version;
+          hash = "sha256-YobaCPcrfdtbQBRdy48hStkTqG1ysfYsyNbPepIClZA=";
+        };
+      };
+      idaPython = pkgs.python313.withPackages (ps: [
+        cdifflib
+        ps.scikit-learn
+        ps.numpy
+        ps.joblib
+        ps.nltk
+      ]);
       vulfi = pkgs.fetchFromGitHub {
         owner = "Accenture";
         repo = "VulFi";
@@ -38,6 +61,11 @@
 
         file.".idapro/plugins/diaphora_plugin.py".source = "${diaphora}/plugin/diaphora_plugin.py";
         file.".idapro/plugins/diaphora_plugin.cfg".source = diaphora-cfg;
+
+        file.".idapro/idapythonrc.py".text = ''
+          import sys
+          sys.path.insert(0, "${idaPython}/${idaPython.sitePackages}")
+        '';
 
         activation.ida-pro-mcp = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           ${pkgs.ida-pro-mcp}/bin/ida-pro-mcp --install 2>/dev/null || true
