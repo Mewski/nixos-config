@@ -181,8 +181,8 @@
           Requires = [ "graphical-session.target" ];
         };
         Service = {
-          Restart = "on-failure";
-          RestartSec = 2;
+          Restart = "always";
+          RestartSec = 3;
         };
       };
     };

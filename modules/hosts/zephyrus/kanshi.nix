@@ -34,7 +34,5 @@
         }
       ];
     };
-
-    systemd.user.services.kanshi.Service.RestartSec = 2;
   };
 }
