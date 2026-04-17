@@ -32,6 +32,7 @@
       wayland.windowManager.hyprland = {
         enable = true;
         systemd.enable = true;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
         settings = {
           exec-once = [
@@ -68,7 +69,7 @@
       xdg.portal = {
         enable = true;
         extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-        configPackages = [ pkgs.hyprland ];
+        configPackages = [ inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland ];
         config.common.default = "*";
       };
 

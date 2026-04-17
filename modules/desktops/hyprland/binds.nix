@@ -116,8 +116,8 @@
             ws = if i == 0 then 10 else i;
           in
           [
-            "SUPER, ${toString i}, workspace, ${toString ws}"
-            "SUPER SHIFT, ${toString i}, movetoworkspace, ${toString ws}"
+            "SUPER, ${toString i}, split-workspace, ${toString ws}"
+            "SUPER SHIFT, ${toString i}, split-movetoworkspace, ${toString ws}"
           ]
         ) 10
       );

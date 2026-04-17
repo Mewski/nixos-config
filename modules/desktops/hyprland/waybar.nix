@@ -16,6 +16,7 @@
         };
 
         settings.mainBar = {
+          layer = "top";
           height = 26;
           margin-top = 6;
           margin-left = 6;
@@ -47,9 +48,23 @@
           };
 
           "hyprland/workspaces" = {
-            format = "{name}";
-            on-scroll-down = "${hyprctl} dispatch workspace e+1";
-            on-scroll-up = "${hyprctl} dispatch workspace e-1";
+            format = "{icon}";
+            all-outputs = false;
+            on-scroll-down = "${hyprctl} dispatch split-cycleworkspaces +1";
+            on-scroll-up = "${hyprctl} dispatch split-cycleworkspaces -1";
+            format-icons = builtins.listToAttrs (
+              builtins.concatLists (
+                builtins.genList (
+                  monitor:
+                  builtins.genList (
+                    ws: {
+                      name = toString (monitor * 10 + ws + 1);
+                      value = toString (ws + 1);
+                    }
+                  ) 10
+                ) 10
+              )
+            );
           };
 
           "hyprland/window" = {

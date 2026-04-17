@@ -7,7 +7,6 @@
     impermanence.url = "github:nix-community/impermanence";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixcord.url = "github:kaylorben/nixcord";
-    hyprland.url = "github:hyprwm/Hyprland";
     niri.url = "github:sodiboo/niri-flake";
     base16.url = "github:SenchoPens/base16.nix";
     pwndbg.url = "github:pwndbg/pwndbg";
@@ -27,6 +26,21 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland/v0.54.3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    split-monitor-workspaces = {
+      url = "github:zjeffer/split-monitor-workspaces/v0.54.3";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
     };
 
     nix-index-database = {
