@@ -4,7 +4,8 @@
     { pkgs, ... }:
     let
       system = pkgs.stdenv.hostPlatform.system;
-      splitMonitorWorkspaces = inputs.split-monitor-workspaces.packages.${system}.split-monitor-workspaces;
+      splitMonitorWorkspaces =
+        inputs.split-monitor-workspaces.packages.${system}.split-monitor-workspaces;
     in
     {
       wayland.windowManager.hyprland = {

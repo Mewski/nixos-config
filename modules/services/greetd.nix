@@ -1,6 +1,11 @@
 {
   flake.nixosModules.greetd =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     let
       tuigreet = lib.getExe pkgs.tuigreet;
     in

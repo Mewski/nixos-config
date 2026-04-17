@@ -56,12 +56,10 @@
               builtins.concatLists (
                 builtins.genList (
                   monitor:
-                  builtins.genList (
-                    ws: {
-                      name = toString (monitor * 10 + ws + 1);
-                      value = toString (ws + 1);
-                    }
-                  ) 10
+                  builtins.genList (ws: {
+                    name = toString (monitor * 10 + ws + 1);
+                    value = toString (ws + 1);
+                  }) 10
                 ) 10
               )
             );

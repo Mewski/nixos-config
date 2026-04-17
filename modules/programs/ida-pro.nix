@@ -134,7 +134,8 @@
         file.".idapro/plugins/diaphora_plugin.cfg".source = diaphora-cfg;
 
         file.".idapro/plugins/bindiff8_ida64.so".source = "${pkgs.bindiff-ida-plugins}/bindiff8_ida64.so";
-        file.".idapro/plugins/binexport12_ida64.so".source = "${pkgs.bindiff-ida-plugins}/binexport12_ida64.so";
+        file.".idapro/plugins/binexport12_ida64.so".source =
+          "${pkgs.bindiff-ida-plugins}/binexport12_ida64.so";
 
         file.".idapro/plugins/LazyIDA.py".source = "${lazyida}/LazyIDA.py";
 
@@ -160,10 +161,14 @@
         file.".idapro/plugins/d810ng.py".source = "${d810-ng}/src/d810ng.py";
         file.".idapro/plugins/d810".source = "${d810-ng}/src/d810";
 
-        file.".idapro/plugins/apply_callee_type_plugin.py".source = "${flare-ida}/plugins/apply_callee_type_plugin.py";
-        file.".idapro/plugins/shellcode_hashes_search_plugin.py".source = "${flare-ida}/plugins/shellcode_hashes_search_plugin.py";
-        file.".idapro/plugins/stackstrings_plugin.py".source = "${flare-ida}/plugins/stackstrings_plugin.py";
-        file.".idapro/plugins/struct_typer_plugin.py".source = "${flare-ida}/plugins/struct_typer_plugin.py";
+        file.".idapro/plugins/apply_callee_type_plugin.py".source =
+          "${flare-ida}/plugins/apply_callee_type_plugin.py";
+        file.".idapro/plugins/shellcode_hashes_search_plugin.py".source =
+          "${flare-ida}/plugins/shellcode_hashes_search_plugin.py";
+        file.".idapro/plugins/stackstrings_plugin.py".source =
+          "${flare-ida}/plugins/stackstrings_plugin.py";
+        file.".idapro/plugins/struct_typer_plugin.py".source =
+          "${flare-ida}/plugins/struct_typer_plugin.py";
         file.".idapro/python/flare".source = "${flare-ida}/python/flare";
 
         file.".idapro/plugins/efiXplorer.so".source = "${efixplorer}/plugins/efiXplorer.so";
