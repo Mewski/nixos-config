@@ -11,7 +11,6 @@
         inputs.disko.nixosModules.default
         self.diskoConfigurations.prometheus
         self.nixosModules.server
-        self.nixosModules.docker
       ];
 
       boot = {
@@ -44,6 +43,11 @@
           22
           443
         ];
+      };
+
+      virtualisation.docker = {
+        enable = true;
+        enableOnBoot = true;
       };
 
       services = {
