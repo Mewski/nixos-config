@@ -11,8 +11,7 @@
         "bird/vultr/bgp_password" = { };
 
         "wg0/private_key" = { };
-        "wg0/astraeus/preshared_key" = { };
-        "wg0/ares/preshared_key" = { };
+        "wg0/udm/preshared_key" = { };
 
         "wg1/private_key" = { };
         "wg1/mewski/preshared_key" = { };
