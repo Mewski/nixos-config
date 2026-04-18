@@ -12,9 +12,6 @@
 
         "wg0/private_key" = { };
         "wg0/udm/preshared_key" = { };
-
-        "wg1/private_key" = { };
-        "wg1/mewski/preshared_key" = { };
       };
     };
   };
