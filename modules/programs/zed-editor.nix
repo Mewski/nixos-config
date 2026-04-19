@@ -136,21 +136,17 @@
         };
 
         extensions = [
-          "asm"
+          "assembly"
           "astro"
           "docker-compose"
           "dockerfile"
           "git-firefly"
-          "go"
           "latex"
           "make"
           "material-icon-theme"
           "neocmake"
-          "eslint"
           "nix"
-          "prettier"
           "svelte"
-          "tailwind-css"
           "toml"
           "vue"
           "wakatime"
