@@ -94,12 +94,13 @@
       '';
 
       toggleLayout = pkgs.writeShellScript "toggle-layout" ''
-        current=$(${hyprctl} getoption general:layout -j | ${jq} -r '.str')
+        ws=$(${hyprctl} activeworkspace -j | ${jq} -r '.id')
+        current=$(${hyprctl} activeworkspace -j | ${jq} -r '.tiledLayout')
         if [ "$current" = "dwindle" ]; then
-          ${hyprctl} keyword general:layout scrolling
+          ${hyprctl} keyword workspace "$ws,layout:scrolling"
           ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:layout "Scrolling Layout"
         else
-          ${hyprctl} keyword general:layout dwindle
+          ${hyprctl} keyword workspace "$ws,layout:dwindle"
           ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:layout "Dwindle Layout"
         fi
       '';
