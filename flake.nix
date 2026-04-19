@@ -7,9 +7,9 @@
     impermanence.url = "github:nix-community/impermanence";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixcord.url = "github:kaylorben/nixcord";
-    niri.url = "github:sodiboo/niri-flake";
     base16.url = "github:SenchoPens/base16.nix";
     pwndbg.url = "github:pwndbg/pwndbg";
+    claude-code.url = "github:sadjow/claude-code-nix";
     proxmox-nixos.url = "github:Mewski/proxmox-nixos/deploy";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
