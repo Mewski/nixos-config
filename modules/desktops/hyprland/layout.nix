@@ -1,7 +1,7 @@
 {
   flake.homeModules.hyprland = {
     wayland.windowManager.hyprland.settings = {
-      general.layout = "dwindle";
+      general.layout = "scrolling";
 
       xwayland.force_zero_scaling = true;
 
