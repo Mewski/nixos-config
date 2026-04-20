@@ -22,6 +22,7 @@
         self.homeModules.gemini-cli
         self.homeModules.git
         self.homeModules.nixvim
+        self.homeModules.opencode
         self.homeModules.python
         self.homeModules.vscode
         self.homeModules.zed-editor

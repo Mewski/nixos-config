@@ -118,7 +118,11 @@
               type = "registry";
               env = {
                 CLAUDE_CODE_EXECUTABLE = "claude";
+                CLAUDE_MODEL = "claude-opus-4-6[1m]";
               };
+            };
+            opencode = {
+              type = "registry";
             };
           };
 
