@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-zed.url = "github:nixos/nixpkgs/6c9a78c09ff4d6c21d0319114873508a6ec01655";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
     impermanence.url = "github:nix-community/impermanence";
@@ -77,6 +76,11 @@
     tinted-theming-schemes = {
       url = "github:tinted-theming/schemes";
       flake = false;
+    };
+
+    meridian = {
+      url = "github:Mewski/meridian";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     deploy-rs = {

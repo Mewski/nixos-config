@@ -21,6 +21,7 @@
         self.homeModules.direnv
         self.homeModules.gemini-cli
         self.homeModules.git
+        self.homeModules.meridian
         self.homeModules.nixvim
         self.homeModules.opencode
         self.homeModules.python
