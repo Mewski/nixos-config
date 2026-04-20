@@ -24,6 +24,10 @@
             baseURL = "http://${config.services.meridian.settings.host}:${toString config.services.meridian.settings.port}";
             apiKey = "meridian";
           };
+          permission = {
+            webfetch = "allow";
+            websearch = "allow";
+          };
           mcp = {
             binary_ninja_mcp = {
               type = "local";
@@ -54,6 +58,8 @@
           };
         };
       };
+
+      home.sessionVariables.OPENCODE_ENABLE_EXA = "true";
 
       xdg.configFile."opencode/skills".source = pkgs.symlinkJoin {
         name = "opencode-skills";
