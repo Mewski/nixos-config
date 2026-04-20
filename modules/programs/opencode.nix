@@ -14,8 +14,19 @@
       };
 
       xdg.configFile."opencode/plugin/strip-harness-prompt.ts".text = ''
-        const CLAUDE_CODE_IDENTITY =
+        const CLAUDE_CODE_IDENTITY_LINE =
           "You are a Claude agent, built on Anthropic's Claude Agent SDK.";
+
+        const CLAUDE_CODE_STANZA = [
+          CLAUDE_CODE_IDENTITY_LINE,
+          "You are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.",
+          "",
+          "If the user asks for help or wants to give feedback inform them of the following:",
+          " - /help: Get help with using Claude Code",
+          " - To give feedback, users should report the issue at https://github.com/anthropics/claude-code/issues",
+          "",
+          "Claude Code is available as a CLI in the terminal, desktop app (Mac/Windows), web app (claude.ai/code), and IDE extensions (VS Code, JetBrains).",
+        ].join("\n");
 
         const IDENTITY_PREFIXES = ["You are opencode", "You are OpenCode"];
 
@@ -60,8 +71,8 @@
               else output.system[i] = cleaned;
             }
 
-            if (output.system[0] !== CLAUDE_CODE_IDENTITY) {
-              output.system.unshift(CLAUDE_CODE_IDENTITY);
+            if (!output.system[0]?.startsWith(CLAUDE_CODE_IDENTITY_LINE)) {
+              output.system.unshift(CLAUDE_CODE_STANZA);
             }
           },
         });
