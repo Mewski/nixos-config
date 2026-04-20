@@ -1,6 +1,20 @@
 {
   flake.homeModules.opencode =
-    { config, ... }:
+    { config, pkgs, ... }:
+    let
+      claude-plugins-official = pkgs.fetchFromGitHub {
+        owner = "anthropics";
+        repo = "claude-plugins-official";
+        rev = "b091cb4179d3b62a6e2a39910461c7ec7165b1ef";
+        hash = "sha256-uKDVcw6C1uzpiIY+hjgHxr4AU9wM1KF7t3v6zd9XBHk=";
+      };
+      superpowers = pkgs.fetchFromGitHub {
+        owner = "obra";
+        repo = "superpowers";
+        rev = "b7a8f76985f1e93e75dd2f2a3b424dc731bd9d37";
+        hash = "sha256-hGEMwmSojy3cNtUQvB5djExlD39O2dwcnLOMUNaVIHg=";
+      };
+    in
     {
       programs.opencode = {
         enable = true;
@@ -10,7 +24,43 @@
             baseURL = "http://${config.services.meridian.settings.host}:${toString config.services.meridian.settings.port}";
             apiKey = "meridian";
           };
+          mcp = {
+            binary_ninja_mcp = {
+              type = "local";
+              command = [
+                "${pkgs.nodejs_latest}/bin/npx"
+                "-y"
+                "binary-ninja-mcp"
+              ];
+              enabled = true;
+              timeout = 1800000;
+            };
+            ida_pro_mcp = {
+              type = "local";
+              command = [ "${pkgs.ida-pro-mcp}/bin/ida-pro-mcp" ];
+              enabled = true;
+              timeout = 1800000;
+            };
+            gdb = {
+              type = "local";
+              command = [
+                "${pkgs.nodejs_latest}/bin/npx"
+                "-y"
+                "mcp-gdb"
+              ];
+              enabled = true;
+              timeout = 1800000;
+            };
+          };
         };
+      };
+
+      xdg.configFile."opencode/skills".source = pkgs.symlinkJoin {
+        name = "opencode-skills";
+        paths = [
+          "${superpowers}/skills"
+          "${claude-plugins-official}/plugins/frontend-design/skills"
+        ];
       };
 
       xdg.configFile."opencode/plugin/strip-harness-prompt.ts".text = ''
