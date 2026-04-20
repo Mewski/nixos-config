@@ -4,7 +4,13 @@
     {
       programs.opencode = {
         enable = true;
-        settings.plugin = [ config.services.meridian.opencode.pluginPath ];
+        settings = {
+          plugin = [ config.services.meridian.opencode.pluginPath ];
+          provider.anthropic.options = {
+            baseURL = "http://${config.services.meridian.settings.host}:${toString config.services.meridian.settings.port}";
+            apiKey = "meridian";
+          };
+        };
       };
 
       xdg.configFile."opencode/plugin/strip-harness-prompt.ts".text = ''
