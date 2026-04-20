@@ -32,6 +32,7 @@
       home.packages = with pkgs; [
         age
         android-tools
+        apktool
         autoconf
         automake
         avrdude
@@ -42,6 +43,7 @@
         boost
         bottom
         bun
+        burpsuite
         bzip2
         cargo
         clang-tools
@@ -55,18 +57,27 @@
         elfutils
         esptool
         exiftool
+        exploitdb
+        ffuf
         file
+        frida-tools
         gcc
         gdb
         ghidra
         ghq
+        gitleaks
         gnumake
         go
         gopls
+        hashcat
+        hash-identifier
         hexyl
         httpie
         hyperfine
+        jadx
+        john
         just
+        jwt-cli
         k9s
         kubectl
         lazydocker
@@ -82,6 +93,7 @@
         nix-tree
         nmap
         nodejs
+        nuclei
         openocd
         patchelf
         perf
@@ -92,26 +104,37 @@
         probe-rs-tools
         procs
         pulseview
+        pwndbg
+        radare2
+        rizin
         rstudio
         ruby
         rust-analyzer
         rustc
         rustfmt
         screen
+        seclists
         shellcheck
         sigrok-cli
         socat
         sqlite
+        sqlmap
+        step-cli
         strace
-        tcpdump
+        testssl
         tmux
         tokei
+        trufflehog
+        upx
         uv
         valgrind
         wabt
         watchexec
         wireshark-cli
+        yara
         zlib
       ];
+
+      home.sessionVariables.SECLISTS = "${pkgs.seclists}/share/wordlists/seclists";
     };
 }

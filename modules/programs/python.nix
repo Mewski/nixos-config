@@ -9,6 +9,7 @@
             cryptography
             flask
             httpx
+            impacket
             jsonschema
             keystone-engine
             lief
@@ -18,14 +19,20 @@
             opencv4
             pandas
             paramiko
+            pefile
             pillow
             arrow
             capstone
             networkx
             pip
             protobuf
+            pwntools
+            pycryptodome
             pyyaml
             pygments
+            ropgadget
+            ropper
+            scapy
             setuptools
             six
             requests
