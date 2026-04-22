@@ -71,21 +71,20 @@
           };
         };
 
-        plugins =
-          [
-            (pkgs.fetchFromGitHub {
-              owner = "obra";
-              repo = "superpowers";
-              rev = "b7a8f76985f1e93e75dd2f2a3b424dc731bd9d37";
-              hash = "sha256-hGEMwmSojy3cNtUQvB5djExlD39O2dwcnLOMUNaVIHg=";
-            })
-            "${claude-plugins-official}/plugins/clangd-lsp"
-            "${claude-plugins-official}/plugins/frontend-design"
-            "${claude-plugins-official}/plugins/rust-analyzer-lsp"
-            "${claude-plugins-official}/plugins/typescript-lsp"
-            transilience-communitytools
-          ]
-          ++ map (p: "${trailofbits-skills}/plugins/${p}") trailofbits-offsec-plugins;
+        plugins = [
+          (pkgs.fetchFromGitHub {
+            owner = "obra";
+            repo = "superpowers";
+            rev = "b7a8f76985f1e93e75dd2f2a3b424dc731bd9d37";
+            hash = "sha256-hGEMwmSojy3cNtUQvB5djExlD39O2dwcnLOMUNaVIHg=";
+          })
+          "${claude-plugins-official}/plugins/clangd-lsp"
+          "${claude-plugins-official}/plugins/frontend-design"
+          "${claude-plugins-official}/plugins/rust-analyzer-lsp"
+          "${claude-plugins-official}/plugins/typescript-lsp"
+          transilience-communitytools
+        ]
+        ++ map (p: "${trailofbits-skills}/plugins/${p}") trailofbits-offsec-plugins;
 
         skills = "${masriyan-cybersec}/skills";
 

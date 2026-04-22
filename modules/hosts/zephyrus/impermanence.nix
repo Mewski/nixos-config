@@ -33,7 +33,6 @@
         directories = [
           ".binaryninja"
           ".idapro"
-          ".cache/meridian"
           ".cache/spotify"
           ".cargo"
           ".claude"
@@ -41,7 +40,6 @@
           ".config/Code"
           ".config/discord"
           ".config/github-copilot"
-          ".config/meridian"
           ".config/obs-studio"
           ".config/obsidian"
           ".config/rstudio"
