@@ -99,5 +99,53 @@
         ]
         ++ map (s: "${trailofbits-skills}/plugins/${s}/skills") trailofbits-offsec-skills;
       };
+
+      xdg.configFile."opencode/plugin/strip-harness-prompt.ts".text = ''
+        const CLAUDE_CODE_IDENTITY_LINE =
+          "You are a Claude agent, built on Anthropic's Claude Agent SDK.";
+
+        const CLAUDE_CODE_STANZA = [
+          CLAUDE_CODE_IDENTITY_LINE,
+          "You are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.",
+          "",
+          "If the user asks for help or wants to give feedback inform them of the following:",
+          " - /help: Get help with using Claude Code",
+          " - To give feedback, users should report the issue at https://github.com/anthropics/claude-code/issues",
+          "",
+          "Claude Code is available as a CLI in the terminal, desktop app (Mac/Windows), web app (claude.ai/code), and IDE extensions (VS Code, JetBrains).",
+        ].join("\n");
+
+        const TEXT_REPLACEMENTS = [
+          { match: /github\.com\/(?:sst|anomalyco)\/opencode/gi, replacement: "github.com/anthropics/claude-code" },
+          { match: /opencode\.ai\/docs/gi, replacement: "docs.claude.com/en/docs/claude-code" },
+          { match: /opencode\.ai/gi, replacement: "claude.com" },
+          { match: /\bOpenCode\b/g, replacement: "Claude Code" },
+          { match: /\bopencode\b/g, replacement: "claude-code" },
+        ];
+
+        function rename(text) {
+          let result = text;
+          for (const rule of TEXT_REPLACEMENTS) {
+            result = result.replace(rule.match, rule.replacement);
+          }
+          return result;
+        }
+
+        export const StripHarnessPrompt = async () => ({
+          "experimental.chat.system.transform": async (input, output) => {
+            if (input.model?.providerID !== "anthropic") return;
+
+            for (let i = 0; i < output.system.length; i++) {
+              const part = output.system[i];
+              if (typeof part !== "string") continue;
+              output.system[i] = rename(part);
+            }
+
+            if (!output.system[0]?.startsWith(CLAUDE_CODE_IDENTITY_LINE)) {
+              output.system.unshift(CLAUDE_CODE_STANZA);
+            }
+          },
+        });
+      '';
     };
 }
