@@ -10,6 +10,7 @@
     base16.url = "github:SenchoPens/base16.nix";
     pwndbg.url = "github:pwndbg/pwndbg";
     claude-code.url = "github:sadjow/claude-code-nix";
+    opencode.url = "github:anomalyco/opencode/v1.14.20";
     proxmox-nixos.url = "github:Mewski/proxmox-nixos/deploy";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
 
