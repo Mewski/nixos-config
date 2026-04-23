@@ -171,6 +171,7 @@
         wget
         wlogout
         xxd
+        zip
       ];
     };
 }
