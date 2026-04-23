@@ -52,6 +52,11 @@
         enable = true;
         settings = {
           plugin = [ "opencode-claude-auth@latest" ];
+          agent = {
+            build = {
+              enable1mContext = true;
+            };
+          };
           permission = {
             webfetch = "allow";
             websearch = "allow";
