@@ -18,6 +18,7 @@
 
       users = {
         mutableUsers = false;
+        groups.plugdev = { };
         users.mewski = {
           isNormalUser = true;
           description = "Mewski";
