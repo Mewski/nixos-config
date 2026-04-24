@@ -16,12 +16,6 @@
 
       programs.virt-manager.enable = true;
 
-      services.cockpit = {
-        enable = true;
-        openFirewall = false;
-        plugins = [ pkgs.cockpit-machines ];
-      };
-
       networking.firewall.trustedInterfaces = [ "virbr0" ];
 
       environment.systemPackages = with pkgs; [
