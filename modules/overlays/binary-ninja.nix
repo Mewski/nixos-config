@@ -1,18 +1,14 @@
 { inputs, ... }:
 {
   perSystem =
-    { system, pkgs, ... }:
+    { system, ... }:
     {
       overlayAttrs.binary-ninja-personal-wayland =
         inputs.binary-ninja.packages.${system}.binary-ninja-personal-wayland.overrideAttrs
           (old: {
             version = "5.3.9434";
 
-            src = pkgs.requireFile {
-              name = "binaryninja_linux_stable_personal.zip";
-              url = "https://binary.ninja/recover/";
-              sha256 = "7cf3e8b871023f735855ce90179fef02c5738faaf32c8d5ae1f8e901599aff7c";
-            };
+            src = "${inputs.installers}/binaryninja_linux_stable_personal.zip";
 
             postFixup = (old.postFixup or "") + ''
               rm $out/bin/binaryninja

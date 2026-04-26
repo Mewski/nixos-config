@@ -79,6 +79,11 @@
       flake = false;
     };
 
+    installers = {
+      url = "path:/home/mewski/.nixos-config/installers";
+      flake = false;
+    };
+
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -65,7 +65,7 @@
         udisks2.enable = true;
 
         resolved = {
-          enable = false;
+          enable = true;
           settings.Resolve = {
             DNSOverTLS = "opportunistic";
             FallbackDNS = [
