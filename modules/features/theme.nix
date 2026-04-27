@@ -12,7 +12,7 @@
 
       theme = {
         polarity = "dark";
-        wallpaper = "${inputs.self}/assets/wallpapers/SparkleSky.png";
+        wallpaper = "${inputs.self}/assets/wallpapers/NeonWaves.png";
 
         scale = lib.mkDefault 1.0;
 
