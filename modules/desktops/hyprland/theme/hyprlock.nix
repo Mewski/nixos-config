@@ -35,7 +35,7 @@
         ];
         input-field = [
           {
-            size = "400, 60";
+            size = "300, 60";
             rounding = theme.rounding;
             outline_thickness = 2;
             outer_color = "rgb(${scheme.base03})";
