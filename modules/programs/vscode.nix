@@ -15,7 +15,7 @@
     {
       programs.vscode = {
         enable = true;
-        mutableExtensionsDir = false;
+        mutableExtensionsDir = true;
 
         profiles.default.extensions = [
           claude-code
@@ -23,7 +23,6 @@
         ++ (with pkgs.vscode-extensions; [
           eamodio.gitlens
           github.copilot
-          github.copilot-chat
           golang.go
           jnoortheen.nix-ide
           llvm-vs-code-extensions.vscode-clangd
@@ -36,7 +35,6 @@
           ms-vscode-remote.remote-containers
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.remote-ssh-edit
-          ms-vsliveshare.vsliveshare
           pkief.material-icon-theme
           fill-labs.dependi
           rust-lang.rust-analyzer
