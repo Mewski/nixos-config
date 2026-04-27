@@ -1,6 +1,11 @@
 {
   flake.homeModules.hyprland =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      theme,
+      ...
+    }:
     let
       hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
       jq = lib.getExe pkgs.jq;
@@ -93,6 +98,18 @@
         ${notify} -a osd-text -t 1000 'Text copied to clipboard'
       '';
 
+      toggleOpacity = pkgs.writeShellScript "toggle-opacity" ''
+        if [ "$(${hyprctl} getoption decoration:active_opacity -j | ${jq} '.float < 1')" = "true" ]; then
+          ${hyprctl} -q keyword decoration:active_opacity 1.0
+          ${hyprctl} -q keyword decoration:inactive_opacity 1.0
+          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:opacity "Windows Opaque"
+        else
+          ${hyprctl} -q keyword decoration:active_opacity ${toString theme.opacity.application}
+          ${hyprctl} -q keyword decoration:inactive_opacity ${toString theme.opacity.application}
+          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:opacity "Windows Transparent"
+        fi
+      '';
+
       toggleLayout = pkgs.writeShellScript "toggle-layout" ''
         ws=$(${hyprctl} activeworkspace -j | ${jq} -r '.id')
         current=$(${hyprctl} activeworkspace -j | ${jq} -r '.tiledLayout')
@@ -158,6 +175,7 @@
           "SUPER SHIFT, R, exec, ${screenRecord}"
 
           "SUPER, A, exec, ${toggleLayout}"
+          "SUPER, T, exec, ${toggleOpacity}"
 
           "SUPER, C, killactive,"
           "SUPER, F, fullscreen"
