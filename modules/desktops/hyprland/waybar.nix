@@ -48,21 +48,9 @@
           };
 
           "hyprland/workspaces" = {
-            format = "{icon}";
             all-outputs = false;
             on-scroll-down = "${hyprctl} dispatch split-cycleworkspaces +1";
             on-scroll-up = "${hyprctl} dispatch split-cycleworkspaces -1";
-            format-icons = builtins.listToAttrs (
-              builtins.concatLists (
-                builtins.genList (
-                  monitor:
-                  builtins.genList (ws: {
-                    name = toString (monitor * 10 + ws + 1);
-                    value = toString (ws + 1);
-                  }) 10
-                ) 10
-              )
-            );
           };
 
           "hyprland/window" = {

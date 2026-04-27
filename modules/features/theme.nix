@@ -8,7 +8,7 @@
       ...
     }:
     {
-      scheme = "${inputs.tinted-theming-schemes}/base24/mountain.yaml";
+      scheme = "${inputs.self}/assets/schemes/cyberpunk.yaml";
 
       theme = {
         polarity = "dark";
@@ -51,7 +51,7 @@
 
         opacity = {
           desktop = 0.6;
-          application = 0.9;
+          application = 0.875;
           terminal = 0.8;
           popups = 0.8;
         };
