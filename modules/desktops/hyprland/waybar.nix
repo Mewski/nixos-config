@@ -1,6 +1,11 @@
 {
   flake.homeModules.hyprland =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      theme,
+      ...
+    }:
     let
       hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
       kitty = lib.getExe pkgs.kitty;
@@ -18,10 +23,10 @@
         settings.mainBar = {
           layer = "top";
           height = 26;
-          margin-top = 6;
-          margin-left = 6;
-          margin-right = 6;
-          spacing = 3;
+          margin-top = theme.gap;
+          margin-left = theme.gap;
+          margin-right = theme.gap;
+          spacing = theme.gap / 2;
 
           modules-left = [
             "custom/power"

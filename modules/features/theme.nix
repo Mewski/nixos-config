@@ -8,7 +8,7 @@
       ...
     }:
     {
-      scheme = "${inputs.self}/assets/schemes/cyberpunk.yaml";
+      scheme = "${inputs.tinted-theming-schemes}/base24/mountain.yaml";
 
       theme = {
         polarity = "dark";
@@ -17,6 +17,8 @@
         scale = lib.mkDefault 1.0;
 
         rounding = 0;
+
+        gap = 6;
 
         cursor = {
           name = "Bibata-Modern-Ice";

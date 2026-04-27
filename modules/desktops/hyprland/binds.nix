@@ -26,6 +26,9 @@
       wfrecorder = lib.getExe pkgs.wf-recorder;
       playerctl = lib.getExe pkgs.playerctl;
       wlcopy = lib.getExe' pkgs.wl-clipboard "wl-copy";
+      systemctl = lib.getExe' pkgs.systemd "systemctl";
+
+      toggleWaybar = "${systemctl} --user kill -s SIGUSR1 waybar.service";
 
       getVolume = "${wpctl} get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'";
       isMuted = sink: "${wpctl} get-volume ${sink} | grep -q MUTED";
@@ -176,6 +179,7 @@
 
           "SUPER, A, exec, ${toggleLayout}"
           "SUPER, T, exec, ${toggleOpacity}"
+          "SUPER, W, exec, ${toggleWaybar}"
 
           "SUPER, C, killactive,"
           "SUPER, F, fullscreen"
