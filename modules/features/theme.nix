@@ -16,6 +16,8 @@
 
         scale = lib.mkDefault 1.0;
 
+        rounding = 0;
+
         cursor = {
           name = "Bibata-Modern-Ice";
           package = pkgs.bibata-cursors;

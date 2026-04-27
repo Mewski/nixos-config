@@ -1,6 +1,17 @@
 {
   flake.homeModules.hyprland =
-    { theme, scheme, ... }:
+    {
+      lib,
+      theme,
+      scheme,
+      ...
+    }:
+    let
+      workspacePadding = 4;
+      modulePaddingX = 4;
+      outer = toString theme.rounding;
+      workspaceButton = toString (lib.max 0 (theme.rounding - workspacePadding));
+    in
     {
       programs.waybar.style = ''
         * {
@@ -25,14 +36,14 @@
         tooltip {
           background: ${scheme.withHashtag.base00};
           border: 1px solid ${scheme.withHashtag.base03};
-          border-radius: 8px;
+          border-radius: ${outer}px;
           color: ${scheme.withHashtag.base05};
         }
 
         .modules-left {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
-          border-radius: 8px;
-          padding: 0 4px;
+          border-radius: ${outer}px;
+          padding: 0 ${toString modulePaddingX}px;
         }
 
         .modules-center {
@@ -41,8 +52,8 @@
 
         .modules-right {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
-          border-radius: 8px;
-          padding: 0 4px;
+          border-radius: ${outer}px;
+          padding: 0 ${toString modulePaddingX}px;
         }
 
         .modules-left > widget,
@@ -71,8 +82,8 @@
 
         #workspaces {
           background: rgba(${scheme.base00-rgb-r}, ${scheme.base00-rgb-g}, ${scheme.base00-rgb-b}, ${toString theme.opacity.desktop});
-          border-radius: 8px;
-          padding: 4px;
+          border-radius: ${outer}px;
+          padding: ${toString workspacePadding}px;
         }
 
         #workspaces button {
@@ -80,7 +91,7 @@
           color: ${scheme.withHashtag.base05};
           padding: 0px 6px;
           margin-left: 4px;
-          border-radius: 4px;
+          border-radius: ${workspaceButton}px;
           box-shadow: none;
         }
 

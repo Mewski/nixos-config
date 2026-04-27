@@ -56,6 +56,8 @@
 
           scale = lib.mkOption { type = lib.types.float; };
 
+          rounding = lib.mkOption { type = lib.types.int; };
+
           wallpaper = lib.mkOption { type = lib.types.path; };
 
           opacity = {
