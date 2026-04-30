@@ -16,7 +16,7 @@
 
         scale = lib.mkDefault 1.0;
 
-        rounding = 0;
+        rounding = 8;
 
         gap = 6;
 
