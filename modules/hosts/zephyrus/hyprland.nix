@@ -56,12 +56,12 @@
           clickfinger_behavior = true;
           disable_while_typing = true;
           natural_scroll = true;
-          scroll_factor = 0.25;
+          scroll_factor = 0.35;
         };
 
         device = {
           name = "asup1207:00-093a:3012-touchpad";
-          sensitivity = 0.25;
+          sensitivity = 0.35;
         };
 
         bindel = [
