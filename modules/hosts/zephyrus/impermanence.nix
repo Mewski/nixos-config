@@ -36,6 +36,7 @@
           ".cache/spotify"
           ".cargo"
           ".claude"
+          ".codex"
           ".config/Bitwarden"
           ".config/Code"
           ".config/discord"

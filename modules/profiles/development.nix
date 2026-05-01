@@ -22,6 +22,7 @@
         self.homeModules.binary-ninja
         self.homeModules.ida-pro
         self.homeModules.claude-code
+        self.homeModules.codex
         self.homeModules.direnv
         self.homeModules.gemini-cli
         self.homeModules.git
