@@ -153,11 +153,6 @@
           { pkg = calendar; }
           { pkg = brat; }
         ];
-
-        vaults.notes = {
-          enable = true;
-          target = "Documents/Notes";
-        };
       };
     };
 }

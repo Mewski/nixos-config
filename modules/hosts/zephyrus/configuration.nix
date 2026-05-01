@@ -23,6 +23,8 @@
       boot = {
         kernelPackages = pkgs.linuxPackages_latest;
 
+        kernelParams = [ "pcie_aspm.policy=powersupersave" ];
+
         loader = {
           systemd-boot = {
             enable = false;
@@ -44,7 +46,10 @@
 
       networking = {
         hostName = "zephyrus";
-        networkmanager.enable = true;
+        networkmanager = {
+          enable = true;
+          wifi.powersave = true;
+        };
         firewall.allowedTCPPorts = [ 13367 ];
       };
 

@@ -14,6 +14,12 @@
         userSettings = {
           icon_theme = "Material Icon Theme";
           vim_mode = false;
+
+          project_panel.dock = "left";
+          outline_panel.dock = "left";
+          collaboration_panel.dock = "left";
+          git_panel.dock = "left";
+
           tab_size = 2;
           hard_tabs = false;
           colorize_brackets = true;
@@ -67,6 +73,7 @@
 
           agent = {
             show_turn_stats = true;
+            dock = "right";
           };
 
           languages = {
