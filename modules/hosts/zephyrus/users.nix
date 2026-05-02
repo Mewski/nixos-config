@@ -29,6 +29,7 @@
             "wheel"
             "docker"
             "libvirtd"
+            "kvm"
             "gamemode"
             "dialout"
           ];
