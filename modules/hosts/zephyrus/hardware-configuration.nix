@@ -11,7 +11,14 @@
 
       boot = {
         extraModulePackages = [ ];
-        kernelModules = [ "kvm-intel" ];
+        kernelModules = [
+          "kvm-intel"
+          "vhost_net"
+          "vhost_vsock"
+        ];
+        extraModprobeConfig = ''
+          options kvm_intel nested=Y emulate_invalid_guest_state=N
+        '';
         initrd = {
           availableKernelModules = [
             "nvme"

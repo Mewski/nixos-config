@@ -23,7 +23,11 @@
       boot = {
         kernelPackages = pkgs.linuxPackages_latest;
 
-        kernelParams = [ "pcie_aspm.policy=powersupersave" ];
+        kernelParams = [
+          "pcie_aspm.policy=powersupersave"
+          "intel_iommu=on"
+          "iommu=pt"
+        ];
 
         loader = {
           systemd-boot = {
@@ -54,6 +58,8 @@
       };
 
       zramSwap.enable = true;
+
+      virtualisation.spiceUSBRedirection.enable = true;
 
       services = {
         logind.settings.Login.HandleLidSwitchDocked = "suspend";
