@@ -60,6 +60,9 @@
           permission = {
             webfetch = "allow";
             websearch = "allow";
+            write = "allow";
+            edit = "allow";
+            bash = "allow";
           };
           mcp = {
             binary_ninja_mcp = {
