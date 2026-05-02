@@ -16,6 +16,8 @@
 
       programs.virt-manager.enable = true;
 
+      environment.sessionVariables.vblank_mode = "0";
+
       networking.firewall.trustedInterfaces = [ "virbr0" ];
 
       environment.systemPackages = with pkgs; [
