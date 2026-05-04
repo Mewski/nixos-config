@@ -134,7 +134,6 @@
         valgrind
         wabt
         watchexec
-        wireshark-cli
         yara
         zlib
       ];
