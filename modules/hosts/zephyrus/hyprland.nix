@@ -9,10 +9,18 @@
     let
       brightnessctl = lib.getExe pkgs.brightnessctl;
       notify = lib.getExe pkgs.libnotify;
+      supergfxctl = lib.getExe' pkgs.supergfxctl "supergfxctl";
 
       kbdBacklight = "asus::kbd_backlight";
       intelBacklight = "intel_backlight";
       nvidiaBacklight = "nvidia_0";
+
+      activeDisplayBacklight = ''
+        backlight=${intelBacklight}
+        if [ "$(${supergfxctl} -g 2>/dev/null || true)" = AsusMuxDgpu ] && [ -d "/sys/class/backlight/${nvidiaBacklight}" ]; then
+          backlight=${nvidiaBacklight}
+        fi
+      '';
 
       getKbdBrightness = "${brightnessctl} -d ${kbdBacklight} -m | cut -d, -f4 | tr -d '%'";
 
@@ -26,28 +34,23 @@
       setDisplayBrightness =
         direction:
         pkgs.writeShellScript "set-display-brightness-${direction}" ''
-          if [ -d "/sys/class/backlight/${nvidiaBacklight}" ]; then
-            val=$(${brightnessctl} -d ${nvidiaBacklight} -m set 5%${direction} | cut -d, -f4 | tr -d '%')
-          fi
-
-          if [ -d "/sys/class/backlight/${intelBacklight}" ]; then
-            val=$(${brightnessctl} -d ${intelBacklight} -m set 5%${direction} | cut -d, -f4 | tr -d '%')
-          fi
+          ${activeDisplayBacklight}
+          val=$(${brightnessctl} -d "$backlight" -m set 5%${direction} | cut -d, -f4 | tr -d '%')
 
           ${notify} -a osd -t 1000 \
             -h string:x-dunst-stack-tag:brightness \
-            -h int:value:''${val:-0} \
+            -h int:value:$val \
             'Display Brightness'
         '';
 
       dimDisplay = pkgs.writeShellScript "dim-display" ''
-        ${brightnessctl} -d ${intelBacklight} -s set 1%
-        ${brightnessctl} -d ${nvidiaBacklight} -s set 1%
+        ${activeDisplayBacklight}
+        ${brightnessctl} -d "$backlight" -s set 1%
       '';
 
       restoreDisplay = pkgs.writeShellScript "restore-display" ''
-        ${brightnessctl} -d ${intelBacklight} -r
-        ${brightnessctl} -d ${nvidiaBacklight} -r
+        ${activeDisplayBacklight}
+        ${brightnessctl} -d "$backlight" -r
       '';
     in
     lib.mkIf (osConfig.networking.hostName == "zephyrus") {
