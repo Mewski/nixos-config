@@ -10,6 +10,7 @@
       hyprctl = lib.getExe' pkgs.hyprland "hyprctl";
       jq = lib.getExe pkgs.jq;
       notify = lib.getExe pkgs.libnotify;
+      notifyOsd = "${lib.getExe' pkgs.coreutils "timeout"} 0.2s ${notify}";
       wpctl = lib.getExe' pkgs.wireplumber "wpctl";
       kitty = lib.getExe pkgs.kitty;
       rofi = lib.getExe pkgs.rofi;
@@ -38,7 +39,7 @@
       zoomReset = "${hyprctl} -q keyword cursor:zoom_factor 1";
 
       notifyVolume = pkgs.writeShellScript "notify-volume" ''
-        ${notify} -a osd -t 1000 \
+        ${notifyOsd} -a osd -t 1000 \
           -h string:x-dunst-stack-tag:volume \
           -h int:value:$(${getVolume}) \
           'System Volume'
@@ -46,17 +47,17 @@
 
       notifyVolumeMute = pkgs.writeShellScript "notify-volume-mute" ''
         if ${isMuted "@DEFAULT_AUDIO_SINK@"}; then
-          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:volume "System Volume Muted"
+          ${notifyOsd} -a osd-text -t 1000 -h string:x-dunst-stack-tag:volume "System Volume Muted"
         else
-          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:volume "System Volume Unmuted"
+          ${notifyOsd} -a osd-text -t 1000 -h string:x-dunst-stack-tag:volume "System Volume Unmuted"
         fi
       '';
 
       notifyMicMute = pkgs.writeShellScript "notify-mic-mute" ''
         if ${isMuted "@DEFAULT_AUDIO_SOURCE@"}; then
-          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:mic "Microphone Muted"
+          ${notifyOsd} -a osd-text -t 1000 -h string:x-dunst-stack-tag:mic "Microphone Muted"
         else
-          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:mic "Microphone Unmuted"
+          ${notifyOsd} -a osd-text -t 1000 -h string:x-dunst-stack-tag:mic "Microphone Unmuted"
         fi
       '';
 
@@ -64,7 +65,7 @@
         selected=$(${cliphist} list | ${rofi} -dmenu -display-columns 2 -no-show-icons)
         if [ -n "$selected" ]; then
           echo "$selected" | ${cliphist} decode | ${wlcopy}
-          ${notify} -a osd-text -t 1000 'Copied to clipboard'
+          ${notifyOsd} -a osd-text -t 1000 'Copied to clipboard'
         fi
       '';
 
@@ -98,18 +99,18 @@
 
       ocr = pkgs.writeShellScript "ocr" ''
         ${hyprshot} -m region -z --raw | ${tesseract} - - | ${wlcopy}
-        ${notify} -a osd-text -t 1000 'Text copied to clipboard'
+        ${notifyOsd} -a osd-text -t 1000 'Text copied to clipboard'
       '';
 
       toggleOpacity = pkgs.writeShellScript "toggle-opacity" ''
         if [ "$(${hyprctl} getoption decoration:active_opacity -j | ${jq} '.float < 1')" = "true" ]; then
           ${hyprctl} -q keyword decoration:active_opacity 1.0
           ${hyprctl} -q keyword decoration:inactive_opacity 1.0
-          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:opacity "Windows Opaque"
+          ${notifyOsd} -a osd-text -t 1000 -h string:x-dunst-stack-tag:opacity "Windows Opaque"
         else
           ${hyprctl} -q keyword decoration:active_opacity ${toString theme.opacity.application}
           ${hyprctl} -q keyword decoration:inactive_opacity ${toString theme.opacity.application}
-          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:opacity "Windows Transparent"
+          ${notifyOsd} -a osd-text -t 1000 -h string:x-dunst-stack-tag:opacity "Windows Transparent"
         fi
       '';
 
@@ -118,10 +119,10 @@
         current=$(${hyprctl} activeworkspace -j | ${jq} -r '.tiledLayout')
         if [ "$current" = "dwindle" ]; then
           ${hyprctl} keyword workspace "$ws,layout:scrolling"
-          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:layout "Scrolling Layout"
+          ${notifyOsd} -a osd-text -t 1000 -h string:x-dunst-stack-tag:layout "Scrolling Layout"
         else
           ${hyprctl} keyword workspace "$ws,layout:dwindle"
-          ${notify} -a osd-text -t 1000 -h string:x-dunst-stack-tag:layout "Dwindle Layout"
+          ${notifyOsd} -a osd-text -t 1000 -h string:x-dunst-stack-tag:layout "Dwindle Layout"
         fi
       '';
 
@@ -130,14 +131,14 @@
         if [ -f "$pidfile" ] && kill -0 "$(cat "$pidfile")" 2>/dev/null; then
           kill "$(cat "$pidfile")"
           rm -f "$pidfile"
-          ${notify} -a osd-text -t 2000 'Recording stopped'
+          ${notifyOsd} -a osd-text -t 2000 'Recording stopped'
         else
           dir=~/Videos/Recordings
           mkdir -p "$dir"
           file="$dir/$(date +%Y-%m-%d-%H%M%S).mp4"
           ${wfrecorder} -f "$file" &
           echo $! > "$pidfile"
-          ${notify} -a osd-text -t 2000 'Recording started'
+          ${notifyOsd} -a osd-text -t 2000 'Recording started'
         fi
       '';
 

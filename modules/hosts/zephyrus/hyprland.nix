@@ -9,6 +9,7 @@
     let
       brightnessctl = lib.getExe pkgs.brightnessctl;
       notify = lib.getExe pkgs.libnotify;
+      notifyOsd = "${lib.getExe' pkgs.coreutils "timeout"} 0.2s ${notify}";
       supergfxctl = lib.getExe' pkgs.supergfxctl "supergfxctl";
 
       kbdBacklight = "asus::kbd_backlight";
@@ -25,7 +26,7 @@
       getKbdBrightness = "${brightnessctl} -d ${kbdBacklight} -m | cut -d, -f4 | tr -d '%'";
 
       notifyKbdBrightness = pkgs.writeShellScript "notify-kbd-brightness" ''
-        ${notify} -a osd -t 1000 \
+        ${notifyOsd} -a osd -t 1000 \
           -h string:x-dunst-stack-tag:kbd \
           -h int:value:$(${getKbdBrightness}) \
           'Keyboard Brightness'
@@ -37,7 +38,7 @@
           ${activeDisplayBacklight}
           val=$(${brightnessctl} -d "$backlight" -m set 5%${direction} | cut -d, -f4 | tr -d '%')
 
-          ${notify} -a osd -t 1000 \
+          ${notifyOsd} -a osd -t 1000 \
             -h string:x-dunst-stack-tag:brightness \
             -h int:value:$val \
             'Display Brightness'
