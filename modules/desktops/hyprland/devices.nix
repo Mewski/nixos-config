@@ -16,7 +16,7 @@
 
       gesture = [
         "3, vertical, workspace"
-        "3, horizontal, scrolling"
+        "3, horizontal, scrollMove"
       ];
     };
   };
