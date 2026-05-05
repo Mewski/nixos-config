@@ -63,6 +63,13 @@
 
       virtualisation.spiceUSBRedirection.enable = true;
 
+      systemd.settings.Manager = {
+        DefaultTimeoutStartSec = "30s";
+        DefaultTimeoutStopSec = "30s";
+        DefaultTimeoutAbortSec = "30s";
+        DefaultRestartSec = "5s";
+      };
+
       services = {
         logind.settings.Login.HandleLidSwitchDocked = "suspend";
 
