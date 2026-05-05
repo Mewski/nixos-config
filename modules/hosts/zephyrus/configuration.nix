@@ -28,7 +28,6 @@
           "intel_iommu=on"
           "iommu=pt"
           "mem_sleep_default=deep"
-          "vfio-pci.ids=10de:2757,10de:22bb"
         ];
 
         loader = {
