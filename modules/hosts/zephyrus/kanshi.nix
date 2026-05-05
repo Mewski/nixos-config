@@ -24,7 +24,7 @@
     {
       services.kanshi = {
         enable = true;
-        systemdTarget = "graphical-session.target";
+        systemdTarget = "hyprland-session.target";
         settings = [
           (mkProfile "undocked-ac" [ (laptop "240Hz") ])
           (mkProfile "undocked-battery" [ (laptop "60Hz") ])
@@ -42,7 +42,7 @@
       systemd.user.services.kanshi-power-switcher = {
         Unit = {
           Description = "Switch kanshi profile based on AC power and dock state";
-          PartOf = [ "graphical-session.target" ];
+          PartOf = [ "hyprland-session.target" ];
           After = [ "kanshi.service" ];
           BindsTo = [ "kanshi.service" ];
         };
