@@ -1,6 +1,11 @@
 {
   flake.homeModules.niri =
-    { lib, pkgs, theme, ... }:
+    {
+      lib,
+      pkgs,
+      theme,
+      ...
+    }:
     {
       systemd.user.services.swaybg = {
         Unit = {

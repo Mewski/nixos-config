@@ -68,8 +68,10 @@
         };
 
         binds = {
-          "XF86KbdBrightnessDown".action.spawn-sh = "${brightnessctl} -d ${kbdBacklight} set 1- && ${notifyKbdBrightness}";
-          "XF86KbdBrightnessUp".action.spawn-sh = "${brightnessctl} -d ${kbdBacklight} set 1+ && ${notifyKbdBrightness}";
+          "XF86KbdBrightnessDown".action.spawn-sh =
+            "${brightnessctl} -d ${kbdBacklight} set 1- && ${notifyKbdBrightness}";
+          "XF86KbdBrightnessUp".action.spawn-sh =
+            "${brightnessctl} -d ${kbdBacklight} set 1+ && ${notifyKbdBrightness}";
           "XF86MonBrightnessDown".action.spawn = [ "${setDisplayBrightness "-"}" ];
           "XF86MonBrightnessUp".action.spawn = [ "${setDisplayBrightness "+"}" ];
         };

@@ -1,6 +1,11 @@
 {
   flake.homeModules.niri =
-    { pkgs, scheme, theme, ... }:
+    {
+      pkgs,
+      scheme,
+      theme,
+      ...
+    }:
     {
       programs.swaylock = {
         enable = true;

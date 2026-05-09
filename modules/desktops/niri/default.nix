@@ -24,7 +24,12 @@
     };
 
   flake.homeModules.niri =
-    { lib, pkgs, theme, ... }:
+    {
+      lib,
+      pkgs,
+      theme,
+      ...
+    }:
     {
       programs.niri = {
         settings = {

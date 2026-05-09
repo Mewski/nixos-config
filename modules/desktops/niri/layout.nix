@@ -30,14 +30,15 @@
             };
             clip-to-geometry = true;
             draw-border-with-background = false;
-            opacity = theme.opacity.application;
           }
           {
             matches = [ { app-id = "kitty"; } ];
             opacity = 1.0;
           }
           {
-            matches = [ { title = "^(Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download).*"; } ];
+            matches = [
+              { title = "^(Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download).*"; }
+            ];
             open-floating = true;
             default-column-width.fixed = 900;
             default-window-height.fixed = 500;

@@ -129,39 +129,83 @@
       home.packages = [ pkgs.wf-recorder ];
 
       programs.niri.settings.binds = {
-        "Mod+R" = spawn [ rofi "-show" "drun" ];
+        "Mod+R" = spawn [
+          rofi
+          "-show"
+          "drun"
+        ];
         "Mod+Q" = spawn [ kitty ];
-        "Mod+L" = spawn [ swaylock "--daemonize" ];
+        "Mod+L" = spawn [
+          swaylock
+          "--daemonize"
+        ];
         "Mod+U" = spawn [ bitwarden ];
         "Mod+E" = spawn [ dolphin ];
-        "Mod+I" = spawn [ kitty btop ];
+        "Mod+I" = spawn [
+          kitty
+          btop
+        ];
         "Mod+K" = spawn [ "${cliphistSelect}" ];
         "Mod+Z" = spawn [ zed ];
         "Mod+D" = spawn [ "discord" ];
         "Mod+B" = spawn [ "zen-beta" ];
-        "Mod+Shift+S" = spawn [ "${screenshot}" "region" ];
-        "Mod+Alt+S" = { action.screenshot-window = { }; };
-        "Mod+Ctrl+S" = spawn [ "${screenshot}" "output" ];
+        "Mod+Shift+S" = spawn [
+          "${screenshot}"
+          "region"
+        ];
+        "Mod+Alt+S" = {
+          action.screenshot-window = { };
+        };
+        "Mod+Ctrl+S" = spawn [
+          "${screenshot}"
+          "output"
+        ];
         "Mod+O" = spawn [ "${ocr}" ];
         "Mod+Shift+R" = spawn [ "${screenRecord}" ];
-        "Mod+T" = { action.toggle-window-rule-opacity = { }; };
+        "Mod+T" = {
+          action.toggle-window-rule-opacity = { };
+        };
         "Mod+W" = spawnSh toggleWaybar;
-        "Mod+C" = { action.close-window = { }; };
-        "Mod+F" = { action.fullscreen-window = { }; };
-        "Mod+V" = { action.toggle-window-floating = { }; };
-        "Mod+Shift+M" = { action.quit.skip-confirmation = false; };
+        "Mod+C" = {
+          action.close-window = { };
+        };
+        "Mod+F" = {
+          action.fullscreen-window = { };
+        };
+        "Mod+V" = {
+          action.toggle-window-floating = { };
+        };
+        "Mod+Shift+M" = {
+          action.quit.skip-confirmation = false;
+        };
         "Mod+Escape" = {
           action.toggle-keyboard-shortcuts-inhibit = { };
           allow-inhibiting = false;
         };
-        "Mod+Up" = { action.focus-window-or-workspace-up = { }; };
-        "Mod+Down" = { action.focus-window-or-workspace-down = { }; };
-        "Mod+Left" = { action.focus-column-left = { }; };
-        "Mod+Right" = { action.focus-column-right = { }; };
-        "Mod+Shift+Up" = { action.move-window-up = { }; };
-        "Mod+Shift+Down" = { action.move-window-down = { }; };
-        "Mod+Shift+Left" = { action.move-column-left = { }; };
-        "Mod+Shift+Right" = { action.move-column-right = { }; };
+        "Mod+Up" = {
+          action.focus-window-or-workspace-up = { };
+        };
+        "Mod+Down" = {
+          action.focus-window-or-workspace-down = { };
+        };
+        "Mod+Left" = {
+          action.focus-column-left = { };
+        };
+        "Mod+Right" = {
+          action.focus-column-right = { };
+        };
+        "Mod+Shift+Up" = {
+          action.move-window-up = { };
+        };
+        "Mod+Shift+Down" = {
+          action.move-window-down = { };
+        };
+        "Mod+Shift+Left" = {
+          action.move-column-left = { };
+        };
+        "Mod+Shift+Right" = {
+          action.move-column-right = { };
+        };
         "Mod+WheelScrollDown" = {
           action.focus-workspace-down = { };
           cooldown-ms = 150;
@@ -170,14 +214,28 @@
           action.focus-workspace-up = { };
           cooldown-ms = 150;
         };
-        "XF86AudioRaiseVolume" = spawnSh "${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${notifyVolume}";
+        "XF86AudioRaiseVolume" =
+          spawnSh "${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${notifyVolume}";
         "XF86AudioLowerVolume" = spawnSh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${notifyVolume}";
         "XF86AudioMute" = spawnSh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${notifyVolumeMute}";
         "XF86AudioMicMute" = spawnSh "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ${notifyMicMute}";
-        "XF86AudioPlay" = spawn [ playerctl "play-pause" ];
-        "XF86AudioPause" = spawn [ playerctl "play-pause" ];
-        "XF86AudioNext" = spawn [ playerctl "next" ];
-        "XF86AudioPrev" = spawn [ playerctl "previous" ];
-      } // workspaceBinds;
+        "XF86AudioPlay" = spawn [
+          playerctl
+          "play-pause"
+        ];
+        "XF86AudioPause" = spawn [
+          playerctl
+          "play-pause"
+        ];
+        "XF86AudioNext" = spawn [
+          playerctl
+          "next"
+        ];
+        "XF86AudioPrev" = spawn [
+          playerctl
+          "previous"
+        ];
+      }
+      // workspaceBinds;
     };
 }

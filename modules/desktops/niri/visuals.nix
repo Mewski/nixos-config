@@ -42,7 +42,7 @@
         }
 
         layer-rule {
-            match namespace="^(waybar|rofi|notifications)$"
+            match namespace="^(rofi|notifications)$"
             geometry-corner-radius ${toString theme.rounding}
 
             background-effect {
