@@ -12,7 +12,7 @@
           "terminal.integrated.fontFamily" = "'${theme.fonts.monospace.name}'";
           "terminal.integrated.fontSize" = theme.fonts.sizes.terminal * 4.0 / 3.0;
 
-          "workbench.colorTheme" = "Default Dark Modern";
+          "workbench.colorTheme" = "Dark Modern";
           "workbench.iconTheme" = "material-icon-theme";
 
           "workbench.colorCustomizations" = {

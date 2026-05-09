@@ -58,6 +58,7 @@
           "editor.smoothScrolling" = true;
 
           "files.autoSave" = "onFocusChange";
+          "files.hotExit" = "off";
           "files.trimTrailingWhitespace" = true;
           "files.insertFinalNewline" = true;
 
@@ -74,6 +75,8 @@
           "terminal.integrated.smoothScrolling" = true;
 
           "telemetry.telemetryLevel" = "off";
+
+          "claudeCode.preferredLocation" = "panel";
 
           "[nix]" = {
             "editor.defaultFormatter" = "jnoortheen.nix-ide";
