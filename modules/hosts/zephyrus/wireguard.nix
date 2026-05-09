@@ -4,7 +4,6 @@
     {
       networking.wg-quick.interfaces.wg0 = {
         address = [ "10.0.70.2/32" ];
-        dns = [ "10.0.70.1" ];
         privateKeyFile = config.sops.secrets."wg0/private_key".path;
 
         peers = [
@@ -27,7 +26,6 @@
 
       networking.wg-quick.interfaces.wg1 = {
         address = [ "10.0.80.2/32" ];
-        dns = [ "10.0.80.1" ];
         privateKeyFile = config.sops.secrets."wg1/private_key".path;
 
         peers = [
