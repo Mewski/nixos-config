@@ -11,7 +11,7 @@
 
       mouse = {
         accel-profile = "flat";
-        accel-speed = 0.0;
+        accel-speed = 0.35;
       };
 
       touchpad = {

@@ -93,29 +93,29 @@
         intensity=1.00
         no_inactiveness=false
         reduce_menu_opacity=0
-        reduce_window_opacity=10
+        reduce_window_opacity=0
         saturation=1.00
         shadowless_popup=false
         transient_groove=false
 
         [GeneralColors]
-        window.color=#${scheme.base01}
+        window.color=#${scheme.base00}
         base.color=#${scheme.base00}
         alt.base.color=#${scheme.base01}
-        button.color=#${scheme.base02}
-        light.color=#${scheme.base03}
+        button.color=#${scheme.base01}
+        light.color=#${scheme.base04}
         mid.light.color=#${scheme.base03}
         dark.color=#${scheme.base00}
-        mid.color=#${scheme.base00}
-        highlight.color=#${scheme.base03}
-        inactive.highlight.color=#${scheme.base03}
+        mid.color=#${scheme.base02}
+        highlight.color=#${scheme.base0D}
+        inactive.highlight.color=#${scheme.base04}
         tooltip.base.color=#${scheme.base00}
         text.color=#${scheme.base05}
         window.text.color=#${scheme.base05}
         button.text.color=#${scheme.base05}
         disabled.text.color=#${scheme.base04}
         tooltip.text.color=#${scheme.base05}
-        highlight.text.color=#${scheme.base05}
+        highlight.text.color=#${scheme.base00}
         link.color=#${scheme.base0D}
         link.visited.color=#${scheme.base0E}
 

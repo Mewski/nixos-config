@@ -206,6 +206,18 @@
         "Mod+Shift+Right" = {
           action.move-column-right = { };
         };
+        "Mod+Alt+Up" = {
+          action.set-window-height = "-40";
+        };
+        "Mod+Alt+Down" = {
+          action.set-window-height = "+40";
+        };
+        "Mod+Alt+Left" = {
+          action.set-column-width = "-40";
+        };
+        "Mod+Alt+Right" = {
+          action.set-column-width = "+40";
+        };
         "Mod+WheelScrollDown" = {
           action.focus-workspace-down = { };
           cooldown-ms = 150;
