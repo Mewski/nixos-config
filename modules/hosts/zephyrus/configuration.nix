@@ -108,7 +108,11 @@
         tor-browser
       ];
 
-      hardware.flipperzero.enable = true;
+      hardware = {
+        flipperzero.enable = true;
+        opentabletdriver.enable = true;
+        uinput.enable = true;
+      };
 
       theme.scale = 1.25;
 
