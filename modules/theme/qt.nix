@@ -64,7 +64,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base04}
+        ForegroundInactive=${rgb scheme.base05}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -78,7 +78,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base04}
+        ForegroundInactive=${rgb scheme.base05}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -92,7 +92,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base06}
-        ForegroundInactive=${rgb scheme.base04}
+        ForegroundInactive=${rgb scheme.base05}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -106,7 +106,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base04}
+        ForegroundInactive=${rgb scheme.base05}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -120,7 +120,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base04}
+        ForegroundInactive=${rgb scheme.base05}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -134,7 +134,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base04}
+        ForegroundInactive=${rgb scheme.base05}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -161,7 +161,7 @@
         activeForeground=${rgb scheme.base05}
         inactiveBackground=${rgb scheme.base01}
         inactiveBlend=${rgb scheme.base03}
-        inactiveForeground=${rgb scheme.base04}
+        inactiveForeground=${rgb scheme.base05}
       '';
 
       kvconfigContent = ''

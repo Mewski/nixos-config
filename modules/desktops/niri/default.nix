@@ -42,7 +42,10 @@
           clipboard.disable-primary = true;
           environment = {
             ELECTRON_OZONE_PLATFORM_HINT = "auto";
+            KDE_SESSION_VERSION = "6";
             NIXOS_OZONE_WL = "1";
+            QT_QPA_PLATFORMTHEME = "qt6ct";
+            QT_STYLE_OVERRIDE = "kvantum";
           };
           cursor = {
             theme = theme.cursor.name;
