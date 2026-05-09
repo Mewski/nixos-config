@@ -165,7 +165,7 @@
           "output"
         ];
         "Mod+Alt+O" = spawn [ "${ocr}" ];
-        "Mod+Alt+Shift+R" = spawn [ "${screenRecord}" ];
+        "Mod+Alt+Print" = spawn [ "${screenRecord}" ];
         "Mod+R" = {
           action.switch-preset-column-width = { };
         };
@@ -200,6 +200,9 @@
         "Mod+Ctrl+F" = {
           action.expand-column-to-available-width = { };
         };
+        "Mod+Ctrl+C" = {
+          action.center-visible-columns = { };
+        };
         "Mod+V" = {
           action.toggle-window-floating = { };
         };
@@ -209,12 +212,18 @@
         "Mod+W" = {
           action.toggle-column-tabbed-display = { };
         };
-        "Mod+Shift+M" = {
-          action.quit.skip-confirmation = false;
-        };
         "Mod+Escape" = {
           action.toggle-keyboard-shortcuts-inhibit = { };
           allow-inhibiting = false;
+        };
+        "Mod+Shift+E" = {
+          action.quit.skip-confirmation = false;
+        };
+        "Ctrl+Alt+Delete" = {
+          action.quit.skip-confirmation = false;
+        };
+        "Mod+Shift+P" = {
+          action.power-off-monitors = { };
         };
         "Mod+Up" = {
           action.focus-window-or-workspace-up = { };
@@ -294,6 +303,12 @@
         "Mod+Ctrl+Page_Down" = {
           action.move-column-to-workspace-down = { };
         };
+        "Mod+Shift+Page_Up" = {
+          action.move-workspace-up = { };
+        };
+        "Mod+Shift+Page_Down" = {
+          action.move-workspace-down = { };
+        };
         "Mod+Tab" = {
           action.focus-workspace-previous = { };
         };
@@ -358,27 +373,50 @@
         "Alt+Print" = {
           action.screenshot-window = { };
         };
-        "XF86AudioRaiseVolume" =
-          spawnSh "${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${notifyVolume}";
-        "XF86AudioLowerVolume" = spawnSh "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${notifyVolume}";
-        "XF86AudioMute" = spawnSh "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${notifyVolumeMute}";
-        "XF86AudioMicMute" = spawnSh "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ${notifyMicMute}";
-        "XF86AudioPlay" = spawn [
-          playerctl
-          "play-pause"
-        ];
-        "XF86AudioPause" = spawn [
-          playerctl
-          "play-pause"
-        ];
-        "XF86AudioNext" = spawn [
-          playerctl
-          "next"
-        ];
-        "XF86AudioPrev" = spawn [
-          playerctl
-          "previous"
-        ];
+        "XF86AudioRaiseVolume" = {
+          action.spawn-sh = "${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${notifyVolume}";
+          allow-when-locked = true;
+        };
+        "XF86AudioLowerVolume" = {
+          action.spawn-sh = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${notifyVolume}";
+          allow-when-locked = true;
+        };
+        "XF86AudioMute" = {
+          action.spawn-sh = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${notifyVolumeMute}";
+          allow-when-locked = true;
+        };
+        "XF86AudioMicMute" = {
+          action.spawn-sh = "${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ${notifyMicMute}";
+          allow-when-locked = true;
+        };
+        "XF86AudioPlay" = {
+          action.spawn = [
+            playerctl
+            "play-pause"
+          ];
+          allow-when-locked = true;
+        };
+        "XF86AudioPause" = {
+          action.spawn = [
+            playerctl
+            "play-pause"
+          ];
+          allow-when-locked = true;
+        };
+        "XF86AudioNext" = {
+          action.spawn = [
+            playerctl
+            "next"
+          ];
+          allow-when-locked = true;
+        };
+        "XF86AudioPrev" = {
+          action.spawn = [
+            playerctl
+            "previous"
+          ];
+          allow-when-locked = true;
+        };
       }
       // workspaceBinds;
     };
