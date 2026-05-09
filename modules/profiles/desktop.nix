@@ -53,7 +53,7 @@
         enableSystemSlice = true;
       };
 
-      environment.systemPackages = [ pkgs.nautilus ];
+      environment.systemPackages = [ pkgs.kdePackages.dolphin ];
     };
 
   flake.homeModules.desktop =
@@ -77,7 +77,7 @@
         defaultApplications =
           let
             browser = "zen-beta.desktop";
-            fileManager = "org.gnome.Nautilus.desktop";
+            fileManager = "org.kde.dolphin.desktop";
             imageViewer = "qimgv.desktop";
             videoPlayer = "mpv.desktop";
             textEditor = "org.gnome.TextEditor.desktop";

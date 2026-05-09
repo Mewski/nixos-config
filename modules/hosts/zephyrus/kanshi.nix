@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.homeModules.zephyrus =
     { lib, pkgs, ... }:
@@ -18,8 +18,6 @@
       };
 
       mkProfile = name: outputs: { profile = { inherit name outputs; }; };
-
-      hyprlandPkg = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     in
     {
       services.kanshi = {
@@ -55,11 +53,17 @@
             set -u
 
             kanshictl=${lib.getExe' pkgs.kanshi "kanshictl"}
-            hyprctl=${hyprlandPkg}/bin/hyprctl
-            jq=${lib.getExe pkgs.jq}
             udevadm=${lib.getExe' pkgs.systemd "udevadm"}
 
             last=""
+
+            dp_connected() {
+              for status in /sys/class/drm/*-DP-1/status; do
+                [ -e "$status" ] || continue
+                [ "$(cat "$status" 2>/dev/null)" = connected ] && return 0
+              done
+              return 1
+            }
 
             apply() {
               if [ "$(cat /sys/class/power_supply/ACAD/online 2>/dev/null)" = "1" ]; then
@@ -68,8 +72,7 @@
                 suffix=battery
               fi
 
-              if "$hyprctl" -j monitors 2>/dev/null \
-                | "$jq" -e 'any(.name == "DP-1")' >/dev/null 2>&1; then
+              if dp_connected; then
                 desired="docked-dp-$suffix"
               else
                 desired="undocked-$suffix"
