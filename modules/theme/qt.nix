@@ -64,7 +64,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base05}
+        ForegroundInactive=${rgb scheme.base04}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -78,7 +78,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base05}
+        ForegroundInactive=${rgb scheme.base04}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -92,7 +92,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base06}
-        ForegroundInactive=${rgb scheme.base05}
+        ForegroundInactive=${rgb scheme.base04}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -106,7 +106,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base05}
+        ForegroundInactive=${rgb scheme.base04}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -120,7 +120,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base05}
+        ForegroundInactive=${rgb scheme.base04}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -134,7 +134,7 @@
         DecorationFocus=${rgb scheme.base0D}
         DecorationHover=${rgb scheme.base0E}
         ForegroundActive=${rgb scheme.base0D}
-        ForegroundInactive=${rgb scheme.base05}
+        ForegroundInactive=${rgb scheme.base04}
         ForegroundLink=${rgb scheme.base0D}
         ForegroundNegative=${rgb scheme.base08}
         ForegroundNeutral=${rgb scheme.base0A}
@@ -154,6 +154,10 @@
         [KDE]
         ColorScheme=Base16
         contrast=4
+        widgetStyle=kvantum
+
+        [UiSettings]
+        ColorScheme=Base16
 
         [WM]
         activeBackground=${rgb scheme.base00}
@@ -161,7 +165,7 @@
         activeForeground=${rgb scheme.base05}
         inactiveBackground=${rgb scheme.base01}
         inactiveBlend=${rgb scheme.base03}
-        inactiveForeground=${rgb scheme.base05}
+        inactiveForeground=${rgb scheme.base04}
       '';
 
       kvconfigContent = ''
@@ -456,8 +460,8 @@
 
         [Toolbar]
         inherits=PanelButtonCommand
-        interior.element=menubar
-        frame.element=menubar
+        interior.element=window
+        frame.element=window
         frame=true
         frame.bottom=4
         frame.left=4
@@ -470,8 +474,8 @@
 
         [MenuBar]
         inherits=PanelButtonCommand
-        frame.element=menubar
-        interior.element=menubar
+        frame.element=window
+        interior.element=window
         frame.bottom=0
         text.normal.color=#${scheme.base05}
         frame.expansion=0
@@ -611,7 +615,7 @@
         text.focus.color=#${scheme.base05}
 
         [Hacks]
-        transparent_dolphin_view=false
+        transparent_dolphin_view=true
         blur_konsole=true
         transparent_ktitle_label=true
         transparent_menutitle=true
@@ -2658,6 +2662,23 @@
         "qt6ct/colors/base16.conf".text = qtColorScheme;
         "qt6ct/qt6ct.conf".text = qtctConf "qt6ct";
         "color-schemes/Base16.colors".text = kdeColorScheme;
+        "dolphinrc" = {
+          force = true;
+          text = ''
+            [General]
+            Version=202
+
+            [KFileDialog Settings]
+            Places Icons Auto-resize=false
+            Places Icons Static Size=22
+
+            [MainWindow]
+            MenuBar=Disabled
+
+            [UiSettings]
+            ColorScheme=Base16
+          '';
+        };
         "kdeglobals".text = kdeColorScheme;
       };
     };

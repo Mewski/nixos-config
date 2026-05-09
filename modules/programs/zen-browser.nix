@@ -55,6 +55,9 @@
         };
 
         profiles.default.settings = {
+          "browser.startup.page" = 1;
+          "browser.sessionstore.resume_session_once" = false;
+          "browser.sessionstore.resume_from_crash" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "zen.theme.content-element-separation" = 0;
           "zen.view.grey-out-inactive-windows" = false;

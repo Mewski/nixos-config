@@ -8,7 +8,7 @@
       ...
     }:
     {
-      scheme = "${inputs.self}/assets/schemes/cyberpunk.yaml";
+      scheme = "${inputs.tinted-theming-schemes}/base24/mountain.yaml";
 
       theme = {
         polarity = "dark";
