@@ -120,6 +120,10 @@
                 name = "Mod+Shift+${toString i}";
                 value.action.move-window-to-workspace = ws;
               }
+              {
+                name = "Mod+Ctrl+${toString i}";
+                value.action.move-column-to-workspace = ws;
+              }
             ]
           ) 10
         )
@@ -129,13 +133,13 @@
       home.packages = [ pkgs.wf-recorder ];
 
       programs.niri.settings.binds = {
-        "Mod+R" = spawn [
+        "Mod+Space" = spawn [
           rofi
           "-show"
           "drun"
         ];
-        "Mod+Q" = spawn [ kitty ];
-        "Mod+L" = spawn [
+        "Mod+Return" = spawn [ kitty ];
+        "Mod+Alt+L" = spawn [
           swaylock
           "--daemonize"
         ];
@@ -145,7 +149,7 @@
           kitty
           btop
         ];
-        "Mod+K" = spawn [ "${cliphistSelect}" ];
+        "Mod+Alt+K" = spawn [ "${cliphistSelect}" ];
         "Mod+Z" = spawn [ zed ];
         "Mod+D" = spawn [ "discord" ];
         "Mod+B" = spawn [ "zen-beta" ];
@@ -160,20 +164,50 @@
           "${screenshot}"
           "output"
         ];
-        "Mod+O" = spawn [ "${ocr}" ];
-        "Mod+Shift+R" = spawn [ "${screenRecord}" ];
-        "Mod+T" = {
+        "Mod+Alt+O" = spawn [ "${ocr}" ];
+        "Mod+Alt+Shift+R" = spawn [ "${screenRecord}" ];
+        "Mod+R" = {
+          action.switch-preset-column-width = { };
+        };
+        "Mod+Shift+R" = {
+          action.switch-preset-column-width-back = { };
+        };
+        "Mod+Ctrl+Shift+R" = {
+          action.switch-preset-window-height = { };
+        };
+        "Mod+Ctrl+R" = {
+          action.reset-window-height = { };
+        };
+        "Mod+Alt+T" = {
           action.toggle-window-rule-opacity = { };
         };
-        "Mod+W" = spawnSh toggleWaybar;
+        "Mod+Alt+W" = spawnSh toggleWaybar;
+        "Mod+Shift+Slash" = {
+          action.show-hotkey-overlay = { };
+        };
         "Mod+C" = {
-          action.close-window = { };
+          action.center-column = { };
         };
         "Mod+F" = {
+          action.maximize-column = { };
+        };
+        "Mod+Shift+F" = {
           action.fullscreen-window = { };
+        };
+        "Mod+M" = {
+          action.maximize-window-to-edges = { };
+        };
+        "Mod+Ctrl+F" = {
+          action.expand-column-to-available-width = { };
         };
         "Mod+V" = {
           action.toggle-window-floating = { };
+        };
+        "Mod+Shift+V" = {
+          action.switch-focus-between-floating-and-tiling = { };
+        };
+        "Mod+W" = {
+          action.toggle-column-tabbed-display = { };
         };
         "Mod+Shift+M" = {
           action.quit.skip-confirmation = false;
@@ -194,6 +228,12 @@
         "Mod+Right" = {
           action.focus-column-right = { };
         };
+        "Mod+O" = {
+          action.toggle-overview = { };
+        };
+        "Mod+Q" = {
+          action.close-window = { };
+        };
         "Mod+Shift+Up" = {
           action.move-window-up = { };
         };
@@ -205,6 +245,81 @@
         };
         "Mod+Shift+Right" = {
           action.move-column-right = { };
+        };
+        "Mod+Home" = {
+          action.focus-column-first = { };
+        };
+        "Mod+End" = {
+          action.focus-column-last = { };
+        };
+        "Mod+Ctrl+Home" = {
+          action.move-column-to-first = { };
+        };
+        "Mod+Ctrl+End" = {
+          action.move-column-to-last = { };
+        };
+        "Mod+Ctrl+Alt+Up" = {
+          action.focus-monitor-up = { };
+        };
+        "Mod+Ctrl+Alt+Down" = {
+          action.focus-monitor-down = { };
+        };
+        "Mod+Ctrl+Alt+Left" = {
+          action.focus-monitor-left = { };
+        };
+        "Mod+Ctrl+Alt+Right" = {
+          action.focus-monitor-right = { };
+        };
+        "Mod+Shift+Ctrl+Alt+Up" = {
+          action.move-column-to-monitor-up = { };
+        };
+        "Mod+Shift+Ctrl+Alt+Down" = {
+          action.move-column-to-monitor-down = { };
+        };
+        "Mod+Shift+Ctrl+Alt+Left" = {
+          action.move-column-to-monitor-left = { };
+        };
+        "Mod+Shift+Ctrl+Alt+Right" = {
+          action.move-column-to-monitor-right = { };
+        };
+        "Mod+Page_Up" = {
+          action.focus-workspace-up = { };
+        };
+        "Mod+Page_Down" = {
+          action.focus-workspace-down = { };
+        };
+        "Mod+Ctrl+Page_Up" = {
+          action.move-column-to-workspace-up = { };
+        };
+        "Mod+Ctrl+Page_Down" = {
+          action.move-column-to-workspace-down = { };
+        };
+        "Mod+Tab" = {
+          action.focus-workspace-previous = { };
+        };
+        "Mod+BracketLeft" = {
+          action.consume-or-expel-window-left = { };
+        };
+        "Mod+BracketRight" = {
+          action.consume-or-expel-window-right = { };
+        };
+        "Mod+Comma" = {
+          action.consume-window-into-column = { };
+        };
+        "Mod+Period" = {
+          action.expel-window-from-column = { };
+        };
+        "Mod+Minus" = {
+          action.set-column-width = "-10%";
+        };
+        "Mod+Equal" = {
+          action.set-column-width = "+10%";
+        };
+        "Mod+Shift+Minus" = {
+          action.set-window-height = "-10%";
+        };
+        "Mod+Shift+Equal" = {
+          action.set-window-height = "+10%";
         };
         "Mod+Alt+Up" = {
           action.set-window-height = "-40";
@@ -225,6 +340,23 @@
         "Mod+WheelScrollUp" = {
           action.focus-workspace-up = { };
           cooldown-ms = 150;
+        };
+        "Mod+Ctrl+WheelScrollDown" = {
+          action.move-column-to-workspace-down = { };
+          cooldown-ms = 150;
+        };
+        "Mod+Ctrl+WheelScrollUp" = {
+          action.move-column-to-workspace-up = { };
+          cooldown-ms = 150;
+        };
+        "Print" = {
+          action.screenshot = { };
+        };
+        "Ctrl+Print" = {
+          action.screenshot-screen = { };
+        };
+        "Alt+Print" = {
+          action.screenshot-window = { };
         };
         "XF86AudioRaiseVolume" =
           spawnSh "${wpctl} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && ${notifyVolume}";

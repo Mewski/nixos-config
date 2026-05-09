@@ -37,6 +37,24 @@
           }
           {
             matches = [
+              { app-id = "^dev\\.zed\\.Zed$"; }
+              { app-id = "^discord$"; }
+              { app-id = "^Discord$"; }
+              { app-id = "^zen$"; }
+              { app-id = "^zen-beta$"; }
+              { app-id = "^obsidian$"; }
+              { app-id = "^signal$"; }
+              { app-id = "^signal-desktop$"; }
+              { app-id = "^spotify$"; }
+              { app-id = "^bitwarden$"; }
+              { app-id = "^Bitwarden$"; }
+              { app-id = "^wootility$"; }
+              { app-id = "^Wootility$"; }
+            ];
+            tiled-state = true;
+          }
+          {
+            matches = [
               { title = "^(Open|Save|File|Folder|Browse|Choose|Select|Export|Import|Upload|Download).*"; }
             ];
             open-floating = true;

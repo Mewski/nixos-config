@@ -13,6 +13,7 @@
 
         userSettings = {
           icon_theme = "Material Icon Theme";
+          window_decorations = "server";
           vim_mode = false;
 
           project_panel.dock = "left";

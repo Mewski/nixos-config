@@ -79,6 +79,11 @@
         config.common.default = "*";
       };
 
+      xdg.configFile."electron-flags.conf".text = ''
+        --enable-features=UseOzonePlatform,WaylandWindowDecorations
+        --ozone-platform-hint=auto
+      '';
+
       home.packages = with pkgs; [
         cliphist
         grim

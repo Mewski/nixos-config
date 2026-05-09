@@ -18,12 +18,152 @@
 
   flake.homeModules.qt =
     {
+      lib,
       pkgs,
       theme,
       scheme,
       ...
     }:
     let
+      hexByte = value: offset: lib.fromHexString (builtins.substring offset 2 value);
+      rgb =
+        value: "${toString (hexByte value 0)},${toString (hexByte value 2)},${toString (hexByte value 4)}";
+
+      qtColorScheme = ''
+        [ColorScheme]
+        active_colors=#ff${scheme.base0C}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base05}, #ff${scheme.base03}, #ff${scheme.base04}, #ff${scheme.base0E}, #ff${scheme.base06}, #ff${scheme.base05}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base03}, #ff${scheme.base02}, #ff${scheme.base0E}, #ff${scheme.base09}, #ff${scheme.base08}, #ff${scheme.base02}, #ff${scheme.base05}, #ff${scheme.base01}, #ff${scheme.base0E}, #8f${scheme.base0E}
+        disabled_colors=#ff${scheme.base0F}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base05}, #ff${scheme.base03}, #ff${scheme.base04}, #ff${scheme.base0F}, #ff${scheme.base0F}, #ff${scheme.base0F}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base03}, #ff${scheme.base02}, #ff${scheme.base0E}, #ff${scheme.base09}, #ff${scheme.base08}, #ff${scheme.base02}, #ff${scheme.base05}, #ff${scheme.base01}, #ff${scheme.base0F}, #8f${scheme.base0F}
+        inactive_colors=#ff${scheme.base0C}, #ff${scheme.base01}, #ff${scheme.base01}, #ff${scheme.base05}, #ff${scheme.base03}, #ff${scheme.base04}, #ff${scheme.base0E}, #ff${scheme.base06}, #ff${scheme.base05}, #ff${scheme.base01}, #ff${scheme.base00}, #ff${scheme.base03}, #ff${scheme.base02}, #ff${scheme.base0E}, #ff${scheme.base09}, #ff${scheme.base08}, #ff${scheme.base02}, #ff${scheme.base05}, #ff${scheme.base01}, #ff${scheme.base0E}, #8f${scheme.base0E}
+      '';
+
+      kdeColorScheme = ''
+        [ColorEffects:Disabled]
+        Color=${rgb scheme.base03}
+        ColorAmount=0
+        ColorEffect=0
+        ContrastAmount=0.65
+        ContrastEffect=1
+        Enable=false
+        IntensityAmount=0.1
+        IntensityEffect=2
+
+        [ColorEffects:Inactive]
+        ChangeSelectionColor=true
+        Color=${rgb scheme.base03}
+        ColorAmount=0.025
+        ColorEffect=2
+        ContrastAmount=0.1
+        ContrastEffect=2
+        Enable=false
+        IntensityAmount=0
+        IntensityEffect=0
+
+        [Colors:Button]
+        BackgroundAlternate=${rgb scheme.base02}
+        BackgroundNormal=${rgb scheme.base01}
+        DecorationFocus=${rgb scheme.base0D}
+        DecorationHover=${rgb scheme.base0E}
+        ForegroundActive=${rgb scheme.base0D}
+        ForegroundInactive=${rgb scheme.base04}
+        ForegroundLink=${rgb scheme.base0D}
+        ForegroundNegative=${rgb scheme.base08}
+        ForegroundNeutral=${rgb scheme.base0A}
+        ForegroundNormal=${rgb scheme.base05}
+        ForegroundPositive=${rgb scheme.base0B}
+        ForegroundVisited=${rgb scheme.base0E}
+
+        [Colors:Header]
+        BackgroundAlternate=${rgb scheme.base01}
+        BackgroundNormal=${rgb scheme.base00}
+        DecorationFocus=${rgb scheme.base0D}
+        DecorationHover=${rgb scheme.base0E}
+        ForegroundActive=${rgb scheme.base0D}
+        ForegroundInactive=${rgb scheme.base04}
+        ForegroundLink=${rgb scheme.base0D}
+        ForegroundNegative=${rgb scheme.base08}
+        ForegroundNeutral=${rgb scheme.base0A}
+        ForegroundNormal=${rgb scheme.base05}
+        ForegroundPositive=${rgb scheme.base0B}
+        ForegroundVisited=${rgb scheme.base0E}
+
+        [Colors:Selection]
+        BackgroundAlternate=${rgb scheme.base02}
+        BackgroundNormal=${rgb scheme.base02}
+        DecorationFocus=${rgb scheme.base0D}
+        DecorationHover=${rgb scheme.base0E}
+        ForegroundActive=${rgb scheme.base06}
+        ForegroundInactive=${rgb scheme.base04}
+        ForegroundLink=${rgb scheme.base0D}
+        ForegroundNegative=${rgb scheme.base08}
+        ForegroundNeutral=${rgb scheme.base0A}
+        ForegroundNormal=${rgb scheme.base05}
+        ForegroundPositive=${rgb scheme.base0B}
+        ForegroundVisited=${rgb scheme.base0E}
+
+        [Colors:Tooltip]
+        BackgroundAlternate=${rgb scheme.base01}
+        BackgroundNormal=${rgb scheme.base00}
+        DecorationFocus=${rgb scheme.base0D}
+        DecorationHover=${rgb scheme.base0E}
+        ForegroundActive=${rgb scheme.base0D}
+        ForegroundInactive=${rgb scheme.base04}
+        ForegroundLink=${rgb scheme.base0D}
+        ForegroundNegative=${rgb scheme.base08}
+        ForegroundNeutral=${rgb scheme.base0A}
+        ForegroundNormal=${rgb scheme.base05}
+        ForegroundPositive=${rgb scheme.base0B}
+        ForegroundVisited=${rgb scheme.base0E}
+
+        [Colors:View]
+        BackgroundAlternate=${rgb scheme.base01}
+        BackgroundNormal=${rgb scheme.base00}
+        DecorationFocus=${rgb scheme.base0D}
+        DecorationHover=${rgb scheme.base0E}
+        ForegroundActive=${rgb scheme.base0D}
+        ForegroundInactive=${rgb scheme.base04}
+        ForegroundLink=${rgb scheme.base0D}
+        ForegroundNegative=${rgb scheme.base08}
+        ForegroundNeutral=${rgb scheme.base0A}
+        ForegroundNormal=${rgb scheme.base05}
+        ForegroundPositive=${rgb scheme.base0B}
+        ForegroundVisited=${rgb scheme.base0E}
+
+        [Colors:Window]
+        BackgroundAlternate=${rgb scheme.base01}
+        BackgroundNormal=${rgb scheme.base00}
+        DecorationFocus=${rgb scheme.base0D}
+        DecorationHover=${rgb scheme.base0E}
+        ForegroundActive=${rgb scheme.base0D}
+        ForegroundInactive=${rgb scheme.base04}
+        ForegroundLink=${rgb scheme.base0D}
+        ForegroundNegative=${rgb scheme.base08}
+        ForegroundNeutral=${rgb scheme.base0A}
+        ForegroundNormal=${rgb scheme.base05}
+        ForegroundPositive=${rgb scheme.base0B}
+        ForegroundVisited=${rgb scheme.base0E}
+
+        [General]
+        ColorScheme=Base16
+        Name=Base16
+        shadeSortColumn=true
+        widgetStyle=kvantum
+
+        [Icons]
+        Theme=${iconTheme.name}
+
+        [KDE]
+        ColorScheme=Base16
+        contrast=4
+
+        [WM]
+        activeBackground=${rgb scheme.base00}
+        activeBlend=${rgb scheme.base03}
+        activeForeground=${rgb scheme.base05}
+        inactiveBackground=${rgb scheme.base01}
+        inactiveBlend=${rgb scheme.base03}
+        inactiveForeground=${rgb scheme.base04}
+      '';
+
       kvconfigContent = ''
         [%General]
         author=Bluskript based on Catppuccin Frappe Mauve theme
@@ -107,15 +247,15 @@
         mid.light.color=#${scheme.base03}
         dark.color=#${scheme.base00}
         mid.color=#${scheme.base02}
-        highlight.color=#${scheme.base0D}
-        inactive.highlight.color=#${scheme.base04}
+        highlight.color=#${scheme.base02}
+        inactive.highlight.color=#${scheme.base01}
         tooltip.base.color=#${scheme.base00}
         text.color=#${scheme.base05}
         window.text.color=#${scheme.base05}
         button.text.color=#${scheme.base05}
         disabled.text.color=#${scheme.base04}
         tooltip.text.color=#${scheme.base05}
-        highlight.text.color=#${scheme.base00}
+        highlight.text.color=#${scheme.base05}
         link.color=#${scheme.base0D}
         link.visited.color=#${scheme.base0E}
 
@@ -2484,8 +2624,9 @@
             package = pkgs.papirus-icon-theme;
           };
 
-      qtctConf = ''
+      qtctConf = dir: ''
         [Appearance]
+        color_scheme_path=~/.config/${dir}/colors/base16.conf
         custom_palette=true
         style=kvantum
         icon_theme=${iconTheme.name}
@@ -2512,8 +2653,12 @@
           General.theme = "Base16Kvantum";
         };
         "Kvantum/Base16Kvantum".source = "${kvantumPackage}/share/Kvantum/Base16Kvantum";
-        "qt5ct/qt5ct.conf".text = qtctConf;
-        "qt6ct/qt6ct.conf".text = qtctConf;
+        "qt5ct/colors/base16.conf".text = qtColorScheme;
+        "qt5ct/qt5ct.conf".text = qtctConf "qt5ct";
+        "qt6ct/colors/base16.conf".text = qtColorScheme;
+        "qt6ct/qt6ct.conf".text = qtctConf "qt6ct";
+        "color-schemes/Base16.colors".text = kdeColorScheme;
+        "kdeglobals".text = kdeColorScheme;
       };
     };
 }

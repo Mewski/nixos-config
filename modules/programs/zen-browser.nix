@@ -58,7 +58,7 @@
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "zen.theme.content-element-separation" = 0;
           "zen.view.grey-out-inactive-windows" = false;
-          "zen.widget.linux.transparency" = true;
+          "zen.widget.linux.transparency" = false;
           "zen.window-sync.enabled" = false;
         };
       };
