@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   perSystem =
-    { system, ... }:
+    { system, pkgs, ... }:
     {
       overlayAttrs.binary-ninja-personal-wayland =
         inputs.binary-ninja.packages.${system}.binary-ninja-personal-wayland.overrideAttrs
@@ -15,7 +15,7 @@
               makeWrapper $out/opt/binaryninja/binaryninja $out/bin/binaryninja \
                 --prefix PYTHONPATH : "$program_PYTHONPATH" \
                 --set QT_QPA_PLATFORM wayland \
-                --set QT_PLUGIN_PATH "$out/opt/binaryninja/qt" \
+                --set QT_PLUGIN_PATH "${pkgs.qt6.qtwayland}/lib/qt-6/plugins:${pkgs.qt6.qtbase}/lib/qt-6/plugins:${pkgs.qt6.qtsvg}/lib/qt-6/plugins" \
                 --unset QT_STYLE_OVERRIDE
             '';
 
