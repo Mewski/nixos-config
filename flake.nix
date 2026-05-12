@@ -11,9 +11,9 @@
     pwndbg.url = "github:pwndbg/pwndbg";
     claude-code.url = "github:sadjow/claude-code-nix";
     codex-cli.url = "github:sadjow/codex-cli-nix";
-    opencode.url = "github:anomalyco/opencode/v1.14.20";
+    opencode.url = "github:anomalyco/opencode/v1.14.46";
     proxmox-nixos.url = "github:Mewski/proxmox-nixos/deploy";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     disko = {
       url = "github:nix-community/disko";
