@@ -106,10 +106,15 @@
         openvpn
         sbctl
         tor-browser
+        usbutils
       ];
 
       hardware = {
         flipperzero.enable = true;
+        logitech.wireless = {
+          enable = true;
+          enableGraphical = false;
+        };
         opentabletdriver.enable = true;
         uinput.enable = true;
       };
@@ -122,6 +127,9 @@
   flake.homeModules.zephyrus =
     { pkgs, ... }:
     {
-      home.packages = [ pkgs.wootility ];
+      home.packages = [
+        pkgs.solaar
+        pkgs.wootility
+      ];
     };
 }

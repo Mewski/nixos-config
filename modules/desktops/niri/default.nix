@@ -90,7 +90,6 @@
       home.packages = with pkgs; [
         cliphist
         grim
-        satty
         slurp
         tesseract
         wl-clipboard

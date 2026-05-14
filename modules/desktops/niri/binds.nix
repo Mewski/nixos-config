@@ -15,7 +15,6 @@
       grim = lib.getExe pkgs.grim;
       slurp = lib.getExe pkgs.slurp;
       tesseract = lib.getExe pkgs.tesseract;
-      satty = lib.getExe pkgs.satty;
       cliphist = lib.getExe pkgs.cliphist;
       wfrecorder = lib.getExe pkgs.wf-recorder;
       playerctl = lib.getExe pkgs.playerctl;
@@ -57,27 +56,6 @@
         if [ -n "$selected" ]; then
           printf '%s' "$selected" | ${cliphist} decode | ${wlcopy}
           ${notifyOsd} -a osd-text -t 1000 'Copied to clipboard'
-        fi
-      '';
-
-      screenshot = pkgs.writeShellScript "screenshot" ''
-        dir=~/Pictures/Screenshots
-        mkdir -p "$dir"
-        file="$dir/$(date +%Y-%m-%d-%H%M%S).png"
-        case "$1" in
-          region)
-            geometry=$(${slurp}) || exit 0
-            [ -n "$geometry" ] || exit 0
-            ${grim} -g "$geometry" "$file" || { rm -f "$file"; exit 1; }
-            ;;
-          output) ${grim} "$file" || { rm -f "$file"; exit 1; } ;;
-          *) ${grim} "$file" || { rm -f "$file"; exit 1; } ;;
-        esac
-        [ -s "$file" ] || exit 0
-        ${wlcopy} < "$file"
-        action=$(${notify} -a Screenshot -t 5000 -i "$file" -A "edit=Edit in Satty" "Screenshot saved" "Image saved in <i>$file</i> and copied to the clipboard.")
-        if [ "$action" = "edit" ]; then
-          ${satty} -f "$file"
         fi
       '';
 
@@ -153,17 +131,15 @@
         "Mod+Z" = spawn [ zed ];
         "Mod+D" = spawn [ "discord" ];
         "Mod+B" = spawn [ "zen-beta" ];
-        "Mod+Shift+S" = spawn [
-          "${screenshot}"
-          "region"
-        ];
+        "Mod+Shift+S" = {
+          action.screenshot = { };
+        };
         "Mod+Alt+S" = {
           action.screenshot-window = { };
         };
-        "Mod+Ctrl+S" = spawn [
-          "${screenshot}"
-          "output"
-        ];
+        "Mod+Ctrl+S" = {
+          action.screenshot-screen = { };
+        };
         "Mod+Alt+O" = spawn [ "${ocr}" ];
         "Mod+Alt+Print" = spawn [ "${screenRecord}" ];
         "Mod+R" = {
