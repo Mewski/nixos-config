@@ -49,7 +49,7 @@
           };
           cursor = {
             theme = theme.cursor.name;
-            size = theme.cursor.size;
+            inherit (theme.cursor) size;
           };
           spawn-at-startup = [
             {

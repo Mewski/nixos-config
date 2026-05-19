@@ -4,7 +4,7 @@
     {
       programs.kitty = {
         font = {
-          name = theme.fonts.monospace.name;
+          inherit (theme.fonts.monospace) name;
           size = theme.fonts.sizes.terminal;
         };
 

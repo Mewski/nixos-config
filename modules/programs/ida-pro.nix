@@ -55,17 +55,19 @@
           pkgs.ida-pro-mcp
         ];
 
-        file.".idapro/plugins/vulfi.py".source = "${vulfi}/vulfi.py";
-        file.".idapro/plugins/vulfi_prototypes.json".source = "${vulfi}/vulfi_prototypes.json";
-        file.".idapro/plugins/wakatime.py".source = "${ida-wakatime}/wakatime.py";
+        file = {
+          ".idapro/plugins/vulfi.py".source = "${vulfi}/vulfi.py";
+          ".idapro/plugins/vulfi_prototypes.json".source = "${vulfi}/vulfi_prototypes.json";
+          ".idapro/plugins/wakatime.py".source = "${ida-wakatime}/wakatime.py";
 
-        file.".idapro/plugins/diaphora_plugin.py".source = "${diaphora}/plugin/diaphora_plugin.py";
-        file.".idapro/plugins/diaphora_plugin.cfg".source = diaphora-cfg;
+          ".idapro/plugins/diaphora_plugin.py".source = "${diaphora}/plugin/diaphora_plugin.py";
+          ".idapro/plugins/diaphora_plugin.cfg".source = diaphora-cfg;
 
-        file.".idapro/idapythonrc.py".text = ''
-          import sys
-          sys.path.insert(0, "${idaPython}/${idaPython.sitePackages}")
-        '';
+          ".idapro/idapythonrc.py".text = ''
+            import sys
+            sys.path.insert(0, "${idaPython}/${idaPython.sitePackages}")
+          '';
+        };
 
         activation.ida-pro-mcp = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           ${pkgs.ida-pro-mcp}/bin/ida-pro-mcp --install 2>/dev/null || true

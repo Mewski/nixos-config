@@ -9,7 +9,7 @@
     {
       programs.rofi.theme =
         let
-          mkLiteral = config.lib.formats.rasi.mkLiteral;
+          inherit (config.lib.formats.rasi) mkLiteral;
         in
         {
           "*" = {

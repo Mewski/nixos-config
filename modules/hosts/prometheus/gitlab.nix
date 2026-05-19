@@ -54,7 +54,7 @@
           enable = true;
           address = "smtp-relay.gmail.com";
           port = 587;
-          domain = domain;
+          inherit domain;
           enableStartTLSAuto = true;
         };
 

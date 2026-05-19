@@ -34,6 +34,7 @@
         variables.NIXPKGS_ALLOW_UNFREE = "1";
 
         systemPackages = with pkgs; [
+          deadnix
           nil
           nix-output-monitor
           nixd

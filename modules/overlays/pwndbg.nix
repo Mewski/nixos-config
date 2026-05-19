@@ -2,10 +2,13 @@
 {
   perSystem =
     { system, ... }:
+    let
+      packages = inputs.pwndbg.packages.${system};
+    in
     {
       overlayAttrs = {
-        pwndbg = inputs.pwndbg.packages.${system}.default;
-        pwndbg-lldb = inputs.pwndbg.packages.${system}.pwndbg-lldb;
+        pwndbg = packages.default;
+        inherit (packages) pwndbg-lldb;
       };
     };
 }
