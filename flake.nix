@@ -30,21 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:Mewski/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    split-monitor-workspaces = {
-      url = "github:zjeffer/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -111,12 +96,16 @@
 
       perSystem =
         { system, ... }:
-        {
-          _module.args.pkgs = import inputs.nixpkgs {
+        let
+          pkgs = import inputs.nixpkgs {
             inherit system;
             overlays = [ inputs.self.overlays.default ];
             config.allowUnfree = true;
           };
+        in
+        {
+          _module.args.pkgs = pkgs;
+          formatter = pkgs.nixfmt-tree;
         };
     };
 }
