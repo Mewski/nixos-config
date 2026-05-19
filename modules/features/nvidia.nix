@@ -1,10 +1,15 @@
 {
   flake.nixosModules.nvidia =
-    { config, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       services.xserver.videoDrivers = [
-        "nvidia"
         "modesetting"
+        "nvidia"
       ];
 
       hardware = {
@@ -16,10 +21,9 @@
         ];
 
         nvidia = {
-          open = false;
+          open = lib.mkDefault false;
           package = config.boot.kernelPackages.nvidiaPackages.latest;
           powerManagement.enable = true;
-          dynamicBoost.enable = false;
           modesetting.enable = true;
         };
       };

@@ -9,9 +9,8 @@
     };
 
     xdg.configFile."Discord-flags.conf".text = ''
-      --enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan
+      --enable-features=UseOzonePlatform,WaylandWindowDecorations
       --ozone-platform-hint=auto
-      --disable-gpu-sandbox
     '';
   };
 }

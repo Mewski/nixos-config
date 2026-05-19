@@ -69,8 +69,6 @@
       };
 
       services = {
-        logind.settings.Login.HandleLidSwitchDocked = "suspend";
-
         openssh = {
           enable = true;
           settings = {
@@ -97,7 +95,6 @@
 
         udev.packages = [
           pkgs.probe-rs-tools
-          pkgs.python3Packages.chipwhisperer
           pkgs.wooting-udev-rules
         ];
       };

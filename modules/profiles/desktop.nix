@@ -7,7 +7,6 @@
         self.nixosModules.fish
         self.nixosModules.greetd
         self.nixosModules.gtk
-        self.nixosModules.hardening
         self.nixosModules.home-manager
         self.nixosModules.locale
         self.nixosModules.nix
