@@ -129,7 +129,7 @@
         ];
         "Mod+Alt+K" = spawn [ "${cliphistSelect}" ];
         "Mod+Z" = spawn [ zed ];
-        "Mod+D" = spawn [ "discord" ];
+        "Mod+D" = spawn [ "vesktop" ];
         "Mod+B" = spawn [ "zen-beta" ];
         "Mod+Shift+S" = {
           action.screenshot = { };

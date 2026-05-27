@@ -40,6 +40,8 @@
               { app-id = "^dev\\.zed\\.Zed$"; }
               { app-id = "^discord$"; }
               { app-id = "^Discord$"; }
+              { app-id = "^vesktop$"; }
+              { app-id = "^Vesktop$"; }
               { app-id = "^zen$"; }
               { app-id = "^zen-beta$"; }
               { app-id = "^obsidian$"; }
