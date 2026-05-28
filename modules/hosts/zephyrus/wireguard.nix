@@ -1,6 +1,6 @@
 {
   flake.nixosModules.zephyrus =
-    { config, ... }:
+    { config, lib, ... }:
     {
       networking.wg-quick.interfaces = {
         wg0 = {
@@ -66,6 +66,7 @@
 
       systemd.services = {
         "wg-quick-wg0" = {
+          wantedBy = lib.mkForce [ ];
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
           serviceConfig = {
@@ -75,6 +76,7 @@
         };
 
         "wg-quick-wg1" = {
+          wantedBy = lib.mkForce [ ];
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
           serviceConfig = {
@@ -84,6 +86,7 @@
         };
 
         "wg-quick-wg2" = {
+          wantedBy = lib.mkForce [ ];
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
           serviceConfig = {

@@ -1,6 +1,7 @@
 {
   flake.nixosModules.zephyrus = {
     services.tlp.enable = false;
+    services.supergfxd.enable = true;
 
     services.asusd = {
       enable = true;

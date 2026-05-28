@@ -21,8 +21,14 @@
       nvidiaBacklight = "nvidia_0";
 
       activeDisplayBacklight = ''
-        backlight=${intelBacklight}
+        backlight=
+        if [ -d "/sys/class/backlight/${intelBacklight}" ]; then
+          backlight=${intelBacklight}
+        fi
         if [ "$(${supergfxctl} -g 2>/dev/null || true)" = AsusMuxDgpu ] && [ -d "/sys/class/backlight/${nvidiaBacklight}" ]; then
+          backlight=${nvidiaBacklight}
+        fi
+        if [ -z "$backlight" ] && [ -d "/sys/class/backlight/${nvidiaBacklight}" ]; then
           backlight=${nvidiaBacklight}
         fi
       '';
