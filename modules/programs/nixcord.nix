@@ -11,15 +11,12 @@
         settings = {
           discordBranch = "stable";
           arRPC = true;
-          appBadge = true;
           hardwareAcceleration = true;
           hardwareVideoAcceleration = true;
           tray = true;
           minimizeToTray = true;
           staticTitle = true;
           disableMinSize = true;
-          enableSplashScreen = true;
-          splashTheming = true;
           audio = {
             deviceSelect = true;
             granularSelect = true;
@@ -36,10 +33,6 @@
         disableMinSize = true;
         plugins = {
           anonymiseFileNames.enable = true;
-          betterFolders = {
-            enable = true;
-            closeOthers = true;
-          };
           betterSettings.enable = true;
           callTimer.enable = true;
           ClearURLs.enable = true;
@@ -48,7 +41,6 @@
           CopyUserURLs.enable = true;
           crashHandler.enable = true;
           fixImagesQuality.enable = true;
-          plainFolderIcon.enable = true;
           webKeybinds.enable = true;
         };
       };

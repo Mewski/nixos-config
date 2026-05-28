@@ -45,6 +45,7 @@
           ".config/rstudio"
           ".config/Signal"
           ".config/spotify"
+          ".config/vesktop"
           ".config/zen"
           ".docker"
           ".gemini"

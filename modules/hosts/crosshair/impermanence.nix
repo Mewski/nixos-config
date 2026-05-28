@@ -37,6 +37,7 @@
           ".config/OpenTabletDriver"
           ".config/Signal"
           ".config/spotify"
+          ".config/vesktop"
           ".gemini"
           ".local/share/fish"
           ".local/share/flatpak"
